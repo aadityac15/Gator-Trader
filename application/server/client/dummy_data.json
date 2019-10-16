@@ -1,0 +1,18 @@
+[{
+    "0": {
+        "name": "Aaditya Chokshi",
+        "email": "achokshi@mail.sfsu.edu",
+        "is_admin": false,
+        "graduation": 2020,
+        "major": "computer science",
+        "class_schedule": "MWF"
+    },
+    "1": {
+        "name": "Sean Darryanto",
+        "email": "sdarryanto@mail.sfsu.edu",
+        "is_admin": false,
+        "graduation": 2020,
+        "major": "computer science",
+        "class_schedule": "TTS"
+    }
+}]
