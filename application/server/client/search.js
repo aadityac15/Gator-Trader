@@ -1,44 +1,58 @@
 const fetchData = async () => {
+  clearData(); //Temporary
   let dataReceived = undefined;
   let dataLength = 0;
   let name = "";
   let major = "";
-  const dataTag = document.querySelector("data");
-  const ulTag = document.createElement("ul");
+  let dummyLength = 0;
+  let dummyData = undefined;
+  const table = document.querySelector("table");
+  table.style["border"] = "1px black solid";
 
   console.log("in the etch data");
 
   await fetch("./dummy_data.json", {
-    // method : 'GET',
-  })
+      method: 'GET',
+    })
     .then(response => response.json())
     .then(data => {
-      console.log(typeof data[0]);
-      console.log(
-        "Length of the data",
-        Object.keys(data[data.length - 1]).length
-      );
-      dataLength = Object.keys(data[data.length - 1]).length;
-
-      // dataLength = Object.keys(data[data.length-1].length); //Will have to change this;
-      console.log(dataLength);
-      dataReceived = data;
-      console.log(data);
-      console.log(data[0]);
+      dummyData = data[0];
+      //As the data would be an object
+      dummyLength = Object.keys(dummyData).length;
+      console.log("Type of", typeof dummyData);
+      console.log(dummyData);
+      console.log("The length is", Object.keys(dummyData).length);
     });
 
-  for (let i = 0; i < dataLength; i++) {
-    for (let j = 0; j < dataLength; j++) {
-      console.log("datarecd", dataReceived);
-      name = dataReceived[i][j].name;
-      major = dataReceived[i][j].major;
+  for (let i = 0; i < dummyLength; i++) {
+    let tr = document.createElement("tr");
+    tr.style["border-bottom"] = "1px solid black";
+    console.log(dummyData[i]);
+    let dataCategories = Object.keys(dummyData[i]);
+    for (let j = 0; j < dataCategories.length; j++) {
+      let bTag = document.createElement("b");
+      let td1 = document.createElement("td");
+      let td2 = document.createElement("td");
+
+      td1.textContent = dataCategories[j];
+      bTag.appendChild(td1);
+      td2.textContent = dummyData[i][dataCategories[j]];
+      // console.log("td = ", td);
+      tr.appendChild(bTag);
+      tr.appendChild(td2);
     }
-    const liTag = document.createElement("li");
-    const pTag = document.createElement("p");
-    pTag.textContent = name;
-    pTag.textContent = major;
-    liTag.appendChild(pTag);
-    ulTag.appendChild(liTag);
+
+    console.log(tr);
+    table.appendChild(tr);
   }
-  dataTag.appendChild(ulTag);
 };
+
+//Temporary clearing the space
+
+const clearData = () => {
+  const tableTag = document.querySelector("table");
+  if (document.querySelector("tr")) {
+    tableTag.removeChild(document.querySelector("tr"));
+    tableTag.removeChild(document.querySelector("tr"));
+  }
+}

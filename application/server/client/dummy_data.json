@@ -1,18 +1,26 @@
 [{
     "0": {
-        "name": "Aaditya Chokshi",
-        "email": "achokshi@mail.sfsu.edu",
-        "is_admin": false,
-        "graduation": 2020,
-        "major": "computer science",
-        "class_schedule": "MWF"
+        "id": 1,
+        "seller": "AC1411",
+        "title": "Red sofa",
+        "isApproved": false,
+        "createdOn": "10/16/2019",
+        "lastUpdated": "09/16/2019",
+        "approvedBy": "SD235",
+        "cost": "500.00",
+        "image": "",
+        "category": "furniture"
     },
     "1": {
-        "name": "Sean Darryanto",
-        "email": "sdarryanto@mail.sfsu.edu",
-        "is_admin": false,
-        "graduation": 2020,
-        "major": "computer science",
-        "class_schedule": "TTS"
+        "id": 2,
+        "seller": "AC151",
+        "title": "Purple iphone case",
+        "isApproved": true,
+        "createdOn": "10/11/2019",
+        "lastUpdated": "10/12/2019",
+        "approvedBy": "SD235",
+        "cost": "500.00",
+        "image": "",
+        "category": "furniture"
     }
 }]
