@@ -1,0 +1,26 @@
+[{
+    "0": {
+        "id": 1,
+        "seller": "AC1411",
+        "title": "Red sofa",
+        "isApproved": false,
+        "createdOn": "10/16/2019",
+        "lastUpdated": "09/16/2019",
+        "approvedBy": "SD235",
+        "cost": "500.00",
+        "image": "",
+        "category": "furniture"
+    },
+    "1": {
+        "id": 2,
+        "seller": "AC151",
+        "title": "Purple iphone case",
+        "isApproved": true,
+        "createdOn": "10/11/2019",
+        "lastUpdated": "10/12/2019",
+        "approvedBy": "SD235",
+        "cost": "500.00",
+        "image": "",
+        "category": "furniture"
+    }
+}]
