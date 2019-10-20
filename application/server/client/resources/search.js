@@ -11,14 +11,16 @@ const fetchData = async () => {
 
   console.log("in the etch data");
 
-  await fetch("./dummy_data.json", {
+  console.log("Fetching localhost:300/listings");
+  await fetch("http://localhost:3000/listings", {
       method: 'GET',
     })
     .then(response => response.json())
     .then(data => {
-      dummyData = data[0];
+      console.log(data);
+      dummyData = data;
       //As the data would be an object
-      dummyLength = Object.keys(dummyData).length;
+      dummyLength = dummyData.length;
       console.log("Type of", typeof dummyData);
       console.log(dummyData);
       console.log("The length is", Object.keys(dummyData).length);
