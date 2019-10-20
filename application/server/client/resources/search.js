@@ -1,4 +1,6 @@
-const fetchData = async () => {
+const LISTINGS_URL = `http://localhost:3000/listings?category${category}&query=${query}=`
+
+const fetchData = async (category, query) => {
   clearData(); //Temporary
   let dataReceived = undefined;
   let dataLength = 0;
@@ -11,7 +13,9 @@ const fetchData = async () => {
 
   console.log("in the etch data");
 
-  console.log("Fetching localhost:300/listings");
+  console.log("Fetching localhost:3000/listings");
+  // TODO: Use the LISTINGS_URL constant for GET requests to the server
+  // TODO: Provide category and query from frontend somehow. Maybe using jquery to get dropdown option and input
   await fetch("http://localhost:3000/listings", {
       method: 'GET',
     })
