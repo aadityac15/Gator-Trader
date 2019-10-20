@@ -2,7 +2,6 @@ from model import db
 
 
 class Listing(db.Model):
-    category = db.Column("category", db.VARCHAR(length=45), nullable=True)
     created_by = db.Column("created_by", db.INT, db.ForeignKey("user.user_id"), nullable=False)
     created_on = db.Column("created_on", db.INT, db.ForeignKey("user.user_id"), nullable=False)
     description = db.Column("description", db.VARCHAR(length=280), nullable=True)

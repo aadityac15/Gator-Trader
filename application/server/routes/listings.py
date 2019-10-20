@@ -16,17 +16,21 @@ def get_listings():
 
     result = ""
 
-    if query and category:
+    if query and (category and category != 'All'):
         result = Listing.query.filter(Listing.title == query or Listing.type == category)
+        print(1)
         print(result)
     elif query:
         result = Listing.query.filter(Listing.title == query)
+        print(2)
         print(result)
-    elif category:
+    elif category and category != 'All':
         result = Listing.query.filter(Listing.type == category)
+        print('category = ', category)
         print(result)
     else:
         result = Listing.query.all()
+        print(4)
         print(result)
 
     # TODO figure out how to properly return
