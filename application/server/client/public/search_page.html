@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../resources/search.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gator Trader</title>
+</head>
+
+<body>
+    <div>
+        <select id="selectDropDown" onchange="selectDropDown(this)">
+                <option selected value="All">All</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Books">Books</option>
+                <option value="Auto">Auto</option>
+                <option value="Electronics">Electronics</option>
+        </select>
+        <input type="text" id="queryTag">
+        <button type="submit" onclick="fetchData();">Search</button>
+        <br />
+        <br>
+        <table></table>
+    </div>
+</body>
+
+</html>
