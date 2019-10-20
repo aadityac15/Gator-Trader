@@ -12,37 +12,38 @@ const fetchData = async () => {
   const query = document.getElementById("queryTag").value;
   console.log(query);
 
-  const LISTINGS_URL = `http://localhost:3000/listings?category=${category}&query=${query}`;
+  const LISTINGS_URL = `listings?category=${category}&query=${query}`;
   console.log(LISTINGS_URL);
 
   let dataReceived = undefined;
   let dataLength = 0;
   let name = "";
   let major = "";
-  let dummyLength = 0;
-  let dummyData = undefined;
+  let responseLength = 0;
+  let responseData = undefined;
   const table = document.querySelector("table");
   table.style["border"] = "1px black solid";
 
-  // await fetch(LISTINGS_URL, {
-  await fetch('http://localhost:3000/listings', {
+  await fetch(LISTINGS_URL, {
+  // await fetch('http://localhost:3000/listings', {
     method: "GET"
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
-      dummyData = data;
+      console.log('data: ' + data);
+      responseData = data.listing;
+      console.log('response data: ' + responseData);
       //As the data would be an object
-      dummyLength = dummyData.length;
-      console.log("Type of", typeof dummyData);
-      console.log(dummyData);
-      console.log("The length is", Object.keys(dummyData).length);
+      responseLength = responseData.length;
+      console.log("Type of", typeof responseData);
+      console.log(responseData);
+      console.log("The length is", Object.keys(responseData).length);
 
-      for (let i = 0; i < dummyLength; i++) {
+      for (let i = 0; i < responseLength; i++) {
         let tr = document.createElement("tr");
         tr.style["border-bottom"] = "1px solid black";
-        console.log(dummyData[i]);
-        let dataCategories = Object.keys(dummyData[i]);
+        console.log(responseData[i]);
+        let dataCategories = Object.keys(responseData[i]);
 
         let bTag = document.createElement("b");
         let td1 = document.createElement("td");
@@ -54,7 +55,7 @@ const fetchData = async () => {
 
           td1.textContent = dataCategories[j];
           bTag.appendChild(td1);
-          td2.textContent = dummyData[i][dataCategories[j]];
+          td2.textContent = responseData[i][dataCategories[j]];
           // console.log("td = ", td);
           tr.appendChild(bTag);
           tr.appendChild(td2);
@@ -62,10 +63,10 @@ const fetchData = async () => {
           td1.textContent = dataCategories[j];
           if (dataCategories[j] === "image") {
             let imgTag = document.createElement("img");
-            imgTag.src = dummyData[i][dataCategories[j]];
+            imgTag.src = responseData[i][dataCategories[j]];
             bTag.appendChild(td1);
           }
-          td2.textContent = dummyData[i][dataCategories[j]];
+          td2.textContent = responseData[i][dataCategories[j]];
           tr.appendChild(bTag);
           tr.appendChild(td2);
 
