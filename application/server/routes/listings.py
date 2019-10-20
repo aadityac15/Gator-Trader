@@ -1,6 +1,6 @@
-from flask import Blueprint, request, render_template, jsonify, Response
-from model import listing, location, message, user
-from app import db
+from flask import Blueprint, request, jsonify
+from model.listing import Listing
+from model import db
 import datetime
 
 listings_blueprint = Blueprint('listings',
@@ -13,28 +13,30 @@ listings_blueprint = Blueprint('listings',
 def get_listings():
     query = request.args.get('query')
     category = request.args.get('category')
-    if query and category:
-        result = listing.query.filter(listing.title == query or listing.type == category)
-        if result:
-            return result
 
+    result = ""
+
+    if query and category:
+        result = Listing.query.filter(Listing.title == query or Listing.type == category)
+        print(result)
     elif query:
-        result = listing.query.filter(listing.title == query)
-        if result:
-            return result
+        result = Listing.query.filter(Listing.title == query)
+        print(result)
     elif category:
-        result = listing.query.filter(listing.type == category)
-        if result:
-            return result
+        result = Listing.query.filter(Listing.type == category)
+        print(result)
     else:
-        result = listing.query.all()
-        if result:
-            return result
+        result = Listing.query.all()
+        print(result)
 
     # TODO figure out how to properly return
+    # print([r.serialize() for r in result])
+    return jsonify({
+        'listing': [r.serialize for r in result]
+    })
 
 
-@listings_blueprint.route('/listings', metods=['POST'])
+@listings_blueprint.route('/listings', methods=['POST'])
 def post_listing():
     listing_id = request.form.get('listing_id')
     title = request.form.get('title')
@@ -46,7 +48,7 @@ def post_listing():
     last_edited_on = request.form.get('last_edited_on')
     created_by = request.form.get('created_by')
 
-    new_listing = listing(listing_id=listing_id,
+    new_listing = Listing(listing_id=listing_id,
                           title=title,
                           description=description,
                           type=type,
