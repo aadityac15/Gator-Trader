@@ -35,30 +35,30 @@ Filling the Database
 
 __Use the following queries to create and fill the listing table__  
 
-`CREATE TABLE` listing (  
-&nbsp;&nbsp;&nbsp;&nbsp;\`lid\` INT UNSIGNED NOT NULL AUTO_INCREMENT,  
-&nbsp;&nbsp;&nbsp;&nbsp;\`title\` VARCHAR(45) NOT NULL,  
-&nbsp;&nbsp;&nbsp;&nbsp;\`description\` VARCHAR(45) NULL,  
-&nbsp;&nbsp;&nbsp;&nbsp;\`type\` VARCHAR(45) NULL,  
-&nbsp;&nbsp;&nbsp;&nbsp;\`price\` DECIMAL(6,2) NOT NULL DEFAULT 0.00,  
-&nbsp;&nbsp;&nbsp;&nbsp;\`thumbnail\` VARCHAR(45) NULL,  
-&nbsp;&nbsp;&nbsp;&nbsp;\`created_on\` DATETIME NOT NULL,  
-&nbsp;&nbsp;&nbsp;&nbsp;\`last_edited_on\` DATETIME NOT NULL,  
-&nbsp;&nbsp;&nbsp;&nbsp;\`created_by\` VARCHAR(45) NOT NULL,  
-&nbsp;&nbsp;&nbsp;&nbsp;PRIMARY KEY (\`lid\`)  
+```sql
+CREATE TABLE listing (  
+    listing_id INT UNSIGNED NOT NULL AUTO_INCREMENT,  
+    title VARCHAR(45) NOT NULL,  
+    description VARCHAR(45) NULL,  
+    type VARCHAR(45) NULL,  
+    price DECIMAL(6,2) NOT NULL DEFAULT 0.00,  
+    thumbnail VARCHAR(45) NULL,  
+    created_on DATETIME NOT NULL,  
+    last_edited_on DATETIME NOT NULL,  
+    created_by VARCHAR(45) NOT NULL,  
+    PRIMARY KEY (listing_id)  
 );
+```
 
-`INSERT INTO` listing  
-&nbsp;&nbsp;&nbsp;&nbsp;`VALUES` (NULL, 'Couch', 'Used couch for sale.',  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'object', 75, NULL, '2016-05-12 12:32:45', '2017-05-22 12:32:33', 'Sarah'),  
-&nbsp;&nbsp;&nbsp;&nbsp;(NULL, 'Math Textbook', 'Barely used math textbook for MAth 324.',  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'object', 24.99, NULL, '2016-05-01 02:16:00', '2018-04-13 14:12:42', 'Connor'),  
-&nbsp;&nbsp;&nbsp;&nbsp;(NULL, 'Physics Tutor', 'Will help with Physics homework and notes.',  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'service', 25, NULL, '2017-09-04 14:22:16', '2018-11-04 04:44:15', 'Raiden'),  
-&nbsp;&nbsp;&nbsp;&nbsp;(NULL, 'Microwave', 'Brand new microwave for sale!',  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'object', 59.99, NULL, '2017-05-14 21:56:42', '2019-10-25 18:56:02', 'Kara'),  
-&nbsp;&nbsp;&nbsp;&nbsp;(NULL, 'Room Cleaning', 'Will clean any room in your house.',  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'service', 10, NULL, '2018-05-23 07:02:08', '2019-06-30 22:37:55', 'James');  
+```sql
+INSERT INTO listing  
+    VALUES 
+        (NULL, 'Couch', 'Used couch for sale.', 'furniture', 75, NULL, '2016-05-12 12:32:45', '2017-05-22 12:32:33', 'Sarah'),  
+        (NULL, 'Math Textbook', 'Barely used math textbook for MAth 324.', 'book', 20, NULL, '2016-05-01 02:16:00', '2018-04-13 14:12:42', 'Connor'),  
+        (NULL, 'Physics Tutor', 'Will help with Physics homework and notes.',  'service', 25, NULL, '2017-09-04 14:22:16', '2018-11-04 04:44:15', 'Raiden'),  
+        (NULL, 'Microwave', 'Brand new microwave for sale!',  'object', 59.99, NULL, '2017-05-14 21:56:42', '2019-10-25 18:56:02', 'Kara'),  
+        (NULL, 'Room Cleaning', 'Will clean any room in your house.',  'service', 10, NULL, '2018-05-23 07:02:08', '2019-06-30 22:37:55', 'James');  
+```
 	
 __Use the describe query to check if the table was created properly__  
 __Use the select query to check if the entries were added__  
