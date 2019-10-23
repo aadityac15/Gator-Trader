@@ -1,0 +1,23 @@
+{
+  "name": "gator-trader",
+  "version": "1.0.0",
+  "description": "Online market for SFSU students.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSC-648-SFSU/csc648-fall2019-Team02.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CSC-648-SFSU/csc648-fall2019-Team02/issues"
+  },
+  "homepage": "https://github.com/CSC-648-SFSU/csc648-fall2019-Team02#readme",
+  "dependencies": {
+    "fetch": "^1.1.0",
+    "require": "^2.4.20"
+  }
+}
