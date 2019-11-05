@@ -1,9 +1,8 @@
 #rcorners1 {
     border-radius: 25px;
-    background: #F1F2FA;
-    padding: 20px;
+    padding: 50px;
     width: 1000px;
-    height: 800px;
+    height: 1000px;
 }
 
 .nav a{
