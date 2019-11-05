@@ -6,11 +6,15 @@ from routes.static_server import static_blueprint
 from model import db
 
 app = Flask(__name__, static_url_path='', static_folder='client')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Rmssd1530@127.0.0.1:3306/648_Database'
+
+# TODO: CHANGE PASSWORD FOR YOUR LOCAL SETUP
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:csc648-password@127.0.0.1:3306/648_database'
 app.config['MYSQL_HOST'] = '127.0.0.1'
 app.config['MYSQL_PORT'] = '3306'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Rmssd1530'
+# TODO: CHANGE PASSWORD FOR YOUR LOCAL SETUP
+app.config['MYSQL_PASSWORD'] = 'csc648-password'
+
 
 db.init_app(app)
 
