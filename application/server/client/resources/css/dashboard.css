@@ -1,0 +1,16 @@
+#rcorners1 {
+    border-radius: 25px;
+    background: #F1F2FA;
+    padding: 20px;
+    width: 1000px;
+    height: 800px;
+}
+
+.nav a{
+    color:#212121;
+}
+
+.nav>li>a:focus {
+  background-color: #D3D1D1;
+}
+
