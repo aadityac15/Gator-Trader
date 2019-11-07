@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="../scripts/search.js"></script>
+
     <title>SFSU Gator Trader</title>
 </head>
 
@@ -29,26 +29,44 @@
     </div>
 
 
- <!---Search form-->
+    <!---Search form-->
     <div>
-        <form class="form-inline">
+        <form class="form-inline" action="/action_page.php">
+            <input type="search" id="exampleInputClass" placeholder="  CSC650....">
             <div class="dropdown">
-                <select id="selectDropDown" onchange="selectDropDown();" class="selectpicker dropdownMenuButton" data-style="btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                    <option selected value="All Categories">All Categories</option>
-                    <option value="Furniture">Furniture</option>
-                    <option value="Books">Books</option>
-                    <option value="Auto">Auto</option>
-                    <option value="Electronics">Electronics</option>
-                </select>
-                <input class="exampleInputClass" type="text" placeholder="  Search" aria-label="Search" id="queryTag">
-                <button class="searchBtn" type="submit" onclick="fetchData();"><i style = "color:black" class="fa fa-search"></i></button>
-                <br />
-                <br>
+                <button class="btn dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    All Categories
+                </button>
+                <div class="dropdown-menu ">
+                    <a class="dropdown-item" href="books.html">Books</a>
+                    <a class="dropdown-item" href="furnitures.html">Furnitures</a>
+
+                </div>
+            </div>
+            <div>
+                <div>
+                    <div class="search">
+                    </div>
+                    <div class="searchImage">
+                        <a href="../index.html" class="btn">
+                            <img src="https://img.icons8.com/material-sharp/36/000000/search.png">
+                        </a>
+
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 
 
+    <!----login and sign up-->
+    <!-- <div class="container">
+    <div class="col-h1"">
+        <a href="signin.html"><span style="color: #FFFFFF;margin-right:5px;">Sign In</span></a>
+        <a href="register.html"><span style="color: #9EA8FF;margin-right:4px;">or</span> <span style="color: #FFFFFF;">Register</span></a>
+
+    </div>
+</div> -->
 
     <!----order sell notification cart-->
     <div class="container">
@@ -69,7 +87,16 @@
 
         </div>
     </div>
-
+    <!-- <div class="notification">
+        <a href="notification.html" class="btn" role="button" aria-pressed="true">
+            <img src="../resources/images/navbar/notification.png" style="width:28px;height:24px;border:0">
+          </a>
+    </div>
+    <div class="cart" >
+        <a href="checkout.html" class="btn" role="button" aria-pressed="true">
+            <img src="../resources/images/navbar/shoppingcart.png" style="width:28px;height:24px;border:0">
+          </a>
+    </div> -->
     </div>
 </nav>
 
