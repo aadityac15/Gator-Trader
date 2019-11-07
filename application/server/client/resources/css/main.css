@@ -49,12 +49,11 @@ form input {
         outline: none;
       }
 
-#exampleInputClass{
+.exampleInputClass{
         position: absolute;
-        width: 657px;
+        width: 625px;
         height: 43px;
-        left: 610px;
-        top: 16px;
+        left: 128px;
     
         background: #FFFFFF;
         border: 1px solid #FFFFFF;
@@ -68,17 +67,19 @@ form input {
 
 .dropdown{
         position: absolute;
-        left: 465px;
+        left: 460px;
         top: 16px;
-         border-radius: 0 !important;  
+        border-radius: 0 !important;
+
 }
 
-#dropdownMenuButton{
+.dropdownMenuButton{
         background-color:#C4C4C4;
-        width: 100%;
+        width: auto;
         height: 43px;
         border-right:#ECC129;
         border-radius: 0!important;
+
 }
 
 .search{
@@ -90,14 +91,15 @@ form input {
         top: 16px;
         background: #ECC129;
 }
-.searchImage{
-    position: absolute;
-    width: 65px;
-    height: 53px;
-    left: 1210px;
-    top: 14px;
-}
 
+.searchBtn{
+
+        position: absolute;
+        width: 55px;
+        height: 43px;
+        left: 753px;
+        background: #ECC129;
+}
 
 .signin_register{
         
@@ -113,6 +115,8 @@ form input {
     font-size: 13px;
     line-height: 14px;
 }
+
+
 
 a:hover{
 text-decoration:none;
