@@ -10,3 +10,16 @@ class User(db.Model):
     password = db.Column("password", db.VARCHAR(length=45), nullable=False)
     is_admin = db.Column("is_admin", db.BOOLEAN, nullable=False)
     major = db.Column("major",  db.VARCHAR(length=45), nullable=True)
+
+    @property
+    def serialize(self):
+        return {
+            "user_id": self.user_id,
+            "username": self.username,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "email": self.email,
+            "password": self.password,
+            "is_admin": self.is_admin,
+            "major": self.major
+        }

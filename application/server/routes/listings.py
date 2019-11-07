@@ -36,7 +36,7 @@ def get_listings():
     # TODO figure out how to properly return
     # print([r.serialize() for r in result])
     return jsonify({
-        'listing': [r.serialize for r in result]
+        'listings': [r.serialize for r in result]
     })
 
 
