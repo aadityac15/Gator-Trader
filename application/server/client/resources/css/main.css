@@ -1,0 +1,167 @@
+.navbar{
+    background-color: #400449;
+    position: absolute;
+    width: 100%;
+    height: 71px;
+    left: 0px;
+    top: 0px;
+
+}
+.gator{
+        position: absolute;
+        width: 153px;
+        height: 112px;
+        left: 130px;
+        top: -3px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 42px;
+
+        color: #FFFFFF;
+}
+.trader{
+        position: absolute;
+        width: 154.47px;
+        height: 76.25px;
+        left: 155px;
+        top: 18.62px;
+        
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 56px;
+        
+        color: #9EA8FF;
+        
+        transform: rotate(-3.57deg);
+}
+
+/*search bar */
+
+form input {
+        border: none;
+        background: transparent;
+        border-bottom: 1px solid #fff;
+        outline: none;
+      }
+
+.exampleInputClass{
+        position: absolute;
+        width: 625px;
+        height: 43px;
+        left: 128px;
+
+        background: #FFFFFF;
+        border: 1px solid #FFFFFF;
+        border-right: black;
+        box-sizing: border-box;
+        border-top-left-radius: 0! important;
+        border-bottom-left-radius: 0! important;
+}
+
+
+
+.dropdown{
+        position: absolute;
+        left: 460px;
+        top: 16px;
+        border-radius: 0 !important;
+
+}
+
+.dropdownMenuButton{
+        background-color:#C4C4C4;
+        width: auto;
+        height: 43px;
+        border-right:#ECC129;
+        border-radius: 0!important;
+
+}
+
+.search{
+
+        position: absolute;
+        width: 55px;
+        height: 43px;
+        left: 1212px;
+        top: 16px;
+        background: #ECC129;
+}
+
+.searchBtn{
+
+        position: absolute;
+        width: 55px;
+        height: 43px;
+        left: 753px;
+        background: #ECC129;
+}
+
+.signin_register{
+
+    position: absolute;
+    width: 115px;
+    height: 60px;
+    right: 300px;
+    top: 20px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 14px;
+}
+
+
+
+a:hover{
+text-decoration:none;
+}
+
+.col-h1{
+        position: absolute;
+        width: 44px;
+        height: 22px;
+        right: 530px;
+        top: 9px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 15px;
+        
+        color: #FFFFFF;
+}
+/* .notification{
+        position: absolute;
+        right: 200px;
+        top: 16px;
+
+} */
+
+/* .cart{
+        position: absolute;
+        right: 100px;
+        top: 16px;
+        color: #FFFFFF;
+} */
+
+.footer{
+        width: 100%;
+        height: 60px;
+        background: #C4C4C4;
+}
+
+/*************  button  **********/
+
+.btn:focus {
+        outline: none !important;
+        border: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }

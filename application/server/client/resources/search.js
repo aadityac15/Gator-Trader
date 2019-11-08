@@ -1,4 +1,3 @@
-
 function selectDropDown(sel) {
   const category = sel.options[sel.selectedIndex].text;
   // console.log(category);

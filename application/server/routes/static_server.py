@@ -14,6 +14,10 @@ def render_home():
 def render_about():
     return render_template('about_us.html')
 
+@static_blueprint.route("/terms", methods = ["GET", "POST"])
+def render_terms():
+	return render_template("terms&conditions.html")
+
 @static_blueprint.route("/search", endpoint="search", methods=['POST', 'GET'])
 def search():
     return render_template("search_page.html")

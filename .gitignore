@@ -2,3 +2,4 @@
 node_modules/
 aadienv/
 venv
+*venv
