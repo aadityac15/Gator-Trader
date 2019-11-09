@@ -1,9 +1,12 @@
 from flask import Flask, render_template, send_from_directory
 
+from model import db
+
 from routes.about_me_static import about_blueprint
 from routes.listings import listings_blueprint
 from routes.static_server import static_blueprint
-from model import db
+from routes.users import users_blueprint
+from routes.message import message_blueprint
 
 app = Flask(__name__, static_url_path='', static_folder='client')
 
@@ -21,6 +24,9 @@ db.init_app(app)
 app.register_blueprint(static_blueprint)
 app.register_blueprint(about_blueprint)
 app.register_blueprint(listings_blueprint)
+app.register_blueprint(users_blueprint)
+app.register_blueprint(message_blueprint)
+
 
 
 
