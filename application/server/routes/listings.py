@@ -1,12 +1,12 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, send_from_directory, render_template
 from model.listing import Listing
 from model import db
 import datetime
 
 listings_blueprint = Blueprint('listings',
-                             __name__,
-                             static_folder ='../client',
-                             template_folder='../client/public/listings')
+                               __name__,
+                               static_folder='../client',
+                               template_folder='../client/public/listings')
 
 
 @listings_blueprint.route('/listings', methods=['GET'])
@@ -67,4 +67,10 @@ def post_listing():
 
     return
 
+
     # TODO do shit with this shit
+
+
+@listings_blueprint.route('/listings/<path:name>', methods=["GET"])
+def render_listings(name):
+    return render_template('/{}.html'.format(name))
