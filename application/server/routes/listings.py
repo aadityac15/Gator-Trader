@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from model.listing import Listing
 from model import db
 import datetime
@@ -68,3 +68,10 @@ def post_listing():
     return
 
     # TODO do shit with this shit
+
+@listings_blueprint.route("/result", methods=["GET", "POST"])
+def search_result():
+  
+  print("THe request is ", request)
+  print("The form is ",request.form)
+  return render_template("search_result.html")

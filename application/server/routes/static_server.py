@@ -22,3 +22,6 @@ def render_terms():
 def search():
     return render_template("search_page.html")
 
+# @static_blueprint.route("/result", endpoint="result", methods=['POST', 'GET'])
+# def search():
+#     return render_template("search_result.html")
