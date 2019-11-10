@@ -25,6 +25,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  bottom-space: 100px;
+
 }
 
 ul {

@@ -16,10 +16,13 @@ const fetchData = async () => {
   const table = createDomElement("table");
   table.style["border"] = "1px black solid";
 
-  await fetch("http://localhost:3000/listings", {
-    method: "POST"
+  await fetch("/listings", {
+    method: "GET"
   })
-    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+      response.json();
+    })
     .then(data => {
       console.log(data);
       dummyData = data;
