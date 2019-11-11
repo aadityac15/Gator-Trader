@@ -160,6 +160,7 @@ text-decoration:none;
 
 /*** MEDIA *** /    /* Laptop */
 @media screen and (min-width: 1024px) and (max-height: 1310px) {
+  
     .navbar {
         position: absolute;
         width: 100%;
@@ -281,16 +282,21 @@ text-decoration:none;
 
 @media screen and (min-width: 1350px) and (max-height: 1310px) {
 
-  .gator{
-     position: absolute;
-     width: 80px;
-     left: 80px;
- }
+      .gator{
+         position: absolute;
+         width: 80px;
+         left: 80px;
+     }
 
- .trader{
-     width: 101px;
-     left: 80px;
- }
+     .trader{
+         width: 101px;
+         left: 80px;
+     }
+
+     .col-h1 {
+        font-size: 18px;
+        right: 400px;
+     }
 
     .dropdown{
         left: 25%;
@@ -310,6 +316,7 @@ text-decoration:none;
 }
 
 @media screen and (min-width: 1800px) and (max-height: 1310px) {
+
     .dropdown{
         left: 35%;
     }
