@@ -9,3 +9,4 @@ message_blueprint = Blueprint('message_server',
 @message_blueprint.route('/message/<path:name>', methods=["GET", "POST"])
 def render_users(name):
     return render_template('/{}.html'.format(name))
+

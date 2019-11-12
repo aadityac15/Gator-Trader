@@ -1,6 +1,6 @@
-{% include 'index.html' %}
+{% extends 'index.html' %}
 
-{% block content %}
+{% block body %}
   <p><h3>Compose New Message</h3></p>
   <form method="POST" class="post-form">
     {% csrf_token %}
