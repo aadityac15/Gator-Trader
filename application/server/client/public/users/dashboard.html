@@ -1,7 +1,8 @@
 {% include 'index.html' %}
+
 <body>
 
-<!-- <nav class="navbar navbar-light navbar-fixed-top py-4">
+    <!-- <nav class="navbar navbar-light navbar-fixed-top py-4">
     -logo
     <div class="container">
         <div class="logo">
@@ -57,42 +58,39 @@
 </nav>
  -->
 
-<!-- main body -->
-<div class = "container">
-    <br>
-    <div id="rcorners1">
+    <!-- main body -->
+    <div class="container">
         <br>
-        <h3> Hello </h3> <!-- nned to add the user name here-->
+        <div id="rcorners1">
+            <br>
+            <h3> Hello </h3>
+            <!-- nned to add the user name here-->
 
-        <!--tabs for dashboard -->
-        <ul class="nav nav-tabs nav-fill">
+            <!--tabs for dashboard -->
+            <ul class="nav nav-tabs nav-fill">
 
-            <!-- Link to approved/listed items go here -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ 'approved_list' }}">Approved Items</a>
-            </li>
+                <!-- Link to approved/listed items go here -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ 'approved_list' }}">Approved Items</a>
+                </li>
 
-            <!-- Link to items awaiting approval go here -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ 'pending_list' }}">Pending Items</a>
-            </li>
+                <!-- Link to items awaiting approval go here -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ 'pending_list' }}">Pending Items</a>
+                </li>
 
-            <!-- Link to Messages go here -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ '/message/index' }}">Messages</a>
-            </li>
+                <!-- Link to Messages go here -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ '/message/index' }}">Messages</a>
+                </li>
 
-        </ul>
+            </ul>
 
             <div class="dashboard-items">
-            <br>
-            {% block body %}
-
-            {% endblock %}
+                <br> {% block body %} {% endblock %}
             </div>
         </div>
     </div>
-</div>
+    </div>
 
 </body>
-

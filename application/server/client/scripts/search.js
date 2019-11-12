@@ -1,22 +1,26 @@
-// function selectDropDown(sel) {
-//   const category = sel.options[sel.selectedIndex].text;
-// }
+const selectDropDown = (sel) => {
+  let category = sel.options[sel.selectedIndex].text;
+  // console.log(category);
+}
+
+
 
 const fetchData = async () => {
   const ulResult = document.getElementById("resultList");
   clearData(); //Temporary
   console.log("The local storage is ", localStorage);
-  // document.getElementById("queryTag").value = localStorage.getItem("query");
+  document.getElementById("queryTag").placeholder = localStorage.getItem("query");
   let category = localStorage.getItem("category");
+  console.log(category);
   let query = localStorage.getItem("query");
   // Domcreator.js
   ulResult.classList.add("list-group");
+  if (category==="All Categories") {
+    category= '';
+  }
+  console.log(category);
   const LISTINGS_URL = `listings?category=${category}&query=${query}`;
   console.log(LISTINGS_URL);
-  debugger;
-  let dummyLength = 0;
-  let dummyData = undefined;
-
   await fetch(LISTINGS_URL, {
     method: "GET"
   })
@@ -26,10 +30,8 @@ const fetchData = async () => {
     .then(data => {
       let dataJson = JSON.parse(data);
       console.log(dataJson);
-      // debugger;
-      // console.log(data);
       console.log("Type of data", typeof dataJson);
-      dummyData = dataJson["listings"];
+      let dummyData = dataJson["listings"];
       //As the data would be an object
       dummyLength = dummyData.length;
       dummyData.map(indList => {
@@ -45,9 +47,6 @@ const fetchData = async () => {
         const titleTag = createDomElement("p");
 
         const divTag = createDomElement("div");
-
-        // divTag.classList.add("ul-changes");
-        console.log("the indListing is", indList);
         let liTag = createDomElement("li");
         styleLi(liTag);
 
@@ -89,6 +88,9 @@ const fetchData = async () => {
         liTag.classList.add("list-group-item");
         ulResult.appendChild(liTag);
       });
+
+      category = "";
+      query = '';
     });
 };
 
@@ -122,12 +124,24 @@ const styleDiv = divTag => {
   divTag.style["display"] = "flex";
   divTag.style["flex-direction"] = "column";
   divTag.style["justify-content"] = "flex-start";
-  divTag.style["width"] = "100%";
+  divTag.style["width"] = "80%";
 };
 
 const styleImgDivTag = imgDivTag => {
   imgDivTag.style["width"] = "20%";
 };
+
+
+
+
+
+
+
+
+
+
+
+
 
 // The object is a json object.
 // let dataCategories = Object.keys(dummyData[i]);
