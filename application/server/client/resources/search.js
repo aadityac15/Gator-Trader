@@ -1,12 +1,14 @@
-function selectDropDown(sel) {
-  const category = sel.options[sel.selectedIndex].text;
-  // console.log(category);
-}
+// function selectDropDown(sel) {
+//   const category = sel.options[sel.selectedIndex].text;
+//   // console.log(category);
+// }
 
 const fetchData = async () => {
-  const selectDropDownElement = document.getElementById("selectDropDown")
-  const category = selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
-  console.log(category);
+  // const selectDropDownElement = document.getElementById("selectDropDown")
+  // const category = selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
+  document.getElementById("queryTag").value = localStorage.getItem("query");
+  console.log("The local storage is ", localStorage);
+  // console.log(category);
   clearData(); //Temporary
   const query = document.getElementById("queryTag").value;
   console.log(query);

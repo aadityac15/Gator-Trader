@@ -1,23 +1,21 @@
-function selectDropDown(sel) {
-  const category = sel.options[sel.selectedIndex].text;
-}
+// function selectDropDown(sel) {
+//   const category = sel.options[sel.selectedIndex].text;
+// }
 
 const fetchData = async () => {
   const ulResult = document.getElementById("resultList");
   clearData(); //Temporary
-
+  console.log("The local storage is ", localStorage);
+  // document.getElementById("queryTag").value = localStorage.getItem("query");
+  let category = localStorage.getItem("category");
+  let query = localStorage.getItem("query");
   // Domcreator.js
-  const selectDropDownElement = document.getElementById("selectDropDown");
-  const category =
-    selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
-  const query = document.getElementById("queryTag").value;
   ulResult.classList.add("list-group");
   const LISTINGS_URL = `listings?category=${category}&query=${query}`;
+  console.log(LISTINGS_URL);
+  debugger;
   let dummyLength = 0;
   let dummyData = undefined;
-
-  // const table = document.getElementById("resultTable");
-  // table.style["border"] = "1px black solid";
 
   await fetch(LISTINGS_URL, {
     method: "GET"
@@ -27,6 +25,8 @@ const fetchData = async () => {
     })
     .then(data => {
       let dataJson = JSON.parse(data);
+      console.log(dataJson);
+      // debugger;
       // console.log(data);
       console.log("Type of data", typeof dataJson);
       dummyData = dataJson["listings"];
@@ -63,12 +63,12 @@ const fetchData = async () => {
         liTag.appendChild(imgDivTag);
 
         // Commented code at the bottom goes here.
-        
+
         // Title Tag and  styling
         titleTag.innerText = indList["title"];
         h2Tag.appendChild(titleTag);
         titleBTag.appendChild(h2Tag);
-        
+
         // Description and other tags.
         descriptionTag.innerText = indList["description"];
         listingTag.innerText = indList["listing_id"];
@@ -83,7 +83,7 @@ const fetchData = async () => {
         divTag.appendChild(descriptionTag);
         // divTag.appendChild(h4Tag);
         divTag.appendChild(priceTag);
-        
+
         styleDiv(divTag);
         liTag.appendChild(divTag);
         liTag.classList.add("list-group-item");
