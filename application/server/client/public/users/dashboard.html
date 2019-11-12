@@ -1,6 +1,18 @@
+<<<<<<< HEAD
 {% include 'index.html' %}
 
 <body>
+=======
+{% extends 'index.html' %}
+
+ {% block body %}
+<!-- main body -->
+<div class = "container">
+    <br>
+    <div id="rcorners1">
+        <br>
+        <h3> Hello { user name }</h3> <!-- nned to add the user name here-->
+>>>>>>> 45e82e736d3a6c9edad8cd05c790ca763d39fc4c
 
     <!-- <nav class="navbar navbar-light navbar-fixed-top py-4">
     -logo
@@ -33,6 +45,13 @@
         </form>
     </div>
 
+<<<<<<< HEAD
+=======
+            <!-- Link to Messages go here -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ '/message/messages' }}">Messages</a>
+            </li>
+>>>>>>> 45e82e736d3a6c9edad8cd05c790ca763d39fc4c
 
     --order sell notification cart
     <div class="container">
@@ -63,6 +82,7 @@
         <br>
         <div id="rcorners1">
             <br>
+<<<<<<< HEAD
             <h3> Hello </h3>
             <!-- nned to add the user name here-->
 
@@ -92,5 +112,15 @@
         </div>
     </div>
     </div>
+=======
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+>>>>>>> 45e82e736d3a6c9edad8cd05c790ca763d39fc4c
 
 </body>

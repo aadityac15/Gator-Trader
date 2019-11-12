@@ -1,7 +1,8 @@
-{% include 'index.html' %}
-    <link rel="stylesheet" href="../resources/css/about_page.css">
-
-    <body>
+{% extends 'index.html' %}
+{% block head %}
+<link rel="stylesheet" href="../resources/css/about_page.css">
+{% endblock %}
+{% block body %}
         <div id="content" style="margin-top: 80px">
             <div class="content_half_vertical" style="text-align: center;">
               <h2 id="about_title">Sean Darryanto</h2>
@@ -34,4 +35,4 @@
                 </div>
             </div>
         </div>
-    </body>
+{% endblock %}

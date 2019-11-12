@@ -1,7 +1,6 @@
 {% extends 'users/dashboard.html' %}
 
-<body>
-
+{% block content %}
 <!----order sell notification cart-->
 
 <div class="tab">
@@ -39,7 +38,7 @@
 
             <td>Pat</td>
             <td>2019-11-05 22:32</td>
-            <td><a href="#reply" onclick="openTab(event, 'Compose', '{{ message.item.id }}', '{{ message.sender.id }}')">Reply</a></td>
+            <td><a href="#reply" onclick="openTab(event, 'Compose')">Reply</a></td> <!-- add more action in tab -->
         </tr>
         </tbody>
     </table>
@@ -75,7 +74,7 @@
 
             <td>Pat</td>
             <td>2019-11-05 22:32</td>
-            <td><a href="#reply" onclick="openTab(event, 'Compose', '{{ message.item.id }}', '{{ message.sender.id }}')">Reply</a></td>
+            <td><a href="#reply" onclick="openTab(event, 'Compose')">Reply</a></td> <!-- add more action in tab -->
         </tr>
         </tbody>
     </table>
@@ -108,6 +107,5 @@
 
     </form>
 </div>
-</div>
 
-</body>
+{% endblock %}
