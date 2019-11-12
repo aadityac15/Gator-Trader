@@ -12,9 +12,12 @@
     <link rel="stylesheet" href="../resources/css/dashboard.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="#" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="../scripts/search.js"></script>
+    <script src="../scripts/message.js"></script>
     <title>SFSU Gator Trader</title>
+    {% block head %} {% endblock %}
 </head>
 
 <body>
@@ -73,14 +76,17 @@
 </nav>
 
 
+<!-- content of templates that inherited this base template -->
+<div class="container">
+{% block body %} {% endblock %}
+</div>
+
 <!-----footer---->
 
 <div class="footer">
-    {% block footer %}
     <p><a href="{{ '/about/about_us' }}" >Meet Our Team | </a>
 
         <a href="{{ '/terms' }}" >Privacy Policy</a></p>
-    {% endblock %}
 </div>
 
 

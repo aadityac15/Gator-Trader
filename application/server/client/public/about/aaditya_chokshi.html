@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>About Aaditya Chokshi</title>
+{% extends 'index.html' %}
+{% block head %}
     <link rel="stylesheet" href="../../resources/css/about_page.css" />
-  </head>
+{% endblock %}
 
-  <body style="background-color: lightgrey">
+{% block body %}
     <div>
            {% include 'index.html' %}
     </div>
@@ -33,5 +31,4 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+{% endblock %}

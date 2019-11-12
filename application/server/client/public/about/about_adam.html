@@ -1,11 +1,9 @@
-<!doctype html>
-<html>
-    <head>
-        <title>About Adam Bea</title>
+{% extends 'index.html' %}
+{% block head %}
         <link rel="stylesheet" href="../../resources/css/about_adam.css">
-    </head>
+{% endblock %}
 
-    <body>
+{% block body %}
     <br><br><br>
     <div>
            {% include 'index.html' %}
@@ -34,5 +32,4 @@
                 </div>
             </div>
         </div>
-    </body>
-</html>
+{% endblock %}
