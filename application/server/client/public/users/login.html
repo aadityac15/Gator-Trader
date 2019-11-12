@@ -1,191 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="../../resources/css/main.css">
-    <link rel="stylesheet" href="../../resources/css/signin.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="../scripts/search.js"></script>
-    <title>SFSU Gator Trader</title>
-</head>
+{% include 'index.html' %}
 
 <body>
-
-<nav class="navbar navbar-light navbar-fixed-top py-4">
-    <!---logo-->
-    <div class="container">
-        <div class="logo">
-            <a href="../index.html" class="btn">
-                <p class="gator">Gator</p>
-                <p class="trader">Trader</p>
-            </a>
+  <div class="loginpage">
+  <div class="form">
+  <div class="login-form" style="width: 340px;margin:150px auto">
+    <form action="/login" method="POST" >
+        <h2 class="text-center">Log in</h2>       
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" required="required">
         </div>
-    </div>
-
-
-    <!---Search form-->
-    <div>
-        <form class="form-inline">
-            <div class="dropdown">
-                <select id="selectDropDown" onchange="selectDropDown();" class="selectpicker dropdownMenuButton" data-style="btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                    <option selected value="All Categories">All Categories</option>
-                    <option value="Furniture">Furniture</option>
-                    <option value="Books">Books</option>
-                    <option value="Auto">Auto</option>
-                    <option value="Electronics">Electronics</option>
-                </select>
-                <input class="exampleInputClass" type="text" placeholder="  Search" aria-label="Search" id="queryTag">
-                <button class="searchBtn" type="submit" onclick="fetchData();"><i style = "color:black" class="fa fa-search"></i></button>
-                <br />
-                <br>
-            </div>
-        </form>
-    </div>
-
-
-    <!----order sell notification cart-->
-    <div class="container">
-        <div class="col-h1"></div>
-        <div class="d-flex justify-content-between col-h1">
-            <div class="p-4 sell">
-                <a href="../listings/createSell_items.html"><span style="color: #FFFFFF;">Sell</span></a>
-            </div>
-            <div class="p-4 ">
-                <a href="dashboard.html"><span style="color: #FFFFFF;">Dashboard</span></a>
-            </div>
-            <div class="p-4">
-                <a href="login.html"><span style="color: #FFFFFF;">Login</span></a>
-            </div>
-            <div class="p-4">
-                <a href="signup.html"><span style="color: #FFFFFF;">Register</span></a>
-            </div>
-
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" required="required">
         </div>
-    </div>
-
-    </div>
-</nav>
-<!-- 
-<div class="container">
-    <div class="row">
-        <h6 style="text-align:center">Create account</h6>
-       
-        <div class="col">
-          <form action="" class="register-form" method="POST">
-            <div class="register">
-            <div class="form-group px-4 py-1">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control register-form" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-              </div>
-              <div class="form-group px-4">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control register-form" id="inputPassword1" placeholder="Password" required>
-              </div>
-              <div class="form-group px-4">
-                  <label for="exampleInputPassword1">Re-enter Password</label>
-                  <input type="password" class="form-control register-form" id="inputRePassword1" placeholder="Password" required>
-                </div>
-              <button type="submit" class="btn  d-flex justify-content-center d-md-table mx-auto" id="login-button">Create an account</button>
-            </form>
-            </div>
-    <div class="middleline"></div>
- 
- <h6 class="align-text-right" style="margin-left: 69%; margin-top:15%;">Sign-in</h6>
-  <div class="col">
-    <form action="" class="signin-form" method="POST">
-      <div class="signin">
-            <div class="form-group px-4 py-1">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control register-form" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-              </div>
-              <div class="form-group px-4">
-                <labesl for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control register-form" id="inputPassword1" placeholder="Password" re>
-              </div>
-              <a href="">
-                  <p class="ml-5 px-5" style="color: #0071BC;">Forgot Username/Password</p>
-              </a>
-              <button type="submit" class="btn d-flex justify-content-center d-md-table mx-auto" id="login-button">Sign In</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-block btn-warning">Log in</button>
         </div>
-      </form>
+        <div class="clearfix">
+            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+            <p class="message"><a href="#" class="pull-right text-warning ">Forgot Password?</a></p>
+        </div>  
+        <p class="text-center "><a href="{{ 'signup' }}"class="text-primary" >Create an Account</a></p>      
+    </form>
+</div>
+
+<div class="reset-form" style="width: 340px;margin:150px auto; background: #f7f7f7; padding: 30px; display: none; ">
+  <form action="/login" method="POST" >
+    <h3 class="ml-5 pl-5"><i class="fa fa-lock fa-4x"></i></h3>
+    <h2 class="text-center">Forgot Password?</h2>    
+      <div class="form-group"> 
+          <input id="email" name="email" placeholder="email address" class="form-control"  type="email">
       </div>
-  </div>
-</div> --> 
-
-<div class="container">
-  <form action="/action_page.php">
-    <div class="row">
-      <h6 style="text-align:center">Create account</h6>
-      <!---------Left side create an account--------->
-      <div class="col">
-        <div class="register">
-            <div class="form-group px-4 py-1">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control register-form" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              </div>
-              <div class="form-group px-4">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control register-form" id="inputPassword1" placeholder="Password">
-              </div>
-              <div class="form-group px-4">
-                  <label for="exampleInputPassword1">Re-enter Password</label>
-                  <input type="password" class="form-control register-form" id="inputRePassword1" placeholder="Password">
-                </div>
-              <button type="submit" class="btn  d-flex justify-content-center d-md-table mx-auto" id="login-button">Create an account</button>
-        </div>
+      <div class="form-group">
+        <input name="recover-submit" class="btn btn-lg btn-warning btn-block" value="Reset Password" type="submit">
       </div>
-
-      <div class="middleline"></div>
-
-      <!---------right side sign in --------->  
-      <h6 class="align-text-right" style="margin-left: 60%;">Log-in</h6>
-      <div class="col">
-        <div class="signin">
-              <div class="form-group px-4 py-1">
-                  <label for="exampleInputEmail1">Email</label>
-                  <input type="email" class="form-control register-form" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                </div>
-                <div class="form-group px-4">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control register-form" id="inputPassword1" placeholder="Password">
-                </div>
-                <a href="">
-                    <p class="ml-5 px-5" style="color: #0071BC;">Forgot Username/Password</p>
-                </a>
-                <button type="submit" class="btn d-flex justify-content-center d-md-table mx-auto" id="login-button">Sign In</button>
-          </div>
-        </div>
-    </div>
+          
   </form>
-</div>   
 </div>
-
-<!-----footer---->
-
-<div class="footer fixed-bottom mb-0">
-    <p class="text-center"><a href="../about/about_us.html">Meet Our Team</a> </p>
 </div>
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
-
-<script>
-      //Get the current year for the copyright
-      $('#year').text(new Date().getFullYear());
-    </script>
-
-
+</div>
 </body>
 
-</html>
+
+
