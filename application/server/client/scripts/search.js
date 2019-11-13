@@ -1,18 +1,28 @@
+// document.querySelector("body").addEventListe/ner("onLoad", () => fetchData());
+
+
+
+
 const selectDropDown = (sel) => {
   let category = sel.options[sel.selectedIndex].text;
   // console.log(category);
 }
 
-
-
 const fetchData = async () => {
+  // let category = '';
+  // let query =  "";
   const ulResult = document.getElementById("resultList");
-  clearData(); //Temporary
+  // clearData(); //Temporary
   console.log("The local storage is ", localStorage);
-  document.getElementById("queryTag").placeholder = localStorage.getItem("query");
+  document.getElementById("queryTag").value = localStorage.getItem("query");
   let category = localStorage.getItem("category");
+  if (category !== null) {
+ document.getElementById('selectDropDown').value = category;
+  }
+  // let category = selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
   console.log(category);
-  let query = localStorage.getItem("query");
+  // query = localStorage.getItem("query");
+  let query = document.getElementById("queryTag").value;
   // Domcreator.js
   ulResult.classList.add("list-group");
   if (category==="All Categories") {
@@ -20,7 +30,8 @@ const fetchData = async () => {
   }
   console.log(category);
   const LISTINGS_URL = `listings?category=${category}&query=${query}`;
-  console.log(LISTINGS_URL);
+  console.log("The losoting url",LISTINGS_URL);
+
   await fetch(LISTINGS_URL, {
     method: "GET"
   })
@@ -90,7 +101,8 @@ const fetchData = async () => {
       });
 
       category = "";
-      query = '';
+      query = "";
+      localStorage.clear();
     });
 };
 

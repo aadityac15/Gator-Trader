@@ -65,14 +65,14 @@ def post_listing():
     db.session.add(new_listing)
     db.session.commit()
 
-    return 
+    return
 
 
   # TODO do shit with this shit
 
 # @listings_blueprint.route("/result", methods=["GET", "POST"])
 # def search_result():
-  
+
 #   print("THe request is ", request)
 #   print("The form is ",request.form)
 #   return render_template("search_result.html")

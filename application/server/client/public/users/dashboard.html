@@ -1,126 +1,37 @@
-<<<<<<< HEAD
-{% include 'index.html' %}
-
-<body>
-=======
-{% extends 'index.html' %}
-
- {% block body %}
+ {% extends 'index.html' %} {% block body %}
 <!-- main body -->
-<div class = "container">
+<div class="container">
     <br>
     <div id="rcorners1">
         <br>
-        <h3> Hello { user name }</h3> <!-- nned to add the user name here-->
->>>>>>> 45e82e736d3a6c9edad8cd05c790ca763d39fc4c
+        <h3> Hello { user name }</h3>
+        <!-- nned to add the user name here-->
 
-    <!-- <nav class="navbar navbar-light navbar-fixed-top py-4">
-    -logo
-    <div class="container">
-        <div class="logo">
-            <a href="../index.html" class="btn">
-                <p class="gator">Gator</p>
-                <p class="trader">Trader</p>
-            </a>
-        </div>
-    </div>
+        <!--tabs for dashboard -->
+        <ul class="nav nav-tabs nav-fill">
 
+            <!-- Link to approved/listed items go here -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ 'approved_list' }}">Approved Items</a>
+            </li>
 
-     -Search form
-    <div>
-        <form class="form-inline">
-            <div class="dropdown">
-                <select id="selectDropDown" onchange="selectDropDown();" class="selectpicker dropdownMenuButton" data-style="btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                    <option selected value="All Categories">All Categories</option>
-                    <option value="Furniture">Furniture</option>
-                    <option value="Books">Books</option>
-                    <option value="Auto">Auto</option>
-                    <option value="Electronics">Electronics</option>
-                </select>
-                <input class="exampleInputClass" type="text" placeholder="  Search" aria-label="Search" id="queryTag">
-                <button class="searchBtn" type="submit" onclick="fetchData();"><i style = "color:black" class="fa fa-search"></i></button>
-                <br />
-                <br>
-            </div>
-        </form>
-    </div>
+            <!-- Link to items awaiting approval go here -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ 'pending_list' }}">Pending Items</a>
+            </li>
 
-<<<<<<< HEAD
-=======
             <!-- Link to Messages go here -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ '/message/messages' }}">Messages</a>
             </li>
->>>>>>> 45e82e736d3a6c9edad8cd05c790ca763d39fc4c
 
-    --order sell notification cart
-    <div class="container">
-        <div class="col-h1"></div>
-        <div class="d-flex justify-content-between col-h1">
-            <div class="p-4 sell">
-                <a href="../listings/createSell_items.html"><span style="color: #FFFFFF;">Sell</span></a>
-            </div>
-            <div class="p-4 ">
-                <a href="dashboard.html"><span style="color: #FFFFFF;">Dashboard</span></a>
-            </div>
-            <div class="p-4">
-                <a href="login.html"><span style="color: #FFFFFF;">Login</span></a>
-            </div>
-            <div class="p-4">
-                <a href="signup.html"><span style="color: #FFFFFF;">Register</span></a>
-            </div>
+        </ul>
 
+        <div class="dashboard-items">
+            <br> {% block content %} {% endblock %}
         </div>
     </div>
-
-    </div>
-</nav>
- -->
-
-    <!-- main body -->
-    <div class="container">
-        <br>
-        <div id="rcorners1">
-            <br>
-<<<<<<< HEAD
-            <h3> Hello </h3>
-            <!-- nned to add the user name here-->
-
-            <!--tabs for dashboard -->
-            <ul class="nav nav-tabs nav-fill">
-
-                <!-- Link to approved/listed items go here -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ 'approved_list' }}">Approved Items</a>
-                </li>
-
-                <!-- Link to items awaiting approval go here -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ 'pending_list' }}">Pending Items</a>
-                </li>
-
-                <!-- Link to Messages go here -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ '/message/index' }}">Messages</a>
-                </li>
-
-            </ul>
-
-            <div class="dashboard-items">
-                <br> {% block body %} {% endblock %}
-            </div>
-        </div>
-    </div>
-    </div>
-=======
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
-    </div>
+</div>
 
 
 {% endblock %}
->>>>>>> 45e82e736d3a6c9edad8cd05c790ca763d39fc4c
-
-</body>

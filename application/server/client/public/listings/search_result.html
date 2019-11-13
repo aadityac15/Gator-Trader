@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -10,22 +10,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
-    <script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
-
     <title>SFSU GatorTrader</title>
-</head>
+</head> -->
+
+{% extends 'index.html' %} {% block body %}
 
 <body onLoad="fetchData();">
+
     <script type="text/javascript">
         const docWrite = (variable) => {
             document.write(variable);
         }
     </script>
     <div>
-        <div>
-            {% include 'index.html' %}
-        </div>
-        <div class="jumbotron">
+        <div class="margin-top">
             <div>
                 Search Results for the query:
                 <script>
@@ -35,6 +33,6 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+    <script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
+    {% endblock body %}
