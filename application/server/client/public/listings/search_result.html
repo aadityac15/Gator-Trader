@@ -16,7 +16,6 @@
 {% extends 'index.html' %} {% block body %}
 
 <body onLoad="fetchData();">
-
     <script type="text/javascript">
         const docWrite = (variable) => {
             document.write(variable);
@@ -34,4 +33,5 @@
     </div>
     <script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
     <script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
-    {% endblock body %}
+</body>
+{% endblock body %}
