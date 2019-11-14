@@ -7,8 +7,9 @@
         }
     </script>
     <div class="margin-top">
-        <div>
-            Search Results for the {{ document.getelementby }} :
+        Search Results for the <script>
+              docWrite(localStorage.getItem("category"));
+             </script>:
             <script>
                 docWrite(localStorage.getItem("query"));
             </script>
