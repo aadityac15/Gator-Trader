@@ -17,12 +17,13 @@ def render_home():
 
 @static_blueprint.route("/results", methods=["GET"])
 def render_results():
-	return render_template("search_result.html")
+    return render_template("search_result.html")
 
 
-@static_blueprint.route("/terms", methods = ["GET", "POST"])
+@static_blueprint.route("/terms", methods=["GET", "POST"])
 def render_terms():
-	return render_template("terms&conditions.html")
+    return render_template("terms&conditions.html")
+
 
 @static_blueprint.route("/search", endpoint="search", methods=['POST', 'GET'])
 def search():
