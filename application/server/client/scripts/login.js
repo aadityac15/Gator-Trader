@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let admin_reset_password = document.querySelector("#admin-reset-password");
     let submit_reset_password = document.querySelector(".submit-reset-password");
     let email_reset_form = document.querySelector(".email-reset-form");
+    let reset_password_email = document.querySelector("#reset-password-email");
 
 
     reset_password.addEventListener("click", function () {
@@ -31,8 +32,13 @@ document.addEventListener("DOMContentLoaded", function() {
      */
     submit_reset_password .addEventListener("click", function () {
         event.preventDefault()
-        reset_form.style.display = "none";
-        email_reset_form.style.display = "block";
+
+        if(reset_password_email.value.length != 0){
+            reset_form.style.display = "none";
+            email_reset_form .style.display = "block";
+        }else{
+            alert("All Field must be filled out");
+        }
     })
 
 
