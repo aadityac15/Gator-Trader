@@ -1,34 +1,25 @@
-{% extends 'index.html' %}
-{% block head %}
-    <link rel="stylesheet" href="../../resources/css/about_page.css" />
-{% endblock %}
-
-{% block body %}
-    <div>
-           {% include 'index.html' %}
-    </div>
-    <div id="content">
-      <div class="content_half_vertical" style="text-align: center;">
+{% extends 'index.html' %} {% block head %}
+<link rel="stylesheet" href="../../resources/css/about_page.css" /> {% endblock %} {% block body %}
+<div>
+    {% include 'index.html' %}
+</div>
+<div id="content">
+    <div class="content_half_vertical" style="text-align: center;">
         <h2 id="about_title"><u>Aaditya Chokshi</u></h2>
         <p id="about_subtitle">
-          <b><u>Front End Lead</u></b>
+            <b><u>Front End Lead</u></b>
         </p>
-      </div>
-
-      <div class="content_half_vertical" id="content_body">
-        <div class="content_half_horizontal">
-          <img
-            class="about-img"
-            src="../../resources/images/aaditya_chokshi.jpg"
-          />
-        </div>
-        <div class="content_half_horizontal">
-          <p>
-            I am an international student from India and the front end lead for
-            the CSC 848 team 2. I am passionate about music, and love to play
-            badminton. I am a fairly outgoing and a fun person.
-          </p>
-        </div>
-      </div>
     </div>
+
+    <div class="content_half_vertical" id="content_body">
+        <div class="content_half_horizontal">
+            <img class="about-img" src="../../resources/images/aaditya_chokshi.jpg" />
+        </div>
+        <div class="content_half_horizontal">
+            <p>
+                I am an international student from India and the front end lead for the CSC 848 team 2. I am passionate about music, and love to play badminton. I am a fairly outgoing and a fun person.
+            </p>
+        </div>
+    </div>
+</div>
 {% endblock %}
