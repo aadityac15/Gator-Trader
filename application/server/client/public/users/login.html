@@ -2,7 +2,7 @@
  {% block body %}
 
     <!------------user log in form ----------->
-  <div class="formStyle " >
+  <div class="formStyle" >
     <form action="/login" method="POST" >
         <h2 class="text-center">Log in</h2>
         <div class="form-group">
@@ -37,6 +37,12 @@
   </form>
 </div>
 
+<!------------------ email sending successful  ----------------->
+<div class="email-reset-form" style="width: 340px;margin:150px auto; background: #f7f7f7; padding: 30px; display:none; ">
+    <h4 class="ml-5 pl-5"><i class="fa fa-envelope fa-4x" style="color:#400449"></i></h4>
+    <br>
+    <dt class="text-primary ml-4 pl-1"> Please check your email, we sent the reset password link.</dt>
+</div>
 
 <!----------------admin login form ------------------->
 <div class="admin-login-form" style="width: 340px;margin:150px auto;background: #f7f7f7; padding: 30px; display:none">
@@ -57,9 +63,6 @@
       </div>
   </form>
 </div>
-
-
-
 
 
 {% endblock %}
