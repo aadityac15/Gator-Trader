@@ -1,4 +1,5 @@
 // document.querySelector("body").addEventListe/ner("onLoad", () => fetchData());
+
 const selectDropDown = (sel) => {
   let category = sel.options[sel.selectedIndex].text;
   // console.log(category);
@@ -8,21 +9,23 @@ const fetchData = async () => {
   // let category = '';
   // let query =  "";
   const ulResult = document.getElementById("resultList");
+  let category = document.getElementById('selectDropDown').value;
+  // let query = document.getElementById('queryTag').value;
   // clearData(); //Temporary
-  console.log("The local storage is ", localStorage);
-  document.getElementById("queryTag").value = localStorage.getItem("query");
-  let category = localStorage.getItem("category");
-  if (category !== null) {
- document.getElementById('selectDropDown').value = category;
-  }
+//   console.log("The local storage is ", localStorage);
+//   document.getElementById("queryTag").value = localStorage.getItem("query");
+//   let category = localStorage.getItem("category");
+//   if (category !== null) {
+//  document.getElementById('selectDropDown').value = category;
+//   }
   // let category = selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
   console.log(category);
   // query = localStorage.getItem("query");
   let query = document.getElementById("queryTag").value;
   // Domcreator.js
   ulResult.classList.add("list-group");
-  if (category==="All Categories") {
-    category= '';
+  if (category==="All Categories"  || category === "All") {
+    category= "";
   }
   console.log(category);
   const LISTINGS_URL = `listings?category=${category}&query=${query}`;
@@ -45,7 +48,7 @@ const fetchData = async () => {
         const titleBTag = createDomElement("b");
         const h2Tag = createDomElement("h2");
         const h4Tag = createDomElement("h4");
-        const imgDivTag = createDomElement("div");
+        const imgSpanTag = createDomElement("span");
         const imgTag = createDomElement("img");
         const typeTag = createDomElement("p")
         const descriptionTag = createDomElement("p");
@@ -53,7 +56,7 @@ const fetchData = async () => {
         const priceTag = createDomElement("p");
         const titleTag = createDomElement("p");
 
-        const divTag = createDomElement("div");
+        const spanTag = createDomElement("span");
         let liTag = createDomElement("li");
         styleLi(liTag);
 
@@ -64,9 +67,9 @@ const fetchData = async () => {
           imgTag.src = "https://via.placeholder.com/150";
           // divTag.appendChild(imgTag);
         }
-        imgDivTag.appendChild(imgTag);
-        styleImgDivTag(imgDivTag); // Styles the img div tag.
-        liTag.appendChild(imgDivTag);
+        imgSpanTag.appendChild(imgTag);
+        styleImgSpanTag(imgSpanTag); // Styles the img div tag.
+        liTag.appendChild(imgSpanTag);
 
         // Commented code at the bottom goes here.
 
@@ -84,14 +87,14 @@ const fetchData = async () => {
         h4Tag.appendChild(typeTag);
         // Style tags to remvove padding
         styleTags([listingTag, descriptionTag, titleTag, priceTag]);
-        divTag.appendChild(titleBTag);
-        divTag.appendChild(listingTag);
-        divTag.appendChild(descriptionTag);
-        // divTag.appendChild(h4Tag);
-        divTag.appendChild(priceTag);
+        spanTag.appendChild(titleBTag);
+        spanTag.appendChild(listingTag);
+        spanTag.appendChild(descriptionTag);
+        // spanTag.appendChild(h4Tag);
+        spanTag.appendChild(priceTag);
 
-        styleDiv(divTag);
-        liTag.appendChild(divTag);
+        styleDiv(spanTag);
+        liTag.appendChild(spanTag);
         liTag.classList.add("list-group-item");
         ulResult.appendChild(liTag);
       });
@@ -135,8 +138,8 @@ const styleDiv = divTag => {
   divTag.style["width"] = "80%";
 };
 
-const styleImgDivTag = imgDivTag => {
-  // imgDivTag.style["width"] = "20%";
+const styleImgSpanTag = imgSpanTag => {
+  // imgSpanTag.style["width"] = "20%";
 };
 
 

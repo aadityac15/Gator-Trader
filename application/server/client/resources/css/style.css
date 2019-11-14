@@ -2,8 +2,22 @@
   text-align: center;
 }
 
+.border-bottom-div {
+  border : black 1px solid;
+}
+
 .margin-box {
   margin: 20% 10%;
+}
+
+.remove-margin {
+  margin : unset;
+}
+
+.flex-display-row {
+  display:  flex;
+  flex-direction: row;
+
 }
 
 
