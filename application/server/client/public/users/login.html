@@ -1,68 +1,75 @@
 {% extends 'index.html' %}
- {% block body %}
+{% block body %}
 
+<div class="form formStyle">
     <!------------user log in form ----------->
-  <div class="formStyle form" >
-    <form action="/login" method="POST" >
-        <h2 class="text-center">Log in</h2>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username" required="required">
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required="required">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-block btn-warning">Log in</button>
-        </div>
-        <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-            <p class="message"><a href="#" class="pull-right text-warning " id="reset-password">Forgot Password?</a></p>
-        </div>
-        <p class="admin-message text-center"><a href="#" class="text-primary" id="admin-message">Are you Admin?</a></p>
-        <p class="text-center "><a href="{{ 'signup' }}"class="text-primary" >Create an Account</a></p>
-    </form>
-  </div>
+    <div class="login-form" style="width: 340px;margin:150px auto">
+        <form action="/login" method="POST" >
+            <h2 class="text-center">Log in</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-warning">Log in</button>
+            </div>
+            <div class="clearfix">
+                <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+                <p class="message"><a href="#" class="pull-right text-warning " id="reset-password">Forgot Password?</a></p>
+            </div>
+            <p class="admin-message text-center"><a href="#" class="text-primary" id="admin-message">Are you Admin?</a></p>
+            <p class="text-center "><a href="{{ 'signup' }}"class="text-primary" >Create an Account</a></p>
+        </form>
+    </div>
 
-<!------------------reset password form ----------------->
-<div class="reset-form" style="width: 340px;margin:150px auto; background: #f7f7f7; padding: 30px; display:none ">
-  <form action="/" method="POST" >
-    <h3 class="ml-5 pl-5"><i class="fa fa-lock fa-4x"></i></h3>
-    <h2 class="text-center">Forgot Password?</h2>
-      <div class="form-group">
-          <input id="reset-password-email" name="email" placeholder="email address" class="form-control"  type="email">
-      </div>
-      <div class="form-group">
-        <input name="recover-submit" class="btn btn-lg btn-warning btn-block" value="Reset Password" type="submit">
-      </div>
-  </form>
+
+
+
+    <!------------------reset password form ----------------->
+    <div class="reset-form" style="width: 340px;margin:150px auto; background: #f7f7f7; padding: 30px; display:none ">
+        <form action="/" method="POST" >
+            <h3 class="ml-5 pl-5"><i class="fa fa-lock fa-4x"></i></h3>
+            <h2 class="text-center">Forgot Password?</h2>
+            <div class="form-group">
+                <input id="reset-password-email" name="email" placeholder="email address" class="form-control"  type="email" required>
+            </div>
+            <div class="form-group">
+                <!----------check how should we want to handle it?--------->
+                <button type="submit" class="btn btn-block btn-warning submit-reset-password">Reset Password</button>
+            </div>
+        </form>
+    </div>
+
+    <!------------------ email sending successful  ----------------->
+    <div class="email-reset-form" style="width: 340px;margin:150px auto; background: #f7f7f7; padding: 30px; display:none; ">
+        <h4 class="ml-5 pl-5"><i class="fa fa-envelope fa-4x" style="color:#400449"></i></h4>
+        <br>
+        <dt class="text-primary ml-4 pl-1"> Please check your email, we sent the reset password link.</dt>
+    </div>
+
+
+    <!----------------admin login form ------------------->
+    <div class="admin-login-form" style="width: 340px;margin:150px auto;background: #f7f7f7; padding: 30px; display:none">
+        <form action="/login" method="POST" >
+            <h2 class="text-center">Admin</h2>
+            <br>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block btn-warning">Log in</button>
+            </div>
+            <div class="clearfix">
+                <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+                <p class="message"><a href="#" class="pull-right text-warning " id="admin-reset-password">Forgot Password?</a></p>
+            </div>
+        </form>
+    </div>
 </div>
 
-<!------------------ email sending successful  ----------------->
-<div class="email-reset-form" style="width: 340px;margin:150px auto; background: #f7f7f7; padding: 30px; display:none; ">
-    <h4 class="ml-5 pl-5"><i class="fa fa-envelope fa-4x" style="color:#400449"></i></h4>
-    <br>
-    <dt class="text-primary ml-4 pl-1"> Please check your email, we sent the reset password link.</dt>
-</div>
-
-<!----------------admin login form ------------------->
-<div class="admin-login-form" style="width: 340px;margin:150px auto;background: #f7f7f7; padding: 30px; display:none">
-  <form action="/login" method="POST" >
-      <h2 class="text-center">Admin</h2>
-      <div class="form-group">
-          <input type="text" class="form-control" placeholder="Username" required="required">
-      </div>
-      <div class="form-group">
-          <input type="password" class="form-control" placeholder="Password" required="required">
-      </div>
-      <div class="form-group">
-          <button type="submit" class="btn btn-block btn-warning">Log in</button>
-      </div>
-      <div class="clearfix">
-          <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-          <p class="message"><a href="#" class="pull-right text-warning ">Forgot Password?</a></p>
-      </div>
-  </form>
-</div>
-
-
-{% endblock %}
+        {% endblock %}
