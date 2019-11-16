@@ -42,33 +42,43 @@ def get_listings():
 
 @listings_blueprint.route('/listings', methods=['POST'])
 def post_listing():
-    listing_id = request.form.get('listing_id')
-    title = request.form.get('title')
-    description = request.form.get('description')
-    type = request.form.get('type')
-    price = request.form.get('price')
-    thumbnail = request.form.get('thumbnail')
-    created_on = datetime.datetime.now()
-    last_edited_on = request.form.get('last_edited_on')
-    created_by = request.form.get('created_by')
+    if request.method == 'POST':
+        listing_id = request.form.get('listing_id')
+        title = request.form.get('title')
+        description = request.form.get('description')
+        type = request.form.get('type')
+        price = request.form.get('price')
+        thumbnail = request.form.get('thumbnail')
+        created_on = datetime.datetime.now()
+        last_edited_on = request.form.get('last_edited_on')
+        created_by = request.form.get('created_by')
 
-    new_listing = Listing(listing_id=listing_id,
-                          title=title,
-                          description=description,
-                          type=type,
-                          price=price,
-                          thumbnail=thumbnail,
-                          created_on=created_on,
-                          last_edited_on=last_edited_on,
-                          created_by=created_by)
+        new_listing = Listing(listing_id=listing_id,
+                              title=title,
+                              description=description,
+                              type=type,
+                              price=price,
+                              thumbnail=thumbnail,
+                              created_on=created_on,
+                              last_edited_on=last_edited_on,
+                              created_by=created_by)
 
-    db.session.add(new_listing)
-    db.session.commit()
+        db.session.add(new_listing)
+        db.session.commit()
+    return jsonify(success=True)
 
-    return
+
+def create_item_success():
+    """Displays success message after user successfully created an item"""
+    categories = Listing.objects.all()
+    return render_template("createSell_item_success.html")
 
 
-  # TODO do shit with this shit
+# def create_item(request):
+# #     if request.method == 'POST':
+
+
+# TODO do shit with this shit
 
 # @listings_blueprint.route("/result", methods=["GET", "POST"])
 # def search_result():
@@ -77,6 +87,6 @@ def post_listing():
 #   print("The form is ",request.form)
 #   return render_template("search_result.html")
 
-@listings_blueprint.route('/listings/<path:name>', methods=["GET"])
+@listings_blueprint.route('/listings/<path:name>', methods=["GET", "POST"])
 def render_listings(name):
     return render_template('/{}.html'.format(name))

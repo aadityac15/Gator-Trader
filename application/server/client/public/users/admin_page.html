@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+<!-- put your code in here -->
+<div class = "container" style="position: fixed;top: 100px; left: 0;bottom: 0;width: 100%;text-align: center;">
+    {% block content %}
+<p class="text-center"><a href="{{ 'admin_approvedList' }}">Admin Approved List</a> </p>
+ <br>
+    {% endblock %}
+</div>
+{% endblock %}

@@ -6,6 +6,6 @@ users_blueprint = Blueprint('users_server',
                             template_folder='../client/public/users')
 
 
-@users_blueprint.route('/users/<path:name>', methods=["GET"])
+@users_blueprint.route('/users/<path:name>', methods=["GET", "POST"])
 def render_users(name):
     return render_template('/{}.html'.format(name))
