@@ -37,3 +37,8 @@ def search():
 # @static_blueprint.route('/users/<path:name>', methods=["GET"])
 # def render_users(name):
 #     return render_template('/users/{}.html'.format(name))
+
+
+@static_blueprint.route("/admin", methods=["GET"])
+def admin_page():
+    return render_template("admin_page.html")
