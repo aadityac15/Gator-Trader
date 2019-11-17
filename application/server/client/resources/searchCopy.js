@@ -10,15 +10,6 @@ const fetchData = async () => {
   // let query =  "";
   const ulResult = document.getElementById("resultList");
   let category = document.getElementById('selectDropDown').value;
-  // let query = document.getElementById('queryTag').value;
-  // clearData(); //Temporary
-//   console.log("The local storage is ", localStorage);
-//   document.getElementById("queryTag").value = localStorage.getItem("query");
-//   let category = localStorage.getItem("category");
-//   if (category !== null) {
-//  document.getElementById('selectDropDown').value = category;
-//   }
-  // let category = selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
   console.log(category);
   // query = localStorage.getItem("query");
   let query = document.getElementById("queryTag").value;
@@ -38,6 +29,8 @@ const fetchData = async () => {
       return response.text();
     })
     .then(data => {
+      console.log(data);
+      debugger;
       let dataJson = JSON.parse(data);
       console.log(dataJson);
       console.log("Type of data", typeof dataJson);
