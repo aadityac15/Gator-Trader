@@ -8,9 +8,9 @@ mylistings_blueprint = Blueprint('mylistings',
                              static_folder ='../client',
                              template_folder='../client/public/mylistings')
 
-
 @mylistings_blueprint.route('/mylisting', methods=['GET'])
 def get_mylistings():
+
     user_id = request.args.get('user_id')
     result = Listing.query.filter(Listing.created_by == user_id)
 
