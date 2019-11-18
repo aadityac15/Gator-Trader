@@ -1,0 +1,25 @@
+.approveButton {
+    background-color:  #00e600;
+    /*background-color: green;*/
+    color:  white;
+    border: none;
+    border-radius: 5px;
+    width:auto;
+  }
+  
+  .denyButton {
+    background-color: #ff4d4d;
+    /*background-color: red;*/
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width:auto;
+  }
+
+ table th {
+    text-align: center; 
+ }
+
+ table tbody {
+  text-align: center; 
+}

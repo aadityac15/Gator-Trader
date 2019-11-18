@@ -1,3 +1,4 @@
+Learn more or give us feedback
 from app import db
 
 
