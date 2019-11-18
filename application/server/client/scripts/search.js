@@ -16,7 +16,6 @@ const fetchData = async () => {
     document.getElementById("selectDropDown").value = category;
   }
 
-  // let category = selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
   // query = localStorage.getItem("query");
   let query = document.getElementById("queryTag").value;
   // Domcreator.js
@@ -60,8 +59,7 @@ const fetchData = async () => {
         let p = document.createTextNode("See More");
         anchorTag.appendChild(p);
         anchorTag.classList.add("nav-item");
-        anchorTag.href = window.location.hostname + "/listings"+
-        console.log(anchorTag);
+        anchorTag.href = "/terms";
         const divTag = createDomElement("div");
         let liTag = createDomElement("li");
         styleLi(liTag);
@@ -71,7 +69,6 @@ const fetchData = async () => {
           imgTag.src = indList["thumbnail"];
         } else {
           imgTag.src = "https://via.placeholder.com/150";
-          // divTag.appendChild(imgTag);
         }
         imgDivTag.appendChild(imgTag);
         styleImgDivTag(imgDivTag); // Styles the img div tag.
