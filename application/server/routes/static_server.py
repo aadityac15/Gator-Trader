@@ -6,9 +6,6 @@ static_blueprint = Blueprint('static_server',
                              template_folder='../client/public')
 
 
-@static_blueprint.route('/index', methods=['GET'])
-def render_home():
-    return render_template("index.html")
 
 
 # @static_blueprint.route('/about', methods=['GET'])
@@ -29,3 +26,22 @@ def render_terms():
 def search():
     return render_template("search_page.html")
 
+
+@static_blueprint.route('/message/<path:name>', methods=["GET", "POST"])
+def render_messages(name):
+    return render_template('/message/{}.html'.format(name))
+
+
+@static_blueprint.route('/users/<path:name>', methods=["GET", "POST"])
+def render_users(name):
+    return render_template('/users/{}.html'.format(name))
+
+
+@static_blueprint.route('/listings/<path:name>', methods=["GET", "POST"])
+def render_listings(name):
+    return render_template('/listings/{}.html'.format(name))
+
+
+@static_blueprint.route('/', methods=['GET'])
+def render_home():
+    return render_template("index.html")

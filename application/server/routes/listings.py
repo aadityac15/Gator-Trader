@@ -14,27 +14,17 @@ def get_listings():
     query = request.args.get('query')
     category = request.args.get('category')
 
-    result = ""
-
     if query and (category and category != 'All'):
-        result = Listing.query.filter(Listing.title == query or Listing.type == category)
-        print(1)
-        print(result)
+        search = "%{}%".format(query)
+        result = Listing.query.filter(Listing.title.like(search) or Listing.type == category).all()
     elif query:
-        result = Listing.query.filter(Listing.title == query)
-        print(2)
-        print(result)
+        search = "%{}%".format(query)
+        result = Listing.query.filter(Listing.title.like(search)).all()
     elif category and category != 'All':
-        result = Listing.query.filter(Listing.type == category)
-        print('category = ', category)
-        print(result)
+        result = Listing.query.filter(Listing.type == category).all()
     else:
         result = Listing.query.all()
-        print(4)
-        print(result)
 
-    # TODO figure out how to properly return
-    # print([r.serialize() for r in result])
     return jsonify({
         'listings': [r.serialize for r in result]
     })
@@ -87,6 +77,8 @@ def create_item_success():
 #   print("The form is ",request.form)
 #   return render_template("search_result.html")
 
+"""
 @listings_blueprint.route('/listings/<path:name>', methods=["GET", "POST"])
 def render_listings(name):
     return render_template('/{}.html'.format(name))
+"""
