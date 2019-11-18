@@ -15,6 +15,7 @@ def get_listing():
 
     result = Listing.query.get(listing_id)
 
+
     return jsonify({
         'listing': result.serialize
     })
