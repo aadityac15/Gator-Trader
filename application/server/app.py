@@ -6,6 +6,7 @@ from routes.listing import listing_blueprint
 from routes.listings import listings_blueprint
 from routes.mylistings import mylistings_blueprint
 from routes.user import user_blueprint
+from routes.static_server import static_blueprint
 # from routes.users import users_blueprint
 # from routes.message import message_blueprint
 
