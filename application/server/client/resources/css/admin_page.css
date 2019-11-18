@@ -14,7 +14,7 @@
     border-radius: 5px;
   }
   
-  .disabledApproveButton {
+  /* .disabledApproveButton {
     opacity: 0.6;
     cursor: not-allowed;
   }
@@ -22,8 +22,12 @@
   .disabledDenyButton {
     opacity: 0.6;
     cursor: not-allowed;
-  }
-  
-.table > tbody > tr > td {
-    vertical-align: middle;
-  }
+  } */
+
+ table th {
+    text-align: center; 
+ }
+
+ table tbody {
+  text-align: center; 
+}
