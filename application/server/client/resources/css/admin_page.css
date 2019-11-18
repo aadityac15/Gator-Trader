@@ -13,16 +13,6 @@
     border: none;
     border-radius: 5px;
   }
-  
-  /* .disabledApproveButton {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-  
-  .disabledDenyButton {
-    opacity: 0.6;
-    cursor: not-allowed;
-  } */
 
  table th {
     text-align: center; 
