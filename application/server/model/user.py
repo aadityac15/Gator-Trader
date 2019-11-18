@@ -1,5 +1,4 @@
-Learn more or give us feedback
-from app import db
+from model import db
 
 
 class User(db.Model):
@@ -7,10 +6,11 @@ class User(db.Model):
     username = db.Column("username", db.VARCHAR(length=45), nullable=False, unique=True)
     first_name = db.Column("first_name", db.VARCHAR(length=45), nullable=True)
     last_name = db.Column("last_name", db.VARCHAR(length=45), nullable=True)
-    email = db.Column("email", db.VARCHAR(length=45), nullable=True)
+    email = db.Column("email", db.VARCHAR(length=255), nullable=False)
     password = db.Column("password", db.VARCHAR(length=45), nullable=False)
-    is_admin = db.Column("is_admin", db.BOOLEAN)
+    is_admin = db.Column("is_admin", db.BOOLEAN, default=False)
     major = db.Column("major",  db.VARCHAR(length=45), nullable=True)
+    token = db.Column("major", db.INT, nullable=False, autoincrement=True)
 
     @property
     def serialize(self):

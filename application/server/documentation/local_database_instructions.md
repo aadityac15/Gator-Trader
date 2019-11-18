@@ -37,16 +37,20 @@ __Use the following queries to create and fill the listing table__
 
 ```sql
 CREATE TABLE listing (  
-    listing_id INT UNSIGNED NOT NULL AUTO_INCREMENT,  
-    title VARCHAR(45) NOT NULL,  
+    created_by VARCHAR(45) NOT NULL,  
+    created_on DATETIME NOT NULL,  
     description VARCHAR(45) NULL,  
-    type VARCHAR(45) NULL,  
+    last_edited_on DATETIME NOT NULL,  
+    listing_id INT UNSIGNED NOT NULL AUTO_INCREMENT,  
     price DECIMAL(6,2) NOT NULL DEFAULT 0.00,  
     thumbnail VARCHAR(45) NULL,  
-    created_on DATETIME NOT NULL,  
-    last_edited_on DATETIME NOT NULL,  
-    created_by VARCHAR(45) NOT NULL,  
-    PRIMARY KEY (listing_id)  
+    title VARCHAR(45) NOT NULL,  
+    type VARCHAR(45) NULL,  
+    approved_by INT UNSIGNED,
+    approved BOOL,
+    PRIMARY KEY (listing_id),
+    FOREIGN KEY (created_by) references User(user_id),
+    FOREIGN KEY (approved_by) references User(user_id),
 );
 ```
 
