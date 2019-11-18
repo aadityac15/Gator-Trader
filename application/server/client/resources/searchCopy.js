@@ -105,16 +105,7 @@ const styleTags = element => {
 };
 
 const clearData = () => {
-  // const resultUl = document.getElementById("resultList");
-  // element.parentNode.removeChild(element);
-  // const tableTag = document.getElementById("resultList");
-  // if (document.querySelector("li")) {
-  //   element.removeChild(document.querySelector("li"));
-
-  //  while(resultUl.firstChild ){
-  //   resultUl.removeChild( resultUl.firstChild );
-  // }
-
+ 
   document.getElementById("resultList").innerHTML = " ";
 };
 
