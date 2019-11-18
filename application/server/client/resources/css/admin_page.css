@@ -4,6 +4,7 @@
     color:  white;
     border: none;
     border-radius: 5px;
+    width:auto;
   }
   
   .denyButton {
@@ -12,6 +13,7 @@
     color: white;
     border: none;
     border-radius: 5px;
+    width:auto;
   }
 
  table th {
