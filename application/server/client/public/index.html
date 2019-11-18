@@ -38,7 +38,7 @@
         <div>
             <form class="form-inline">
                 <div class="dropdown">
-                    <select id="selectDropDown" onchange="fetchData();" class="dropdownMenuButton" data-style="btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <select id="selectDropDown" onchange="selectDropDown();" class="dropdownMenuButton" data-style="btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <option selected value="All Categories">All Categories</option>
                         <option value="Appliances">Appliances</option>
                         <option value="Art">Art</option>
@@ -48,8 +48,8 @@
                         <option value="Tools">Tools</option>
                         <option value="Vehicles">Vehicles</option>
                     </select>
-                    <input class="exampleInputClass" type="text" placeholder="  Search" aria-label="Search" id="queryTag">
-                    <button class="searchBtn" type="button" onclick="redirectToResult();"><i style="color:black"
+                    <input class="exampleInputClass" type="text" placeholder="Search" aria-label="Search" id="queryTag">
+                    <button class="searchBtn" type="button" id="searchBtn" onclick="redirectToResult();"><i style="color:black"
                             class="fa fa-search"></i></button>
                     <!-- <br />
                     <br> -->

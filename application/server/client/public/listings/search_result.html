@@ -7,11 +7,25 @@
 </script>
 <div class="margin-top">
     Search Results for the
+    <b>
     <script>
-        docWrite(localStorage.getItem("category"));
-    </script>:
+       if(localStorage.getItem("category") !== null) {
+           docWrite(localStorage.getItem("category"));
+       }
+       else {
+           let string = "All Categories";
+           docWrite(string);
+       }
+
+    </script>
+    </b> :
     <script>
-        docWrite(localStorage.getItem("query"));
+        if (localStorage.getItem("query") !== null) {
+            '"' + docWrite(localStorage.getItem("query")) + '"';
+        } else {
+            let string = "";
+            docWrite(string);
+        }
     </script>
     <ul id="resultList"></ul>
 </div>
