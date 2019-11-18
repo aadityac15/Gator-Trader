@@ -1,10 +1,10 @@
-{% extends 'users/dashboard.html' %}
+{% extends 'users/admin_page.html' %}
 
 {% block content %}   
    
    <!-- main body -->
         
-    <h4> Denied Listingsl</h4>
+    <h4> Approved Listings</h4>
     <div class ="table-responsive">
         <table class="table table-hover">
             <thead align="center">
@@ -24,7 +24,7 @@
                     <td>Used Couch For Sale</td>
                     <td>Sarah</td>
                     <td>
-                        <button class="approveButton" id="approveButton" onclick="idAddButton_onclick();">Approve</button>
+                        <button class="denyButton" id="denyButton" onclick="idEditButton_onclick();">Deny</button>
                     </td>
                 </tr>
 
@@ -34,7 +34,7 @@
                     <td>Barely used math textbook for MAth 324</td>
                     <td>Connor</td>
                     <td>
-                        <button class="approveButton" id="approveButton" onclick="idAddButton_onclick();">Approve</button>
+                        <button class="denyButton" id="denyButton" onclick="idEditButton_onclick();">Deny</button>
                     </td>
                 </tr>
 
@@ -44,7 +44,7 @@
                     <td>Brand new microwave for sale</td>
                     <td>Kara</td>
                     <td>
-                        <button class="approveButton" id="approveButton" onclick="idAddButton_onclick();">Approve</button>
+                        <button class="denyButton" id="denyButton" onclick="idEditButton_onclick();">Deny</button>
                     </td>
                 </tr>
 

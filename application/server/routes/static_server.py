@@ -28,17 +28,3 @@ def render_terms():
 @static_blueprint.route("/search", endpoint="search", methods=['POST', 'GET'])
 def search():
     return render_template("search_page.html")
-
-# @static_blueprint.route("/terms", methods=["GET", "POST"])
-# def render_terms():
-#     return render_template("terms&conditions.html")
-
-#
-# @static_blueprint.route('/users/<path:name>', methods=["GET"])
-# def render_users(name):
-#     return render_template('/users/{}.html'.format(name))
-
-
-@static_blueprint.route("/admin", methods=["GET"])
-def admin_page():
-    return render_template("admin_page.html")
