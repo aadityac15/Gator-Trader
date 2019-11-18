@@ -6,7 +6,7 @@
 <div class="tab">
     <button class="tablinks" onclick="openTab(event, 'Inbox')">Inbox</button>
     <button class="tablinks" onclick="openTab(event, 'Outbox')">Outbox</button>
-    <button class="tablinks" onclick="openTab(event, 'Compose')">Compose</button>
+<!--    <button class="tablinks" onclick="openTab(event, 'Compose')">Compose</button>-->
 </div>
 <div id="Inbox" class="tabcontent table-responsive">
     <p><h3>Messages Received</h3></p>
@@ -80,32 +80,32 @@
     </table>
     <p>No received messages.(Example if there is none)</p>
 </div>
-<div id="Compose" class="tabcontent">
-    <p><h3>New Message</h3></p>
-    <form method="POST" class="post-form">
-        <!-- need js for this -->
-        <p>
-            <br>
-            <label>Item:</label> <!--need item id -->
-            <select>
-                <option value selected>Choose your items</option>
-            </select>
-        </p>
-        <p>
-            <label>Send To:</label> <!--need item id -->
-            <select>
-                <option value selected>Users</option>
-            </select>
-        </p>
-        <p>
-            <label>Message: <!--need item id -->
-                <textarea cols="70" rows="12" maxlength="1500">Please send my items asap. Thank you!</textarea>
-            </label>
-        </p>
+<!--<div id="Compose" class="tabcontent">-->
+<!--    <p><h3>New Message</h3></p>-->
+<!--    <form method="POST" class="post-form">-->
+<!--        &lt;!&ndash; need js for this &ndash;&gt;-->
+<!--        <p>-->
+<!--            <br>-->
+<!--            <label>Item:</label> &lt;!&ndash;need item id &ndash;&gt;-->
+<!--            <select>-->
+<!--                <option value selected>Choose your items</option>-->
+<!--            </select>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label>Send To:</label> &lt;!&ndash;need item id &ndash;&gt;-->
+<!--            <select>-->
+<!--                <option value selected>Users</option>-->
+<!--            </select>-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label>Message: &lt;!&ndash;need item id &ndash;&gt;-->
+<!--                <textarea cols="70" rows="12" maxlength="1500">Please send my items asap. Thank you!</textarea>-->
+<!--            </label>-->
+<!--        </p>-->
 
-        <button type="submit" class="btn btn-primary">Send</button>
+<!--        <button type="submit" class="btn btn-primary">Send</button>-->
 
-    </form>
-</div>
+<!--    </form>-->
+<!--</div>-->
 
 {% endblock %}
