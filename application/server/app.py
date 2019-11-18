@@ -2,6 +2,8 @@ from flask import Flask, render_template, send_from_directory
 
 from routes.about_me_static import about_blueprint
 from routes.listings import listings_blueprint
+from routes.listing import listing_blueprint
+from routes.mylistings import mylistings_blueprint
 from routes.static_server import static_blueprint
 from model import db
 
@@ -21,7 +23,8 @@ db.init_app(app)
 app.register_blueprint(static_blueprint)
 app.register_blueprint(about_blueprint)
 app.register_blueprint(listings_blueprint)
-
+app.register_blueprint(listing_blueprint)
+app.register_blueprint(mylistings_blueprint)
 
 
 if __name__ == "__main__":
