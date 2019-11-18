@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function() {
      * admin form
      */
     let admin_message = document.querySelector("#admin-message")
+    let admin_username = document.querySelector("#admin_username")
+    let admin_password = document.querySelector("#admin_password")
     let admin_login_form = document.querySelector(".admin-login-form")
     let admin_reset_password = document.querySelector("#admin-reset-password")
    
@@ -62,10 +64,13 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 
     /*****
-     * validattion client for login 
+     * validation client for login 
      * check login username and password from the local storage
      */
 
+     /***
+      * validation for regiestered users
+      */
     document.querySelector("#login").onclick = function (e){
         e.preventDefault();
         let storeName = localStorage.getItem('userName')
@@ -81,6 +86,29 @@ document.addEventListener("DOMContentLoaded", function() {
                         window.location.replace('http://localhost:5000/users/landing_page')
                         // document.querySelector("#nav-login").innerHTML = 'Logout'
                     
+                }else{
+                    //should redirect to 400
+                    alert('Incorrect username or password')
+                }
+         }
+     }
+
+     /***
+      * validation for regiestered admin
+      */
+     document.querySelector(".admin_login").onclick = function(e){
+        e.preventDefault();
+        let storeName = localStorage.getItem('admin_username')
+        let storePassword = localStorage.getItem('admin_password')
+
+         if(admin_username.value.length !=0 && admin_password.value.length != 0){
+                
+                if(admin_username.value == storeName && admin_password.value == storePassword){
+                    //do sessionStorage to keep user sigin
+                    //redirect to page
+                        sessionStorage.setItem('admin_username',storeName)
+                        window.location.replace('http://localhost:5000/users/landing_page')
+                        // document.querySelector("#nav-login").innerHTML = 'Logout'
                 }else{
                     //should redirect to 400
                     alert('Incorrect username or password')
