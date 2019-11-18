@@ -3,34 +3,34 @@
     <div class="container " >
             {% block body %}
     <div class="signup-form" >
-        <form action="/signup" method="POST" style="margin:80px auto; width:460px;">
+        <form action="/users/landing_page" method="POST" style="margin:80px auto; width:460px;">
             <h2>Register</h2>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-xs-6 py-1 pl-3"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
-                    <div class="col-xs-6 py-1 pl-1"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
+                    <div class="col-xs-6 py-1 pl-3"><input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name  [Optional]" ></div>
+                    <div class="col-xs-6 py-1 pl-1"><input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name  [Optional]"></div>
                 </div>        	
             </div>
             <div class="form-group">
-                    <input type="username" class="form-control" name="username" placeholder="Username" required="required">
+                    <input type="username" class="form-control" name="username" placeholder="Username" id="username" required="required">
             </div>
             <div class="form-group">
-                    <input type="major" class="form-control" name="major" placeholder="Major" required="required">
+                    <input type="major" class="form-control" name="major" placeholder="Major [Optional]" id="major">
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+                <input type="email" class="form-control" name="email" placeholder="Email" id="email" required="required">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                <input type="password" class="form-control" name="password" placeholder="Password" id="password" required="required">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+                <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password"  id="confirmPassword" required="required">
             </div>        
             <div class="form-group">
                 <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="{{'terms&conditions'}}" class="text-warning">Terms of Use</a> &amp; <a href="{{'terms&conditions'}}" style="color: #ECC129;">Privacy Policy</a></label>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-lg btn-block btn-warning" >Register Now</button>
+                <button type="submit" class="btn btn-lg btn-block btn-warning" id="Register">Register Now</button>
             </div>
             <div class="text-center">Already have an account? <a href="{{ 'login' }}" class="text-warning">Sign in</a></div>
         </form>
@@ -38,5 +38,5 @@
     </div>
     {% endblock %}
 </div>
-
+<script src="../scripts/signup.js"></script>
 </body>

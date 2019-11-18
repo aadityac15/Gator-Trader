@@ -29,12 +29,12 @@ document.addEventListener("DOMContentLoaded", function() {
     let email_reset_form = document.querySelector(".email-reset-form")
     let reset_password_email = document.querySelector("#reset-password-email")
   
-
     reset_password.addEventListener("click", function () {
         login_form.style.display = "none"
         reset_form.style.display = "block"
 
     })
+
 
     admin_message.addEventListener("click", function () {
         login_form.style.display = "none"
@@ -66,10 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
      * check login username and password from the local storage
      */
 
-     function check(){
+    document.querySelector("#login").onclick = function (e){
         e.preventDefault();
-        let storeName = localStorage.getItem('login_username')
-        let storePassword = localStorage.getItem('login_password')
+        let storeName = localStorage.getItem('userName')
+        let storePassword = localStorage.getItem('password')
 
          if(login_username.value.length !=0 && login_password.value.length != 0){
                 
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     //do sessionStorage to keep user sigin
                     //redirect to page
-                        sessionStorage.setItem = ('loginUsername',storeName)
+                        sessionStorage.setItem('userName',storeName)
                         window.location.replace('http://localhost:5000/users/landing_page')
                         // document.querySelector("#nav-login").innerHTML = 'Logout'
                     
