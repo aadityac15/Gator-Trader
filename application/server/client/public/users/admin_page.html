@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+<!-- main body -->
+<div class="container">
+    <br>
+    <div id="rcorners1">
+        <br>
+        <h1>Administrator Actions</h1>
+        <ul class="nav nav-tabs nav-fill">
+
+            <!-- Link to approved/listed items go here -->
+            <!-- Link to items awaiting approval go here -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ 'admin_all' }}">All Listings</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ 'admin_pending' }}">Pending Approval</a>
+            </li>
+
+            <!-- Link to Messages go here -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ 'admin_approved' }}">Approved Listings</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ 'admin_denied' }}">Denied Listings</a>
+            </li>
+
+        </ul>
+
+        <div class="dashboard-items">
+            <br> {% block content %} {% endblock %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

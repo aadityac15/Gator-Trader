@@ -1,23 +1,22 @@
 {% extends 'index.html' %} {% block body %}
 
-<body onLoad="fetchData();">
-    <script type="text/javascript">
-        const docWrite = (variable) => {
-            document.write(variable);
-        }
+<script type="text/javascript">
+    const docWrite = (variable) => {
+        document.write(variable);
+    }
+</script>
+<div class="margin-top">
+    Search Results for the
+    <script>
+        docWrite(localStorage.getItem("category"));
+    </script>:
+    <script>
+        docWrite(localStorage.getItem("query"));
     </script>
-    <div class="margin-top">
-        Search Results for the <script>
-              docWrite(localStorage.getItem("category"));
-             </script>:
-            <script>
-                docWrite(localStorage.getItem("query"));
-            </script>
-            <ul id="resultList"></ul>
-        </div>
-    </div>
-    </div>
-    <script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
-    <script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
-</body>
+    <ul id="resultList"></ul>
+</div>
+</div>
+</div>
+<script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
 {% endblock body %}

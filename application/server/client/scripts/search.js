@@ -1,8 +1,8 @@
 // document.querySelector("body").addEventListe/ner("onLoad", () => fetchData());
-const selectDropDown = (sel) => {
+const selectDropDown = sel => {
   let category = sel.options[sel.selectedIndex].text;
   // console.log(category);
-}
+};
 
 const fetchData = async () => {
   // let category = '';
@@ -13,20 +13,24 @@ const fetchData = async () => {
   document.getElementById("queryTag").value = localStorage.getItem("query");
   let category = localStorage.getItem("category");
   if (category !== null) {
- document.getElementById('selectDropDown').value = category;
+    document.getElementById("selectDropDown").value = category;
   }
+
   // let category = selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
-  console.log(category);
   // query = localStorage.getItem("query");
   let query = document.getElementById("queryTag").value;
   // Domcreator.js
   ulResult.classList.add("list-group");
-  if (category==="All Categories") {
-    category= '';
+  if (category === "All Categories") {
+    category = "";
   }
+  if (category === null || query === null) {
+    category = "";
+    query= ""
+    }
   console.log(category);
   const LISTINGS_URL = `listings?category=${category}&query=${query}`;
-  console.log("The losoting url",LISTINGS_URL);
+  console.log("The losoting url", LISTINGS_URL);
 
   await fetch(LISTINGS_URL, {
     method: "GET"
@@ -47,12 +51,17 @@ const fetchData = async () => {
         const h4Tag = createDomElement("h4");
         const imgDivTag = createDomElement("div");
         const imgTag = createDomElement("img");
-        const typeTag = createDomElement("p")
+        const typeTag = createDomElement("p");
         const descriptionTag = createDomElement("p");
         const listingTag = createDomElement("p");
         const priceTag = createDomElement("p");
         const titleTag = createDomElement("p");
-
+        const anchorTag = createDomElement("a");
+        let p = document.createTextNode("See More");
+        anchorTag.appendChild(p);
+        anchorTag.classList.add("nav-item");
+        anchorTag.href = window.location.hostname + "/listings"+
+        console.log(anchorTag);
         const divTag = createDomElement("div");
         let liTag = createDomElement("li");
         styleLi(liTag);
@@ -87,9 +96,8 @@ const fetchData = async () => {
         divTag.appendChild(titleBTag);
         divTag.appendChild(listingTag);
         divTag.appendChild(descriptionTag);
-        // divTag.appendChild(h4Tag);
         divTag.appendChild(priceTag);
-
+        divTag.appendChild(anchorTag);
         styleDiv(divTag);
         liTag.appendChild(divTag);
         liTag.classList.add("list-group-item");
@@ -139,17 +147,9 @@ const styleImgDivTag = imgDivTag => {
   // imgDivTag.style["width"] = "20%";
 };
 
-
-
-
-
-
-
-
-
-
-
-
+window.onload = () => {
+  fetchData();
+};
 
 // The object is a json object.
 // let dataCategories = Object.keys(dummyData[i]);

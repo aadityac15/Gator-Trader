@@ -1,35 +1,18 @@
-{% extends 'users/dashboard.html' %}
+{% extends 'users/admin_page.html' %}
 
-{% block content %}
-
-<!-- main body -->
-        <!--
-        <h4> Approved Items </h4>
-        <div class ="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col" width="40%">Item</th>
-                        <th scope="col" width="40%">Date</th>
-                        <th scope="col" width="20%"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                -->
-                    <!--List items name and data goes here -->
-                <!--
-                </tbody>
-            </table>
-        </div>
-    -->
-<h4> Approved Items</h4>
+{% block content %}   
+   
+   <!-- main body -->
+        
+    <h4> Denied Listings</h4>
     <div class ="table-responsive">
         <table class="table table-hover" id="remove_row">
             <thead>
                 <tr>
                     <th scope="col" width="15%">Image</th>
                     <th scope="col" width="20%">Title</th>
-                    <th scope="col" width="35%">Date</th>
+                    <th scope="col" width="35%">Description</th>
+                    <th scope="col" width="10%">User</th>
                     <th scope="col" width="20%">Action</th>
                 </tr>
             </thead>
@@ -38,7 +21,11 @@
                 <tr>
                     <td><img src="https://b3h2.scene7.com/is/image/BedBathandBeyond/268293667667284p?$imagePLP$&wid=256&hei=256" alt="Couch" height=100 width=100></td>
                     <td>Couch</td>
-                    <td>Nov. 14, 2019, 10:27 p.m</td>
+                    <td>Used Couch For Sale</td>
+                    <td>Sarah</td>
+                    <!-- <td>
+                        <button class="approveButton" id="approveButton" onclick="idAddButton_onclick();">Approve</button>
+                    </td> -->
                     <td>
                         <button class="approveButton remove" id="approveButton">Approve</button>
                     </td>
@@ -47,7 +34,11 @@
                 <tr>
                     <td><img src="http://blog.fitnyc.edu/admissions/files/2016/08/textbooks.resized-1.jpg" alt="Couch" height=100 width=100></td>
                     <td>Math Textbook</td>
-                    <td>Nov. 14, 2019, 10:27 p.m.</td>
+                    <td>Barely used math textbook for MAth 324</td>
+                    <td>Connor</td>
+                    <!-- <td>
+                        <button class="approveButton" id="approveButton" onclick="idAddButton_onclick();">Approve</button>
+                    </td> -->
                     <td>
                         <button class="approveButton remove" id="approveButton">Approve</button>
                     </td>
@@ -56,7 +47,11 @@
                 <tr>
                     <td><img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5712/5712110_sd.jpg" alt="Couch" height=100 width=100></td>
                     <td>Microwave</td>
-                    <td>Nov. 14, 2019, 10:27 p.m.</td>
+                    <td>Brand new microwave for sale</td>
+                    <td>Kara</td>
+                    <!-- <td>
+                        <button class="approveButton" id="approveButton" onclick="idAddButton_onclick();">Approve</button>
+                    </td> -->
                     <td>
                         <button class="approveButton remove" id="approveButton">Approve</button>
                     </td>

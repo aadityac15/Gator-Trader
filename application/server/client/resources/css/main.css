@@ -94,9 +94,10 @@ form input {
 .searchBtn{
 
         position: absolute;
-        width: 55px;
+        width: 55px!important;
         height: 43px;
-        left: 753px;
+        left: 650px!important;
+        top:0px!important;
         background: #ECC129;
 }
 
@@ -264,7 +265,7 @@ text-decoration:none;
         position: absolute;
         width: 55px;
         height: 35px;
-        left: 445px;
+        left: 445px!important;
         background: #ECC129;
     }
 
@@ -310,7 +311,7 @@ text-decoration:none;
          position: absolute;
          width: 55px;
          height: 35px;
-         left: 495px;
+         left: 495px!important;
          background: #ECC129;
      }
 }
@@ -330,7 +331,7 @@ text-decoration:none;
        position: absolute;
        width: 55px;
        height: 35px;
-       left: 645px;
+       left: 645px!important;
        background: #ECC129;
    }
 
