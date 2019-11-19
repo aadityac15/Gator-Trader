@@ -16,14 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let reset_form = document.querySelector(".reset-form")
     let submit_reset_password = document.querySelector(".submit-reset-password")
 
-    /***
-     * admin form
-     */
-    let admin_message = document.querySelector("#admin-message")
-    let admin_username = document.querySelector("#admin_username")
-    let admin_password = document.querySelector("#admin_password")
-    let admin_login_form = document.querySelector(".admin-login-form")
-    let admin_reset_password = document.querySelector("#admin-reset-password")
    
     /*****
      * email-reset form
@@ -35,17 +27,6 @@ document.addEventListener("DOMContentLoaded", function() {
         login_form.style.display = "none"
         reset_form.style.display = "block"
 
-    })
-
-
-    admin_message.addEventListener("click", function () {
-        login_form.style.display = "none"
-        admin_login_form.style.display = "block"
-    })
-
-    admin_reset_password.addEventListener("click", function () {
-        reset_form.style.display = "block"
-        admin_login_form.style.display = "none"
     })
 
     /**
@@ -85,29 +66,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         window.location.replace('http://localhost:5000/users/landing_page')
                         // document.querySelector("#nav-login").innerHTML = 'Logout'
                     
-                }else{
-                    //should redirect to 400
-                    alert('Incorrect username or password')
-                }
-         }
-     }
-
-     /***
-      * validation for regiestered admin
-      */
-     document.querySelector(".admin_login").onclick = function(e){
-        e.preventDefault();
-        let storeName = localStorage.getItem('admin_username')
-        let storePassword = localStorage.getItem('admin_password')
-
-         if(admin_username.value.length !=0 && admin_password.value.length != 0){
-                
-                if(admin_username.value == storeName && admin_password.value == storePassword){
-                    //do sessionStorage to keep user sigin
-                    //redirect to page
-                        sessionStorage.setItem('admin_username',storeName)
-                        window.location.replace('http://localhost:5000/users/landing_page')
-                        // document.querySelector("#nav-login").innerHTML = 'Logout'
                 }else{
                     //should redirect to 400
                     alert('Incorrect username or password')

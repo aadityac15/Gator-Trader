@@ -13,15 +13,4 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-
-    if(sessionStorage.getItem('admin_username')){
-        document.querySelector('#nav-login').innerHTML = 'Exit'
-
-        document.querySelector('#nav-login').onclick = function(e){
-            e.preventDefault()
-            sessionStorage.removeItem('admin_username')
-            location.replace('http://localhost:5000/users/landing_page')
-        }
-    }
-
 });
