@@ -1,9 +1,9 @@
 /*
-* @Author: aadityac15
-* @Date:   2019-11-07 19:20:20
-* @Last Modified by:   aadityac15
-* @Last Modified time: 2019-11-18 15:59:03
-*/
+ * @Author: aadityac15
+ * @Date:   2019-11-07 19:20:20
+ * @Last Modified by:   aadityac15
+ * @Last Modified time: 2019-11-18 18:30:44
+ */
 const selectDropDown = sel => {
   let category = sel.options[sel.selectedIndex].text;
   // console.log(category);
@@ -30,11 +30,10 @@ const fetchData = async () => {
   }
 
   // handle refrersh
-  if (category === null || query === null ){
+  if (category === null || query === null) {
     category = "";
     query = "";
   }
-
 
   console.log(category);
   const LISTINGS_URL = `listings?query=${query}&category=${category}`;
@@ -52,19 +51,21 @@ const fetchData = async () => {
       let dummyData = dataJson["listings"];
 
       if (dummyData.length === 0) {
-        let textNode = document.createTextNode("Your search did not match any of the items. Please try another item.")
+        let textNode = document.createTextNode(
+          "Your search did not match any of the items. Please try another item."
+        );
         ulResult.appendChild(textNode);
       }
-
 
       //As the data would be an object
       dummyLength = dummyData.length;
       dummyData.map(indList => {
+        //  Creation of the elements.
         const titleBTag = createDomElement("b");
         const h2Tag = createDomElement("h2");
         const h4Tag = createDomElement("h4");
         const imgDivTag = createDomElement("div");
-        const spanTag = createDomElement("span");
+        const buttonSpanTag = createDomElement("span");
         const imgTag = createDomElement("img");
         const typeTag = createDomElement("p");
         const descriptionTag = createDomElement("p");
@@ -73,13 +74,26 @@ const fetchData = async () => {
         const titleTag = createDomElement("p");
         const buttonTag = createDomElement("button");
         buttonTag.innerText = "See More";
-        buttonTag.onclick = () => {redirectToIndividualListing(indList["listing_id"], indList["title"]);} // Creating the individual file.
+        const contactSellerButton = createDomElement("button");
+        contactSellerButton.innerText = "Contact Seller";
+        contactSellerButton.classList.add("btn", "btn-warning");
+        buttonSpanTag.style["width"] = "30%";
+
+        buttonTag.onclick = () => {
+          redirectToIndividualListing(indList["listing_id"], indList["title"]);
+        };
+
+        buttonSpanTag.classList.add(
+          "flex-display-row",
+          "justify-content-space-between"
+        );
+
         buttonTag.classList.add("btn", "btn-warning");
         const divTag = createDomElement("div");
         let liTag = createDomElement("li");
         styleLi(liTag);
 
-        // Image / Thumbnails.
+        // Add Image / Thumbnails src if present, else show placeholder image.
         if (indList["thumbnail"] !== null) {
           imgTag.src = indList["thumbnail"];
         } else {
@@ -88,8 +102,6 @@ const fetchData = async () => {
         imgDivTag.appendChild(imgTag);
         styleImgDivTag(imgDivTag); // Styles the img div tag.
         liTag.appendChild(imgDivTag);
-
-        // Commented code at the bottom goes here.
 
         // Title Tag and  styling
         titleTag.innerText = indList["title"];
@@ -103,15 +115,16 @@ const fetchData = async () => {
         priceTag.innerText = indList["price"] + "$";
         typeTag.innerText = indList["type"];
         h4Tag.appendChild(typeTag);
-       
+
         // Style tags to remvove padding
         styleTags([listingTag, descriptionTag, titleTag, priceTag]);
         divTag.appendChild(titleBTag);
         divTag.appendChild(listingTag);
         divTag.appendChild(descriptionTag);
         divTag.appendChild(priceTag);
-        spanTag.appendChild(buttonTag);
-        divTag.appendChild(spanTag);
+        buttonSpanTag.appendChild(buttonTag);
+        buttonSpanTag.appendChild(contactSellerButton);
+        divTag.appendChild(buttonSpanTag);
         styleDiv(divTag);
         liTag.appendChild(divTag);
         liTag.classList.add("list-group-item");
@@ -121,7 +134,7 @@ const fetchData = async () => {
       category = "";
       query = "";
       localStorage.removeItem("query");
-      localStorage.removeItem("category")
+      localStorage.removeItem("category");
     });
 };
 
@@ -132,7 +145,6 @@ const styleTags = element => {
 };
 
 const clearData = () => {
-
   document.getElementById("resultList").innerHTML = " ";
 };
 
@@ -153,12 +165,15 @@ const styleImgDivTag = imgDivTag => {
   // imgDivTag.style["width"] = "20%";
 };
 
+// Redirecrts to the detail.html page showing details about the individual listing.
+
 const redirectToIndividualListing = (id, title) => {
-  localStorage.setItem("id" , id);
-  localStorage.setItem("title",title);
-  window.location.pathname = '/details';
+  localStorage.setItem("id", id);
+  localStorage.setItem("title", title);
+  let webPath = window.location.hostname;
+  window.open(`/details`, "_blank");
+};
 
-}
-
-window.onload = () => { fetchData(); }
-
+window.onload = () => {
+  fetchData();
+};

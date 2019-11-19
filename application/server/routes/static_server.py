@@ -6,12 +6,6 @@ static_blueprint = Blueprint('static_server',
                              template_folder='../client/public')
 
 
-
-
-# @static_blueprint.route('/about', methods=['GET'])
-# def render_about():
-#     return render_template("/about_us.html")
-
 @static_blueprint.route("/results", methods=["GET"])
 def render_results():
     return render_template("search_result.html")
