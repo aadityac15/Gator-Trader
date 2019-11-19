@@ -24,12 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.setItem('email',email)
             localStorage.setItem('password',password)
             localStorage.setItem('confirmPassword',confirmPassword)
-            /***
-             * user logic to check if admin, then set admin_name == userName
-             */
-            localStorage.setItem('admin_name',userName)
-            localStorage.setItem('admin_password',password)
-
+            
             location.replace('http://localhost:5000/users/landing_page')
             // after signup, automatically login
             sessionStorage.setItem('userName', userName)
