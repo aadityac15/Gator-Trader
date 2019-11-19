@@ -14,27 +14,17 @@ def get_listings():
     query = request.args.get('query')
     category = request.args.get('category')
 
-    result = ""
-
     if query and (category and category != 'All'):
-        result = Listing.query.filter(Listing.title == query or Listing.type == category)
-        print(1)
-        print(result)
+        search = "%{}%".format(query)
+        result = Listing.query.filter(Listing.title.like(search) or Listing.type == category).all()
     elif query:
-        result = Listing.query.filter(Listing.title == query)
-        print(2)
-        print(result)
+        search = "%{}%".format(query)
+        result = Listing.query.filter(Listing.title.like(search)).all()
     elif category and category != 'All':
-        result = Listing.query.filter(Listing.type == category)
-        print('category = ', category)
-        print(result)
+        result = Listing.query.filter(Listing.type == category).all()
     else:
         result = Listing.query.all()
-        print(4)
-        print(result)
 
-    # TODO figure out how to properly return
-    # print([r.serialize() for r in result])
     return jsonify({
         'listings': [r.serialize for r in result]
     })
@@ -42,35 +32,53 @@ def get_listings():
 
 @listings_blueprint.route('/listings', methods=['POST'])
 def post_listing():
-    listing_id = request.form.get('listing_id')
-    title = request.form.get('title')
-    description = request.form.get('description')
-    type = request.form.get('type')
-    price = request.form.get('price')
-    thumbnail = request.form.get('thumbnail')
-    created_on = datetime.datetime.now()
-    last_edited_on = request.form.get('last_edited_on')
-    created_by = request.form.get('created_by')
+    if request.method == 'POST':
+        listing_id = request.form.get('listing_id')
+        title = request.form.get('title')
+        description = request.form.get('description')
+        type = request.form.get('type')
+        price = request.form.get('price')
+        thumbnail = request.form.get('thumbnail')
+        created_on = datetime.datetime.now()
+        last_edited_on = request.form.get('last_edited_on')
+        created_by = request.form.get('created_by')
 
-    new_listing = Listing(listing_id=listing_id,
-                          title=title,
-                          description=description,
-                          type=type,
-                          price=price,
-                          thumbnail=thumbnail,
-                          created_on=created_on,
-                          last_edited_on=last_edited_on,
-                          created_by=created_by)
+        new_listing = Listing(listing_id=listing_id,
+                              title=title,
+                              description=description,
+                              type=type,
+                              price=price,
+                              thumbnail=thumbnail,
+                              created_on=created_on,
+                              last_edited_on=last_edited_on,
+                              created_by=created_by)
 
-    db.session.add(new_listing)
-    db.session.commit()
-
-    return
-
-
-    # TODO do shit with this shit
+        db.session.add(new_listing)
+        db.session.commit()
+    return jsonify(success=True)
 
 
-@listings_blueprint.route('/listings/<path:name>', methods=["GET"])
+def create_item_success():
+    """Displays success message after user successfully created an item"""
+    categories = Listing.objects.all()
+    return render_template("createSell_item_success.html")
+
+
+# def create_item(request):
+# #     if request.method == 'POST':
+
+
+# TODO do shit with this shit
+
+# @listings_blueprint.route("/result", methods=["GET", "POST"])
+# def search_result():
+
+#   print("THe request is ", request)
+#   print("The form is ",request.form)
+#   return render_template("search_result.html")
+
+"""
+@listings_blueprint.route('/listings/<path:name>', methods=["GET", "POST"])
 def render_listings(name):
     return render_template('/{}.html'.format(name))
+"""

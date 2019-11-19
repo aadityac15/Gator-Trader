@@ -1,7 +1,22 @@
-{% include 'index.html' %}
+{% extends 'index.html' %} {% block body %}
 
-<body>
+<div class="margin-top flex-display-row justify-content-space-around">
+	<div>
+	<span id="img-div">
+		<img id="listingImage" height="300px" width="300px" />
+	</span>
+	</div>
 
+	<div class="flex-display-column flex-start" width="80%">
+		<b><h1 id="titleTag"></h1></b>
+		<p id="seller-info"></p>
+		<br />
+		<h4 id="description"></h4>
+		Price: <p id="priceTag"></p>
+		<a id="contact-tag" href="/messages">Contact Buyer</a>
+	</div>
+</div>
+<script src="../../scripts/domCreation.js"></script>
+<script src="../../scripts/detail.js"></script>
 
-
-</body>
+{% endblock %}

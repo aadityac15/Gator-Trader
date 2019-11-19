@@ -1,5 +1,6 @@
 .idea
 node_modules/
 aadienv/
+venv
 *venv
 .DS_Store

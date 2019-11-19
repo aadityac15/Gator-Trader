@@ -94,9 +94,10 @@ form input {
 .searchBtn{
 
         position: absolute;
-        width: 55px;
+        width: 55px!important;
         height: 43px;
-        left: 753px;
+        left: 650px!important;
+        top:0px!important;
         background: #ECC129;
 }
 
@@ -160,6 +161,7 @@ text-decoration:none;
 
 /*** MEDIA *** /    /* Laptop */
 @media screen and (min-width: 1024px) and (max-height: 1310px) {
+  
     .navbar {
         position: absolute;
         width: 100%;
@@ -263,7 +265,7 @@ text-decoration:none;
         position: absolute;
         width: 55px;
         height: 35px;
-        left: 445px;
+        left: 445px!important;
         background: #ECC129;
     }
 
@@ -280,13 +282,57 @@ text-decoration:none;
 }
 
 @media screen and (min-width: 1350px) and (max-height: 1310px) {
+
+      .gator{
+         position: absolute;
+         width: 80px;
+         left: 80px;
+     }
+
+     .trader{
+         width: 101px;
+         left: 80px;
+     }
+
+     .col-h1 {
+        font-size: 18px;
+        right: 400px;
+     }
+
     .dropdown{
         left: 25%;
     }
+
+    .exampleInputClass{
+       width: 375px;
+     }
+
+     .searchBtn{
+         position: absolute;
+         width: 55px;
+         height: 35px;
+         left: 495px!important;
+         background: #ECC129;
+     }
 }
 
 @media screen and (min-width: 1800px) and (max-height: 1310px) {
-      .dropdown{
+
+    .dropdown{
         left: 35%;
     }
+
+    /**search whitebox ***/
+  .exampleInputClass{
+     width: 525px;
+   }
+
+   .searchBtn{
+       position: absolute;
+       width: 55px;
+       height: 35px;
+       left: 645px!important;
+       background: #ECC129;
+   }
+
 }

@@ -1,0 +1,48 @@
+{% extends 'users/dashboard.html' %}
+
+{% block content %}
+<!----order sell notification cart-->
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Inbox')">Inbox</button>
+    <button class="tablinks" onclick="openTab(event, 'Outbox')">Outbox</button>
+<!--    <button class="tablinks" onclick="openTab(event, 'Compose')">Compose</button>-->
+</div>
+<div id="Inbox" class="tabcontent table-responsive">
+    <p><h3>Messages Received</h3></p>
+    <!-- if received_msg  -->
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Message</th>
+            <th scope="col">Sender</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- for message in received_msg -->
+        <tr>
+            <td>
+                <div>
+                    <a>MacBook Pro</a>  <!-- need js for this -->
+                </div>
+            </td>
+
+            <td>
+                <div class="col-content" data-toggle="tooltip" data-placement="top" title="Hello World"> <!-- need js for this -->
+                    Hello World
+                </div>
+            </td>
+
+            <td>Pat</td>
+            <td>2019-11-05 22:32</td>
+            <td><a href="#reply" onclick="openTab(event, 'Compose')">Reply</a></td> <!-- add more action in tab -->
+        </tr>
+        </tbody>
+    </table>
+    <p>No received messages.(Example if there is none)</p>
+</div>
+
+{% endblock %}

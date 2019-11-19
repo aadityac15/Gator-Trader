@@ -1,41 +1,34 @@
-{% include 'index.html' %}
-<body>
+ {% extends 'index.html' %} {% block body %}
 <!-- main body -->
-<div class = "container">
+<div class="container">
     <br>
     <div id="rcorners1">
         <br>
-        <h3> Hello </h3> <!-- nned to add the user name here-->
-
-        <!--tabs for dashboard -->
+        <h3> Hello { user name }</h3> <!-- nned to add the user name here-->
         <ul class="nav nav-tabs nav-fill">
 
             <!-- Link to approved/listed items go here -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ 'approved_list' }}">Approved Items</a>
+                <a class="nav-link" href="{{ '/users/approved_list' }}">Approved Items</a>
             </li>
 
             <!-- Link to items awaiting approval go here -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ 'pending_list' }}">Pending Items</a>
+                <a class="nav-link" href="{{ '/users/pending_list' }}">Pending Items</a>
             </li>
 
             <!-- Link to Messages go here -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ '/message/index' }}">Messages</a>
+                <a class="nav-link" href="{{ '/message/messages' }}">Messages</a>
             </li>
 
         </ul>
 
-            <div class="dashboard-items">
-            <br>
-            {% block body %}
-
-            {% endblock %}
-            </div>
+        <div class="dashboard-items">
+            <br> {% block content %} {% endblock %}
         </div>
     </div>
 </div>
 
-</body>
 
+{% endblock %}

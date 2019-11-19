@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
     admin_message.addEventListener("click", function () {
         login_form.style.display = "none"
         admin_login_form.style.display = "block"
-
     })
 
     admin_reset_password.addEventListener("click", function () {
