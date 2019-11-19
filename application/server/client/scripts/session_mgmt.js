@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // if local storage == session storage
     
     if(sessionStorage.getItem('userName')){
-        document.querySelector('#nav-login').innerHTML = 'Exit'
+        document.querySelector('#nav-login').innerHTML = 'Logout'
 
         document.querySelector('#nav-login').onclick = function(e){
             e.preventDefault()
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     if(sessionStorage.getItem('admin_username')){
-        document.querySelector('#nav-login').innerHTML = 'Exit'
+        document.querySelector('#nav-login').innerHTML = 'Logout'
 
         document.querySelector('#nav-login').onclick = function(e){
             e.preventDefault()
