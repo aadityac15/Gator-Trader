@@ -1,0 +1,36 @@
+{% extends 'index.html' %} {% block body %}
+
+<script type="text/javascript">
+    const docWrite = (variable) => {
+        document.write(variable);
+    }
+</script>
+<div class="margin-top">
+    Search Results for the
+    <b>
+    <script>
+       if(localStorage.getItem("category") !== null) {
+           docWrite(localStorage.getItem("category"));
+       }
+       else {
+           let string = "All Categories";
+           docWrite(string);
+       }
+
+    </script>
+    </b> :
+    <script>
+        if (localStorage.getItem("query") !== null) {
+            '"' + docWrite(localStorage.getItem("query")) + '"';
+        } else {
+            let string = "";
+            docWrite(string);
+        }
+    </script>
+    <ul id="resultList"></ul>
+</div>
+</div>
+</div>
+<script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
+{% endblock body %}

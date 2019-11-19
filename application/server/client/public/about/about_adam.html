@@ -1,11 +1,13 @@
-<!doctype html>
-<html>
-    <head>
-        <title>About Adam Bea</title>
+{% extends 'index.html' %}
+{% block head %}
         <link rel="stylesheet" href="../../resources/css/about_adam.css">
-    </head>
+{% endblock %}
 
-    <body>
+{% block body %}
+    <br><br><br>
+    <div>
+           {% include 'index.html' %}
+        </div>
         <div id="content">
             <div class="content_half_vertical" style="text-align: center;">
               <p id="about_title">About Me: Adam Bea</p>
@@ -30,5 +32,4 @@
                 </div>
             </div>
         </div>
-    </body>
-</html>
+{% endblock %}

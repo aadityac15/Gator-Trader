@@ -13,3 +13,32 @@
   background-color: #D3D1D1;
 }
 
+.approveButton {
+  background-color:  #00e600;
+  /*background-color: green;*/
+  color:  white;
+  border: none;
+  border-radius: 5px;
+}
+
+.denyButton {
+  background-color: #ff4d4d;
+  /*background-color: red;*/
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.disabledApproveButton {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.disabledDenyButton {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}

@@ -11,10 +11,9 @@ listing_blueprint = Blueprint('listing',
 
 @listing_blueprint.route('/listing', methods=['GET'])
 def get_listing():
-
     listing_id = request.args.get('listing_id')
 
-    result = Listing.query.filter(Listing.listing_id == listing_id)
+    result = Listing.query.get(listing_id)
 
     return jsonify({
         'listing': result.serialize
@@ -29,7 +28,7 @@ def post_listing():
     price = request.form.get('price')
     thumbnail = request.form.get('thumbnail')
     created_on = datetime.datetime.now()
-    last_edited_on = request.form.get('last_edited_on')
+    last_edited_on = created_on
     created_by = request.form.get('created_by')
 
     new_listing = Listing(title=title,
@@ -52,9 +51,9 @@ def post_listing():
 
 @listing_blueprint.route('/listing', methods=['PUT'])
 def put_listing():
-
     listing_id = request.form.get('listing_id')
-    listing = Listing.query.filter(Listing.listing_id == listing_id)
+
+    listing = Listing.query.get(listing_id)
     title = request.form.get('title')
     description = request.form.get('description')
     type = request.form.get('type')
