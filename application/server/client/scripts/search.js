@@ -1,4 +1,9 @@
-// document.querySelector("body").addEventListe/ner("onLoad", () => fetchData());
+/*
+* @Author: aadityac15
+* @Date:   2019-11-07 19:20:20
+* @Last Modified by:   aadityac15
+* @Last Modified time: 2019-11-18 15:59:03
+*/
 const selectDropDown = sel => {
   let category = sel.options[sel.selectedIndex].text;
   // console.log(category);
@@ -8,9 +13,9 @@ const fetchData = async () => {
   // let category = '';
   // let query =  "";
   const ulResult = document.getElementById("resultList");
-  // clearData(); //Temporary
-  console.log("The local storage is ", localStorage);
   document.getElementById("queryTag").value = localStorage.getItem("query");
+
+  // clearData(); //Temporary
   let category = localStorage.getItem("category");
   if (category !== null) {
     document.getElementById("selectDropDown").value = category;
@@ -23,13 +28,16 @@ const fetchData = async () => {
   if (category === "All Categories") {
     category = "";
   }
-  if (category === null || query === null) {
+
+  // handle refrersh
+  if (category === null || query === null ){
     category = "";
-    query= ""
-    }
+    query = "";
+  }
+
+
   console.log(category);
-  const LISTINGS_URL = `listings?category=${category}&query=${query}`;
-  console.log("The losoting url", LISTINGS_URL);
+  const LISTINGS_URL = `listings?query=${query}&category=${category}`;
 
   await fetch(LISTINGS_URL, {
     method: "GET"
@@ -42,6 +50,13 @@ const fetchData = async () => {
       console.log(dataJson);
       console.log("Type of data", typeof dataJson);
       let dummyData = dataJson["listings"];
+
+      if (dummyData.length === 0) {
+        let textNode = document.createTextNode("Your search did not match any of the items. Please try another item.")
+        ulResult.appendChild(textNode);
+      }
+
+
       //As the data would be an object
       dummyLength = dummyData.length;
       dummyData.map(indList => {
@@ -49,17 +64,17 @@ const fetchData = async () => {
         const h2Tag = createDomElement("h2");
         const h4Tag = createDomElement("h4");
         const imgDivTag = createDomElement("div");
+        const spanTag = createDomElement("span");
         const imgTag = createDomElement("img");
         const typeTag = createDomElement("p");
         const descriptionTag = createDomElement("p");
         const listingTag = createDomElement("p");
         const priceTag = createDomElement("p");
         const titleTag = createDomElement("p");
-        const anchorTag = createDomElement("a");
-        let p = document.createTextNode("See More");
-        anchorTag.appendChild(p);
-        anchorTag.classList.add("nav-item");
-        anchorTag.href = "/terms";
+        const buttonTag = createDomElement("button");
+        buttonTag.innerText = "See More";
+        buttonTag.onclick = () => {redirectToIndividualListing(indList["listing_id"], indList["title"]);} // Creating the individual file.
+        buttonTag.classList.add("btn", "btn-warning");
         const divTag = createDomElement("div");
         let liTag = createDomElement("li");
         styleLi(liTag);
@@ -88,13 +103,15 @@ const fetchData = async () => {
         priceTag.innerText = indList["price"] + "$";
         typeTag.innerText = indList["type"];
         h4Tag.appendChild(typeTag);
+       
         // Style tags to remvove padding
         styleTags([listingTag, descriptionTag, titleTag, priceTag]);
         divTag.appendChild(titleBTag);
         divTag.appendChild(listingTag);
         divTag.appendChild(descriptionTag);
         divTag.appendChild(priceTag);
-        divTag.appendChild(anchorTag);
+        spanTag.appendChild(buttonTag);
+        divTag.appendChild(spanTag);
         styleDiv(divTag);
         liTag.appendChild(divTag);
         liTag.classList.add("list-group-item");
@@ -103,7 +120,8 @@ const fetchData = async () => {
 
       category = "";
       query = "";
-      localStorage.clear();
+      localStorage.removeItem("query");
+      localStorage.removeItem("category")
     });
 };
 
@@ -114,15 +132,6 @@ const styleTags = element => {
 };
 
 const clearData = () => {
-  // const resultUl = document.getElementById("resultList");
-  // element.parentNode.removeChild(element);
-  // const tableTag = document.getElementById("resultList");
-  // if (document.querySelector("li")) {
-  //   element.removeChild(document.querySelector("li"));
-
-  //  while(resultUl.firstChild ){
-  //   resultUl.removeChild( resultUl.firstChild );
-  // }
 
   document.getElementById("resultList").innerHTML = " ";
 };
@@ -144,44 +153,12 @@ const styleImgDivTag = imgDivTag => {
   // imgDivTag.style["width"] = "20%";
 };
 
-window.onload = () => {
-  fetchData();
-};
+const redirectToIndividualListing = (id, title) => {
+  localStorage.setItem("id" , id);
+  localStorage.setItem("title",title);
+  window.location.pathname = '/details';
 
-// The object is a json object.
-// let dataCategories = Object.keys(dummyData[i]);
+}
 
-// Parsing through all the categories and making the corresponding rows.
-// for (let j = 0; j < dataCategories.length; j++) {
-//   // Styling the table row.
-//   tr.style["border-bottom"] = "1px solid black";
-//   let bTag = createDomElement("b"); // Bold Tag
-//   let pTag = createDomElement("p"); // p tag for the text in the table.
-//   if (
-//     ["sold_by", "title", "image", "category", "listing_id"].includes(
-//       dataCategories[j]
-//     )
-//   ) {
-//     // Setting the value.
-//     if (dataCategories[j] === "image") {
-//       let imgTag = createDomElement("img");
-//       imgTag.src = dummyData[i][dataCategories[j]];
-//       td1.appendChild(imgTag);
-//     }
-//     else {
+window.onload = () => { fetchData(); }
 
-//       // Title to be bold.
-//       if (dataCategories[j] === "title") {
-//       pTag.textContent = dummyData[i][dataCategories[j]];
-//        bTag.appendChild(pTag);
-//        div.appendChild(bTag);
-//       }
-//       else {
-//         pTag.textContent = dummyData[i][dataCategories[j]];
-//         div.appendChild(pTag);
-//       }
-//     }
-//     div.classList.add("center-align", "flex-start");
-//     td2.appendChild(div);
-
-//     // Append child is used to inject the tag in the dom.

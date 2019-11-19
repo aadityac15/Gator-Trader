@@ -37,6 +37,11 @@ def render_users(name):
     return render_template('/users/{}.html'.format(name))
 
 
+@static_blueprint.route('/details', methods=['GET', 'POST'])
+def render_details():
+    return render_template('/listings/detail.html')
+
+
 @static_blueprint.route('/listings/<path:name>', methods=["GET", "POST"])
 def render_listings(name):
     return render_template('/listings/{}.html'.format(name))
