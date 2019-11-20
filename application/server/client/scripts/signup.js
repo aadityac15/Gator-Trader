@@ -19,9 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let email = document.querySelector("#email").value
             let password = document.querySelector("#password").value
             let confirmPassword = document.querySelector("#confirmPassword").value
-            /***
-             * localStorage store
-             */
+             // localStorage store
             localStorage.setItem('firstName', firstName)
             localStorage.setItem('lastName',lastName)
             localStorage.setItem('userName', userName)
@@ -33,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
             location.replace('http://localhost:5000/users/landing_page')
             // after signup, automatically login
             sessionStorage.setItem('userName', userName)
+           
         }
      }     
     
