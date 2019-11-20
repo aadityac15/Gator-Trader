@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         // document.querySelector("#nav-login").innerHTML = 'Logout'
                     
                 }else{
-                    //should redirect to 400
+            
                     alert('Incorrect username or password')
                 }
          }

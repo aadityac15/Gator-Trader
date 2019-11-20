@@ -1,9 +1,14 @@
+/***
+ * store user info at local storage
+ * set up the key and value pair for later user
+ * 
+ */
+
 document.addEventListener("DOMContentLoaded", function() {
    document.querySelector("#Register").onclick = function(e){
         e.preventDefault();
         let password = document.querySelector("#password").value
         let confirmPassword = document.querySelector("#confirmPassword").value
-        
         if(password !== confirmPassword){
             alert('Passwords did not match')
         }else{

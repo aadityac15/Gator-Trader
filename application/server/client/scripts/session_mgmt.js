@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
-    //check if the user logged in, if the user logged in, then change the nav bar login to exit
-    //if the user didn't login then switch the exit to log in 
-    // if local storage == session storage
-    
+    /****
+     * check if the user logged in, if the user logged in, then change the nav bar login to exit
+      if the user didn't login then switch the exit to log in 
+      if local storage == session storage
+     */
     if(sessionStorage.getItem('userName')){
         document.querySelector('#nav-login').innerHTML = 'Exit'
 
@@ -11,6 +12,13 @@ document.addEventListener("DOMContentLoaded", function() {
             sessionStorage.removeItem('userName')
             location.replace('http://localhost:5000/users/landing_page')
         }
+    } else{
+        //user logged out 
+        document.querySelector('#dashboard').onclick = function(e){
+  
+           
+        }
+
     }
 
 });
