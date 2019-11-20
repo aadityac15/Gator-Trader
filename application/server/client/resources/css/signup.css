@@ -10,7 +10,12 @@
     border-radius: 3px;
 }
 .signup-form{
+<<<<<<< HEAD
     margin:100px auto;
+=======
+    padding: 30px 0;
+    margin:10px auto; 
+>>>>>>> 1e6f872ae9638a7c71fceefba23089b8c373da05
     width:460px;
 }
 .signup-form h2{
