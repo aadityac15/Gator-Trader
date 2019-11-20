@@ -41,6 +41,7 @@ def render_listings(name):
     return render_template('/listings/{}.html'.format(name))
 
 
+
 @static_blueprint.route('/', methods=['GET'])
 def render_home():
     return render_template("index.html")

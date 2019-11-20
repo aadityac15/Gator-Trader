@@ -3,6 +3,7 @@
  * @Date:   2019-11-07 19:20:20
  * @Last Modified by:   aadityac15
  * @Last Modified time: 2019-11-18 18:30:44
+ * @Description: Search the database according to the query, and display results.
  */
 const selectDropDown = sel => {
   let category = sel.options[sel.selectedIndex].text;
