@@ -7,9 +7,9 @@ CREATE TABLE user (
   password varchar(45) NOT NULL,
   is_admin tinyint NOT NULL DEFAULT '0',
   major varchar(45) DEFAULT NULL,
-  token int NOT NULL AUTO_INCREMENT,  
+  token int NOT NULL,  
   PRIMARY KEY (user_id),
-  UNIQUE KEY username_UNIQUE (username),
+  UNIQUE KEY username_UNIQUE (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE listing (
@@ -27,7 +27,7 @@ CREATE TABLE listing (
   PRIMARY KEY (listing_id),
   KEY listing_creator_idx (created_by),
   CONSTRAINT listing_creator FOREIGN KEY (created_by) REFERENCES user (user_id) ON DELETE CASCADE ON UPDATE RESTRICT,
-  CONSTRAINT listing_creator FOREIGN KEY (approved_by) REFERENCES user (user_id) ON DELETE SET NULL,
+  CONSTRAINT listing_approver FOREIGN KEY (approved_by) REFERENCES user (user_id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
