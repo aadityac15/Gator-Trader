@@ -6,19 +6,14 @@ document.addEventListener("DOMContentLoaded", function() {
      */
     if(sessionStorage.getItem('userName')){
         document.querySelector('#nav-login').innerHTML = 'Exit'
+        document.querySelector('#dashboard').style.display = 'block'
+        document.querySelector('#sell').style.display = 'block'
 
         document.querySelector('#nav-login').onclick = function(e){
             e.preventDefault()
             sessionStorage.removeItem('userName')
             location.replace('http://localhost:5000/users/landing_page')
         }
-    } else{
-        //user logged out 
-        document.querySelector('#dashboard').onclick = function(e){
-  
-           
-        }
-
     }
 
 });
