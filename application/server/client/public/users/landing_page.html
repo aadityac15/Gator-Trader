@@ -1,6 +1,7 @@
-{% include 'index.html' %}
+{% extends 'index.html' %}
+{% block body %}
 
-<body style="margin: 0; height: 100%; overflow: hidden">
+<body style="margin: 0; height: 100%;">
   <div class="container">
     <!------welcome banner-->
     <div class="jumbotron" style="margin-top:10%; height:30%; text-align:center;">
@@ -65,3 +66,4 @@
     </div>
   </div>
 </body>
+{% endblock %}
