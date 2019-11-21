@@ -37,7 +37,7 @@ const fetchIndividualListing = async () => {
 					else {
 						listingImage.src = "https://via.placeholder.com/300";
 					}
-				priceTag.textContent= dummyData["price"] + '$';
+				priceTag.textContent= '$' + dummyData["price"];
 			});
 
 		};

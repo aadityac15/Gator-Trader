@@ -1,6 +1,8 @@
-{% include 'index.html' %}
+{% extends 'index.html' %}
 
-<body style="margin: 0; height: 100%; overflow: hidden">
+{% block body %}
+
+<body style="margin: 0; height: 100%;">
   <div class="container">
     <!------welcome banner-->
     <div class="jumbotron" style="margin-top:10%; height:30%; text-align:center;">
@@ -18,37 +20,37 @@
       <div class="col-sm-3 col-md-3">
         <div class="row">
           <div class="col-sm-12 col-md-6">
-            <input type="image" onclick="redirectToResult();" id="queryTag" class="img-responsive py-2 px-5  mx-4 image1" style="height:22%;" src="../resources/images/list/appliances.png"/></input>
-            <h5 style="margin-left:67px"><kbd class="bg-secondary">Appliances</kbd></h5>
+            <a onclick="redirect1();"> <img class="img-responsive py-2 px-5  mx-4 image1" style="height:22%;" src="../resources/images/list/appliances.png"/>
+            <h5 style="margin-left:67px"><kbd class="bg-secondary">Appliances</kbd></h5></a>
           </div>
           <div class="col-sm-12 col-md-6">
-            <a href="#"><img class="img-responsive py-2 px-5 mx-4 image2" style="height:22%;" src="../resources/images/list/design.png"/></a>
-            <h5 style="margin-left:104px;"><kbd class="bg-secondary">Art</kbd></h5>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3 col-md-3">
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <a href="#"><img class="img-responsive py-2 px-5  mx-4 image3" style="height:22%;" src="../resources/images/list/clock.png"/></a>
-            <h5 style="margin-left:97px;"><kbd class="bg-secondary">Auto</kbd></h5>
-          </div>
-          <div class="col-sm-12 col-md-6">
-            <a href="#"><img class="img-responsive py-2 px-5 mx-4 image4 " style="height:22%;" src="../resources/images/list/books.png"/></a>
-            <h5 style="margin-left:95px;"><kbd class="bg-secondary">Books</kbd></h5>
+            <a onclick="redirect2();"> <img class="img-responsive py-2 px-5 mx-4 image2" style="height:22%;" src="../resources/images/list/design.png"/>
+            <h5 style="margin-left:104px;"><kbd class="bg-secondary">Art</kbd></h5></a>
           </div>
         </div>
       </div>
       <div class="col-sm-3 col-md-3">
         <div class="row">
           <div class="col-sm-12 col-md-6">
-            <a href="#"><img class="img-responsive py-2 px-5 mx-4 image5" style="height:22%;" src="../resources/images/list/stock.png"/></a>
-            <h5 style="margin-left:72px;"><kbd class="bg-secondary">Household</kbd></h5>
+            <a onclick="redirect3();"><img class="img-responsive py-2 px-5  mx-4 image3" style="height:22%;" src="../resources/images/list/clock.png"/>
+            <h5 style="margin-left:97px;"><kbd class="bg-secondary">Auto</kbd></h5></a>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <a onclick="redirect4();"><img class="img-responsive py-2 px-5 mx-4 image4 " style="height:22%;" src="../resources/images/list/books.png"/>
+            <h5 style="margin-left:95px;"><kbd class="bg-secondary" onclick="redirect4();">Books</kbd></h5></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-md-3">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <a onclick="redirect5();"><img class="img-responsive py-2 px-5 mx-4 image5" style="height:22%;" src="../resources/images/list/stock.png"/>
+            <h5 style="margin-left:72px;"><kbd class="bg-secondary">Household</kbd></h5></a>
           </div>
 
           <div class="col-sm-12 col-md-6">
-            <a href="#"><img class="img-responsive py-2 px-5 mx-4 image6 " style="height:22%;" src="../resources/images/list/locked.png"/></a>
-            <h5 style="margin-left:95px;"><kbd class="bg-secondary">Tools</kbd></h5>
+            <a onclick="redirect6();"><img class="img-responsive py-2 px-5 mx-4 image6 " style="height:22%;" src="../resources/images/list/locked.png"/>
+            <h5 style="margin-left:95px;"><kbd class="bg-secondary">Tools</kbd></h5></a>
           </div>
         </div>
       </div>
@@ -56,12 +58,23 @@
       <div class="col-sm-3 col-md-3">
             <div class="row">
               <div class="col-sm-12 col-md-6">
-                <a href="#"><img class="img-responsive py-2 px-5 mx-4 image5 " style="height:22%;" src="../resources/images/list/car.png"/></a>
-                <h5 style="margin-left:77px;"><kbd class="bg-secondary">Vehicels</kbd></h5>
+                <a onclick="redirect7();"><img class="img-responsive py-2 px-5 mx-4 image5 " style="height:22%;" src="../resources/images/list/car.png"/>
+                <h5 style="margin-left:77px;"><kbd class="bg-secondary">Vehicles</kbd></h5></a>
               </div>
             </div>
+      </div>
+      <div class="col-md-12 col-md-6">
+        <div class="row">
+          <div class="col-md-12 col-md-6">
+            <ul id="resultList"></ul>
           </div>
+        </div>
+      </div>
     </div>
     </div>
-  </div>
+    </div>
+<script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
+
+{% endblock %}
