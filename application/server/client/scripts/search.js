@@ -100,7 +100,7 @@ const fetchData = async () => {
         descriptionTag.innerText = indList["description"];
         listingTag.innerText = indList["listing_id"];
         listingTag.hidden = true;
-        priceTag.innerText = indList["price"] + "$";
+        priceTag.innerText = "$" + indList["price"];
         typeTag.innerText = indList["type"];
         h4Tag.appendChild(typeTag);
        

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if local storage == session storage
      */
     if(sessionStorage.getItem('userName')){
-        document.querySelector('#nav-login').innerHTML = 'Exit'
+        document.querySelector('#nav-login').innerHTML = 'Logout'
         document.querySelector('#dashboard').style.display = 'block'
         document.querySelector('#sell').style.display = 'block'
 
