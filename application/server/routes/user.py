@@ -1,3 +1,6 @@
+# User Route
+# Handles all login, account creation and verification logic.
+
 from flask import Blueprint, request, jsonify, abort
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -9,6 +12,13 @@ user_blueprint = Blueprint('user', __name__)
 
 @user_blueprint.route('/verify', methods=['POST'])
 def verify():
+    """
+    Verifies user token
+
+    :param user_id
+    :param token, per specific user
+    :return: JSON of success of verification
+    """
     user_id = request.form.get('user_id')
     token = request.form.get('token')
 
@@ -20,6 +30,14 @@ def verify():
 
 @user_blueprint.route('/login', methods=['POST'])
 def login():
+    """
+    Checks user credentials
+
+    :param username
+    :param password
+    :return: JSON of success
+    TODO: Return token and user_id
+    """
     username = request.form.get('username')
     password = request.form.get('password')
 
@@ -31,6 +49,17 @@ def login():
 
 @user_blueprint.route('/create', methods=['POST'])
 def create():
+    """
+    Creates user
+
+    :param email
+    :param username
+    :param first_name
+    :param last_name
+    :param major OPTIONAL
+    :return: JSON of success
+    TODO: Return token and user_id
+    """
     email = request.form.get('email')
     username = request.form.get('username')
     password = request.form.get('password')
@@ -50,7 +79,5 @@ def create():
 
     db.session.add(new_user)
     db.session.commit()
-
-    # TODO: Return token
 
     return jsonify(success=True)
