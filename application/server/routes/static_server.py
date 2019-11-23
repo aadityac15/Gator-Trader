@@ -40,6 +40,15 @@ def render_details():
 def render_listings(name):
     return render_template('/listings/{}.html'.format(name))
 
+# @static_blueprint.route('/categories', methods=['GET'])
+# def get_categories():
+#     with open('categories.txt') as file:
+#         categories_string = file.read()
+#         categories = categories_string.split(',')
+#         return jsonify({
+#             'categories': categories
+#         })
+
 
 
 @static_blueprint.route('/', methods=['GET'])

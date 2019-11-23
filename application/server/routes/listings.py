@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, send_from_directory, render_template
+from flask import Blueprint, request, jsonify, send_from_directory, render_template, current_app
 from model.listing import Listing
 from model import db
 import datetime
@@ -28,6 +28,18 @@ def get_listings():
     return jsonify({
         'listings': [r.serialize for r in result]
     })
+
+
+@listings_blueprint.route('/categories', methods=['GET'])
+def get_categories():
+    with open("./categories.txt") as file:
+        categories_string = file.read()
+        print(categories_string)
+        categories = categories_string.split(',')
+
+        return jsonify({
+            'categories': categories
+        })
 
 
 @listings_blueprint.route('/listings', methods=['POST'])

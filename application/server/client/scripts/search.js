@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date:   2019-11-07 19:20:20
  * @Last Modified by:   aadityac15
- * @Last Modified time: 2019-11-18 18:30:44
+ * @Last Modified time: 2019-11-21 09:00:38
  * @Description: Search the database according to the query, and display results.
  */
 const selectDropDown = sel => {
@@ -22,7 +22,7 @@ const fetchData = async () => {
     document.getElementById("selectDropDown").value = category;
   }
 
-  // query = localStorage.getItem("query");
+// query = localStorage.getItem("query");
   let query = document.getElementById("queryTag").value;
   // Domcreator.js
   ulResult.classList.add("list-group");
@@ -60,6 +60,7 @@ const fetchData = async () => {
 
       //As the data would be an object
       dummyLength = dummyData.length;
+      
       dummyData.map(indList => {
         //  Creation of the elements.
         const titleBTag = createDomElement("b");
