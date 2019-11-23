@@ -31,13 +31,14 @@ const fetchIndividualListing = async () => {
 				titleTag.textContent = dummyData["title"];
 				descriptionTag.textContent = dummyData["description"];
 				sellerTag.textContent = "Sold by " + dummyData["created_by"];
+				listingImage.style["margin-right"] = "20px";
 				if (dummyData["thumbnail"] !== null) {
 					listingImage.src = dummyData["thumbnail"];
 					}
 					else {
 						listingImage.src = "https://via.placeholder.com/300";
 					}
-				priceTag.textContent= dummyData["price"] + '$';
+				priceTag.textContent= '$' + dummyData["price"];
 			});
 
 		};

@@ -1,3 +1,6 @@
+# Listing Route
+# Holds functionality for all get, post and edit individual listings
+
 from flask import Blueprint, request, jsonify
 from model.listing import Listing
 from model import db
@@ -11,6 +14,12 @@ listing_blueprint = Blueprint('listing',
 
 @listing_blueprint.route('/listing', methods=['GET'])
 def get_listing():
+    """
+    Gets individual listing
+
+    :param listing_id
+    :return: JSON Serialized listing object
+    """
     listing_id = request.args.get('listing_id')
 
     result = Listing.query.get(listing_id)
@@ -22,6 +31,17 @@ def get_listing():
 
 @listing_blueprint.route('/listing', methods=['POST'])
 def post_listing():
+    """
+    Creates listing
+
+    :param title
+    :param description
+    :param type, category of object
+    :param price
+    :param thumbnail
+    :param created_by, id of user who created listing
+    :return: JSON of listing_id and created_on datetime
+    """
     title = request.form.get('title')
     description = request.form.get('description')
     type = request.form.get('type')
@@ -51,6 +71,13 @@ def post_listing():
 
 @listing_blueprint.route('/listing', methods=['PUT'])
 def put_listing():
+    """
+    Edits listing
+
+    :param listing_id, REQUIRED
+    :params Any other editable field for listing
+    :return: JSON listing_id and last_edited_on
+    """
     listing_id = request.form.get('listing_id')
 
     listing = Listing.query.get(listing_id)
