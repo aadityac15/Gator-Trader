@@ -1,8 +1,9 @@
-from flask import Blueprint, request, jsonify, send_from_directory, render_template, current_app
-from model.listing import Listing
-from model import db
-import datetime
+# Listings Route
+# Holds endpoints for GET listings functionality
 
+from flask import Blueprint, request, jsonify, send_from_directory, render_template
+from model.listing import Listing
+# import os
 listings_blueprint = Blueprint('listings',
                                __name__,
                                static_folder='../client',
@@ -11,16 +12,22 @@ listings_blueprint = Blueprint('listings',
 
 @listings_blueprint.route('/listings', methods=['GET'])
 def get_listings():
+    """
+    Gets listings based off query and category
+
+    @:param query: Search query
+    @:param category: Search category
+    :return: JSON Objects of serialized listings
+    """
     query = request.args.get('query')
     category = request.args.get('category')
+    search = "%{}%".format(query)
 
-    if query and (category and category != 'All'):
-        search = "%{}%".format(query)
-        result = Listing.query.filter(Listing.title.like(search) or Listing.type == category).all()
+    if query and category:
+        result = Listing.query.filter(Listing.title.like(search) and Listing.type == category).all()
     elif query:
-        search = "%{}%".format(query)
         result = Listing.query.filter(Listing.title.like(search)).all()
-    elif category and category != 'All':
+    elif category:
         result = Listing.query.filter(Listing.type == category).all()
     else:
         result = Listing.query.all()
@@ -28,18 +35,6 @@ def get_listings():
     return jsonify({
         'listings': [r.serialize for r in result]
     })
-
-
-@listings_blueprint.route('/categories', methods=['GET'])
-def get_categories():
-    with open("./categories.txt") as file:
-        categories_string = file.read()
-        print(categories_string)
-        categories = categories_string.split(',')
-
-        return jsonify({
-            'categories': categories
-        })
 
 
 @listings_blueprint.route('/listings', methods=['POST'])
@@ -76,21 +71,13 @@ def create_item_success():
     return render_template("createSell_item_success.html")
 
 
-# def create_item(request):
-# #     if request.method == 'POST':
 
-
-# TODO do shit with this shit
-
-# @listings_blueprint.route("/result", methods=["GET", "POST"])
-# def search_result():
-
-#   print("THe request is ", request)
-#   print("The form is ",request.form)
-#   return render_template("search_result.html")
-
-"""
-@listings_blueprint.route('/listings/<path:name>', methods=["GET", "POST"])
-def render_listings(name):
-    return render_template('/{}.html'.format(name))
-"""
+@listings_blueprint.route('/categories', methods=['GET'])
+def get_categories():
+    with open("./application/server/routes/categories.txt") as file:
+        categories_string = file.read()
+        print(categories_string)
+        categories = categories_string.split(',')
+        return jsonify({
+            'categories': categories
+        })

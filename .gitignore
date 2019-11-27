@@ -4,3 +4,5 @@ aadienv/
 venv
 *venv
 .DS_Store
+aadiwindenv/
+aadienvwind/

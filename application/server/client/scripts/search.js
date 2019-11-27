@@ -2,13 +2,14 @@
  * @Author: aadityac15
  * @Date:   2019-11-07 19:20:20
  * @Last Modified by:   aadityac15
- * @Last Modified time: 2019-11-21 09:00:38
+ * @Last Modified time: 2019-11-26 22:32:43
  * @Description: Search the database according to the query, and display results.
  */
-const selectDropDown = sel => {
-  let category = sel.options[sel.selectedIndex].text;
-  // console.log(category);
-};
+
+// const selectDropDown = sel => {
+//   let category = sel.options[sel.selectedIndex].text;
+//   // console.log(category);
+// };
 
 const fetchData = async () => {
   // let category = '';
@@ -20,9 +21,10 @@ const fetchData = async () => {
   let category = localStorage.getItem("category");
   if (category !== null) {
     document.getElementById("selectDropDown").value = category;
+  } else {
   }
 
-// query = localStorage.getItem("query");
+  // query = localStorage.getItem("query");
   let query = document.getElementById("queryTag").value;
   // Domcreator.js
   ulResult.classList.add("list-group");
@@ -36,31 +38,45 @@ const fetchData = async () => {
     query = "";
   }
 
-  console.log(category);
   const LISTINGS_URL = `listings?query=${query}&category=${category}`;
 
   await fetch(LISTINGS_URL, {
-    method: "GET"
+    method: "GET",
+    withCredentials: true
   })
     .then(response => {
-      return response.text();
+      if (response === undefined) {
+        console.log("Something went wrong");
+      } else {
+        console.log("The response is", response);
+        return response.text();
+      }
     })
     .then(data => {
+      console.log("The data is ", data);
+      if (data === undefined) {
+        let textNode = document.createTextNode(
+          "Your search did not match any of the items. Please try another Search query."
+        );
+        ulResult.appendChild(textNode);
+        category = "";
+        query = "";
+        localStorage.removeItem("query");
+        localStorage.removeItem("category");
+      }
       let dataJson = JSON.parse(data);
-      console.log(dataJson);
+      console.log("The datajson is ", dataJson);
       console.log("Type of data", typeof dataJson);
       let dummyData = dataJson["listings"];
 
       if (dummyData.length === 0) {
         let textNode = document.createTextNode(
-          "Your search did not match any of the items. Please try another item."
+          "Your search did not match any of the items. Please try another Search query."
         );
-        ulResult.appendChild(textNode);
       }
 
       //As the data would be an object
-      dummyLength = dummyData.length;
-      
+      // dummyLength = dummyData.length;
       dummyData.map(indList => {
         //  Creation of the elements.
         const titleBTag = createDomElement("b");
@@ -79,7 +95,10 @@ const fetchData = async () => {
         const contactSellerButton = createDomElement("button");
         contactSellerButton.innerText = "Contact Seller";
         contactSellerButton.classList.add("btn", "btn-warning");
-        buttonSpanTag.style["width"] = "30%";
+
+        contactSellerButton.setAttribute("id", "myForm");
+        buttonTag.style["margin-right"] = "10px";
+        buttonSpanTag.style["width"] = "80%";
 
         buttonTag.onclick = () => {
           redirectToIndividualListing(indList["listing_id"], indList["title"]);
@@ -114,7 +133,7 @@ const fetchData = async () => {
         descriptionTag.innerText = indList["description"];
         listingTag.innerText = indList["listing_id"];
         listingTag.hidden = true;
-        priceTag.innerText = indList["price"] + "$";
+        priceTag.innerText = "$" + indList["price"];
         typeTag.innerText = indList["type"];
         h4Tag.appendChild(typeTag);
 
@@ -163,17 +182,22 @@ const styleDiv = divTag => {
   divTag.style["width"] = "80%";
 };
 
-const styleImgDivTag = imgDivTag => {
-  // imgDivTag.style["width"] = "20%";
-};
+const styleImgDivTag = imgDivTag => {};
 
 // Redirecrts to the detail.html page showing details about the individual listing.
 
 const redirectToIndividualListing = (id, title) => {
   localStorage.setItem("id", id);
   localStorage.setItem("title", title);
-  let webPath = window.location.hostname;
+  // let webPath = window.location.hostname;
   window.open(`/details`, "_blank");
+};
+
+const formMessage = event => {
+  var modal = document.getElementById("form");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 };
 
 window.onload = () => {

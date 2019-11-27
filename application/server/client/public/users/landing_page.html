@@ -1,83 +1,146 @@
-{% include 'index.html' %}
+{% extends 'index.html' %} {% block body %}
 
-<body>
-<!----------top container for display colleges and department-->
-<div class="container">
-<h2 class="text-center title">Shopping By Categories</h2>
-<div class="row">
-    <div class="col-sm-4 col-md-4">
-        <div class="row">
-                <div class="col-sm-12 col-md-6" >
-                    <a href="#"><img class="img-responsive py-2 px-1 image1 image-size" src="../resources/images/list/report.png"></a>
-                    <h6 class="caption1">Business</h6>
-            </div>
-            <div class="col-sm-12 col-md-6" >
-                <a href="#"><img class="img-responsive py-2 px-1 image2 image-size" src="../resources/images/list/library.png"></a>
-                <h6 class="caption1 ">Education</h6>
-            </div>
-        </div>
+<body style="margin: 0; height: 100%;">
+  <div class="container">
+    <!------welcome banner-->
+    <div
+      class="jumbotron"
+      style="margin-top:10%; height:30%; text-align:center;">
+      <h1>Welcome to Gator Trader</h1>
+      <p>
+        A platform for SF State students to buy and sell items
+      </p>
+      <br /><br />
+      <p>
+        SFSU Software Engineering Project CSC 648-848 Team 02, Fall 2019. For
+        Demonstration Only
+      </p>
     </div>
-    <div class="col-sm-4 col-md-4">
-        <div class="row">
-            <div class="col-sm-12 col-md-6" >
-                <a href="#"><img class="img-responsive py-2 px-1 image3 image-size" src="../resources/images/list/data-modelling.png"></a>
-                <h6 class="caption2 pl-0">Science & Engineering</h6>
-            </div>
-            <div class="col-sm-12 col-md-6" >
-                <a href="#"><img class="img-responsive py-2 px-1 image4 image-size" src="../resources/images/list/hospital.png"></a>
-                <h6 class="caption ">Health & Social Science</h6>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4 col-md-4">
-        <div class="row">
-            <div class="col-sm-12 col-md-6" >
-                <a href="#"><img class="img-responsive py-2 px-1 image5 image-size" src="../resources/images/list/painting-palette.png"></a>
-                <h6 class="caption ">Liberal & Creative Arts</h6>
-            </div>
-            <div class="col-sm-12 col-md-6" >
-                <a href="#"><img class="img-responsive py-2 px-1 image6 image-size" src="../resources/images/list/pharaoh.png"></a>
-                <h6 class="caption">Ethnic Studies</h6>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 
+    <!---------- display categories-->
+    <div class="categories" style="margin-top: 8%;">
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+               <img
+                class="img-responsive py-2 px-5 mx-4 image1"
+                style="height:22%;"
+                src="../resources/images/list/appliances.png"
+              />
+              <h5 style="margin-left:67px">
+                <kbd id="Appliances" class="bg-secondary">Appliances</kbd>
+              </h5>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <img
+                class="img-responsive py-2 px-5 mx-4 image2"
+                style="height:22%;"
+                src="../resources/images/list/design.png"
+              />
+              <h5 style="margin-left:104px;">
+                <kbd id="Art" class="bg-secondary">Art</kbd>
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <img
+                class="img-responsive py-2 px-5  mx-4 image3"
+                style="height:22%;"
+                src="../resources/images/list/clock.png"
+              />
+              <h5 style="margin-left:97px;">
+                <kbd id="Auto" class="bg-secondary">Auto</kbd>
+              </h5>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <img
+                class="img-responsive py-2 px-5 mx-4 image4 "
+                style="height:22%;"
+                src="../resources/images/list/books.png"
+              />
+              <h5 style="margin-left:95px;">
+                <kbd id="Books " class="bg-secondary">Books</kbd>
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <img
+                class="img-responsive py-2 px-5 mx-4 image5"
+                style="height:22%;"
+                src="../resources/images/list/stock.png"
+              />
+              <h5 style="margin-left:72px;">
+                <kbd id="Household" class="bg-secondary">Household</kbd>
+              </h5>
+            </div>
 
-<!---------recommanded items---------->
-<div class="row px-5 py-1 mt-1" >
-        <div class="col-md-6 mb-5 pb-5">
-          <div class="panel">
-           <h4 class="title-latest-items pl-3">Recommanded Books <span><a href="" style="color:#9EA8FF; font-size:14px;">see more</a></span></h4>
-          </div>
-          <div class="panel ">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
+            <div class="col-sm-12 col-md-6">
+              <img
+                class="img-responsive py-2 px-5 mx-4 image6 "
+                style="height:22%;"
+                src="../resources/images/list/locked.png"
+              />
+              <h5 style="margin-left:95px;">
+                <kbd id="Tools" class="bg-secondary">Tools</kbd>
+              </h5>
+            </div>
           </div>
         </div>
-        <div class="col-md-6 mb-5 ">
-          <div class="panel pl-3">
-                <h4 class="title-latest-items"> Recommanded Furniture <span><a href="" style="color:#9EA8FF; font-size:14px;">see more</a></span></h4>
-          </div>
-      
-          <div class="panel">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
-                <img class="img-responsive inline-block latest-item-image px-1 mx-1" src="../resources/images/list/thumnail.jpg">
+
+        <div class="col-sm-3 col-md-3">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <!-- <a onclick="redirect7();" -->
+              <img
+                class="img-responsive py-2 px-5 mx-4 image5 "
+                style="height:22%;"
+                src="../resources/images/list/car.png"
+              />
+              <h5 style="margin-left:77px;">
+                <kbd id="Vehicles" class="bg-secondary">Vehicles</kbd>
+              </h5>
+              <!-- </a               > -->
+            </div>
           </div>
         </div>
-     </div>
-    
+        <div class="col-md-12 col-md-6">
+          <div class="row">
+            <div class="col-md-12 col-md-6">
+              <!-- <ul id="resultList"></ul> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script
+    src="../../scripts/domCreation.js"
+    type="text/javascript"
+    charset="utf-8"
+    async
+    defer
+  ></script>
+  <script
+    src="../../scripts/search.js"
+    type="text/javascript"
+    charset="utf-8"
+    async
+    defer
+  ></script>
+  <script
+    src="../../scripts/landingPage.js"
+    type="text/javascript"
+    charset="utf-8"
+    async
+    defer
+  ></script>
 </body>
+
+{% endblock %}

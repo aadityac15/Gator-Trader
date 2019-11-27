@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date:   2019-11-17 22:31:21
  * @Last Modified by:   aadityac15
- * @Last Modified time: 2019-11-18 15:53:14
+ * @Last Modified time: 2019-11-23 16:42:52
  * @Description: Individual Listing for each item. Can also contact the seller.
  */
 
@@ -31,15 +31,17 @@ const fetchIndividualListing = async () => {
 				titleTag.textContent = dummyData["title"];
 				descriptionTag.textContent = dummyData["description"];
 				sellerTag.textContent = "Sold by " + dummyData["created_by"];
+				listingImage.style["margin-right"] = "20px";
 				if (dummyData["thumbnail"] !== null) {
 					listingImage.src = dummyData["thumbnail"];
 					}
 					else {
 						listingImage.src = "https://via.placeholder.com/300";
 					}
-				priceTag.textContent= dummyData["price"] + '$';
+				priceTag.textContent= '$' + dummyData["price"];
 			});
-
+			localStorage.removeItem("id");
+			localStorage.removeItem("title");
 		};
 
 window.onload = fetchIndividualListing();

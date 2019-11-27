@@ -1,1 +1,1 @@
-Appliances,Art,Auto,Books,Electronics,Household,Services,Tools,Vehicles
+All Categories,Appliances,Art,Auto,Books,Electronics,Household,Services,Tools,Vehicles
