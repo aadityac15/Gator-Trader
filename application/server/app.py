@@ -13,7 +13,7 @@ from routes.user import user_blueprint
 app = Flask(__name__, static_url_path='', static_folder='client')
 
 # TODO: CHANGE PASSWORD FOR YOUR LOCAL SETUP
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Rmssd1530@127.0.0.1:3306/648_database'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:PASSWORD_TO_CHANGE@127.0.0.1:3306/648_database'
 
 db.init_app(app)
 
