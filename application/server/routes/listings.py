@@ -37,6 +37,44 @@ def get_listings():
     })
 
 
+@listings_blueprint.route('/pending_listings', methods=['GET'])
+def get_pending_listings():
+    """
+    Gets pending listings for a user
+
+    :param user_id
+    :return:
+    """
+    user_id = request.args.get('user_id')
+    if not user_id:
+        return jsonify({"error": "No user id provided"})
+
+    pending_listings = Listing.query.filter_by(created_by=user_id, approved=False)
+
+    return jsonify({
+        "listings": [listing.serialize for listing in pending_listings]
+    })
+
+
+@listings_blueprint.route('/approved_listings', methods=['GET'])
+def get_approved_listings():
+    """
+    Gets pending listings for a user
+
+    :param user_id
+    :return:
+    """
+    user_id = request.args.get('user_id')
+    if not user_id:
+        return jsonify({"error": "No user id provided"})
+
+    approved_listings = Listing.query.filter_by(created_by=user_id, approved=True)
+
+    return jsonify({
+        "listings": [listing.serialize for listing in approved_listings]
+    })
+
+
 def create_item_success():
     """Displays success message after user successfully created an item"""
     categories = Listing.objects.all()
