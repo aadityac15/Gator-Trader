@@ -2,4 +2,4 @@ venv/
 windows_venv
 *.pyc
 __pycache__/
-/databaseconfig.py
+databaseconfig.py
