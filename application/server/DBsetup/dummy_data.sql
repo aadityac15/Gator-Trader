@@ -1,10 +1,10 @@
 INSERT INTO user 
     VALUES 
-        (1, 'T800', 'Sarah', 'Connor', 'sconner@fakemail.com', 'Password1', false, 'History'),  
-        (2, 'Bulldozer', 'Carlos', 'Mendoza', 'cmendoza@fakemail.com', 'password2', false, 'Mathematics'),  
-        (3, 'TheElderGod', 'Raiden', NULL, 'raiden@@fakemail.com', 'Password3', true, 'Physics'),  
-        (4, 'Queenie', 'Kara',  'Strong', 'kstrong@fakemail.com', 'Password4', false, 'Kinesiology'),  
-        (5, 'JDog', 'James',  'Daniels', 'jdaniels@fakemail.com', 'Password5', false, 'Civil Engineering');  
+        (1, 'T800', 'Sarah', 'Connor', 'sconner@fakemail.com', 'Password1', false, 'History', 0),
+        (2, 'Bulldozer', 'Carlos', 'Mendoza', 'cmendoza@fakemail.com', 'password2', false, 'Mathematics', 0),
+        (3, 'TheElderGod', 'Raiden', NULL, 'raiden@@fakemail.com', 'Password3', true, 'Physics', 0),
+        (4, 'Queenie', 'Kara',  'Strong', 'kstrong@fakemail.com', 'Password4', false, 'Kinesiology', 0),
+        (5, 'JDog', 'James',  'Daniels', 'jdaniels@fakemail.com', 'Password5', false, 'Civil Engineering', 0);
  
 INSERT INTO listing
    VALUES
@@ -19,8 +19,8 @@ INSERT INTO listing
 INSERT INTO message
 	VALUES
 		(1, 2, 5, 'Dummy data is hard.', '2019-02-01 06:02:46'),
-        (2, 5, 3, 'I don\'t know what to say.', '2018-02-01 06:02:46'),
-        (3, 4, 1, 'Guize, halp.', '2017-02-01 06:02:46');
+    (2, 5, 3, 'I dont know what to say.', '2018-02-01 06:02:46'),
+    (3, 4, 1, 'Guize, halp.', '2017-02-01 06:02:46');
         
 INSERT INTO location
 	VALUES

@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date:   2019-11-12 02:03:04
  * @Last Modified by:   aadityac15
- * @Last Modified time: 2019-11-24 17:11:36
+ * @Last Modified time: 2019-11-27 18:53:31
  * @Description : Redirect the page to the result page and use local storage to make the GET request.
  */
 
@@ -11,7 +11,8 @@
 let categoriesArray = [];
 
 const redirectToResult = () => {
-
+  localStorage.removeItem("query");
+  localStorage.removeItem("category");
   const selectDropDownElement = document.getElementById("selectDropDown");
   const category =
     selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
@@ -24,102 +25,38 @@ const redirectToResult = () => {
 };
 
 const loadDropDown = async () => {
+  // localStorage.removeItem("category");
   const selectDropDownElement = document.getElementById("selectDropDown");
-  await fetch("/categories", {
-    method: "GET"
-  })
-    .then(response => {
-      return response.text();
+  console.log("SDE first child " + selectDropDownElement);
+  // debugger;
+  if (selectDropDownElement.length === 0) {
+    await fetch("/categories", {
+      method: "GET"
     })
-    .then(data => {
-      const jsonData = JSON.parse(data);
-      console.log(jsonData);
-      categoryArray = jsonData["categories"];
-      // let categoryDropDown = document.getElementById("")
-      categoryArray.map(category => {
-        let option = document.createElement("option");
-        option.value = category;
-        option.text = category;
-        selectDropDownElement.add(option);
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        const jsonData = JSON.parse(data);
+        categoryArray = jsonData["categories"];
+        categoryArray.map(category => {
+          let option = document.createElement("option");
+          option.value = category;
+          option.text = category;
+          selectDropDownElement.add(option);
+          if (document.getElementById(category)) {
+            document.getElementById(category).textContent = category;
+            document.getElementById(category).addEventListener("click", () => {
+              localStorage.setItem("category", category);
+              window.location.pathname = "/results";
+            });
+          }
+        });
       });
-    });
+  }
+  else{
+    console.log("Already done");
+  }
 };
-
-// const redirect1 = () => {
-//   // const selectDropDownElement = document.getElementById("selectDropDown");
-//   const category = selectDropDownElement.options[1].value;
-//   let query = document.getElementById("queryTag").value;
-
-//   localStorage.setItem("query", query);
-//   localStorage.setItem("category", category);
-//   console.log(window.location.host + "/results");
-//   window.location.pathname = "/results";
-// };
-
-// const redirect2 = () => {
-//   // const selectDropDownElement = document.getElementById("selectDropDown");
-//   const category = selectDropDownElement.options[2].value;
-//   let query = document.getElementById("queryTag").value;
-
-//   localStorage.setItem("query", query);
-//   localStorage.setItem("category", category);
-//   console.log(window.location.host + "/results");
-//   window.location.pathname = "/results";
-// };
-
-// const redirect3 = () => {
-//   // const selectDropDownElement = document.getElementById("selectDropDown");
-//   const category = selectDropDownElement.options[3].value;
-//   let query = document.getElementById("queryTag").value;
-
-//   localStorage.setItem("query", query);
-//   localStorage.setItem("category", category);
-//   console.log(window.location.host + "/results");
-//   window.location.pathname = "/results";
-// };
-
-// const redirect4 = () => {
-//   // const selectDropDownElement = document.getElementById("selectDropDown");
-//   const category = selectDropDownElement.options[4].value;
-//   let query = document.getElementById("queryTag").value;
-
-//   localStorage.setItem("query", query);
-//   localStorage.setItem("category", category);
-//   console.log(window.location.host + "/results");
-//   window.location.pathname = "/results";
-// };
-
-// const redirect5 = () => {
-//   // const selectDropDownElement = document.getElementById("selectDropDown");
-//   const category = selectDropDownElement.options[5].value;
-//   let query = document.getElementById("queryTag").value;
-
-//   localStorage.setItem("query", query);
-//   localStorage.setItem("category", category);
-//   console.log(window.location.host + "/results");
-//   window.location.pathname = "/results";
-// };
-
-// const redirect6 = () => {
-//   // const selectDropDownElement = document.getElementById("selectDropDown");
-//   const category = selectDropDownElement.options[6].value;
-//   let query = document.getElementById("queryTag").value;
-
-//   localStorage.setItem("query", query);
-//   localStorage.setItem("category", category);
-//   console.log(window.location.host + "/results");
-//   window.location.pathname = "/results";
-// };
-
-// const redirect7 = () => {
-//   // const selectDropDownElement = document.getElementById("selectDropDown");
-//   const category = selectDropDownElement.options[7].value;
-//   let query = document.getElementById("queryTag").value;
-
-//   localStorage.setItem("query", query);
-//   localStorage.setItem("category", category);
-//   console.log(window.location.host + "/results");
-//   window.location.pathname = "/results";
-// };
 
 window.onload = loadDropDown();

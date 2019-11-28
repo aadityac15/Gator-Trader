@@ -2,37 +2,33 @@
  * @Author: aadityac15
  * @Date:   2019-11-07 19:20:20
  * @Last Modified by:   aadityac15
- * @Last Modified time: 2019-11-26 22:32:43
+ * @Last Modified time: 2019-11-27 18:59:04
  * @Description: Search the database according to the query, and display results.
  */
 
-// const selectDropDown = sel => {
-//   let category = sel.options[sel.selectedIndex].text;
-//   // console.log(category);
-// };
-
 const fetchData = async () => {
-  // let category = '';
-  // let query =  "";
-  const ulResult = document.getElementById("resultList");
-  document.getElementById("queryTag").value = localStorage.getItem("query");
-
-  // clearData(); //Temporary
   let category = localStorage.getItem("category");
-  if (category !== null) {
+  
+  if (localStorage.getItem("category") !== null) {
     document.getElementById("selectDropDown").value = category;
   } else {
+    document.getElementById("selectDropDown").value = "All Categories";
   }
+  localStorage.removeItem("id");
+  localStorage.removeItem("title");
+  const ulResult = document.getElementById("resultList");
+  document.getElementById("queryTag").value = localStorage.getItem("query");
 
   // query = localStorage.getItem("query");
   let query = document.getElementById("queryTag").value;
   // Domcreator.js
   ulResult.classList.add("list-group");
+
   if (category === "All Categories") {
     category = "";
   }
 
-  // handle refrersh
+  // handle refrersh i.e show everything if after refresh either of the parameters are null.
   if (category === null || query === null) {
     category = "";
     query = "";
@@ -46,51 +42,42 @@ const fetchData = async () => {
   })
     .then(response => {
       if (response === undefined) {
-        console.log("Something went wrong");
       } else {
-        console.log("The response is", response);
         return response.text();
       }
     })
     .then(data => {
-      console.log("The data is ", data);
       if (data === undefined) {
         let textNode = document.createTextNode(
           "Your search did not match any of the items. Please try another Search query."
         );
         ulResult.appendChild(textNode);
-        category = "";
-        query = "";
-        localStorage.removeItem("query");
-        localStorage.removeItem("category");
       }
       let dataJson = JSON.parse(data);
-      console.log("The datajson is ", dataJson);
-      console.log("Type of data", typeof dataJson);
       let dummyData = dataJson["listings"];
-
       if (dummyData.length === 0) {
         let textNode = document.createTextNode(
           "Your search did not match any of the items. Please try another Search query."
         );
+        ulResult.appendChild(textNode);
       }
 
       //As the data would be an object
-      // dummyLength = dummyData.length;
+
       dummyData.map(indList => {
         //  Creation of the elements.
-        const titleBTag = createDomElement("b");
-        const h2Tag = createDomElement("h2");
-        const h4Tag = createDomElement("h4");
-        const imgDivTag = createDomElement("div");
-        const buttonSpanTag = createDomElement("span");
-        const imgTag = createDomElement("img");
+        const titleBTag = createDomElement("b"); // Bold Tag
+        const h2Tag = createDomElement("h2"); // h2 Tag for text
+        const h4Tag = createDomElement("h4"); // h4 tag for text
+        const imgDivTag = createDomElement("div"); // Div tag to hold the elements.
+        const buttonSpanTag = createDomElement("span"); // span tag for the buttons
+        const imgTag = createDomElement("img"); // Image tag in the DOM
         const typeTag = createDomElement("p");
         const descriptionTag = createDomElement("p");
         const listingTag = createDomElement("p");
         const priceTag = createDomElement("p");
         const titleTag = createDomElement("p");
-        const buttonTag = createDomElement("button");
+        const buttonTag = createDomElement("button"); // Button tag in the DOM.
         buttonTag.innerText = "See More";
         const contactSellerButton = createDomElement("button");
         contactSellerButton.innerText = "Contact Seller";
@@ -100,14 +87,13 @@ const fetchData = async () => {
         buttonTag.style["margin-right"] = "10px";
         buttonSpanTag.style["width"] = "80%";
 
+        // Redirect to the details page.
+
         buttonTag.onclick = () => {
           redirectToIndividualListing(indList["listing_id"], indList["title"]);
         };
 
-        buttonSpanTag.classList.add(
-          "flex-display-row",
-          "justify-content-space-between"
-        );
+        buttonSpanTag.classList.add("flex-display-row");
 
         buttonTag.classList.add("btn", "btn-warning");
         const divTag = createDomElement("div");
@@ -152,10 +138,9 @@ const fetchData = async () => {
         ulResult.appendChild(liTag);
       });
 
-      category = "";
-      query = "";
       localStorage.removeItem("query");
       localStorage.removeItem("category");
+      // console.log(localStorage);
     });
 };
 
@@ -166,7 +151,7 @@ const styleTags = element => {
 };
 
 const clearData = () => {
-  document.getElementById("resultList").innerHTML = " ";
+  document.getElementById("resultList").innerHTML = "";
 };
 
 const styleLi = liTag => {
@@ -201,5 +186,12 @@ const formMessage = event => {
 };
 
 window.onload = () => {
+  if (localStorage.getItem("category") !== null) {
+    document.getElementById("selectDropDown").value = localStorage.getItem(
+      "category"
+    );
+  } else {
+    document.getElementById("selectDropDown").value = "All Categories";
+  }
   fetchData();
 };
