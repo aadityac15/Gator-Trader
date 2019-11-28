@@ -1,3 +1,4 @@
+
 # Static Server Routes
 # Handles all serving of frontend components
 
@@ -84,7 +85,5 @@ def render_listings(name):
 
 @static_blueprint.route('/', methods=['GET'])
 def render_home():
-    """
-    Renders home page
-    """
-    return render_template("index.html")
+    return render_template("/users/landing_page.html")
+

@@ -7,13 +7,14 @@
 	</span>
 	</div>
 
-	<div class="flex-display-column flex-start" width="80%">
+	<div class="flex-display-column flex-start" style = "width:80%;">
 		<b><h1 id="titleTag"></h1></b>
-		<p id="seller-info"></p>
-		<br />
 		<h4 id="description"></h4>
-		Price: <p id="priceTag"></p>
-		<a id="contact-tag" href="/messages">Contact Buyer</a>
+		<div style="display: inline-flex; width: 100%"><b>Category: </b><p id="category"></p></div>
+		<div style="display: inline-flex; width: 100%">Price: <p id="priceTag"></p></div>
+		<span>
+		<button id="contact-tag" class="btn btn-warning" href="/messages">Contact Buyer</button>
+		</span>
 	</div>
 </div>
 <script src="../../scripts/domCreation.js"></script>

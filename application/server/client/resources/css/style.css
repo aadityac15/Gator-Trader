@@ -2,12 +2,20 @@
     text-align: center;
 }
 
+.pointer-hand{
+    cursor: pointer;
+}
+
 .border-bottom-div {
     border: black 1px solid;
 }
 
 .margin-box {
     margin: 20% 10%;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
 }
 
 .remove-margin {
