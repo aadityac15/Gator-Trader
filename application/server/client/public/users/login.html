@@ -21,7 +21,6 @@
             <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
             <p class="message"><a href="#" class="pull-right text-warning " id="reset-password">Forgot Password?</a></p>
         </div>  
-        <p class="admin-message text-center"><a href="#" class="text-primary" id="admin-message">Are you Admin?</a></p>
         <p class="text-center "><a href="{{ 'signup' }}"class="text-primary" >Create an Account</a></p>      
     </form>
   </div>
@@ -49,31 +48,9 @@
     <dt class="text-primary ml-4 pl-1"> Please check your email, we sent the reset password link.</dt>    
 </div>
 
-
-<!----------------admin login form ------------------->
-<div class="admin-login-form" style="width: 340px;margin:150px auto;background: #f7f7f7; padding: 30px; display:none">
-  <form action="/users/landing_page" method="POST" >
-      <h2 class="text-center">Admin</h2> 
-      <br>      
-      <div class="form-group">
-          <input type="text" class="form-control" placeholder="Username" id="admin_username" required="required">
-      </div>
-      <div class="form-group">
-          <input type="password" class="form-control" placeholder="Password" id="admin_password" required="required">
-      </div>
-      <div class="form-group">
-          <button type="submit" class="btn btn-block btn-warning admin_login">Log in</button>
-      </div>
-      <div class="clearfix">
-          <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-          <p class="message"><a href="#" class="pull-right text-warning " id="admin-reset-password">Forgot Password?</a></p>
-      </div>       
-  </form>
-</div>
-
 </div>
 </div>
 <script src="../scripts/login.js"></script>
 </body>
 
-        {% endblock %}
+ {% endblock %}

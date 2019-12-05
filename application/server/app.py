@@ -11,7 +11,6 @@ import databaseconfig as cfg
 
 app = Flask(__name__, static_url_path='', static_folder='client')
 
-# TODO: CHANGE PASSWORD FOR YOUR LOCAL SETUP
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://{username}:{password}@127.0.0.1:{port}/{database_name}'.format(
     username=cfg.mysql['username'],
     password=cfg.mysql['password'],
@@ -22,6 +21,7 @@ app.config['MYSQL_HOST'] = '127.0.0.1'
 app.config['MYSQL_PORT'] = cfg.mysql['port']
 # TODO: CHANGE PASSWORD FOR YOUR LOCAL SETUP
 app.config['MYSQL_PASSWORD'] = cfg.mysql['password']
+
 
 db.init_app(app)
 
