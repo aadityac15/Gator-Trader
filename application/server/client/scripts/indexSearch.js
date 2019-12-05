@@ -27,7 +27,7 @@ const redirectToResult = () => {
 const loadDropDown = async () => {
   // localStorage.removeItem("category");
   const selectDropDownElement = document.getElementById("selectDropDown");
-  console.log("SDE first child " + selectDropDownElement);
+  console.log("SDE first child " + JSON.stringify(selectDropDownElement));
   // debugger;
   if (selectDropDownElement.length === 0) {
     await fetch("/categories", {
