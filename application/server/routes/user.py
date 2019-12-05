@@ -44,7 +44,11 @@ def login():
 
     user = User.query.filter_by(username=username).first()
     if check_password_hash(user.password, password):
-        return jsonify(success=True)
+        return jsonify({
+            'user_id': user.user_id,
+            'token': user.token,
+            'is_admin': user.is_admin
+        })
     abort(403, 'Username and password do not match.')
 
 
@@ -60,7 +64,6 @@ def create():
     :param last_name
     :param major OPTIONAL
     :return: JSON of success
-    TODO: Return token and user_id
     """
     email = request.form.get('email')
     username = request.form.get('username')
@@ -83,4 +86,8 @@ def create():
     db.session.add(new_user)
     db.session.commit()
 
-    return jsonify(success=True)
+    return jsonify({
+        'user_id': new_user.user_id,
+        'token': new_user.token,
+        'is_admin': new_user.is_admin
+    })
