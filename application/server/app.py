@@ -7,18 +7,21 @@ from routes.listings import listings_blueprint
 from routes.mylistings import mylistings_blueprint
 from routes.user import user_blueprint
 from routes.static_server import static_blueprint
-# from routes.users import users_blueprint
-# from routes.message import message_blueprint
+import databaseconfig as cfg
 
 app = Flask(__name__, static_url_path='', static_folder='client')
 
-# TODO: CHANGE PASSWORD FOR YOUR LOCAL SETUP
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:Greeks98@127.0.0.1:3306/test'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://{username}:{password}@127.0.0.1:{port}/{database_name}'.format(
+    username=cfg.mysql['username'],
+    password=cfg.mysql['password'],
+    port=cfg.mysql['port'],
+    database_name=cfg.mysql['database_name']
+)
 app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_PORT'] = '3306'
-app.config['MYSQL_USER'] = 'patkhai'
+app.config['MYSQL_PORT'] = cfg.mysql['port']
 # TODO: CHANGE PASSWORD FOR YOUR LOCAL SETUP
-app.config['MYSQL_PASSWORD'] = 'Greeks98'
+app.config['MYSQL_PASSWORD'] = cfg.mysql['password']
+
 
 db.init_app(app)
 

@@ -6,8 +6,6 @@ const selectDropDown = (sel) => {
 }
 
 const fetchData = async () => {
-  // let category = '';
-  // let query =  "";
   const ulResult = document.getElementById("resultList");
   let category = document.getElementById('selectDropDown').value;
   console.log(category);
@@ -30,7 +28,6 @@ const fetchData = async () => {
     })
     .then(data => {
       console.log(data);
-      debugger;
       let dataJson = JSON.parse(data);
       console.log(dataJson);
       console.log("Type of data", typeof dataJson);
@@ -94,7 +91,8 @@ const fetchData = async () => {
 
       category = "";
       query = "";
-      localStorage.clear();
+      localStorage.removeItem("category");
+      localStorage.remvoveItem("query");
     });
 };
 

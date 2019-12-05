@@ -6,13 +6,15 @@ INSERT INTO user
         (4, 'Queenie', 'Kara',  'Strong', 'kstrong@fakemail.com', 'Password4', false, 'Kinesiology', 0),
         (5, 'JDog', 'James',  'Daniels', 'jdaniels@fakemail.com', 'Password5', false, 'Civil Engineering', 0);
  
-INSERT INTO listing  
-    VALUES 
-        (1, 'Room Cleaning', 'Will clean any room in your house.',  'Services', 10, NULL, '2018-05-23 07:02:08', '2019-06-30 22:37:55', 5, false, NULL),
-        (2, 'Math Textbook', 'Barely used math textbook for MAth 324.', 'Books', 20, NULL, '2016-05-01 02:16:00', '2018-04-13 14:12:42', 2, false, NULL),  
-        (3, 'Microwave', 'Brand new microwave for sale!',  'Household', 59.99, NULL, '2017-05-14 21:56:42', '2019-10-25 18:56:02', 4, false, NULL),  
+INSERT INTO listing
+   VALUES
+		(1, 'Mini Fridge', 'Keep your food and drinks chilled!',  'Appliances', 79.99, NULL, '2018-05-23 07:02:08', '2019-06-30 22:37:55', 5, false, NULL),
+        (2, 'Math Textbook', 'Barely used math textbook for MATH 324', 'Books', 20, NULL, '2016-05-01 02:16:00', '2018-04-13 14:12:42', 2, false, NULL),
+        (3, 'Microwave', 'Brand new microwave for sale!',  'Appliances', 59.99, NULL, '2017-05-14 21:56:42', '2019-10-25 18:56:02', 4, false, NULL),
         (4, 'Couch', 'Used couch for sale.', 'Household', 75, NULL, '2016-05-12 12:32:45', '2017-05-22 12:32:33', 1, false, NULL),
-        (5, 'Physics Tutor', 'Will help with Physics homework and notes.',  'Services', 25, NULL, '2017-09-04 14:22:16', '2018-11-04 04:44:15', 3, false, NULL);
+        (5, 'Physics Textbook', 'Barely used math textbook for PHYS 230',  'Books', 25, NULL, '2017-09-04 14:22:16', '2018-11-04 04:44:15', 3, false, NULL),
+        (6, 'Electric SkateBoard', 'Make your commute easier!', 'Auto', 230, NULL, '2016-05-12 12:32:45', '2017-05-22 12:32:33', 1, false, NULL),
+        (7, 'Screwdriver', 'All in one screwdrive you will ever need!', 'Tools', 20, NULL, '2016-05-12 12:32:45', '2017-05-22 12:32:33', 2, false, NULL);
         
 INSERT INTO message
 	VALUES
