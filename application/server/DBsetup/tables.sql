@@ -4,10 +4,10 @@ CREATE TABLE user (
   first_name varchar(45) DEFAULT NULL,
   last_name varchar(45) DEFAULT NULL,
   email varchar(255) NOT NULL,
-  password varchar(45) NOT NULL,
+  password varchar(255) NOT NULL,
   is_admin tinyint NOT NULL DEFAULT '0',
   major varchar(45) DEFAULT NULL,
-  token int NOT NULL,  
+  token varchar(255) NOT NULL,
   PRIMARY KEY (user_id),
   UNIQUE KEY username_UNIQUE (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

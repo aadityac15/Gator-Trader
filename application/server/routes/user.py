@@ -3,6 +3,7 @@
 
 from flask import Blueprint, request, jsonify, abort
 from werkzeug.security import generate_password_hash, check_password_hash
+import secrets
 
 from model.user import User
 from model import db
@@ -54,6 +55,7 @@ def create():
 
     :param email
     :param username
+    :param password
     :param first_name
     :param last_name
     :param major OPTIONAL
@@ -74,7 +76,8 @@ def create():
         first_name=first_name,
         last_name=last_name,
         major=major,
-        is_admin=None
+        is_admin=None,
+        token=secrets.token_urlsafe()
     )
 
     db.session.add(new_user)
