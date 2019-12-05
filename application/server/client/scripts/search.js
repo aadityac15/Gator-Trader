@@ -79,11 +79,11 @@ const fetchData = async () => {
         const titleTag = createDomElement("p");
         const buttonTag = createDomElement("button"); // Button tag in the DOM.
         buttonTag.innerText = "See More";
-        const contactSellerButton = createDomElement("button");
-        contactSellerButton.innerText = "Contact Seller";
-        contactSellerButton.classList.add("btn", "btn-warning");
-
-        contactSellerButton.setAttribute("id", "myForm");
+//        const contactSellerButton = createDomElement("button");
+//        contactSellerButton.innerText = "Contact Seller";
+//        contactSellerButton.classList.add("btn", "btn-warning");
+//
+//        contactSellerButton.setAttribute("id", "myForm");
         buttonTag.style["margin-right"] = "10px";
         buttonSpanTag.style["width"] = "80%";
 
@@ -130,7 +130,7 @@ const fetchData = async () => {
         divTag.appendChild(descriptionTag);
         divTag.appendChild(priceTag);
         buttonSpanTag.appendChild(buttonTag);
-        buttonSpanTag.appendChild(contactSellerButton);
+//        buttonSpanTag.appendChild(contactSellerButton);
         divTag.appendChild(buttonSpanTag);
         styleDiv(divTag);
         liTag.appendChild(divTag);
