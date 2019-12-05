@@ -24,7 +24,7 @@ def get_listings():
     search = "%{}%".format(query)
 
     if query and category:
-        result = Listing.query.filter(Listing.title.like(search) and Listing.type == category).all()
+        result = Listing.query.filter(Listing.title.like(search), Listing.type == category).all()
     elif query:
         result = Listing.query.filter(Listing.title.like(search)).all()
     elif category:
@@ -112,7 +112,7 @@ def create_item_success():
 
 @listings_blueprint.route('/categories', methods=['GET'])
 def get_categories():
-    with open("./application/server/routes/categories.txt") as file:
+    with open("./routes/categories.txt") as file:
         categories_string = file.read()
         print(categories_string)
         categories = categories_string.split(',')
