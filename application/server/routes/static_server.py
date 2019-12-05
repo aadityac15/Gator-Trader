@@ -1,3 +1,4 @@
+
 # Static Server Routes
 # Handles all serving of frontend components
 

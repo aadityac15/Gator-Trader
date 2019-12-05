@@ -1,118 +1,62 @@
-// function selectDropDown(sel) {
-//     const category = sel.options[sel.selectedIndex].text;
-//   }
+/*
+ * @Author: aadityac15
+ * @Date:   2019-11-12 02:03:04
+ * @Last Modified by:   aadityac15
+ * @Last Modified time: 2019-11-27 18:53:31
+ * @Description : Redirect the page to the result page and use local storage to make the GET request.
+ */
 
-// input.addEventListener("keyup", function(event) {
-//     // Number 13 is the "Enter" key on the keyboard
-//     if (event.keyCode === 13) {
-//       // Cancel the default action, if needed
-//       event.preventDefault();
-//       // Trigger the button element with a click
-//       document.getElementById("searchBtn").click();
-//     }
+// used in landingPage.js
 
+let categoriesArray = [];
 
 const redirectToResult = () => {
-    const selectDropDownElement = document.getElementById("selectDropDown");
-    const category =
+  localStorage.removeItem("query");
+  localStorage.removeItem("category");
+  const selectDropDownElement = document.getElementById("selectDropDown");
+  const category =
     selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
-    let query = document.getElementById("queryTag").value;
+  let query = document.getElementById("queryTag").value;
 
-    localStorage.setItem("query", query)
-    localStorage.setItem("category", category );
-    console.log(window.location.host + "/results");
-    // window.location.href = window.location.host + "/results";
-    window.location.pathname = '/results';
-    // console.log(window.location.pathname);
-}
+  // Store the query and the category in the localStorage and redirect to the /results page to display the results.
+  localStorage.setItem("query", query);
+  localStorage.setItem("category", category);
+  window.location.pathname = "/results";
+};
 
-const redirect1 = () => {
-    const selectDropDownElement = document.getElementById("selectDropDown");
-    const category =
-    selectDropDownElement.options[1].value;
-    let query = document.getElementById("queryTag").value;
+const loadDropDown = async () => {
+  // localStorage.removeItem("category");
+  const selectDropDownElement = document.getElementById("selectDropDown");
+  console.log("SDE first child " + selectDropDownElement);
+  // debugger;
+  if (selectDropDownElement.length === 0) {
+    await fetch("/categories", {
+      method: "GET"
+    })
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        const jsonData = JSON.parse(data);
+        categoryArray = jsonData["categories"];
+        categoryArray.map(category => {
+          let option = document.createElement("option");
+          option.value = category;
+          option.text = category;
+          selectDropDownElement.add(option);
+          if (document.getElementById(category)) {
+            document.getElementById(category).textContent = category;
+            document.getElementById(category).addEventListener("click", () => {
+              localStorage.setItem("category", category);
+              window.location.pathname = "/results";
+            });
+          }
+        });
+      });
+  }
+  else{
+    console.log("Already done");
+  }
+};
 
-    localStorage.setItem("query", query)
-    localStorage.setItem("category", category );
-    console.log(window.location.host + "/results");
-    window.location.pathname = '/results';
-
-}
-
-const redirect2 = () => {
-    const selectDropDownElement = document.getElementById("selectDropDown");
-    const category =
-    selectDropDownElement.options[2].value;
-    let query = document.getElementById("queryTag").value;
-
-    localStorage.setItem("query", query)
-    localStorage.setItem("category", category);
-    console.log(window.location.host + "/results");
-    window.location.pathname = '/results';
-
-}
-
-const redirect3 = () => {
-    const selectDropDownElement = document.getElementById("selectDropDown");
-    const category =
-    selectDropDownElement.options[3].value;
-    let query = document.getElementById("queryTag").value;
-
-    localStorage.setItem("query", query)
-    localStorage.setItem("category", category);
-    console.log(window.location.host + "/results");
-    window.location.pathname = '/results';
-
-}
-
-const redirect4 = () => {
-    const selectDropDownElement = document.getElementById("selectDropDown");
-    const category =
-    selectDropDownElement.options[4].value;
-    let query = document.getElementById("queryTag").value;
-
-    localStorage.setItem("query", query)
-    localStorage.setItem("category", category);
-    console.log(window.location.host + "/results");
-    window.location.pathname = '/results';
-
-}
-
-const redirect5 = () => {
-    const selectDropDownElement = document.getElementById("selectDropDown");
-    const category =
-    selectDropDownElement.options[5].value;
-    let query = document.getElementById("queryTag").value;
-
-    localStorage.setItem("query", query)
-    localStorage.setItem("category", category);
-    console.log(window.location.host + "/results");
-    window.location.pathname = '/results';
-
-}
-
-const redirect6 = () => {
-    const selectDropDownElement = document.getElementById("selectDropDown");
-    const category =
-    selectDropDownElement.options[6].value;
-    let query = document.getElementById("queryTag").value;
-
-    localStorage.setItem("query", query)
-    localStorage.setItem("category", category);
-    console.log(window.location.host + "/results");
-    window.location.pathname = '/results';
-
-}
-
-const redirect7 = () => {
-    const selectDropDownElement = document.getElementById("selectDropDown");
-    const category =
-    selectDropDownElement.options[7].value;
-    let query = document.getElementById("queryTag").value;
-
-    localStorage.setItem("query", query)
-    localStorage.setItem("category", category);
-    console.log(window.location.host + "/results");
-    window.location.pathname = '/results';
-
-}
+window.onload = loadDropDown();
