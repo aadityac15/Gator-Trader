@@ -112,6 +112,7 @@ def create_item_success():
 
 @listings_blueprint.route('/categories', methods=['GET'])
 def get_categories():
+    # Run the application from the root folder.
     with open("./application/server/routes/categories.txt") as file:
         categories_string = file.read()
         print(categories_string)
