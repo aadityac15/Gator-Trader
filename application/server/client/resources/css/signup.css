@@ -11,10 +11,10 @@
     border-radius: 3px;
 }
 
-.signup-form {
+.signup-form{
     padding: 30px 0;
-    margin: 10px auto;
-    width: 460px;
+    margin:10px auto; 
+    width:460px;
 }
 
 .signup-form h2 {
@@ -85,4 +85,8 @@
 }
 .signup-form form a:hover {
     text-decoration: underline;
+} 
+
+.signup-form .row {
+    margin-bottom: auto;
 }
