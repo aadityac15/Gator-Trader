@@ -3,37 +3,43 @@ const APPROVED_LISTINGS_URL = '/approved_listings'
 const ALL_LISTINGS_URL = '/listings'
 
 const getPendingListings = async () => {
-    let pendingListings = getListings(PENDING_LISTINGS_URL);
+    let pendingListings = await getListings(PENDING_LISTINGS_URL);
+    console.log(pendingListings);
+
     // TODO: Inject into table
 };
 
 
 const getApprovedListings = async () => {
-    let approvedListings = getListings(APPROVED_LISTINGS_URL);
+    let approvedListings = await getListings(APPROVED_LISTINGS_URL);
+    console.log(approvedListings);
+
     // TODO: Inject into table
 };
 
 
 const getAllListings = async () => {
-    let allListings = getListings(ALL_LISTINGS_URL);
+    let allListings = await getListings(ALL_LISTINGS_URL);
+    console.log(allListings);
+
     // TODO: Inject into table
 };
 
 const getListings = async (url) => {
-    await fetch(url, {
+    return fetch(url, {
         method: "GET",
         withCredentials: true
     }).then(response => {
         if (response === undefined);
         else {
-            return response.text;
+            return response.text();
         }
     }).then(data => {
         let listings = [];
 
         try {
             let listingsObject = JSON.parse(data);
-            let listings = listingsObject['listings'];
+            listings = listingsObject['listings'];
             if (listings.length == 0) {
                 // TODO: Create table row that says "No listings at the moment."
             }
@@ -50,4 +56,5 @@ const getListings = async (url) => {
 
 const createListingTableRow = (listing) => {
     // TODO: Creates listing table row to be injected into html
+    return listing;
 };
