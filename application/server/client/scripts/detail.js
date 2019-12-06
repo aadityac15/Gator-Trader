@@ -42,20 +42,5 @@ const fetchIndividualListing = async () => {
 
 window.onload = fetchIndividualListing();
 
-function dataSave() {
-    if (typeof(Storage) !== "undefined") {
-        var input = document.getElementById("id_msg");
-        sessionStorage.setItem("message", input.value);
-    } else {
-        document.getElementById("id_msg").value = "Not support web storage";
-    }
-}
-if (sessionStorage.getItem('message') !== null){
-    document.getElementById("id_msg").value = sessionStorage.getItem('message');
-    sessionStorage.removeItem('message');
-    sessionStorage.clear();
-} else{
-    document.getElementById("id_msg").value = "";
-}
 
 

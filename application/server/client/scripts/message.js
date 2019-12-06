@@ -1,40 +1,37 @@
-function openTab(evt, contentName, itemId, receiverId) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(contentName).style.display = "block";
-    evt.currentTarget.className += " active";
-
-    if (contentName == "Compose") {
-        setMsgItemReceiver(itemId, receiverId);
+function receivedMsg() {
+    var dataToShow = window.localStorage.getItem("subject");
+    if (dataToShow != null) {
+        document.getElementById("msg").innerHTML = dataToShow;
+    } else {
+        alert("no data to show ")
     }
 }
 
-function setMsgItemReceiver(itemId, receiverId) {
-    var i, itemField, receiverField;
+function dataSave() {
 
-    itemField = document.querySelector("#id_item");
-    for (i = 0; i < itemField.options.length; i++) {
-        var option = itemField.options[i];
-        option.selected = option.value == itemId ? true : false;
-    }
-
-    receiverField = document.querySelector("#id_receiver");
-    for (i = 0; i < receiverField.options.length; i++) {
-        var option = receiverField.options[i];
-        option.selected = option.value == receiverId ? true : false;
-    }
+    if (sessionStorage.getItem('userName') != null){
+        if (typeof(Storage) !== "undefined") {
+        var input = document.getElementById("subject"),
+        fileName = input.value;
+           if (fileName) {
+            window.localStorage.setItem("subject", fileName);
+            alert("Message successfully sent.")
+            }else {
+                alert("You must type a message in order to send.")
+            }
+        }else {
+            alert("browsers not supported")
+        }
+     }
+     else{
+      //show validation message
+     alert("Please Login");
+    // window.open(`users/login`, "_blank");
+     }
 }
+
+window.onload = receivedMsg();
+window.onload = function(dataSave){
+    sessionStorage.setItem('userName', userName);
+}
+
