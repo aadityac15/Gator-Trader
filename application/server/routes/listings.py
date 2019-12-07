@@ -24,7 +24,7 @@ def get_listings():
     search = "%{}%".format(query)
 
     if query and category:
-        result = Listing.query.filter(Listing.title.like(search) and Listing.type == category).all()
+        result = Listing.query.filter(Listing.title.like(search), Listing.type == category).all()
     elif query:
         result = Listing.query.filter(Listing.title.like(search)).all()
     elif category:
@@ -37,6 +37,44 @@ def get_listings():
     })
 
 
+@listings_blueprint.route('/pending_listings', methods=['GET'])
+def get_pending_listings():
+    """
+    Gets pending listings for a user
+
+    :param user_id
+    :return:
+    """
+    user_id = request.args.get('user_id')
+    if not user_id:
+        return jsonify({"error": "No user id provided"})
+
+    pending_listings = Listing.query.filter_by(created_by=user_id, approved=False)
+
+    return jsonify({
+        "listings": [listing.serialize for listing in pending_listings]
+    })
+
+
+@listings_blueprint.route('/approved_listings', methods=['GET'])
+def get_approved_listings():
+    """
+    Gets pending listings for a user
+
+    :param user_id
+    :return:
+    """
+    user_id = request.args.get('user_id')
+    if not user_id:
+        return jsonify({"error": "No user id provided"})
+
+    approved_listings = Listing.query.filter_by(created_by=user_id, approved=True)
+
+    return jsonify({
+        "listings": [listing.serialize for listing in approved_listings]
+    })
+
+  
 @listings_blueprint.route('/listings', methods=['POST'])
 def post_listing():
     if request.method == 'POST':
@@ -74,8 +112,7 @@ def create_item_success():
 
 @listings_blueprint.route('/categories', methods=['GET'])
 def get_categories():
-    # Run the application from the root folder.
-    with open("./application/server/routes/categories.txt") as file:
+    with open("./routes/categories.txt") as file:
         categories_string = file.read()
         print(categories_string)
         categories = categories_string.split(',')

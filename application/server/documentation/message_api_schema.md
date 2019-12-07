@@ -1,6 +1,6 @@
 `TODO:` Wondering how we're going to handle "me" type requests. My listings. My messages. 
 My profile. Etc. For now I'll just send `user_id`.
-#### [GET] /messages
+#### [GET] /my_messages
 Query string param: `user_id: int`<br>
 Response: 
 ```
@@ -43,10 +43,7 @@ Body request params:
         "sent_from": int,
         "sent_by": int,
         "message_body": str,
-        "sender_email": str [OPTIONAL],
-        "sender_phone_number": str [OPTIONAL],
-        "type": str,
-        "timestamp": datetime
+        "from_admin": boolean,
     }
 }
 ```

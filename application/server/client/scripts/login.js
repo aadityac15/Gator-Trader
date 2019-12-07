@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if(login_username.value == storeName && login_password.value == storePassword){
 
                     //do sessionStorage to keep user sigin
-                    //redirect to page
+                    //redirect to landing_page
                         sessionStorage.setItem('userName',storeName)
                         window.location.replace('http://localhost:5000/users/landing_page')
                         // document.querySelector("#nav-login").innerHTML = 'Logout'
