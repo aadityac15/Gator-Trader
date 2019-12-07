@@ -26,5 +26,7 @@ class Listing(db.Model):
              "thumbnail": self.thumbnail,
              "created_on": self.created_on,
              "last_edited_on": self.last_edited_on,
-             "created_by": self.created_by
+             "created_by": self.created_by,
+             "approved": self.approved,
+             "approved_by": self.approved_by,
         }
