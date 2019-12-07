@@ -1,11 +1,3 @@
-/*
- * @Author: aadityac15
- * @Date:   2019-11-07 19:20:20
- * @Last Modified by:   aadityac15
- * @Last Modified time: 2019-11-27 18:59:04
- * @Description: Search the database according to the query, and display results.
- */
-
 const fetchData = async () => {
   let category = localStorage.getItem("category");
 
