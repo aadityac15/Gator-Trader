@@ -69,7 +69,8 @@
                 <!-- Click Cancel button will go back last page -->
                 <button onClick="javascript:history.go(-1)" class="btn btn-secondary btn-lg mb-5" type="cancel">Cancel</button>
 
-                <button id="submitButton" class="float-right btn btn-primary btn-lg mb-5" type="submit" style="background: #400449">Submit</button>
+
+                <button id="submitButton" onclick="uploadImage();" class="float-right btn btn-primary btn-lg mb-4" type="submit" style="background: #400449">Submit</button>
 
             </form>
 
@@ -77,6 +78,7 @@
     </div>
 
 </div>
+<script src="../../scripts/uploadImage.js" type="text/javascript" charset="utf-8" async defer></script>
 
 
 {% endblock %}

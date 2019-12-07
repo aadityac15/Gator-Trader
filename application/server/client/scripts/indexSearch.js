@@ -3,10 +3,17 @@
  * @Date:   2019-11-12 02:03:04
  * @Last Modified by:   aadityac15
  * @Last Modified time: 2019-11-27 18:53:31
- * @Description : Redirect the page to the result page and use local storage to make the GET request.
+ * @Description : Redirect the page to the result page and use locdocument.getElementById("queryTag").addEventListener("keyup", (event) => {})al storage to make the GET request.
  */
 
 // used in landingPage.js
+
+document.getElementById("queryTag").addEventListener("keyup", event => {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("searchBtn").click();
+  }
+});
 
 let categoriesArray = [];
 
@@ -37,6 +44,7 @@ const loadDropDown = async () => {
         return response.text();
       })
       .then(data => {
+        console.log(data);
         const jsonData = JSON.parse(data);
         categoryArray = jsonData["categories"];
         categoryArray.map(category => {
@@ -53,8 +61,7 @@ const loadDropDown = async () => {
           }
         });
       });
-  }
-  else{
+  } else {
     console.log("Already done");
   }
 };
