@@ -8,7 +8,7 @@
 
 const fetchData = async () => {
   let category = localStorage.getItem("category");
-  
+
   if (localStorage.getItem("category") !== null) {
     document.getElementById("selectDropDown").value = category;
   } else {
