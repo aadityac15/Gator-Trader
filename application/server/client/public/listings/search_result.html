@@ -6,7 +6,7 @@
     }
 </script>
 <div class="margin-top">
-    Search Results for the
+    <k id="displayCount"> </k> of <k id="resultCount"></k> Results for the
     <b>
     <script>
        if(localStorage.getItem("category") !== null) {
@@ -27,6 +27,7 @@
             docWrite(string);
         }
     </script>
+    <br />
     <ul id="resultList"></ul>
 </div>
 <script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>

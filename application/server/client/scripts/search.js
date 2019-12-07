@@ -8,7 +8,7 @@
 
 const fetchData = async () => {
   let category = localStorage.getItem("category");
-  
+
   if (localStorage.getItem("category") !== null) {
     document.getElementById("selectDropDown").value = category;
   } else {
@@ -62,8 +62,10 @@ const fetchData = async () => {
         ulResult.appendChild(textNode);
       }
 
+      let dataLength = dummyData.length;
+      document.getElementById("displayCount").textContent = dataLength;
+      document.getElementById("resultCount").textContent = dataLength;
       //As the data would be an object
-
       dummyData.map(indList => {
         //  Creation of the elements.
         const titleBTag = createDomElement("b"); // Bold Tag
