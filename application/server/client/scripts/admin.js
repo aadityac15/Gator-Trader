@@ -1,7 +1,8 @@
-const PENDING_LISTINGS_URL = '/pending_listings'
-const APPROVED_LISTINGS_URL = '/approved_listings'
-const DENIED_LISTINGS_URL = '/denied_listings'
-const ALL_LISTINGS_URL = '/listings'
+const PENDING_LISTINGS_URL = '/pending_listings';
+const APPROVED_LISTINGS_URL = '/approved_listings';
+const DENIED_LISTINGS_URL = '/denied_listings';
+const ALL_LISTINGS_URL = '/listings';
+const EDIT_LISTING_APPROVAL_URL = '/edit_listing_approval';
 
 const getPendingListings = async () => {
     let pendingListings = await getListings(PENDING_LISTINGS_URL);
@@ -82,7 +83,18 @@ const getListings = async (url) => {
 
         return listings;
     });
-}
+};
+
+let editListingApprovalStatus = (listing_id, approval_status) => {
+    let response = fetch(EDIT_LISTING_APPROVAL_URL, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ listing_id, approval_status, }),
+        credentials: 'same-origin'
+    }).then(res => {console.log(res)});
+};
 
 
 let createListingTableRow = (listing) => {
@@ -109,6 +121,10 @@ let createListingTableRow = (listing) => {
         approveButton.id = "approveButton";
         approveButton.className = "approveButton remove";
         approveButton.innerText = "Approve";
+        approveButton.onclick = () => {
+            editListingApprovalStatus(listing.listing_id, true)
+        };
+
         listingApprovalData.appendChild(approveButton);
     }
 
@@ -117,6 +133,10 @@ let createListingTableRow = (listing) => {
         denyButton.id = "deleteButton";
         denyButton.className = "denyButton remove";
         denyButton.innerText = "Deny";
+        denyButton.onclick = () => {
+            editListingApprovalStatus(listing.listing_id, false)
+        };
+
         listingApprovalData.appendChild(denyButton);
     }
 
