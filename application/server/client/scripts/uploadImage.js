@@ -20,14 +20,14 @@ const populateFormWithListing = () => {
 };
 
 const uploadImage = () => {
-    // TODO: GET user_id as well
     populateFormWithListing();
     console.log(uploadedPicture);
     formData.append("file", uploadedPicture, "filename");
 	formData.append("title", itemName);
 	formData.append("price", itemPrice);
 	formData.append("description", itemDescription);
-	formData.append("category", itemCategory);
+	formData.append("type", itemCategory);
+	formData.append("created_by", sessionStorage.getItem("user_id"));
 
 	fetch("/create_listing", {
 		method : "POST",
@@ -36,5 +36,7 @@ const uploadImage = () => {
 	}).then(res => {
 	    console.log("INSIDE THEN");
 		console.log(res);
+
+		location.replace('http://localhost:5000/listings/createSell_item_success')
 	})
 };

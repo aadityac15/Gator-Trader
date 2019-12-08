@@ -43,7 +43,7 @@ def post_listing():
     :param created_by, id of user who created listing
     :return: JSON of listing_id and created_on datetime
     """
-    title = request.form.get('item_name')
+    title = request.form.get('title')
     description = request.form.get('description')
     type = request.form.get('type')
     price = request.form.get('price')
@@ -60,14 +60,14 @@ def post_listing():
                           last_edited_on=last_edited_on,
                           created_by=created_by)
 
+    db.session.add(new_listing)
+    db.session.commit()
+
     dirname = os.path.dirname(__file__)
     filename = os.path.join(dirname, '../images/{}.png'.format(new_listing.listing_id))
     thumbnail.save(filename)
 
     new_listing.thumbnail = filename
-
-    db.session.add(new_listing)
-    db.session.commit()
 
     return jsonify({
         'listing_id': new_listing.listing_id,

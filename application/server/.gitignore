@@ -3,3 +3,4 @@ windows_venv
 *.pyc
 __pycache__/
 databaseconfig.py
+images/*.png
