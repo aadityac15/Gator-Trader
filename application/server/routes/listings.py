@@ -124,7 +124,6 @@ def create_item_success():
 def get_categories():
     with open("./routes/categories.txt") as file:
         categories_string = file.read()
-        print(categories_string)
         categories = categories_string.split(',')
         return jsonify({
             'categories': categories
