@@ -2,9 +2,10 @@
 # Holds functionality for all get, post and edit individual listings
 
 from flask import Blueprint, request, jsonify
+import os, datetime
+
 from model.listing import Listing
 from model import db
-import datetime
 
 listing_blueprint = Blueprint('listing',
                               __name__,
@@ -29,7 +30,7 @@ def get_listing():
     })
 
 
-@listing_blueprint.route('/listing', methods=['POST'])
+@listing_blueprint.route('/create_listing', methods=['POST'])
 def post_listing():
     """
     Creates listing
@@ -46,7 +47,7 @@ def post_listing():
     description = request.form.get('description')
     type = request.form.get('type')
     price = request.form.get('price')
-    thumbnail = request.form.get('thumbnail')
+    thumbnail = request.files['file']
     created_on = datetime.datetime.now()
     last_edited_on = created_on
     created_by = request.form.get('created_by')
@@ -55,13 +56,18 @@ def post_listing():
                           description=description,
                           type=type,
                           price=price,
-                          thumbnail=thumbnail,
                           created_on=created_on,
                           last_edited_on=last_edited_on,
                           created_by=created_by)
 
     db.session.add(new_listing)
     db.session.commit()
+
+    dirname = os.path.dirname(__file__)
+    filename = os.path.join(dirname, '../images/{}.png'.format(new_listing.listing_id))
+    thumbnail.save(filename)
+
+    new_listing.thumbnail = filename
 
     return jsonify({
         'listing_id': new_listing.listing_id,

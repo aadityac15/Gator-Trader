@@ -7,27 +7,36 @@
 const formData = new FormData();
 const uploadTag = document.getElementById("image_upload");
 let uploadedPicture = undefined;
-console.log("The upload tag is ", uploadTag);
+let itemName, itemPrice, itemDescription, itemCategory;
+
 uploadTag.addEventListener("change",() => getImage());
 
-const getImage = () => {
-	console.log("In upload Image");
-	 uploadedPicture = uploadTag.files[0];
-
-	console.log(uploadedPicture);
-	// Dummy image endpoint
-	
+const populateFormWithListing = () => {
+	itemName = document.getElementById('itemName').value;
+	itemPrice = document.getElementById('itemPrice').value;
+	itemDescription = document.getElementById('itemDescription').value;
+	itemCategory = document.getElementById('itemDescription').value;
+	uploadedPicture = uploadTag.files[0];
 };
 
-const uploadImage = () => {	
-	console.log(uploadedPicture);
-	formData.append("file", uploadedPicture, "filename") // Temporary set to strign filename. Change as required.
-	fetch("/upload_image", {
+const uploadImage = () => {
+    populateFormWithListing();
+    console.log(uploadedPicture);
+    formData.append("file", uploadedPicture, "filename");
+	formData.append("title", itemName);
+	formData.append("price", itemPrice);
+	formData.append("description", itemDescription);
+	formData.append("type", itemCategory);
+	formData.append("created_by", sessionStorage.getItem("user_id"));
+
+	fetch("/create_listing", {
 		method : "POST",
 		body : formData,
 	    credentials: 'same-origin',
-
 	}).then(res => {
+	    console.log("INSIDE THEN");
 		console.log(res);
+
+		location.replace('http://localhost:5000/listings/createSell_item_success')
 	})
-}
+};
