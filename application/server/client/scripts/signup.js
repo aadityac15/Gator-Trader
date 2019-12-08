@@ -11,14 +11,17 @@ const registerUser = async () => {
     let password = document.querySelector("#password").value
     let confirmPassword = document.querySelector("#confirmPassword").value
     let checkbox = document.querySelector(".checkbox:checked")
+    let email = document.querySelector("#email").value
 
     if(password !== confirmPassword){
-        alert('Passwords did not match')
-    }else if (password == "") {
-        alert('Must type in Password')
-    }else if (checkbox === null) {
-        alert('Please accept the Terms & Privacy')
-    }else{
+        alert('Passwords did not match');
+    } else if (password == "") {
+        alert('Must type in Password');
+    } else if (checkbox === null) {
+        alert('Please accept the Terms & Privacy');
+    } else if (!email.includes("@mail.sfsu.edu")) {
+        alert('You must use an SFSU email');
+    } else {
         let firstName  =  document.querySelector("#first_name").value;
         let lastName = document.querySelector("#last_name").value;
         let userName = document.querySelector("#username").value;
@@ -28,7 +31,7 @@ const registerUser = async () => {
         let confirmPassword = document.querySelector("#confirmPassword").value;
 
         // TODO: Make POST request to /create
-        let userInfo = await createUser(firstName, lastName, userName, major, password, confirmPassword);
+        let userInfo = await createUser(firstName, lastName, userName, major, email, password);
         sessionStorage.setItem("user_id", userInfo.user_id);
         sessionStorage.setItem("token", userInfo.token);
         sessionStorage.setItem("is_admin", userInfo.is_admin);
@@ -48,7 +51,7 @@ const registerUser = async () => {
     }
 };
 
-let createUser = (first_name, last_name, username, major, email, password, confirmPassword) => {
+let createUser = (first_name, last_name, username, major, email, password) => {
     let createUserRequestParams = {
         email,
         username,

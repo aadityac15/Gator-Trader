@@ -58,7 +58,7 @@ submit_reset_password.addEventListener("click", function () {
      if (login_username.value.length != 0 && login_password.value.length != 0) {
          let userInfo = await postLogin(login_username.value, login_password.value);
          if (userInfo.Error) {
-             // TODO: Notify user
+             alert('The username and password are not in the system.');
              return;
          }
 
