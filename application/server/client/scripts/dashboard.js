@@ -1,36 +1,65 @@
 const PENDING_LISTINGS_URL = '/pending_listings?user_id=';
 const APPROVED_LISTINGS_URL = '/approved_listings?user_id=';
+const MESSAGES_URL = '/my_messages?user_id=';
 
 const getPendingListings = async () => {
-    console.log("GET PENDING LISTINGS FOR USER");
     let pendingListings = await getListings(PENDING_LISTINGS_URL + sessionStorage.getItem('user_id'));
-    console.log(pendingListings);
 
     const listingTableBody = document.getElementById("remove_row")
         .getElementsByTagName('tbody')[0];
-    console.log(listingTableBody);
 
-    console.log(pendingListings);
     pendingListings.forEach(listing => listingTableBody.append(listing));
 };
 
 
 const getApprovedListings = async () => {
-    console.log("GET APPROVED LISTINGS FOR USER");
     let approvedListings = await getListings(APPROVED_LISTINGS_URL + sessionStorage.getItem('user_id'));
-    console.log(approvedListings);
 
     const listingTableBody = document.getElementById("remove_row")
         .getElementsByTagName('tbody')[0];
-    console.log(listingTableBody);
 
-    console.log(approvedListings);
     approvedListings.forEach(listing => listingTableBody.append(listing));
 };
 
+const getMessages = async() => {
+    console.log("GET MESSAGES FOR USER");
+    let messages = await fetch(MESSAGES_URL + sessionStorage.getItem('user_id'), {
+        method: "GET",
+        withCredentials: true
+    }).then(response => {
+        if (response === undefined);
+        else {
+            return response.text();
+        }
+    }).then(data => {
+        let messages = [];
+
+        try {
+            let messagesObject = JSON.parse(data);
+            messages = messagesObject['messages'];
+            if (messages.length == 0) {
+                // TODO: Create table row that says "No messages at the moment."
+            }
+
+            messages = messages.map((listing) => createMessagesTableRow(listing));
+
+            return messages;
+        } catch (e) {
+            // TODO: Create table row with "No messages at the moment"
+            console.log(e);
+        }
+
+        return messages;
+    });
+
+    const messageTableBody = document.getElementById("message-table")
+        .getElementsByTagName('tbody')[0];
+
+    messages.forEach(message => messageTableBody.append(message));
+}
+
 
 const getListings = async (url) => {
-    console.log("Fetching: " + url);
     return fetch(url, {
         method: "GET",
         withCredentials: true
@@ -62,7 +91,6 @@ const getListings = async (url) => {
 };
 
 let createListingTableRow = (listing) => {
-    console.log(listing);
     let tableRow = createDomElement("tr");
     let listingImageData = createDomElement("td");
     let listingTitleData = createDomElement("td");
@@ -82,7 +110,25 @@ let createListingTableRow = (listing) => {
     tableRow.appendChild(listingTitleData);
     tableRow.appendChild(listingDateData);
 
-    console.log(tableRow);
+    return tableRow;
+};
+
+let createMessagesTableRow = (message) => {
+    let tableRow = createDomElement("tr");
+    let messageItemData = createDomElement("td");
+    let messageMessageData = createDomElement("td");
+    let messageSenderData = createDomElement("td");
+    let messageDateData = createDomElement("td");
+
+    messageItemData.innerText = message.listing_name;
+    messageMessageData.innerText = message.message_body;
+    messageSenderData.innerText = message.sender_username;
+    messageDateData.innerText = message.timestamp;
+
+    tableRow.appendChild(messageItemData);
+    tableRow.appendChild(messageMessageData);
+    tableRow.appendChild(messageSenderData);
+    tableRow.appendChild(messageDateData);
 
     return tableRow;
 };

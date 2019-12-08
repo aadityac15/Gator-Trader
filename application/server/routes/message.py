@@ -1,8 +1,9 @@
 from flask import Blueprint, request, jsonify
 import datetime
-import distutils
 
 from model.message import Message
+from model.listing import Listing
+from model.user import User
 from model import db
 
 
@@ -23,8 +24,10 @@ def get_my_messages():
     user_id = request.args.get('user_id')
 
     messages = Message.query.filter_by(sent_to=user_id)
+    messages = map(_reformat_message, messages)
+
     return jsonify({
-        'messages': [message.serialize for message in messages]
+        'messages': list(messages)
     })
 
 
@@ -39,10 +42,11 @@ def send_message():
     :param from_admin
     :return:
     """
-    sent_by = request.form.get('sent_by')
-    sent_to = request.form.get('sent_to')
-    message_body = request.form.get('message_body')
-    from_admin = True if request.form.get('from_admin') == 'True' else False
+    sent_by = request.json.get('sent_by')
+    sent_to = request.json.get('sent_to')
+    message_body = request.json.get('message_body')
+    from_admin = True if request.json.get('from_admin') == 'True' else False
+    listing_id = request.json.get('listing_id')
 
     new_message = Message(
         sent_by=sent_by,
@@ -50,6 +54,7 @@ def send_message():
         message_body=message_body,
         from_admin=from_admin,
         timestamp=datetime.datetime.now(),
+        listing_id=listing_id
     )
 
     db.session.add(new_message)
@@ -78,6 +83,20 @@ def get_message():
         })
 
     return jsonify({
-        'message': message.serialize
+        'message': _reformat_message(message)
     })
 
+
+def _reformat_message(message):
+    if message:
+        sender_username = User.query.get(message.sent_by).username
+        listing_name = Listing.query.get(message.listing_id).title
+
+        return {
+            "listing_name": listing_name,
+            "message_body": message.message_body,
+            "sender_username": sender_username,
+            "timestamp": message.timestamp
+        }
+
+    return message
