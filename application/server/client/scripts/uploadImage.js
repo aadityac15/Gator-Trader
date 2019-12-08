@@ -1,15 +1,13 @@
 /*
  * @Author: aadityac15
  * @Date:   2019-12-05 21:21:43
- * @Last Modified by:   aadityac15
- * @Last Modified time: 2019-12-06 11:28:47
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2019-12-08 13:36:30
  */
 const formData = new FormData();
 const uploadTag = document.getElementById("image_upload");
 let uploadedPicture = undefined;
 let itemName, itemPrice, itemDescription, itemCategory;
-
-uploadTag.addEventListener("change",() => getImage());
 
 const populateFormWithListing = () => {
 	itemName = document.getElementById('itemName').value;
