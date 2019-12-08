@@ -44,7 +44,6 @@ const loadDropDown = async () => {
         return response.text();
       })
       .then(data => {
-        console.log(data);
         const jsonData = JSON.parse(data);
         categoryArray = jsonData["categories"];
         categoryArray.map(category => {

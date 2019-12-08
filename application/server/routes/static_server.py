@@ -3,6 +3,7 @@
 # Handles all serving of frontend components
 
 from flask import Blueprint, render_template, request
+import os
 
 static_blueprint = Blueprint('static_server',
                              __name__,
@@ -58,10 +59,14 @@ def upload_image():
     :param name:
     :return:
     """
-    # print(request)
     if request.files['file'] is not None:
         print('typ of profile_picture', type(request.files['file']))
         print(request.files['file'])
+        file = request.files['file']
+        name = request.form.get('title')
+        dirname = os.path.dirname(__file__)
+        filename = os.path.join(dirname, '../images/{}.png'.format(name))
+        file.save(filename)
     return "In the post"
     # return render_template('/message/{}.html'.format(name))
 
