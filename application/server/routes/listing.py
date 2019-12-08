@@ -107,3 +107,28 @@ def put_listing():
         'last_edited_on': listing.last_edited_on
     })
 
+
+@listing_blueprint.route('/edit_listing_approval', methods=['PUT'])
+def edit_listing_approval():
+    """
+    Approves or Denies a listing
+
+    :param listing_id
+    :param approval_status
+    :return:
+    """
+    listing_id = request.json.get('listing_id')
+    approved = request.json.get('approval_status')
+
+    listing = Listing.query.get(listing_id)
+    listing.approved =  approved;
+
+    listing.last_edited_on = datetime.datetime.now()
+
+    db.session.commit()
+
+    return jsonify({
+        'listing_id': listing_id,
+        'last_edited_on': listing.last_edited_on,
+        'approved': listing.approved
+    })
