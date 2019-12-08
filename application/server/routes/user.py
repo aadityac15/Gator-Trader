@@ -37,10 +37,9 @@ def login():
     :param username
     :param password
     :return: JSON of success
-    TODO: Return token and user_id
     """
-    username = request.form.get('username')
-    password = request.form.get('password')
+    username = request.json.get('username')
+    password = request.json.get('password')
 
     user = User.query.filter_by(username=username).first()
     if check_password_hash(user.password, password):
@@ -49,6 +48,7 @@ def login():
             'token': user.token,
             'is_admin': user.is_admin
         })
+
     abort(403, 'Username and password do not match.')
 
 
@@ -65,12 +65,12 @@ def create():
     :param major OPTIONAL
     :return: JSON of success
     """
-    email = request.form.get('email')
-    username = request.form.get('username')
-    password = request.form.get('password')
-    first_name = request.form.get('first_name')
-    last_name = request.form.get('last_name')
-    major = request.form.get('major') if 'major' in request.form else None
+    email = request.json.get('email')
+    username = request.json.get('username')
+    password = request.json.get('password')
+    first_name = request.json.get('first_name')
+    last_name = request.json.get('last_name')
+    major = request.json.get('major') if 'major' in request.json else None
 
     new_user = User(
         email=email,
