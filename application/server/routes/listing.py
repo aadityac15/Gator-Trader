@@ -2,14 +2,17 @@
 # Holds functionality for all get, post and edit individual listings
 
 from flask import Blueprint, request, jsonify
+import os, datetime
+
 from model.listing import Listing
 from model import db
-import datetime
 
 listing_blueprint = Blueprint('listing',
                               __name__,
                               static_folder ='../client',
                               template_folder='../client/public/listing')
+
+RELATIVE_IMAGES_PATH = 'client/public/images/{}.png'
 
 
 @listing_blueprint.route('/listing', methods=['GET'])
@@ -29,7 +32,7 @@ def get_listing():
     })
 
 
-@listing_blueprint.route('/listing', methods=['POST'])
+@listing_blueprint.route('/create_listing', methods=['POST'])
 def post_listing():
     """
     Creates listing
@@ -46,7 +49,7 @@ def post_listing():
     description = request.form.get('description')
     type = request.form.get('type')
     price = request.form.get('price')
-    thumbnail = request.form.get('thumbnail')
+    thumbnail = request.files['file']
     created_on = datetime.datetime.now()
     last_edited_on = created_on
     created_by = request.form.get('created_by')
@@ -55,12 +58,19 @@ def post_listing():
                           description=description,
                           type=type,
                           price=price,
-                          thumbnail=thumbnail,
                           created_on=created_on,
                           last_edited_on=last_edited_on,
                           created_by=created_by)
 
     db.session.add(new_listing)
+    db.session.commit()
+
+    dirname = os.path.dirname(__file__)
+    filename = os.path.join(dirname, '../{}'.format(RELATIVE_IMAGES_PATH.format(new_listing.listing_id)))
+    thumbnail.save(filename)
+
+    new_listing.thumbnail = RELATIVE_IMAGES_PATH.format(new_listing.listing_id)
+
     db.session.commit()
 
     return jsonify({
@@ -107,3 +117,28 @@ def put_listing():
         'last_edited_on': listing.last_edited_on
     })
 
+
+@listing_blueprint.route('/edit_listing_approval', methods=['PUT'])
+def edit_listing_approval():
+    """
+    Approves or Denies a listing
+
+    :param listing_id
+    :param approval_status
+    :return:
+    """
+    listing_id = request.json.get('listing_id')
+    approved = request.json.get('approval_status')
+
+    listing = Listing.query.get(listing_id)
+    listing.approved = approved;
+
+    listing.last_edited_on = datetime.datetime.now()
+
+    db.session.commit()
+
+    return jsonify({
+        'listing_id': listing_id,
+        'last_edited_on': listing.last_edited_on,
+        'approved': listing.approved
+    })

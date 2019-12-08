@@ -15,7 +15,7 @@ def get_mylistings():
     """
     Gets listings by user_id
 
-    :param user_id
+    :param user_id 
     :return: JSON Serialized listing objects
     """
     user_id = request.args.get('user_id')

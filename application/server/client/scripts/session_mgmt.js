@@ -4,15 +4,16 @@ document.addEventListener("DOMContentLoaded", function() {
       if the user didn't login then switch the exit to log in 
       if local storage == session storage
      */
-    if(sessionStorage.getItem('userName')){
+    if(sessionStorage.getItem('user_id')){
         document.querySelector('#nav-login').innerHTML = 'Logout'
         document.querySelector('#dashboard').style.display = 'block'
+        document.querySelector('#register-button').style.display = 'none'
         document.querySelector('#sell').style.display = 'block'
 
         document.querySelector('#nav-login').onclick = function(e){
             e.preventDefault()
-            sessionStorage.removeItem('userName')
-            location.replace('http://localhost:5000/users/landing_page')
+            sessionStorage.clear();
+            location.replace('../users/landing_page')
         }
     }
 

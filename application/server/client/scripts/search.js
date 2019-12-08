@@ -1,14 +1,6 @@
-/*
- * @Author: aadityac15
- * @Date:   2019-11-07 19:20:20
- * @Last Modified by:   aadityac15
- * @Last Modified time: 2019-11-27 18:59:04
- * @Description: Search the database according to the query, and display results.
- */
-
 const fetchData = async () => {
   let category = localStorage.getItem("category");
-  
+
   if (localStorage.getItem("category") !== null) {
     document.getElementById("selectDropDown").value = category;
   } else {
@@ -62,8 +54,10 @@ const fetchData = async () => {
         ulResult.appendChild(textNode);
       }
 
+      let dataLength = dummyData.length;
+      document.getElementById("displayCount").textContent = dataLength;
+      document.getElementById("resultCount").textContent = dataLength;
       //As the data would be an object
-
       dummyData.map(indList => {
         //  Creation of the elements.
         const titleBTag = createDomElement("b"); // Bold Tag
@@ -103,6 +97,8 @@ const fetchData = async () => {
         // Add Image / Thumbnails src if present, else show placeholder image.
         if (indList["thumbnail"] !== null) {
           imgTag.src = indList["thumbnail"];
+          imgTag.width = 150;
+          imgTag.height = 150;
         } else {
           imgTag.src = "https://via.placeholder.com/150";
         }

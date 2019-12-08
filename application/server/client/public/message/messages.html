@@ -8,14 +8,14 @@
 <div id="Inbox" class="tabcontent table-responsive">
     <p><h3>Messages Received</h3></p>
     <!-- if received_msg  -->
-    <table class="table table-hover">
+    <table class="table table-hover" id="message-table">
         <thead>
-        <tr>
-            <th scope="col">Item</th>
-            <th scope="col">Message</th>
-            <th scope="col">Sender</th>
-            <th scope="col">Date</th>
-        </tr>
+            <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Message</th>
+                <th scope="col">Sender</th>
+                <th scope="col">Date</th>
+            </tr>
         </thead>
         <tbody>
         <!-- for message in received_msg -->
@@ -39,4 +39,7 @@
     </table>
     <p>No received messages.(Example if there is none)</p>
 </div>
+<script>
+    getMessages();
+</script>
 {% endblock %}

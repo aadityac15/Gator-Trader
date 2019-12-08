@@ -2,8 +2,12 @@
 # Holds endpoints for GET listings functionality
 
 from flask import Blueprint, request, jsonify, send_from_directory, render_template
-from model.listing import Listing
+import datetime
 # import os
+
+from model.listing import Listing
+from model import db
+
 listings_blueprint = Blueprint('listings',
                                __name__,
                                static_folder='../client',
@@ -46,10 +50,12 @@ def get_pending_listings():
     :return:
     """
     user_id = request.args.get('user_id')
-    if not user_id:
-        return jsonify({"error": "No user id provided"})
+    pending_listings = []
 
-    pending_listings = Listing.query.filter_by(created_by=user_id, approved=False)
+    if user_id:
+        pending_listings = Listing.query.filter_by(approved=None, created_by=user_id)
+    else:
+        pending_listings = Listing.query.filter_by(approved=None)
 
     return jsonify({
         "listings": [listing.serialize for listing in pending_listings]
@@ -65,16 +71,32 @@ def get_approved_listings():
     :return:
     """
     user_id = request.args.get('user_id')
-    if not user_id:
-        return jsonify({"error": "No user id provided"})
+    approved_listings = []
 
-    approved_listings = Listing.query.filter_by(created_by=user_id, approved=True)
+    if user_id:
+        approved_listings = Listing.query.filter_by(approved=True, created_by=user_id)
+    else:
+        approved_listings = Listing.query.filter_by(approved=True)
 
     return jsonify({
         "listings": [listing.serialize for listing in approved_listings]
     })
 
-  
+@listings_blueprint.route('/denied_listings', methods=['GET'])
+def get_denied_listings():
+    """
+    Gets pending listings for a user
+
+    :param user_id
+    :return:
+    """
+    denied_listings = Listing.query.filter_by(approved=False)
+
+    return jsonify({
+        "listings": [listing.serialize for listing in denied_listings]
+    })
+
+
 @listings_blueprint.route('/listings', methods=['POST'])
 def post_listing():
     if request.method == 'POST':
@@ -114,7 +136,6 @@ def create_item_success():
 def get_categories():
     with open("./routes/categories.txt") as file:
         categories_string = file.read()
-        print(categories_string)
         categories = categories_string.split(',')
         return jsonify({
             'categories': categories
