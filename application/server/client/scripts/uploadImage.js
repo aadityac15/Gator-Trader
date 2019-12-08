@@ -34,9 +34,8 @@ const uploadImage = () => {
 		body : formData,
 	    credentials: 'same-origin',
 	}).then(res => {
-	    console.log("INSIDE THEN");
 		console.log(res);
 
-		location.replace('http://localhost:5000/listings/createSell_item_success')
+		location.replace('../listings/createSell_item_success')
 	})
 };

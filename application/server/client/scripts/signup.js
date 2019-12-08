@@ -42,7 +42,7 @@ const registerUser = async () => {
         localStorage.setItem('password', password)
         localStorage.setItem('confirmPassword',confirmPassword)
 
-        location.replace('http://localhost:5000/users/landing_page')
+        location.replace('../users/landing_page')
         // after signup, automatically login
         sessionStorage.setItem('userName', userName)
     }

@@ -97,6 +97,8 @@ const fetchData = async () => {
         // Add Image / Thumbnails src if present, else show placeholder image.
         if (indList["thumbnail"] !== null) {
           imgTag.src = indList["thumbnail"];
+          imgTag.width = 150;
+          imgTag.height = 150;
         } else {
           imgTag.src = "https://via.placeholder.com/150";
         }
