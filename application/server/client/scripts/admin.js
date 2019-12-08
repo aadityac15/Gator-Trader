@@ -130,7 +130,7 @@ let createListingTableRow = (listing) => {
 
     if (listing.approved == true || listing.approved == null) {
         let denyButton = createDomElement("button");
-        denyButton.id = "deleteButton";
+        denyButton.id = "denyButton";
         denyButton.className = "denyButton remove";
         denyButton.innerText = "Deny";
         denyButton.onclick = () => {
