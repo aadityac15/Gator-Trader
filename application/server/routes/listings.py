@@ -49,7 +49,13 @@ def get_pending_listings():
     :param user_id
     :return:
     """
-    pending_listings = Listing.query.filter_by(approved=None)
+    user_id = request.args.get('user_id')
+    pending_listings = []
+
+    if user_id:
+        pending_listings = Listing.query.filter_by(approved=None, created_by=user_id)
+    else:
+        pending_listings = Listing.query.filter_by(approved=None)
 
     return jsonify({
         "listings": [listing.serialize for listing in pending_listings]
@@ -64,7 +70,13 @@ def get_approved_listings():
     :param user_id
     :return:
     """
-    approved_listings = Listing.query.filter_by(approved=True)
+    user_id = request.args.get('user_id')
+    approved_listings = []
+
+    if user_id:
+        approved_listings = Listing.query.filter_by(approved=True, created_by=user_id)
+    else:
+        approved_listings = Listing.query.filter_by(approved=True)
 
     return jsonify({
         "listings": [listing.serialize for listing in approved_listings]
