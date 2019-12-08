@@ -12,6 +12,8 @@ listing_blueprint = Blueprint('listing',
                               static_folder ='../client',
                               template_folder='../client/public/listing')
 
+RELATIVE_IMAGES_PATH = 'client/public/images/{}.png'
+
 
 @listing_blueprint.route('/listing', methods=['GET'])
 def get_listing():
@@ -64,10 +66,12 @@ def post_listing():
     db.session.commit()
 
     dirname = os.path.dirname(__file__)
-    filename = os.path.join(dirname, '../images/{}.png'.format(new_listing.listing_id))
+    filename = os.path.join(dirname, '../{}'.format(RELATIVE_IMAGES_PATH.format(new_listing.listing_id)))
     thumbnail.save(filename)
 
-    new_listing.thumbnail = filename
+    new_listing.thumbnail = RELATIVE_IMAGES_PATH.format(new_listing.listing_id)
+
+    db.session.commit()
 
     return jsonify({
         'listing_id': new_listing.listing_id,
@@ -127,7 +131,7 @@ def edit_listing_approval():
     approved = request.json.get('approval_status')
 
     listing = Listing.query.get(listing_id)
-    listing.approved =  approved;
+    listing.approved = approved;
 
     listing.last_edited_on = datetime.datetime.now()
 

@@ -7,12 +7,13 @@ document.addEventListener("DOMContentLoaded", function() {
     if(sessionStorage.getItem('user_id')){
         document.querySelector('#nav-login').innerHTML = 'Logout'
         document.querySelector('#dashboard').style.display = 'block'
+        document.querySelector('#register-button').style.display = 'none'
         document.querySelector('#sell').style.display = 'block'
 
         document.querySelector('#nav-login').onclick = function(e){
             e.preventDefault()
             sessionStorage.clear();
-            location.replace('http://localhost:5000/users/landing_page')
+            location.replace('../users/landing_page')
         }
     }
 

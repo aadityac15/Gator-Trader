@@ -57,11 +57,16 @@ submit_reset_password.addEventListener("click", function () {
 
      if (login_username.value.length != 0 && login_password.value.length != 0) {
          let userInfo = await postLogin(login_username.value, login_password.value);
+         if (userInfo.Error) {
+             // TODO: Notify user
+             return;
+         }
+
          sessionStorage.setItem("user_id", userInfo.user_id);
          sessionStorage.setItem("token", userInfo.token);
          sessionStorage.setItem("is_admin", userInfo.is_admin);
 
-         location.replace('http://localhost:5000/users/landing_page')
+         location.replace('../users/landing_page')
      }
 };
 
