@@ -1,8 +1,9 @@
 /*
- * @Author: aadityac15
+ * @Author: aadityac15/ theseanathan
  * @Date:   2019-12-05 21:21:43
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2019-12-08 13:36:30
+ * @Last Modified by: aadityac15
+ * @Last Modified time: 2019-12-08 17:08:15
+ * @Description: S
  */
 const formData = new FormData();
 const uploadTag = document.getElementById("image_upload");
@@ -33,7 +34,6 @@ const uploadImage = () => {
 	    credentials: 'same-origin',
 	}).then(res => {
 		console.log(res);
-
 		location.replace('../listings/createSell_item_success')
 	})
 };
