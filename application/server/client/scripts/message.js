@@ -2,27 +2,26 @@ const MESSAGES_URL = '/send_message?user_id=';
 
 const test = new FormData();
 
-let messageItems = undefined
 const postMessages = () => {
     let listing_ID = document.getElementById('listing_id').value;
 	let messageContent = document.getElementById('message_body').value;
-	//let admin = document.getElementById('from_admin').value;
-	//let sent_by = document.getElementById('sent_by').value;
-	//let sent_to = document.getElementById('sent_to').value;
-	localStorage.setItem("message_body", messageContent)
+	let admin = document.getElementById('from_admin').value;
+	let sent_by = document.getElementById('sent_by').value;
+	let sent_to = document.getElementById('sent_to').value;
+
 };
 
-messageContent.addEventListener("submit",() => getMessage());
+//messageContent.addEventListener("submit",() => getMessage());
 
 const sendMessages = () => {
     postMessages();
     console.log("SEND MESSAGES FOR USER");
 	test.append("listing_id", listing_ID);
 	test.append("message_body", messageContent);
-	//formData.append("from_admin", admin);
-	//formData.append("sent_by", sent_by);
-	//formData.append("sent_to", sent_to);
-
+	//test.append("from_admin", admin);
+	//test.append("sent_by", sent_by);
+	//test.append("sent_to", sent_to);
+	sessionStorage.setItem("message_body", messageContent);
 
 	fetch(MESSAGES_URL + sessionStorage.getItem('user_id'), {
 		method : "POST",
@@ -34,8 +33,10 @@ const sendMessages = () => {
 	         res.redirect('/login');
 	    }
         else {
-            return response.text();
-            console.log(res);
+            sessionStorage.getItem('user_id') == sent_by;
+            sessionStorage.getItem('created_by') == sent_to;
+            sessionStorage.getItem('listing_id') == listing_ID;
+
             alert("Message Successfully Sent");
         }
 
