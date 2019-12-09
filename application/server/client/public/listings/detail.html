@@ -22,7 +22,7 @@
 			<div class="border bg-light rounded-left py-2 px-3 w-25"><label for="listing_id">Seller: </label></div>
 			<div class="border bg-light rounded-right py-2 px-3">
 				<span>
-					<p id="listing_id"></p></label>
+					<p id="created_by"></p></label>
 				</span>
 			</div>
 		</div>
@@ -38,7 +38,7 @@
 				<div class="card-body">
 				<form method="POST">
 					<textarea id="message_body" name="message_body" type="text" placeholder="Write something.." style="height:200px; width: 100%"></textarea>
-					<button id="submitButton" onclick="sendMessages();" type="submit" class="btn btn-primary" style="background:#ECC129; color:black;">Send</button>
+					<button onclick="sendMessages()" type="submit" class="btn btn-primary" style="background:#ECC129; color:black;">Send</button>
 				</form>
 				</div>
 			</div>

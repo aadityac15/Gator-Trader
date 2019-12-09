@@ -182,13 +182,6 @@ const redirectToIndividualListing = (id, title) => {
   window.open(`/details`, "_blank");
 };
 
-const formMessage = event => {
-  var modal = document.getElementById("form");
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
 window.onload = () => {
   if (localStorage.getItem("category") !== null) {
     document.getElementById("selectDropDown").value = localStorage.getItem(
