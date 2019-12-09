@@ -10,10 +10,9 @@ CREATE TABLE user (
   token varchar(255) NOT NULL,
   PRIMARY KEY (user_id),
   UNIQUE KEY username_UNIQUE (username)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 CREATE TABLE listing (
-
   listing_id int NOT NULL AUTO_INCREMENT,
   title varchar(45) NOT NULL,
   description varchar(255) DEFAULT NULL,
@@ -29,7 +28,7 @@ CREATE TABLE listing (
   KEY listing_creator_idx (created_by),
   CONSTRAINT listing_creator FOREIGN KEY (created_by) REFERENCES user (user_id) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT listing_approver FOREIGN KEY (approved_by) REFERENCES user (user_id) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 
 CREATE TABLE message (
@@ -45,8 +44,9 @@ CREATE TABLE message (
   KEY message_recipient_idx (sent_to),
   CONSTRAINT message_recipient FOREIGN KEY (sent_to) REFERENCES user (user_id) ON DELETE CASCADE,
   CONSTRAINT message_sender FOREIGN KEY (sent_by) REFERENCES user (user_id) ON DELETE CASCADE,
-  CONSTRAINT listing_id FOREIGN KEY (listing_id) REFERENCES listing (listing_id) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT message_listing FOREIGN KEY (listing_id) REFERENCES listing (listing_id) ON DELETE SET NULL
+);
+
 
 
 CREATE TABLE location (
@@ -57,4 +57,4 @@ CREATE TABLE location (
   PRIMARY KEY (location_id),
   KEY location_creator_idx (created_by),
   CONSTRAINT location_creator FOREIGN KEY (created_by) REFERENCES user (user_id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);

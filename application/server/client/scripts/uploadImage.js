@@ -1,15 +1,14 @@
 /*
- * @Author: aadityac15
+ * @Author: aadityac15/ theseanathan
  * @Date:   2019-12-05 21:21:43
- * @Last Modified by:   aadityac15
- * @Last Modified time: 2019-12-06 11:28:47
+ * @Last Modified by: aadityac15
+ * @Last Modified time: 2019-12-08 17:08:15
+ * @Description: S
  */
 const formData = new FormData();
 const uploadTag = document.getElementById("image_upload");
 let uploadedPicture = undefined;
 let itemName, itemPrice, itemDescription, itemCategory;
-
-uploadTag.addEventListener("change",() => getImage());
 
 const populateFormWithListing = () => {
 	itemName = document.getElementById('itemName').value;
@@ -35,7 +34,6 @@ const uploadImage = () => {
 	    credentials: 'same-origin',
 	}).then(res => {
 		console.log(res);
-
 		location.replace('../listings/createSell_item_success')
 	})
 };

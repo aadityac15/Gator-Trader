@@ -1,9 +1,9 @@
 /*
  * @Author: aadityac15
  * @Date:   2019-11-12 02:03:04
- * @Last Modified by:   aadityac15
- * @Last Modified time: 2019-11-27 18:53:31
- * @Description : Redirect the page to the result page and use locdocument.getElementById("queryTag").addEventListener("keyup", (event) => {})al storage to make the GET request.
+ * @Last Modified by: aadityac15
+ * @Last Modified time: 2019-12-08 17:11:55
+ * @Description : Redirect the page to the result page. The categories are put in from the categories.csv.
  */
 
 // used in landingPage.js
@@ -37,6 +37,7 @@ const loadDropDown = async () => {
   const sellListingDropDown = document.getElementById(
     "sellListingSelectDropdown"
   );
+
   if (selectDropDownElement.length === 0) {
     await fetch("/categories", {
       method: "GET"
@@ -59,7 +60,7 @@ const loadDropDown = async () => {
               window.location.pathname = "/results";
             });
           }
-           if (sellListingDropDown !== null) {
+          if (sellListingDropDown !== null) {
             let option = document.createElement("option");
             option.value = category;
             option.text = category;

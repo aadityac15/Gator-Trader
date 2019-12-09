@@ -4,6 +4,10 @@ const DENIED_LISTINGS_URL = '/denied_listings';
 const ALL_LISTINGS_URL = '/listings';
 const EDIT_LISTING_APPROVAL_URL = '/edit_listing_approval';
 
+if (sessionStorage.getItem("is_admin") != true) {
+    location.replace("/");
+}
+
 const getPendingListings = async () => {
     let pendingListings = await getListings(PENDING_LISTINGS_URL);
     console.log(pendingListings);
@@ -93,7 +97,10 @@ let editListingApprovalStatus = (listing_id, approval_status) => {
         },
         body: JSON.stringify({ listing_id, approval_status, }),
         credentials: 'same-origin'
-    }).then(res => {console.log(res)});
+    }).then(res => {
+        console.log(res)
+        document.getElementById(listing_id).remove();
+    });
 };
 
 
@@ -106,7 +113,7 @@ let createListingTableRow = (listing) => {
     let listingApprovalData = createDomElement("td");
 
     let listingImage = createDomElement("img");
-    listingImage.src = (listing.thumbnail == null) ? "https://via.placeholder.com/100" : listing.thumbnail;
+    listingImage.src = (listing.thumbnail == null) ? "https://via.placeholder.com/100" : ("../" + listing.thumbnail);
     listingImage.alt = listing.title;
     listingImage.height = 100;
     listingImage.width = 100;
@@ -140,6 +147,7 @@ let createListingTableRow = (listing) => {
         listingApprovalData.appendChild(denyButton);
     }
 
+    tableRow.id = "" + listing.listing_id;
     tableRow.appendChild(listingImageData);
     tableRow.appendChild(listingTitleData);
     tableRow.appendChild(listingDescriptionData);
