@@ -44,7 +44,7 @@ CREATE TABLE message (
   KEY message_sender_idx (sent_by),
   KEY message_recipient_idx (sent_to),
   CONSTRAINT message_recipient FOREIGN KEY (sent_to) REFERENCES user (user_id) ON DELETE CASCADE,
-  CONSTRAINT message_sender FOREIGN KEY (sent_by) REFERENCES user (user_id) ON DELETE CASCADE
+  CONSTRAINT message_sender FOREIGN KEY (sent_by) REFERENCES user (user_id) ON DELETE CASCADE,
   CONSTRAINT listing_id FOREIGN KEY (listing_id) REFERENCES listing (listing_id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

@@ -3,7 +3,8 @@
 {% block content %}
 <!----order sell notification cart-->
 <div class="tab">
-    <button class="tablinks" onclick="receivedMsg();">Inbox</button>
+    <button class="tablinks">Inbox</button>
+<!--    <button class="tablinks" onclick="receivedMsg();">Inbox</button>-->
 </div>
 <div id="Inbox" class="tabcontent table-responsive">
     <p><h3>Messages Received</h3></p>
@@ -22,17 +23,17 @@
         <tr>
             <td>
                 <div>
-                    <a id = "titleTag"> </a>
+                    <a id = "listing_id"> </a>
                 </div>
             </td>
 
             <td>
                 <div class="col-content" data-toggle="tooltip" data-placement="top" > <!-- need js for this -->
-                    <a id="msg"></a>
+                    <a id="message_body"></a>
                 </div>
             </td>
 
-            <td>Pat</td>
+            <td><a id ="sent_by"></a></td>
             <td>2019-11-05 22:32</td>
         </tr>
         </tbody>

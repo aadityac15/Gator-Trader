@@ -1,77 +1,44 @@
 const MESSAGES_URL = '/send_message?user_id=';
-let titleTag, listing_ID, timeStamp, subject;
-const msgData = new FormData();
 
-const getItem_list = () => {
-	titleTag = document.getElementById('titleTag').value;
-	listing_ID = document.getElementById('listing_id').value;
-	subject = document.getElementById('subject').value;
+const test = new FormData();
+
+let messageItems = undefined
+const postMessages = () => {
+    let listing_ID = document.getElementById('listing_id').value;
+	let messageContent = document.getElementById('message_body').value;
+	//let admin = document.getElementById('from_admin').value;
+	//let sent_by = document.getElementById('sent_by').value;
+	//let sent_to = document.getElementById('sent_to').value;
+	localStorage.setItem("message_body", messageContent)
 };
 
-const sendMessages = async() => {
+messageContent.addEventListener("submit",() => getMessage());
+
+const sendMessages = () => {
+    postMessages();
     console.log("SEND MESSAGES FOR USER");
-    getItem_list();
-	msgData.append("title", titleTag);
-	msgData.append("created_by", sessionStorage.getItem(listing_id));
-    let messages = await fetch(MESSAGES_URL + sessionStorage.getItem() +
-    sessionStorage.setItem('message_body','message_body'), {
-        method: "POST",
-        body: msgData,
-        withCredentials: true
-    }).then(response => {
-        if (response.user === undefined);
-            alert("Please Login to continue.")
-            response.redirect('/login')
-        else {
-            return response.text();
-        }
-    }).then(data => {
-
-        try {
-            let messagesObject = JSON.parse(data);
-            let dummyData = messagesObject["listing"];
-            let messages = messagesObject['message_id'];
-
-            if (messages.length == 0) {
-                // TODO: Create table row that says "No messages at the moment."
-            }
-
-            messages = messages.map((listing) => createMessagesTableRow(listing));
-
-            return messages;
-        } catch (e) {
-            // TODO: Create table row with "No messages at the moment"
-            console.log(e);
-        }
-
-        return messages;
-    });
-
-    const messageTableBody = document.getElementById("message-table")
-        .getElementsByTagName('tbody')[0];
-
-    messages.forEach(message => messageTableBody.append(message));
-}
+	test.append("listing_id", listing_ID);
+	test.append("message_body", messageContent);
+	//formData.append("from_admin", admin);
+	//formData.append("sent_by", sent_by);
+	//formData.append("sent_to", sent_to);
 
 
-const uploadImage = () => {
-    populateFormWithListing();
-    console.log(uploadedPicture);
-    formData.append("file", uploadedPicture, "filename");
-	formData.append("title", itemName);
-	formData.append("price", itemPrice);
-	formData.append("description", itemDescription);
-	formData.append("type", itemCategory);
-	formData.append("created_by", sessionStorage.getItem("user_id"));
-
-	fetch("/create_listing", {
+	fetch(MESSAGES_URL + sessionStorage.getItem('user_id'), {
 		method : "POST",
 		body : formData,
 	    credentials: 'same-origin',
 	}).then(res => {
-		console.log(res);
+	    if (res.sessionStorage.getItem('user_id') === undefined){
+	         alert("Please Login to Continue");
+	         res.redirect('/login');
+	    }
+        else {
+            return response.text();
+            console.log(res);
+            alert("Message Successfully Sent");
+        }
 
-		location.replace('../listings/createSell_item_success')
 	})
 };
 
@@ -106,7 +73,6 @@ function dataSave() {
      alert("Please Login");
     // window.open(`users/login`, "_blank");
      }
-}
 
 //window.onload = receivedMsg();
 window.onload = function(dataSave){

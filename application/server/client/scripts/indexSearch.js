@@ -34,8 +34,9 @@ const redirectToResult = () => {
 const loadDropDown = async () => {
   // localStorage.removeItem("category");
   const selectDropDownElement = document.getElementById("selectDropDown");
-  console.log("SDE first child " + JSON.stringify(selectDropDownElement));
-  // debugger;
+  const sellListingDropDown = document.getElementById(
+    "sellListingSelectDropdown"
+  );
   if (selectDropDownElement.length === 0) {
     await fetch("/categories", {
       method: "GET"
@@ -57,6 +58,12 @@ const loadDropDown = async () => {
               localStorage.setItem("category", category);
               window.location.pathname = "/results";
             });
+          }
+           if (sellListingDropDown !== null) {
+            let option = document.createElement("option");
+            option.value = category;
+            option.text = category;
+            sellListingDropDown.add(option);
           }
         });
       });
