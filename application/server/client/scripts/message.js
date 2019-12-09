@@ -1,4 +1,34 @@
-const message_url = '/send_message';
+const MESSAGES_URL = '/send_message?user_id=';
+const test = new FormData();
+let sent_to, messageContent, listingID;
+const postMessages = () => {
+    listingID = document.getElementById('listing_id');
+	messageContent = document.getElementById('messageContent').value;
+	//let admin = document.getElementById('admin').value;
+	//let sent_by = document.getElementById("user_id").innerHTML;
+	//let sent_to = document.getElementById("created_by").innerHTML;
+    //textFile = messageContent.files[0];
+};
+
+const sendMessages = () => {
+    postMessages();
+    test.append("listing_id", localStorage.getItem("id"));
+	test.append("message_body", messageContent);
+	test.append("sent_by", sessionStorage.getItem('user_id'));
+	test.append("sent_to", localStorage.getItem("author"));
+	//test.append("from_admin", admin);
+	fetch(MESSAGES_URL + sessionStorage.getItem('user_id'), {
+		method : "POST",
+		body : test,
+	    credentials: 'same-origin',
+	}).then(res => {
+     console.log(res);
+	})
+};
+
+
+/*const message_url = '/send_message';
+const MESSAGES_URL = '/send_message?user_id=';
 
 const sendMessages = async () => {
     let sent_by = document.querySelector('#sent_by').value;
@@ -71,69 +101,8 @@ let createMsg = (sent_by, sent_to, message_body, from_admin, listing_id) => {
             message_body.textContent = message["message_body"];
 			});
 		};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*const MESSAGES_URL = '/send_message?user_id=';
-
-const test = new FormData();
-
-const postMessages = () => {
-    let listing_ID = document.getElementById('listing_id').value;
-	let messageContent = document.getElementById('message_body').value;
-	let admin = document.getElementById('from_admin').value;
-	let sent_by = document.getElementById('sent_by').value;
-	let sent_to = document.getElementById('sent_to').value;
-
-};
-
-//messageContent.addEventListener("submit",() => getMessage());
-
-const sendMessages = () => {
-    postMessages();
-    console.log("SEND MESSAGES FOR USER");
-	test.append("listing_id", listing_ID);
-	test.append("message_body", messageContent);
-	//test.append("from_admin", admin);
-	//test.append("sent_by", sent_by);
-	//test.append("sent_to", sent_to);
-	sessionStorage.setItem("message_body", messageContent);
-
-	fetch(MESSAGES_URL + sessionStorage.getItem('user_id'), {
-		method : "POST",
-		body : formData,
-	    credentials: 'same-origin',
-	}).then(res => {
-	    if (res.sessionStorage.getItem('user_id') === undefined){
-	         alert("Please Login to Continue");
-	         res.redirect('/login');
-	    }
-        else {
-            sessionStorage.getItem('user_id') == sent_by;
-            sessionStorage.getItem('created_by') == sent_to;
-            sessionStorage.getItem('listing_id') == listing_ID;
-
-            alert("Message Successfully Sent");
-        }
-
-	})
-};
 */
+
 
 /*function receivedMsg() {
     var dataToShow = window.localStorage.getItem("subject");

@@ -14,7 +14,7 @@ const populateFormWithListing = () => {
 	itemName = document.getElementById('itemName').value;
 	itemPrice = document.getElementById('itemPrice').value;
 	itemDescription = document.getElementById('itemDescription').value;
-	itemCategory = document.getElementById('itemDescription').value;
+	itemCategory = document.getElementById('itemCategory').value;
 	uploadedPicture = uploadTag.files[0];
 };
 

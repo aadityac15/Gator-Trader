@@ -11,7 +11,8 @@ const descriptionTag = document.getElementById("description");
 const category = document.getElementById("category");
 const listingImage = document.getElementById("listingImage");
 const priceTag = document.getElementById("priceTag");
-const listing_ID = document.getElementById("created_by");
+const created_by = document.getElementById("created_by");
+const listing_ID = document.getElementById("listing_id");
 
 const fetchIndividualListing = async () => {
 	let query = localStorage.getItem("id");
@@ -27,7 +28,8 @@ const fetchIndividualListing = async () => {
 			let dataJson = JSON.parse(data);
 			let dummyData = dataJson["listing"];
 
-			    listing_ID.textContent = dummyData["created_by"]
+			    created_by.textContent = dummyData["created_by"];
+			    listing_ID.textContent = dummyData["listing_id"];
 				titleTag.textContent = dummyData["title"];
 				descriptionTag.textContent = dummyData["description"];
 				category.textContent = dummyData["type"];
