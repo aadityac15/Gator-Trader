@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('#nav-login').innerHTML = 'Logout';
         document.querySelector('#dashboard').style.display = 'block';
         document.querySelector('#register-button').style.display = 'none';
-        document.querySelector('#sell').style.display = 'block';
+        // document.querySelector('#sell').style.display = 'block';
 
         document.querySelector('#nav-login').onclick = function(e){
             clearUserInfoFromSessionStorage();
