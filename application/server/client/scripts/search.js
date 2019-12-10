@@ -144,7 +144,6 @@ const fetchData = async () => {
 
       localStorage.removeItem("query");
       localStorage.removeItem("category");
-      // console.log(localStorage);
     });
 };
 
@@ -183,12 +182,10 @@ const redirectToIndividualListing = (id, title) => {
 };
 
 window.onload = () => {
-  if (localStorage.getItem("category") !== null) {
-    document.getElementById("selectDropDown").value = localStorage.getItem(
-      "category"
-    );
-  } else {
+if (localStorage.getItem("category") !== null) {
+    document.getElementById("selectDropDown").value = localStorage.getItem("category");
+} else {
     document.getElementById("selectDropDown").value = "All Categories";
-  }
-  fetchData();
-};
+}
+
+fetchData();
