@@ -26,9 +26,9 @@
 		</div>
 		<span>
 			<div class="card bg-light mb-3">
-				<div class="card-header" ><label for="messageContent">Contact Seller: </label></div>
+				<div class="card-header" ><label for="message_body">Contact Seller: </label></div>
 				<div class="card-body">
-					<textarea id="messageContent" name="message" type="text" placeholder="Write something.." style="height:200px; width: 100%"></textarea>
+					<textarea id="message_body" name="message" type="text" placeholder="Write something.." style="height:200px; width: 100%"></textarea>
 					<button id="submitButton" onclick="sendMessages();" type="submit" class="btn btn-primary" style="background:#ECC129; color:black;">Send</button>
 				</div>
 			</div>
@@ -40,6 +40,7 @@
 <script src="../../scripts/domCreation.js"></script>
 <script src="../../scripts/detail.js"></script>
 <script src="../../scripts/message.js"></script>
-
-
+<script>
+    checkIfRedirected();
+</script>
 {% endblock %}

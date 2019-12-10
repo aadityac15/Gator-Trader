@@ -187,5 +187,5 @@ if (localStorage.getItem("category") !== null) {
 } else {
     document.getElementById("selectDropDown").value = "All Categories";
 }
-
 fetchData();
+};

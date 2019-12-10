@@ -14,8 +14,8 @@
         <br>
         <h3> Hello
         <script>
-           if(localStorage.getItem("userName") !== null) {
-               docWrite(localStorage.getItem("userName"));
+           if(localStorage.getItem("firstName") !== null) {
+               docWrite(localStorage.getItem("firstName"));
            }
         </script>
         </h3> <!-- nned to add the user name here-->
@@ -33,7 +33,7 @@
 
             <!-- Link to Messages go here -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ '/message/messages' }}" onclick="receivedMsg();">Messages</a>
+                <a class="nav-link" href="{{ '/message/messages' }}">Messages</a>
             </li>
 
         </ul>
