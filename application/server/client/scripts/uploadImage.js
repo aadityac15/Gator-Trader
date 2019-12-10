@@ -52,7 +52,6 @@ const uploadImage = () => {
 
 	// Upon login, redirect back here and do a repopulate fields
 
-    console.log(uploadedPicture);
     formData.append("file", uploadedPicture, "filename");
 	formData.append("title", itemName);
 	formData.append("price", itemPrice);

@@ -67,7 +67,6 @@ submit_reset_password.addEventListener("click", function () {
          sessionStorage.setItem("is_admin", userInfo.is_admin);
 
          if (localStorage.getItem('redirectUrl')) {
-             console.log("LOCAL STORAGE HAS A REDIRECT URL");
              location.replace(localStorage.getItem('redirectUrl'));
              return;
          }

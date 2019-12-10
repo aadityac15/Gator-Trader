@@ -4,56 +4,45 @@ const DENIED_LISTINGS_URL = '/denied_listings';
 const ALL_LISTINGS_URL = '/listings';
 const EDIT_LISTING_APPROVAL_URL = '/edit_listing_approval';
 
-if (sessionStorage.getItem("is_admin") != true) {
+if (sessionStorage.getItem("is_admin") !== 'true') {
     location.replace("/");
 }
 
 const getPendingListings = async () => {
     let pendingListings = await getListings(PENDING_LISTINGS_URL);
-    console.log(pendingListings);
 
     const listingTableBody = document.getElementById("pending-listings-table")
         .getElementsByTagName('tbody')[0];
-    console.log(listingTableBody);
 
-    console.log(pendingListings);
     pendingListings.forEach(listing => listingTableBody.append(listing));
 };
 
 
 const getApprovedListings = async () => {
     let approvedListings = await getListings(APPROVED_LISTINGS_URL);
-    console.log(approvedListings);
 
     const listingTableBody = document.getElementById("approved-listings-table")
         .getElementsByTagName('tbody')[0];
-    console.log(listingTableBody);
 
-    console.log(approvedListings);
     approvedListings.forEach(listing => listingTableBody.append(listing));
 };
 
 
 const getDeniedListings = async () => {
     let deniedListings = await getListings(DENIED_LISTINGS_URL);
-    console.log(deniedListings);
 
     const listingTableBody = document.getElementById("denied-listings-table")
         .getElementsByTagName('tbody')[0];
-    console.log(listingTableBody);
 
-    console.log(deniedListings);
     deniedListings.forEach(listing => listingTableBody.append(listing));
 };
 
 
 const getAllListings = async () => {
     let allListings = await getListings(ALL_LISTINGS_URL);
-    console.log(allListings);
 
     const listingTableBody = document.getElementById("all-listings-table")
         .getElementsByTagName('tbody')[0];
-    console.log(listingTableBody);
 
     allListings.forEach(listing => listingTableBody.append(listing));
 };
@@ -98,7 +87,6 @@ let editListingApprovalStatus = (listing_id, approval_status) => {
         body: JSON.stringify({ listing_id, approval_status, }),
         credentials: 'same-origin'
     }).then(res => {
-        console.log(res)
         document.getElementById(listing_id).remove();
     });
 };
@@ -153,8 +141,6 @@ let createListingTableRow = (listing) => {
     tableRow.appendChild(listingDescriptionData);
     tableRow.appendChild(listingCreatorData);
     tableRow.appendChild(listingApprovalData);
-
-    console.log(tableRow);
 
     return tableRow;
 };
