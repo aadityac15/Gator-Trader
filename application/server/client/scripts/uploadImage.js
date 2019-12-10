@@ -18,18 +18,10 @@ const checkIfRedirected = () => {
 		document.getElementById("itemName").value = localStorage.getItem('itemName');
 		document.getElementById("itemPrice").value = localStorage.getItem('itemPrice');
 		document.getElementById("itemDescription").value = localStorage.getItem('itemDescription');
-		document.getElementById("itemCategory").value = localStorage.getItem('itemCategory');
+		document.getElementById("sellListingSelectDropdown").value = localStorage.getItem('itemCategory');
 
-		// TODO: Clear localStorage
+		_clearListingFromLocalStorage();
 	}
-};
-
-const _storeInformationInLocalStorage = () => {
-	localStorage.setItem('itemName', itemName);
-	localStorage.setItem('itemPrice', itemPrice);
-	localStorage.setItem('itemDescription', itemDescription);
-	localStorage.setItem('itemCategory', itemCategory);
-	localStorage.setItem('redirectUrl', window.location.href)
 };
 
 const populateFormWithListing = () => {
@@ -42,15 +34,7 @@ const populateFormWithListing = () => {
 
 const uploadImage = () => {
 	populateFormWithListing();
-	// Check if user is logged in
-	if (!sessionStorage.getItem("user_id")) {
-	    alert("You are not logged in!");
-        _storeInformationInLocalStorage();
-        window.location.replace("/users/login");
-        return;
-	}
-
-	// Upon login, redirect back here and do a repopulate fields
+	if (_checkUserLogin()) return;
 
     formData.append("file", uploadedPicture, "filename");
 	formData.append("title", itemName);
@@ -68,3 +52,32 @@ const uploadImage = () => {
 		location.replace('../listings/createSell_item_success')
 	})
 };
+
+const _checkUserLogin = () => {
+	if (!sessionStorage.getItem("user_id")) {
+		alert("You are not logged in!");
+		_storeInformationInLocalStorage();
+		window.location.replace("/users/login");
+		return true;
+	}
+
+	return false;
+};
+
+const _clearListingFromLocalStorage = () => {
+    console.log("CLEAR LISTING");
+	localStorage.removeItem('itemName');
+	localStorage.removeItem('itemPrice');
+	localStorage.removeItem('itemDescription');
+	localStorage.removeItem('itemCategory');
+	localStorage.removeItem('redirectUrl');
+};
+
+const _storeInformationInLocalStorage = () => {
+	localStorage.setItem('itemName', itemName);
+	localStorage.setItem('itemPrice', itemPrice);
+	localStorage.setItem('itemDescription', itemDescription);
+	localStorage.setItem('itemCategory', itemCategory);
+	localStorage.setItem('redirectUrl', window.location.href)
+};
+
