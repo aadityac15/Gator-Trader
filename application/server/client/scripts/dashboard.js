@@ -22,7 +22,6 @@ const getApprovedListings = async () => {
 };
 
 const getMessages = async() => {
-    console.log("GET MESSAGES FOR USER");
     let messages = await fetch(MESSAGES_URL + sessionStorage.getItem('user_id'), {
         method: "GET",
         withCredentials: true

@@ -18,6 +18,10 @@
 7. Database name (basically the name that contains all your tables)
 8. Instructions on how to use the above information.
 
+ADMIN LOGIN CREDENTIALS:<br>
+username: admin
+password: 648admin
+
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
 ## <strong>Failure to do so will result it points be deducted from milestone submissions.</strong><br>

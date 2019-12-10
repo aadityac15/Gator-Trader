@@ -37,17 +37,22 @@ const registerUser = async () => {
         sessionStorage.setItem("is_admin", userInfo.is_admin);
 
          // localStorage store
-        localStorage.setItem('firstName', firstName)
-        localStorage.setItem('lastName',lastName)
-        localStorage.setItem('userName', userName)
-        localStorage.setItem('major',major)
-        localStorage.setItem('email',email)
-        localStorage.setItem('password', password)
-        localStorage.setItem('confirmPassword',confirmPassword)
+        localStorage.setItem('firstName', firstName);
+        localStorage.setItem('lastName',lastName);
+        localStorage.setItem('userName', userName);
+        localStorage.setItem('major',major);
+        localStorage.setItem('email',email);
+        localStorage.setItem('password', password);
+        localStorage.setItem('confirmPassword',confirmPassword);
 
-        location.replace('../users/landing_page')
+        if (localStorage.getItem('redirectUrl')) {
+            location.replace(localStorage.getItem('redirectUrl'));
+            return;
+        }
+
+        location.replace('../users/landing_page');
         // after signup, automatically login
-        sessionStorage.setItem('userName', userName)
+        sessionStorage.setItem('userName', userName);
     }
 };
 
