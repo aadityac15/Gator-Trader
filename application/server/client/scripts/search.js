@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-10 04:05:01
+ * @Last Modified time: 2019-12-10 13:40:47
  */
 
 document.getElementById("queryTag").addEventListener("keyup", event => {
@@ -80,13 +80,17 @@ const fetchData = async () => {
       //As the data would be an object
       dummyData.map(indList => {
         //  Creation of the elements.
+        const titleDiv = createDomElement("div");
         const titleBTag = createDomElement("b"); // Bold Tag
         const h2Tag = createDomElement("h2"); // h2 Tag for text
         const h4Tag = createDomElement("h4"); // h4 tag for text
         const imgDivTag = createDomElement("div"); // Div tag to hold the elements.
         const buttonSpanTag = createDomElement("span"); // span tag for the buttons
         const imgTag = createDomElement("img"); // Image tag in the DOM
+        const brTag = createDomElement("br");
+        imgTag.classList.add("img-fluid", "img-thumbnail");
         const typeTag = createDomElement("p");
+        const descriptionDiv = createDomElement("div");
         const descriptionTag = createDomElement("p");
         const listingTag = createDomElement("p");
         const priceTag = createDomElement("p");
@@ -107,7 +111,7 @@ const fetchData = async () => {
           redirectToIndividualListing(indList["listing_id"], indList["title"]);
         };
 
-        buttonSpanTag.classList.add("flex-display-row");
+        buttonSpanTag.classList.add("flex-display-row", "make-responsive");
 
         buttonTag.classList.add("btn", "btn-warning");
         const divTag = createDomElement("div");
@@ -122,8 +126,9 @@ const fetchData = async () => {
         } else {
           imgTag.src = "https://via.placeholder.com/150";
         }
+        // styleImgTag(imgTag);
         imgDivTag.appendChild(imgTag);
-        styleImgDivTag(imgDivTag); // Styles the img div tag.
+        imgDivTag.style["flex-grow"] = 1;
         liTag.appendChild(imgDivTag);
 
         // Title Tag and  styling
@@ -133,6 +138,10 @@ const fetchData = async () => {
 
         // Description and other tags.
         descriptionTag.innerText = indList["description"];
+        descriptionDiv.appendChild(descriptionTag);
+        // Styling description tag.
+        styleDescriptionDiv(descriptionDiv);
+
         listingTag.innerText = indList["listing_id"];
         listingTag.hidden = true;
         priceTag.innerText = "$" + indList["price"];
@@ -141,14 +150,20 @@ const fetchData = async () => {
 
         // Style tags to remvove padding
         styleTags([listingTag, descriptionTag, titleTag, priceTag]);
-        divTag.appendChild(titleBTag);
+        titleDiv.appendChild(titleBTag);
+        titleDiv.style["overflow"] = "auto";
+
+        // Injecting elements to the DOM.
+        divTag.appendChild(titleDiv);
+
         divTag.appendChild(listingTag);
-        divTag.appendChild(descriptionTag);
+        divTag.appendChild(descriptionDiv);
         divTag.appendChild(priceTag);
         buttonSpanTag.appendChild(buttonTag);
         buttonSpanTag.appendChild(contactSellerButton);
         divTag.appendChild(buttonSpanTag);
         styleDiv(divTag);
+        divTag.style["flex-grow"] = 1;
         liTag.appendChild(divTag);
         liTag.classList.add("list-group-item");
         ulResult.appendChild(liTag);
@@ -183,8 +198,6 @@ const styleDiv = divTag => {
   divTag.style["width"] = "80%";
 };
 
-const styleImgDivTag = imgDivTag => {};
-
 // Redirecrts to the detail.html page showing details about the individual listing.
 
 const redirectToIndividualListing = (id, title) => {
@@ -201,6 +214,16 @@ const formMessage = event => {
   }
 };
 
+const styleImgTag = () => {
+  imgTag.classList.add("img-fluid", "img-thumbnail");
+  console.log(imgTag);
+};
+
+const styleDescriptionDiv = (descriptionDiv) => {
+  descriptionDiv.style["overflow"] = "auto";
+  descriptionDiv.style["width"] = "100%";
+  descriptionDiv.style["height"] = "25%";
+};
 window.onload = () => {
   if (localStorage.getItem("category") !== null) {
     document.getElementById("selectDropDown").value = localStorage.getItem(
