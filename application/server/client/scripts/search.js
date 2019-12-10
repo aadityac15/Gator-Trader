@@ -2,9 +2,15 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-10 04:03:24
+ * @Last Modified time: 2019-12-10 04:05:01
  */
 
+document.getElementById("queryTag").addEventListener("keyup", event => {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("searchBtn").click();
+  }
+});
 
 const fetchData = async () => {
   let category = localStorage.getItem("category");
@@ -61,9 +67,9 @@ const fetchData = async () => {
         );
         noResultTag.appendChild(textNode);
         // Show all the items if the search result is none.
-        localStorage.removeItem("category");
+        localStorage.removeItem("category"); // Remove previous values in the localStorage
         localStorage.removeItem("query");
-        localStorage.setItem("category", "All Categories");
+        localStorage.setItem("category", "All Categories"); // set new Values.
         localStorage.setItem("query", "");
         fetchData();
       }
