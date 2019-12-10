@@ -1,4 +1,4 @@
-const MESSAGES_URL = '/send_message?user_id=';
+const MESSAGES_URL = '/send_message';
 const test = new FormData();
 let sent_to, messageContent, listingID;
 const postMessages = () => {
@@ -15,11 +15,12 @@ const sendMessages = () => {
     test.append("listing_id", localStorage.getItem("id"));
 	test.append("message_body", messageContent);
 	test.append("sent_by", sessionStorage.getItem('user_id'));
-	test.append("sent_to", localStorage.getItem("author"));
+	test.append("sent_to", localStorage.getItem("listing_author"));
 	//test.append("from_admin", admin);
-	fetch(MESSAGES_URL + sessionStorage.getItem('user_id'), {
+	fetch(MESSAGES_URL, {
 		method : "POST",
 		body : test,
+
 	    credentials: 'same-origin',
 	}).then(res => {
      console.log(res);

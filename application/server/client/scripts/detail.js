@@ -11,8 +11,6 @@ const descriptionTag = document.getElementById("description");
 const category = document.getElementById("category");
 const listingImage = document.getElementById("listingImage");
 const priceTag = document.getElementById("priceTag");
-const created_by = document.getElementById("created_by");
-const listing_ID = document.getElementById("listing_id");
 
 const fetchIndividualListing = async () => {
 	let query = localStorage.getItem("id");
@@ -28,21 +26,22 @@ const fetchIndividualListing = async () => {
 			let dataJson = JSON.parse(data);
 			let dummyData = dataJson["listing"];
 
-			    created_by.textContent = dummyData["created_by"];
-			    listing_ID.textContent = dummyData["listing_id"];
-				titleTag.textContent = dummyData["title"];
-				descriptionTag.textContent = dummyData["description"];
-				category.textContent = dummyData["type"];
-				listingImage.style["margin-right"] = "20px";
-				if (dummyData["thumbnail"] !== null) {
-					listingImage.src = dummyData["thumbnail"];
-					}
-					else {
-						listingImage.src = "https://via.placeholder.com/300";
-					}
-				priceTag.textContent = '$' + dummyData["price"];
-			});
-		};
+            localStorage.setItem("listing_author", dummyData["created_by"])
+
+            titleTag.textContent = dummyData["title"];
+            descriptionTag.textContent = dummyData["description"];
+            category.textContent = dummyData["type"];
+            listingImage.style["margin-right"] = "20px";
+
+            if (dummyData["thumbnail"] !== null) {
+                listingImage.src = dummyData["thumbnail"];
+            } else {
+                listingImage.src = "https://via.placeholder.com/300";
+            }
+
+            priceTag.textContent = '$' + dummyData["price"];
+		});
+	};
 
 window.onload = fetchIndividualListing();
 
