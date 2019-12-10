@@ -1,14 +1,14 @@
 /*
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2019-12-08 12:13:48
+ * @Last Modified by: aadityac15
+ * @Last Modified time: 2019-12-10 04:03:24
  */
 
 
 const fetchData = async () => {
   let category = localStorage.getItem("category");
-
+  let noResultTag = document.getElementById("noResultTag");
   if (localStorage.getItem("category") !== null) {
     document.getElementById("selectDropDown").value = category;
   } else {
@@ -51,15 +51,21 @@ const fetchData = async () => {
         let textNode = document.createTextNode(
           "Your search did not match any of the items. Please try another Search query."
         );
-        ulResult.appendChild(textNode);
+        noResultTag.appendChild(textNode);
       }
       let dataJson = JSON.parse(data);
       let dummyData = dataJson["listings"];
       if (dummyData.length === 0) {
         let textNode = document.createTextNode(
-          "Your search did not match any of the items. Please try another Search query."
+          "Your search did not match any of the items. Please try another Search query. You can also take a look at some of these items:"
         );
-        ulResult.appendChild(textNode);
+        noResultTag.appendChild(textNode);
+        // Show all the items if the search result is none.
+        localStorage.removeItem("category");
+        localStorage.removeItem("query");
+        localStorage.setItem("category", "All Categories");
+        localStorage.setItem("query", "");
+        fetchData();
       }
 
       let dataLength = dummyData.length;

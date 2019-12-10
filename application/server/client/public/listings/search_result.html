@@ -8,16 +8,16 @@
 <div class="margin-top">
     Showing <k id="displayCount"> </k> of <k id="resultCount"></k> Results for the
     <b>
-    <script>
-       if(localStorage.getItem("category") !== null) {
-           docWrite(localStorage.getItem("category"));
-       }
-       else {
-           let string = "All Categories";
-           docWrite(string);
-       }
+        <script>
+            if (localStorage.getItem("category") !== null) {
+                docWrite(localStorage.getItem("category"));
+            }
+            else {
+                let string = "All Categories";
+                docWrite(string);
+            }
 
-    </script>
+        </script>
     </b> :
     <script>
         if (localStorage.getItem("query") !== null) {
@@ -29,7 +29,9 @@
     </script>
     <br />
     <br />
-    <ul id="resultList"></ul>
+    <ul id="resultList">
+        <p id="noResultTag"></p>
+    </ul>
 </div>
 <script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
 <script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
