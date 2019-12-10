@@ -6,7 +6,6 @@ INSERT INTO user
         (4, 'Queenie', 'Kara',  'Strong', 'kstrong@fakemail.com', 'Password4', false, 'Kinesiology', 0),
         (5, 'JDog', 'James',  'Daniels', 'jdaniels@fakemail.com', 'Password5', false, 'Civil Engineering', 0),
         (6, 'admin', 'Admin',  'Account', 'admin@mail.sfsu.edu', 'pbkdf2:sha256:150000$hDHlY653$858d003d63baddfa9e180b3469231be8370db35f04947715e330d73164a4ca32', true, 'Administrative Studies', 6);
-        # Admin password is '648admin'
 
 INSERT INTO listing
    VALUES
