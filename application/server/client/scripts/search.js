@@ -152,7 +152,7 @@ const fetchData = async () => {
         // Style tags to remvove padding
         styleTags([listingTag, descriptionTag, titleTag, priceTag]);
         titleDiv.appendChild(titleBTag);
-        titleDiv.style["overflow"] = "auto";
+//        titleDiv.style["overflow"] = "auto";
 
         // Injecting elements to the DOM.
         divTag.appendChild(titleDiv);
@@ -220,11 +220,12 @@ const styleImgTag = () => {
 };
 
 const styleDescriptionDiv = descriptionDiv => {
-  descriptionDiv.style["overflow"] = "auto";
+//  descriptionDiv.style["overflow"] = "auto";
   descriptionDiv.style["width"] = "100%";
   descriptionDiv.style["height"] = "25%";
 };
 
+window.onload = () => {
 if (localStorage.getItem("category") !== null) {
   document.getElementById("selectDropDown").value = localStorage.getItem(
     "category"
