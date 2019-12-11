@@ -19,13 +19,11 @@
                     <div class="col-md-4 mb-3">
                         <label for="itemName"><strong>Price<font color="red">*</font>:</strong></label>
                         <div class="input-group">
-
                             <div class="input-group-prepend">
                                 <span class="input-group-text">$</span>
                             </div>
-                            <input id="itemPrice" type="text" name="price" class="form-control text-right rounded-right" aria-label="Amount (to the nearest dollar)"
-                                required placeholder="0.00">
-
+                            <input id="itemPrice" type="number" onkeypress="if(this.value.length==4) return false;" name="price" pattern="[0-9]" class="form-control text-right rounded-right" aria-label="Amount (to the nearest dollar)"
+                                required placeholder="0.00" >
                             <div class="invalid-feedback">
                                 Valid price number is required.
                             </div>
