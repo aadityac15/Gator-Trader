@@ -24,6 +24,10 @@ def get_listings():
     :return: JSON Objects of serialized listings
     """
     query = request.args.get('query')
+    if (len(query) > 40):
+        return jsonify({"error": "Query too long"})
+    if (!(query.isalnum())):
+        return jsonify({"error" : "Query contains symbols"})
     category = request.args.get('category')
     search = "%{}%".format(query)
 
