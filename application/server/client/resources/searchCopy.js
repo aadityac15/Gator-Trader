@@ -2,13 +2,11 @@
 
 const selectDropDown = (sel) => {
   let category = sel.options[sel.selectedIndex].text;
-  // console.log(category);
 }
 
 const fetchData = async () => {
   const ulResult = document.getElementById("resultList");
   let category = document.getElementById('selectDropDown').value;
-  console.log(category);
   // query = localStorage.getItem("query");
   let query = document.getElementById("queryTag").value;
   // Domcreator.js
@@ -16,9 +14,7 @@ const fetchData = async () => {
   if (category==="All Categories"  || category === "All") {
     category= "";
   }
-  console.log(category);
   const LISTINGS_URL = `listings?category=${category}&query=${query}`;
-  console.log("The losoting url",LISTINGS_URL);
 
   await fetch(LISTINGS_URL, {
     method: "GET"
@@ -27,10 +23,7 @@ const fetchData = async () => {
       return response.text();
     })
     .then(data => {
-      console.log(data);
       let dataJson = JSON.parse(data);
-      console.log(dataJson);
-      console.log("Type of data", typeof dataJson);
       let dummyData = dataJson["listings"];
       //As the data would be an object
       dummyLength = dummyData.length;

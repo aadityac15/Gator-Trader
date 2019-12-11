@@ -1,5 +1,11 @@
+
+/* Code for making the li tags and other code dynamic and responsive. DO not remove*/
 @media screen and (max-width: 800px) {
   li {
+    flex-direction: column !important;
+  }
+
+  #detail-row {
     flex-direction: column !important;
   }
   .port-item {
@@ -8,352 +14,333 @@
   }
 }
 
-
-
-.navbar{
-    background-color: #400449;
-    position: absolute;
-    width: 100%;
-    height: 71px;
-    left: 0px;
-    top: 0px;
-
+.navbar {
+  background-color: #400449;
+  position: absolute;
+  width: 100%;
+  height: 71px;
+  left: 0px;
+  top: 0px;
 }
-.gator{
-        position: absolute;
-        width: 153px;
-        height: 112px;
-        left: 130px;
-        top: -3px;
+.gator {
+  position: absolute;
+  width: 153px;
+  height: 112px;
+  left: 130px;
+  top: -3px;
 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 36px;
-        line-height: 42px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 42px;
 
-        color: #FFFFFF;
+  color: #ffffff;
 }
-.trader{
-        position: absolute;
-        width: 154.47px;
-        height: 76.25px;
-        left: 155px;
-        top: 18.62px;
+.trader {
+  position: absolute;
+  width: 154.47px;
+  height: 76.25px;
+  left: 155px;
+  top: 18.62px;
 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 48px;
-        line-height: 56px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 56px;
 
-        color: #9EA8FF;
+  color: #9ea8ff;
 
-        transform: rotate(-3.57deg);
+  transform: rotate(-3.57deg);
 }
 
 /*search bar */
 
 form input {
-        border: none;
-        background: transparent;
-        border-bottom: 1px solid #fff;
-        outline: none;
-      }
-
-.exampleInputClass{
-        position: absolute;
-        width: 625px;
-        height: 43px;
-        left: 128px;
-
-        background: #FFFFFF;
-        border: 1px solid #FFFFFF;
-        border-right: black;
-        box-sizing: border-box;
-        border-top-left-radius: 0! important;
-        border-bottom-left-radius: 0! important;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  outline: none;
 }
 
+.exampleInputClass {
+  position: absolute;
+  width: 625px;
+  height: 43px;
+  left: 128px;
 
-.dropdown{
-        position: absolute;
-        left: 460px;
-        top: 16px;
-        border-radius: 0 !important;
-
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-right: black;
+  box-sizing: border-box;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
-.dropdownMenuButton{
-        background-color:#C4C4C4;
-        width: auto;
-        height: 43px;
-        border-right:#ECC129;
-        border-radius: 0!important;
-
+.dropdown {
+  position: absolute;
+  left: 460px;
+  top: 16px;
+  border-radius: 0 !important;
 }
 
-.search{
-
-        position: absolute;
-        width: 55px;
-        height: 43px;
-        left: 1012px;
-        top: 16px;
-        background: #ECC129;
+.dropdownMenuButton {
+  background-color: #c4c4c4;
+  width: auto;
+  height: 43px;
+  border-right: #ecc129;
+  border-radius: 0 !important;
 }
 
-.searchBtn{
-
-        position: absolute;
-        width: 55px!important;
-        height: 43px;
-        left: 650px!important;
-        top:0px!important;
-        background: #ECC129;
+.search {
+  position: absolute;
+  width: 55px;
+  height: 43px;
+  left: 1012px;
+  top: 16px;
+  background: #ecc129;
 }
 
-.signin_register{
-
-    position: absolute;
-    width: 115px;
-    height: 60px;
-    right: 300px;
-    top: 20px;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 13px;
-    line-height: 14px;
+.searchBtn {
+  position: absolute;
+  width: 55px !important;
+  height: 43px;
+  left: 650px !important;
+  top: 0px !important;
+  background: #ecc129;
 }
 
+.signin_register {
+  position: absolute;
+  width: 115px;
+  height: 60px;
+  right: 300px;
+  top: 20px;
 
-
-a:hover{
-text-decoration:none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 14px;
 }
 
-.col-h1{
-        position: absolute;
-        width: 44px;
-        height: 22px;
-        right: 530px;
-        top: 9px;
+a:hover {
+  text-decoration: none;
+}
 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 15px;
+.col-h1 {
+  position: absolute;
+  width: 44px;
+  height: 22px;
+  right: 530px;
+  top: 9px;
 
-        color: #FFFFFF;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 15px;
+
+  color: #ffffff;
 }
 
 .footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: #f5f5f5;
-   color: white;
-   text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  color: white;
+  text-align: center;
 }
 
 /*************  button  **********/
 
 .btn:focus {
-        outline: none !important;
-        border: none !important;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }
-
-
 
 /*** MEDIA *** /    /* Laptop */
 @media screen and (min-width: 1024px) and (max-height: 1310px) {
+  .navbar {
+    position: absolute;
+    width: 100%;
+    height: 71px;
+    left: 0px;
+    top: 0px;
+  }
 
-    .navbar {
-        position: absolute;
-        width: 100%;
-        height: 71px;
-        left: 0px;
-        top: 0px;
-     }
+  .gator {
+    position: absolute;
+    width: 80px;
+    height: 112px;
+    left: 5px;
+    top: -3px;
 
-     .gator{
-        position: absolute;
-        width: 80px;
-        height: 112px;
-        left: 5px;
-        top: -3px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 36px;
-        line-height: 42px;
+    color: #ffffff;
+  }
 
-        color: #FFFFFF;
-    }
+  .trader {
+    position: absolute;
+    width: 101px;
+    height: 76.25px;
+    left: 5px;
+    top: 18.62px;
 
-    .trader{
-        position: absolute;
-        width: 101px;
-        height: 76.25px;
-        left: 5px;
-        top: 18.62px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 56px;
 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 48px;
-        line-height: 56px;
+    color: #9ea8ff;
 
-        color: #9EA8FF;
+    transform: rotate(-3.57deg);
+  }
 
-        transform: rotate(-3.57deg);
-    }
+  .col-h1 {
+    position: absolute;
+    width: 30px;
+    height: 22px;
+    right: 350px;
+    top: 9px;
 
-     .col-h1 {
-        position: absolute;
-        width: 30px;
-        height: 22px;
-        right: 350px;
-        top: 9px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1px;
 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 1px;
+    color: #ffffff;
+  }
+  /**search whitebox ***/
+  .exampleInputClass {
+    position: absolute;
+    width: 325px;
+    height: 35px;
+    left: 125px;
 
-        color: #FFFFFF;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    border-right: black;
+    box-sizing: border-box;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
 
-     }
-       /**search whitebox ***/
-     .exampleInputClass{
-        position: absolute;
-        width: 325px;
-        height: 35px;
-        left: 125px;
+  .dropdown {
+    position: absolute;
+    left: 15%;
+    top: 16px;
+    border-radius: 0 !important;
+  }
 
-        background: #FFFFFF;
-        border: 1px solid #FFFFFF;
-        border-right: black;
-        box-sizing: border-box;
-        border-top-left-radius: 0! important;
-        border-bottom-left-radius: 0! important;
-    }
+  .dropdownMenuButton {
+    background-color: #c4c4c4;
+    width: auto;
+    left: 180px;
+    height: 35px;
+    border-right: #ecc129;
+    border-style: solid;
+    border-left-radius: 0!;
+  }
 
-    .dropdown{
-        position: absolute;
-        left: 15%;
-        top: 16px;
-        border-radius: 0 !important;
-    }
+  .search {
+    position: absolute;
+    width: 55px;
+    height: 35px;
+    left: 1500px;
+    top: 16px;
+    background: #ecc129;
+  }
 
-    .dropdownMenuButton{
-        background-color:#C4C4C4;
-        width: auto;
-        left: 180px;
-        height: 35px;
-        border-right:#ECC129;
-        border-style:solid;
-        border-left-radius: 0!
-    }
+  .searchBtn {
+    position: absolute;
+    width: 55px;
+    height: 35px;
+    left: 445px !important;
+    background: #ecc129;
+  }
 
-    .search{
-        position: absolute;
-        width: 55px;
-        height: 35px;
-        left: 1500px;
-        top: 16px;
-        background: #ECC129;
-    }
-
-    .searchBtn{
-        position: absolute;
-        width: 55px;
-        height: 35px;
-        left: 445px!important;
-        background: #ECC129;
-    }
-
-    .footer {
-       position: fixed;
-       left: 0;
-       bottom: 0;
-       width: 100%;
-       background-color: #f5f5f5;
-       color: white;
-       text-align: center;
-    }
-
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    color: white;
+    text-align: center;
+  }
 }
 
 @media screen and (min-width: 1350px) and (max-height: 1310px) {
+  .gator {
+    position: absolute;
+    width: 80px;
+    left: 80px;
+  }
 
-      .gator{
-         position: absolute;
-         width: 80px;
-         left: 80px;
-     }
+  .trader {
+    width: 101px;
+    left: 80px;
+  }
 
-     .trader{
-         width: 101px;
-         left: 80px;
-     }
+  .col-h1 {
+    font-size: 18px;
+    right: 400px;
+  }
 
-     .col-h1 {
-        font-size: 18px;
-        right: 400px;
-     }
+  .dropdown {
+    left: 25%;
+  }
 
-    .dropdown{
-        left: 25%;
-    }
+  .exampleInputClass {
+    width: 375px;
+  }
 
-    .exampleInputClass{
-       width: 375px;
-     }
-
-     .searchBtn{
-         position: absolute;
-         width: 55px;
-         height: 35px;
-         left: 495px!important;
-         background: #ECC129;
-     }
+  .searchBtn {
+    position: absolute;
+    width: 55px;
+    height: 35px;
+    left: 495px !important;
+    background: #ecc129;
+  }
 }
 
 @media screen and (min-width: 1800px) and (max-height: 1310px) {
+  .dropdown {
+    left: 35%;
+  }
 
-    .dropdown{
-        left: 35%;
-    }
+  /**search whitebox ***/
+  .exampleInputClass {
+    width: 525px;
+  }
 
-    /**search whitebox ***/
-  .exampleInputClass{
-     width: 525px;
-   }
-
-   .searchBtn{
-       position: absolute;
-       width: 55px;
-       height: 35px;
-       left: 645px!important;
-       background: #ECC129;
-   }
-
+  .searchBtn {
+    position: absolute;
+    width: 55px;
+    height: 35px;
+    left: 645px !important;
+    background: #ecc129;
+  }
 }
 
 .row {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
 }

@@ -4,3 +4,4 @@ windows_venv
 __pycache__/
 databaseconfig.py
 client/public/images/*.png
+*.swp

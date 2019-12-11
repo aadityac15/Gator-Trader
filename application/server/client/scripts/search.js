@@ -2,7 +2,8 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-10 13:40:47
+ * @Last Modified time: 2019-12-10 16:16:55
+ * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
 document.getElementById("queryTag").addEventListener("keyup", event => {
@@ -171,7 +172,6 @@ const fetchData = async () => {
 
       localStorage.removeItem("query");
       localStorage.removeItem("category");
-      // console.log(localStorage);
     });
 };
 
@@ -219,18 +219,18 @@ const styleImgTag = () => {
   console.log(imgTag);
 };
 
-const styleDescriptionDiv = (descriptionDiv) => {
+const styleDescriptionDiv = descriptionDiv => {
   descriptionDiv.style["overflow"] = "auto";
   descriptionDiv.style["width"] = "100%";
   descriptionDiv.style["height"] = "25%";
 };
-window.onload = () => {
-  if (localStorage.getItem("category") !== null) {
-    document.getElementById("selectDropDown").value = localStorage.getItem(
-      "category"
-    );
-  } else {
-    document.getElementById("selectDropDown").value = "All Categories";
-  }
-  fetchData();
-};
+
+if (localStorage.getItem("category") !== null) {
+  document.getElementById("selectDropDown").value = localStorage.getItem(
+    "category"
+  );
+} else {
+  document.getElementById("selectDropDown").value = "All Categories";
+}
+
+fetchData();
