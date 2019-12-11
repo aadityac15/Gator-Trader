@@ -207,12 +207,6 @@ const redirectToIndividualListing = (id, title) => {
   window.open(`/details`, "_blank");
 };
 
-const formMessage = event => {
-  var modal = document.getElementById("form");
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
 
 const styleImgTag = () => {
   imgTag.classList.add("img-fluid", "img-thumbnail");
@@ -224,6 +218,7 @@ const styleDescriptionDiv = descriptionDiv => {
   descriptionDiv.style["width"] = "100%";
   descriptionDiv.style["height"] = "25%";
 };
+
 
 window.onload = () => {
 if (localStorage.getItem("category") !== null) {
