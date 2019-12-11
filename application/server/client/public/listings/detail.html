@@ -1,6 +1,6 @@
 {% extends 'index.html' %} {% block body %}
 
-<div class="margin-top flex-display-row justify-content-space-around">
+<div id="detail-row" class="margin-top flex-display-row justify-content-space-around">
 	<div>
 	<span id="img-div">
 		<img id="listingImage" height="300px" width="300px" />
@@ -9,7 +9,7 @@
 
 	<div class="flex-display-column flex-start" style = "width:80%;">
 		<b><h1 id="titleTag"></h1></b>
-		<h4 id="description"></h4>
+		<h4 style="overflow: auto;" id="description"></h4>
 		<div style="display: inline-flex; width: 100%"><b>Category: </b><p id="category"></p></div>
 		<div style="display: inline-flex; width: 100%">Price: <p id="priceTag"></p></div>
 		<span>

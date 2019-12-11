@@ -1,14 +1,21 @@
 /*
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2019-12-08 12:13:48
+ * @Last Modified by: aadityac15
+ * @Last Modified time: 2019-12-10 16:16:55
+ * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
+document.getElementById("queryTag").addEventListener("keyup", event => {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("searchBtn").click();
+  }
+});
 
 const fetchData = async () => {
   let category = localStorage.getItem("category");
-
+  let noResultTag = document.getElementById("noResultTag");
   if (localStorage.getItem("category") !== null) {
     document.getElementById("selectDropDown").value = category;
   } else {
@@ -51,15 +58,21 @@ const fetchData = async () => {
         let textNode = document.createTextNode(
           "Your search did not match any of the items. Please try another Search query."
         );
-        ulResult.appendChild(textNode);
+        noResultTag.appendChild(textNode);
       }
       let dataJson = JSON.parse(data);
       let dummyData = dataJson["listings"];
       if (dummyData.length === 0) {
         let textNode = document.createTextNode(
-          "Your search did not match any of the items. Please try another Search query."
+          "Your search did not match any of the items. Please try another Search query. You can also take a look at some of these items:"
         );
-        ulResult.appendChild(textNode);
+        noResultTag.appendChild(textNode);
+        // Show all the items if the search result is none.
+        localStorage.removeItem("category"); // Remove previous values in the localStorage
+        localStorage.removeItem("query");
+        localStorage.setItem("category", "All Categories"); // set new Values.
+        localStorage.setItem("query", "");
+        fetchData();
       }
 
       let dataLength = dummyData.length;
@@ -68,13 +81,17 @@ const fetchData = async () => {
       //As the data would be an object
       dummyData.map(indList => {
         //  Creation of the elements.
+        const titleDiv = createDomElement("div");
         const titleBTag = createDomElement("b"); // Bold Tag
         const h2Tag = createDomElement("h2"); // h2 Tag for text
         const h4Tag = createDomElement("h4"); // h4 tag for text
         const imgDivTag = createDomElement("div"); // Div tag to hold the elements.
         const buttonSpanTag = createDomElement("span"); // span tag for the buttons
         const imgTag = createDomElement("img"); // Image tag in the DOM
+        const brTag = createDomElement("br");
+        imgTag.classList.add("img-fluid", "img-thumbnail");
         const typeTag = createDomElement("p");
+        const descriptionDiv = createDomElement("div");
         const descriptionTag = createDomElement("p");
         const listingTag = createDomElement("p");
         const priceTag = createDomElement("p");
@@ -95,7 +112,7 @@ const fetchData = async () => {
           redirectToIndividualListing(indList["listing_id"], indList["title"]);
         };
 
-        buttonSpanTag.classList.add("flex-display-row");
+        buttonSpanTag.classList.add("flex-display-row", "make-responsive");
 
         buttonTag.classList.add("btn", "btn-warning");
         const divTag = createDomElement("div");
@@ -110,8 +127,9 @@ const fetchData = async () => {
         } else {
           imgTag.src = "https://via.placeholder.com/150";
         }
+        // styleImgTag(imgTag);
         imgDivTag.appendChild(imgTag);
-        styleImgDivTag(imgDivTag); // Styles the img div tag.
+        imgDivTag.style["flex-grow"] = 1;
         liTag.appendChild(imgDivTag);
 
         // Title Tag and  styling
@@ -121,6 +139,10 @@ const fetchData = async () => {
 
         // Description and other tags.
         descriptionTag.innerText = indList["description"];
+        descriptionDiv.appendChild(descriptionTag);
+        // Styling description tag.
+        styleDescriptionDiv(descriptionDiv);
+
         listingTag.innerText = indList["listing_id"];
         listingTag.hidden = true;
         priceTag.innerText = "$" + indList["price"];
@@ -129,14 +151,20 @@ const fetchData = async () => {
 
         // Style tags to remvove padding
         styleTags([listingTag, descriptionTag, titleTag, priceTag]);
-        divTag.appendChild(titleBTag);
+        titleDiv.appendChild(titleBTag);
+        titleDiv.style["overflow"] = "auto";
+
+        // Injecting elements to the DOM.
+        divTag.appendChild(titleDiv);
+
         divTag.appendChild(listingTag);
-        divTag.appendChild(descriptionTag);
+        divTag.appendChild(descriptionDiv);
         divTag.appendChild(priceTag);
         buttonSpanTag.appendChild(buttonTag);
         buttonSpanTag.appendChild(contactSellerButton);
         divTag.appendChild(buttonSpanTag);
         styleDiv(divTag);
+        divTag.style["flex-grow"] = 1;
         liTag.appendChild(divTag);
         liTag.classList.add("list-group-item");
         ulResult.appendChild(liTag);
@@ -170,8 +198,6 @@ const styleDiv = divTag => {
   divTag.style["width"] = "80%";
 };
 
-const styleImgDivTag = imgDivTag => {};
-
 // Redirecrts to the detail.html page showing details about the individual listing.
 
 const redirectToIndividualListing = (id, title) => {
@@ -181,10 +207,30 @@ const redirectToIndividualListing = (id, title) => {
   window.open(`/details`, "_blank");
 };
 
+const formMessage = event => {
+  var modal = document.getElementById("form");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
+const styleImgTag = () => {
+  imgTag.classList.add("img-fluid", "img-thumbnail");
+  console.log(imgTag);
+};
+
+const styleDescriptionDiv = descriptionDiv => {
+  descriptionDiv.style["overflow"] = "auto";
+  descriptionDiv.style["width"] = "100%";
+  descriptionDiv.style["height"] = "25%";
+};
+
 if (localStorage.getItem("category") !== null) {
-    document.getElementById("selectDropDown").value = localStorage.getItem("category");
+  document.getElementById("selectDropDown").value = localStorage.getItem(
+    "category"
+  );
 } else {
-    document.getElementById("selectDropDown").value = "All Categories";
+  document.getElementById("selectDropDown").value = "All Categories";
 }
 
 fetchData();
