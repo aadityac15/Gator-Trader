@@ -98,11 +98,11 @@ const fetchData = async () => {
         const titleTag = createDomElement("p");
         const buttonTag = createDomElement("button"); // Button tag in the DOM.
         buttonTag.innerText = "See More";
-        const contactSellerButton = createDomElement("button");
-        contactSellerButton.innerText = "Contact Seller";
-        contactSellerButton.classList.add("btn", "btn-warning");
-
-        contactSellerButton.setAttribute("id", "myForm");
+//        const contactSellerButton = createDomElement("button");
+//        contactSellerButton.innerText = "Contact Seller";
+//        contactSellerButton.classList.add("btn", "btn-warning");
+//
+//        contactSellerButton.setAttribute("id", "myForm");
         buttonTag.style["margin-right"] = "10px";
         buttonSpanTag.style["width"] = "80%";
 
@@ -152,7 +152,7 @@ const fetchData = async () => {
         // Style tags to remvove padding
         styleTags([listingTag, descriptionTag, titleTag, priceTag]);
         titleDiv.appendChild(titleBTag);
-        titleDiv.style["overflow"] = "auto";
+//        titleDiv.style["overflow"] = "auto";
 
         // Injecting elements to the DOM.
         divTag.appendChild(titleDiv);
@@ -161,7 +161,7 @@ const fetchData = async () => {
         divTag.appendChild(descriptionDiv);
         divTag.appendChild(priceTag);
         buttonSpanTag.appendChild(buttonTag);
-        buttonSpanTag.appendChild(contactSellerButton);
+//        buttonSpanTag.appendChild(contactSellerButton);
         divTag.appendChild(buttonSpanTag);
         styleDiv(divTag);
         divTag.style["flex-grow"] = 1;
@@ -207,12 +207,6 @@ const redirectToIndividualListing = (id, title) => {
   window.open(`/details`, "_blank");
 };
 
-const formMessage = event => {
-  var modal = document.getElementById("form");
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
 
 const styleImgTag = () => {
   imgTag.classList.add("img-fluid", "img-thumbnail");
@@ -220,11 +214,13 @@ const styleImgTag = () => {
 };
 
 const styleDescriptionDiv = descriptionDiv => {
-  descriptionDiv.style["overflow"] = "auto";
+//  descriptionDiv.style["overflow"] = "auto";
   descriptionDiv.style["width"] = "100%";
   descriptionDiv.style["height"] = "25%";
 };
 
+
+window.onload = () => {
 if (localStorage.getItem("category") !== null) {
   document.getElementById("selectDropDown").value = localStorage.getItem(
     "category"
@@ -232,5 +228,5 @@ if (localStorage.getItem("category") !== null) {
 } else {
   document.getElementById("selectDropDown").value = "All Categories";
 }
-
 fetchData();
+};

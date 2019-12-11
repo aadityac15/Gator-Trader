@@ -39,7 +39,6 @@ const getMessages = async() => {
             if (messages.length == 0) {
                 // TODO: Create table row that says "No messages at the moment."
             }
-
             messages = messages.map((listing) => createMessagesTableRow(listing));
 
             return messages;
