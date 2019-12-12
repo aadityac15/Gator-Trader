@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-11 23:15:43
+ * @Last Modified time: 2019-12-12 02:57:23
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -56,15 +56,32 @@ const fetchData = async () => {
     })
     .then(data => {
       console.log(data);
+
+      if (JSON.parse(data).error) {
+        let textNode = document.createTextNode(
+          "Something is wrong. Please try another Search query with only alphanumeric characters. Here are some other items."
+        );
+        noResultTag.appendChild(textNode);
+        localStorage.removeItem("category"); // Remove previous values in the localStorage
+        localStorage.removeItem("query");
+        localStorage.setItem("category", "All Categories"); // set new Values.
+        localStorage.setItem("query", "");
+        fetchData();
+      }
+
       if (data === undefined) {
         let textNode = document.createTextNode(
           "Your search did not match any of the items. Please try another Search query."
         );
-        noResultTag.appendChild(textNode);
       }
       let dataJson = JSON.parse(data);
       let dummyData = dataJson["listings"];
-      if (dummyData.length === 0 || dummyData === undefined) {
+
+      if (dummyData === undefined) {
+        alert("Please enter a valid string");
+      }
+
+      if (dummyData.length === 0) {
         let textNode = document.createTextNode(
           "Your search did not match any of the items. Please try another Search query. You can also take a look at some of these items:"
         );
@@ -76,10 +93,14 @@ const fetchData = async () => {
         localStorage.setItem("query", "");
         fetchData();
       }
-
-      let dataLength = dummyData.length;
-      document.getElementById("displayCount").textContent = dataLength;
-      document.getElementById("resultCount").textContent = dataLength;
+      if (noResultTag.innerText !== null) {
+        let dataLength = dummyData.length;
+        document.getElementById("displayCount").textContent = dataLength;
+        document.getElementById("resultCount").textContent = dataLength;
+      } else {
+        document.getElementById("displayCount").textContent = 0;
+        document.getElementById("resultCount").textContent = 0;
+      }
       //As the data would be an object
       dummyData.map(indList => {
         //  Creation of the elements.
