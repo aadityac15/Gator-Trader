@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-11 18:27:49
+ * @Last Modified time: 2019-12-11 18:36:17
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -50,10 +50,12 @@ const fetchData = async () => {
     .then(response => {
       if (response === undefined) {
       } else {
+        console.log(response);
         return response.text();
       }
     })
     .then(data => {
+      console.log(data);
       if (data === undefined) {
         let textNode = document.createTextNode(
           "Your search did not match any of the items. Please try another Search query."
@@ -98,16 +100,10 @@ const fetchData = async () => {
         const titleTag = createDomElement("p");
         const buttonTag = createDomElement("button"); // Button tag in the DOM.
         buttonTag.innerText = "See More";
-//        const contactSellerButton = createDomElement("button");
-//        contactSellerButton.innerText = "Contact Seller";
-//        contactSellerButton.classList.add("btn", "btn-warning");
-//
-//        contactSellerButton.setAttribute("id", "myForm");
         buttonTag.style["margin-right"] = "10px";
         buttonSpanTag.style["width"] = "80%";
 
         // Redirect to the details page.
-
         buttonTag.onclick = () => {
           redirectToIndividualListing(indList["listing_id"], indList["title"]);
         };
@@ -152,7 +148,6 @@ const fetchData = async () => {
         // Style tags to remvove padding
         styleTags([listingTag, descriptionTag, titleTag, priceTag]);
         titleDiv.appendChild(titleBTag);
-//        titleDiv.style["overflow"] = "auto";
 
         // Injecting elements to the DOM.
         divTag.appendChild(titleDiv);
@@ -161,7 +156,6 @@ const fetchData = async () => {
         divTag.appendChild(descriptionDiv);
         divTag.appendChild(priceTag);
         buttonSpanTag.appendChild(buttonTag);
-//        buttonSpanTag.appendChild(contactSellerButton);
         divTag.appendChild(buttonSpanTag);
         styleDiv(divTag);
         divTag.style["flex-grow"] = 1;
@@ -207,20 +201,18 @@ const redirectToIndividualListing = (id, title) => {
   window.open(`/details`, "_blank");
 };
 
-
 const styleImgTag = () => {
   imgTag.classList.add("img-fluid", "img-thumbnail");
   console.log(imgTag);
 };
 
 const styleDescriptionDiv = descriptionDiv => {
-//  descriptionDiv.style["overflow"] = "auto";
+  //  descriptionDiv.style["overflow"] = "auto";
   descriptionDiv.style["width"] = "100%";
   descriptionDiv.style["height"] = "25%";
 };
 
-
-window.onload = () => {
+// window.onload = () => {
 if (localStorage.getItem("category") !== null) {
   document.getElementById("selectDropDown").value = localStorage.getItem(
     "category"
@@ -229,4 +221,3 @@ if (localStorage.getItem("category") !== null) {
   document.getElementById("selectDropDown").value = "All Categories";
 }
 fetchData();
-};
