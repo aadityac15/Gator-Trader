@@ -26,7 +26,7 @@ def get_listings():
     query = request.args.get('query')
     if (len(query) > 40):
         return jsonify({"error": "Query too long"})
-    if not query.isalnum():
+    if (not (query.isalnum())) and query:
         return jsonify({"error" : "Query contains symbols"})
     category = request.args.get('category')
     search = "%{}%".format(query)
