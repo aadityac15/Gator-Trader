@@ -12,7 +12,6 @@ let itemName = document.getElementById('itemName').value;
 let itemPrice = document.getElementById('itemPrice').value;
 let itemDescription = document.getElementById('itemDescription').value;
 let itemCategory = document.getElementById('sellListingSelectDropdown').value;
-
 const checkIfRedirected = () => {
 	if (sessionStorage.getItem('user_id') && localStorage.getItem('itemName')) {
 		document.getElementById("itemName").value = localStorage.getItem('itemName');
@@ -35,7 +34,6 @@ const populateFormWithListing = () => {
 const uploadImage = () => {
 	populateFormWithListing();
 	if (_checkUserLogin()) return;
-
     formData.append("file", uploadedPicture, "filename");
 	formData.append("title", itemName);
 	formData.append("price", itemPrice);

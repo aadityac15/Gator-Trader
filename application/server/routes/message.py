@@ -42,11 +42,11 @@ def send_message():
     :param from_admin
     :return:
     """
-    sent_by = request.json.get('sent_by')
-    sent_to = request.json.get('sent_to')
-    message_body = request.json.get('message_body')
-    from_admin = True if request.json.get('from_admin') == 'True' else False
-    listing_id = request.json.get('listing_id')
+    sent_by = request.form.get('sent_by')
+    sent_to = request.form.get('sent_to')
+    message_body = request.form.get('message_body')
+    from_admin = True if request.form.get('from_admin') == 'True' else False
+    listing_id = request.form.get('listing_id')
 
     new_message = Message(
         sent_by=sent_by,

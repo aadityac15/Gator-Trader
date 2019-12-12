@@ -2,11 +2,9 @@
 
 {% block content %}
 <!----order sell notification cart-->
-
 <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'Inbox')">Inbox</button>
-    <button class="tablinks" onclick="openTab(event, 'Outbox')">Outbox</button>
-<!--    <button class="tablinks" onclick="openTab(event, 'Compose')">Compose</button>-->
+    <button class="tablinks">Inbox</button>
+<!--    <button class="tablinks" onclick="receivedMsg();">Inbox</button>-->
 </div>
 <div id="Inbox" class="tabcontent table-responsive">
     <p><h3>Messages Received</h3></p>
@@ -25,26 +23,23 @@
         <tr>
             <td>
                 <div>
-                    <a>MacBook Pro</a>  <!-- need js for this -->
+                    <a id = "listing_id"> </a>
                 </div>
             </td>
 
             <td>
-                <div class="col-content" data-toggle="tooltip" data-placement="top" title="Hello World"> <!-- need js for this -->
-                    Hello World
+                <div class="col-content" data-toggle="tooltip" data-placement="top" > <!-- need js for this -->
+                    <a id="message_body"></a>
                 </div>
             </td>
 
-            <td>Pat</td>
-            <td>2019-11-05 22:32</td>
+            <td><a id ="sent_by"></a></td>
+            <td><a id ="timestamp"></a></td>
         </tr>
         </tbody>
     </table>
-    <p>No received messages.(Example if there is none)</p>
 </div>
-
 <script>
     getMessages();
 </script>
-
 {% endblock %}

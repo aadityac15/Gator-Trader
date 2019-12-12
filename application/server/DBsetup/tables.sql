@@ -48,6 +48,7 @@ CREATE TABLE message (
 );
 
 
+
 CREATE TABLE location (
   location_id int NOT NULL AUTO_INCREMENT,
   description varchar(255) NOT NULL,

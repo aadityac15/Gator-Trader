@@ -6,18 +6,48 @@
 		<img id="listingImage" height="300px" width="300px" />
 	</span>
 	</div>
-
+	<div class="col-sm-7">
 	<div class="flex-display-column flex-start" style = "width:80%;">
 		<b><h1 id="titleTag"></h1></b>
-		<h4 style="overflow: auto;" id="description"></h4>
-		<div style="display: inline-flex; width: 100%"><b>Category: </b><p id="category"></p></div>
-		<div style="display: inline-flex; width: 100%">Price: <p id="priceTag"></p></div>
+		<div class="container row mb-3">
+			<div class="border bg-light rounded-left py-2 px-3 w-25">Description: </div>
+			<div class="border bg-light rounded-right py-2 px-3">
+				<span>
+					<p id="description"></p>
+				</span>
+			</div>
+		</div>
+		<div class="container row mb-3">
+			<div class="border bg-light rounded-left py-2 px-3 w-25">Category: </div>
+			<div class="border bg-light rounded-right py-2 px-3">
+				<span>
+					<p id="category"></p>
+				</span>
+			</div>
+		</div>
+		<div class="container row mb-3">
+			<div class="border bg-light rounded-left py-2 px-3 w-25">Price:</div>
+			<div class="border bg-light rounded-right py-2 px-3">
+				<span> <p id="priceTag"></p></span>
+			</div>
+		</div>
 		<span>
-		<button id="contact-tag" class="btn btn-warning" href="/messages">Contact Buyer</button>
+			<div class="card bg-light mb-3">
+				<div class="card-header" ><label for="message_body">Contact Seller: </label></div>
+				<div class="card-body">
+					<textarea id="message_body" name="message" type="text" placeholder="Leave a message" style="height:200px; width: 100%"></textarea>
+					<button id="submitButton" onclick="sendMessages();" type="submit" class="btn btn-primary" style="background:#ECC129; color:black;">Send</button>
+				</div>
+			</div>
 		</span>
 	</div>
+	</div>
 </div>
+
 <script src="../../scripts/domCreation.js"></script>
 <script src="../../scripts/detail.js"></script>
-
+<script src="../../scripts/message.js"></script>
+<script>
+    checkIfRedirected();
+</script>
 {% endblock %}
