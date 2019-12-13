@@ -6,24 +6,7 @@
     }
 </script>
 <div class="margin-top">
-    <div class ="col">
-        <form id ="sortform">
-            <div class ="row float-right" style="padding: 0px 25px;">
-                <div class="col-md-4" style="padding: 3px 5px 0px 20px;">
-                    <font size="3">Sort by</font>
-                </div>
-                <div class="col-md-6" style="padding: 0px 0px;">
-                    <select onchange="sortListings();" name = "sort_value" class="custom-select custom-select-sm">
-                            <option value="price">Lowest Price</option>
-                            <option value="price">Highest Price</option>
-                    </select>
-                </div>
-                <div class="col-md-2" style="padding: 0px 5px;">
-                    <button  type="submit" class="btn btn-secondary btn-sm">Sort</button>
-                </div>
-            </div>
-        </form>
-    </div>
+
     Showing <k id="displayCount"> </k> of <k id="resultCount"></k> Results for the
     <b>
         <script>
@@ -45,9 +28,28 @@
             docWrite(string);
         }
     </script>
-
-    <br />
     <p id="noResultTag"></p>
+
+    <div id="filterDropDown" style="width: 100%">
+        <form id="sortform">
+            <div class="flex-display-justify-end" style="padding: 0px 25px;">
+                <div style="padding: 0 0.5%">
+                    <font size="3">Sort by:</font>
+                </div>
+                <div style="padding: 0 0.5%">
+                    <select onchange="sortListings();" name="sort_value" class="custom-select custom-select-sm">
+                        <option value="nofilter">None</option>
+                        <option value="pricehl">Price: High to Low</option>
+                        <option value="pricelh">Price: Low to High</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-secondary btn-sm">Sort</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- <br /> -->
     <div>
         <br />
         <ul id="resultList">

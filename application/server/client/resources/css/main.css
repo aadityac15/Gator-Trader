@@ -100,7 +100,7 @@ form input {
 }
 
 .dropdownMenuButton {
-  /* background-color: #c4c4c4; */
+  background-color: #c4c4c4;
   width: auto;
   height: 43px;
   border-right: #ecc129;
@@ -260,7 +260,7 @@ a:hover {
   }
 
   .dropdownMenuButton {
-    /* background-color: #c4c4c4; */
+    background-color: #c4c4c4;
     width: auto;
     left: 180px;
     height: 35px;

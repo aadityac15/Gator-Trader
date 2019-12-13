@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-12 14:59:36
+ * @Last Modified time: 2019-12-12 17:48:17
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -16,7 +16,6 @@ document.getElementById("queryTag").addEventListener("keyup", event => {
 const fetchData = async () => {
   let category = localStorage.getItem("category");
   let noResultTag = document.getElementById("noResultTag");
-  debugger;
   if (localStorage.getItem("category") !== null) {
     document.getElementById("selectDropDown").value = category;
   } else {
@@ -51,13 +50,10 @@ const fetchData = async () => {
     .then(response => {
       if (response === undefined) {
       } else {
-        console.log(response);
         return response.text();
       }
     })
     .then(data => {
-      console.log(data);
-
       if (JSON.parse(data).error) {
         let textNode = document.createTextNode(
           "Something is wrong. Please try another Search query with only alphanumeric characters. Here are some other items."
@@ -68,11 +64,6 @@ const fetchData = async () => {
         fetchData();
       }
 
-      if (data === undefined) {
-        let textNode = document.createTextNode(
-          "Your search did not match any of the items. Please try another Search query."
-        );
-      }
       let dataJson = JSON.parse(data);
       let dummyData = dataJson["listings"];
 
@@ -100,7 +91,7 @@ const fetchData = async () => {
       } else {
         document.getElementById("displayCount").textContent = 0;
         document.getElementById("resultCount").textContent = 0;
-        // filterDropDown.hidden= true;
+        // document.getElementById("filterDropDown").hidden = true;
       }
       //As the data would be an object
       dummyData.map(indList => {
