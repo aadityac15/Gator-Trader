@@ -23,10 +23,14 @@
     <link rel="stylesheet" href="../resources/css/message.css">
     <link rel="stylesheet" href="../resources/css/searchListings.css">
     <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/landing_page.css">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="#" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="#">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
     <title>SFSU Gator Trader</title>
@@ -34,58 +38,62 @@
 </head>
 
 <body>
-
-<nav class="navbar navbar-light navbar-fixed-top py-4">
+<!-- navbar left -->
+<nav class="navbar navbar-expand-lg navbar-dark bg">
+    <!-- logo that links to the landing page -->
+    <a class="navbar-brand" href="{{ '/' }}"><img src="{{ '../resources/images/logo3.png' }}" width="auto" height="37" class="d-inline-block align-top" alt="GatorTrader"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <!---logo-->
-    <div class="container">
-        <div class="logo">
-            <a href="{{ '/'  }}" class="btn">
-                <p class="gator">Gator</p>
-                <p class="trader">Trader</p>
-            </a>
-        </div>
-
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <div class="input-group">
         <!---Search form-->
-        <div>
-            <form class="form-inline">
-                <div class="dropdown">
-                    <select id="selectDropDown" onchange="selectDropDown();" class="dropdownMenuButton" data-style="btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></select>
-                    <input class="exampleInputClass" type="text" placeholder="Search" aria-label="Search" id="queryTag">
-                    <button class="searchBtn" type="button" id="searchBtn" onclick="redirectToResult();"><i style="color:black"
-                            class="fa fa-search"></i></button>
-                    <!-- <br />
-                    <br> -->
+                <div class="nav-item input-group-prepend">
+                    <select id="selectDropDown" onchange="selectDropDown();" class="btn btn-outline-secondary dropdown-toggle" data-style="btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </select>
                 </div>
-            </form>
-        </div>
+                <!--Search-->
+                <form class="form-inline">
+                    <div class = "input-group-append">
+                        <input class="form-control" type="text" size="50" placeholder="Search" aria-label="Search" id="queryTag">
+                        <button class="btn btn-outline-warning" type="button" id="searchBtn" onclick="redirectToResult();">
+                            <i style="color:black" class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </ul>
 
-    <!----order sell notification cart-->
-    <div class="container">
-        <div class="col-h1"></div>
-        <div class="d-flex justify-content-between col-h1">
-            <div class="p-4 sell">
-                <a href="{{ '/listings/createSell_items' }}" ><span id="sell" style="color: #FFFFFF; display: block">Sell</span></a>
-            </div>
-            <div class="p-4 ">
-                <a href="{{ '/users/dashboard' }}"><span id="dashboard" style="color: #FFFFFF;display: none; ">Dashboard</span></a>
-            </div>
-            <div class="p-4 ">
-                <a href="{{ '/users/admin_page' }}"><span id="admin_dashboard" style="color: #FFFFFF;display: none;">Dashboard</span></a>
-            </div>
-            <div class="p-4">
-                <a href="{{ '/users/login' }}"><span id="nav-login" style="color: #FFFFFF;">Login</span></a>
+   <!-- Right side of NavBar -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ '/users/dashboard' }}"><span id="dashboard" style="color: #FFFFFF;display: none; ">Dashboard</span></a>
+            </li>
 
-            </div>
-            <div class="p-4">
-                <a href="{{ '/users/signup' }}" id="register-button"><span style="color: #FFFFFF;">Register</span></a>
-            </div>
+            <!-- Admin Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ '/users/admin_page' }}"><span id="admin_dashboard" style="color: #FFFFFF;display: none;">Dashboard</span></a>
+            </li>
 
-            </div>
-        </div>
+            <!-- Sell -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ '/listings/createSell_items' }}" ><span id="sell" style="color: #FFFFFF; display: block">Sell</span></a>
+            </li>
 
-        </div>
-    </nav>
+            <!-- Login -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ '/users/login' }}"><span id="nav-login" style="color: #FFFFFF;">Login</span></a>
+            </li>
 
+            <!-- Register -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ '/users/signup' }}" id="register-button"><span style="color: #FFFFFF;">Register</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
     <!-- content of templates that inherited this base template -->
     <div class="container">
@@ -93,17 +101,8 @@
     </div>
 
     <!-----footer---->
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
-
     <div class="footer">
-        <p><a href="{{ '/about/about_us' }}">Meet Our Team | </a>
-
+        <p align="center"><a href="{{ '/about/about_us' }}">Meet Our Team | </a>
             <a href="{{ '/terms' }}">Privacy Policy</a></p>
     </div>
 
