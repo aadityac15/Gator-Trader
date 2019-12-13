@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-12 02:57:23
+ * @Last Modified time: 2019-12-12 14:59:36
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -16,6 +16,7 @@ document.getElementById("queryTag").addEventListener("keyup", event => {
 const fetchData = async () => {
   let category = localStorage.getItem("category");
   let noResultTag = document.getElementById("noResultTag");
+  debugger;
   if (localStorage.getItem("category") !== null) {
     document.getElementById("selectDropDown").value = category;
   } else {
@@ -62,8 +63,6 @@ const fetchData = async () => {
           "Something is wrong. Please try another Search query with only alphanumeric characters. Here are some other items."
         );
         noResultTag.appendChild(textNode);
-        localStorage.removeItem("category"); // Remove previous values in the localStorage
-        localStorage.removeItem("query");
         localStorage.setItem("category", "All Categories"); // set new Values.
         localStorage.setItem("query", "");
         fetchData();
@@ -79,6 +78,7 @@ const fetchData = async () => {
 
       if (dummyData === undefined) {
         alert("Please enter a valid string");
+        // break;
       }
 
       if (dummyData.length === 0) {
@@ -93,13 +93,14 @@ const fetchData = async () => {
         localStorage.setItem("query", "");
         fetchData();
       }
-      if (noResultTag.innerText !== null) {
+      if (noResultTag.innerText === "") {
         let dataLength = dummyData.length;
         document.getElementById("displayCount").textContent = dataLength;
         document.getElementById("resultCount").textContent = dataLength;
       } else {
         document.getElementById("displayCount").textContent = 0;
         document.getElementById("resultCount").textContent = 0;
+        // filterDropDown.hidden= true;
       }
       //As the data would be an object
       dummyData.map(indList => {
@@ -111,14 +112,13 @@ const fetchData = async () => {
         const imgDivTag = createDomElement("div"); // Div tag to hold the elements.
         const buttonSpanTag = createDomElement("span"); // span tag for the buttons
         const imgTag = createDomElement("img"); // Image tag in the DOM
-        const brTag = createDomElement("br");
         imgTag.classList.add("img-fluid", "img-thumbnail");
         const typeTag = createDomElement("p");
-        const descriptionDiv = createDomElement("div");
         const descriptionTag = createDomElement("p");
         const listingTag = createDomElement("p");
         const priceTag = createDomElement("p");
         const titleTag = createDomElement("p");
+        const descriptionDiv = createDomElement("div");
         const buttonTag = createDomElement("button"); // Button tag in the DOM.
         buttonTag.innerText = "See More";
         buttonTag.style["margin-right"] = "10px";
@@ -228,17 +228,18 @@ const styleImgTag = () => {
 };
 
 const styleDescriptionDiv = descriptionDiv => {
-  //  descriptionDiv.style["overflow"] = "auto";
+   descriptionDiv.style["overflow"] = "auto";
   descriptionDiv.style["width"] = "100%";
   descriptionDiv.style["height"] = "25%";
 };
 
-// window.onload = () => {
-if (localStorage.getItem("category") !== null) {
-  document.getElementById("selectDropDown").value = localStorage.getItem(
-    "category"
-  );
-} else {
-  document.getElementById("selectDropDown").value = "All Categories";
-}
-fetchData();
+window.onload = () => {
+  if (localStorage.getItem("category") !== null) {
+    document.getElementById("selectDropDown").value = localStorage.getItem(
+      "category"
+    );
+  } else {
+    document.getElementById("selectDropDown").value = "All Categories";
+  }
+  fetchData();
+};

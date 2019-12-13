@@ -1,4 +1,3 @@
-
 /* Code for making the li tags and other code dynamic and responsive. DO not remove*/
 @media screen and (max-width: 800px) {
   li {
@@ -14,6 +13,20 @@
   }
 }
 
+.align-right {
+  text-align: flex-end;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.flex-display-justify-end {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 .navbar {
   background-color: #400449;
   position: absolute;
@@ -22,6 +35,7 @@
   left: 0px;
   top: 0px;
 }
+
 .gator {
   position: absolute;
   width: 153px;
@@ -86,7 +100,7 @@ form input {
 }
 
 .dropdownMenuButton {
-  background-color: #c4c4c4;
+  /* background-color: #c4c4c4; */
   width: auto;
   height: 43px;
   border-right: #ecc129;
@@ -246,7 +260,7 @@ a:hover {
   }
 
   .dropdownMenuButton {
-    background-color: #c4c4c4;
+    /* background-color: #c4c4c4; */
     width: auto;
     left: 180px;
     height: 35px;
