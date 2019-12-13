@@ -5,10 +5,7 @@
 <body style="margin: 0; height: 100%;">
   <div class="container">
     <!------welcome banner-->
-    <div
-      class="jumbotron"
-      style="margin-top:10%; height:30%; text-align:center;"
-    >
+    <div  class="jumbotron jumbotron_box">
       <h1>Welcome to Gator Trader</h1>
       <p>
         A platform for SF State students to buy and sell items
@@ -21,121 +18,80 @@
     </div>
 
     <!---------- display categories-->
-    <div class="categories" style="margin-top: 8%;">
+    <div class="categories">
       <div class="row">
-        <div class="col-sm-3 col-md-3">
-          <div class="row">
-            <div class="col-sm-12 col-md-6">
-              <img
-                class="img-responsive py-2 px-5 mx-4 image1"
-                style="height:22%;"
-                src="../resources/images/list/appliances.png"
-              />
-              <h5 style="margin-left:67px">
-                <kbd id="Appliances" class="bg-secondary pointer-hand"></kbd>
-              </h5>
-            </div>
-            <div class="col-sm-12 col-md-6">
-              <img
-                class="img-responsive py-2 px-5 mx-4 image2"
-                style="height:22%;"
-                src="../resources/images/list/design.png"
-              />
-              <h5 style="margin-left:104px;">
-                <kbd id="Art" class="bg-secondary pointer-hand"></kbd>
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-md-3">
-          <div class="row">
-            <div class="col-sm-12 col-md-6">
-              <img
-                class="img-responsive py-2 px-5  mx-4 image3"
-                style="height:22%;"
-                src="../resources/images/list/clock.png"
-              />
-              <h5 style="margin-left:97px;">
-                <kbd id="Auto" class="bg-secondary pointer-hand"></kbd>
-              </h5>
-            </div>
-            <div class="col-sm-12 col-md-6">
-              <img
-                class="img-responsive py-2 px-5 mx-4 image4 "
-                style="height:22%;"
-                src="../resources/images/list/books.png"
-              />
-              <h5 style="margin-left:95px;">
-                <kbd id="Books" class="bg-secondary pointer-hand"></kbd>
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-md-3">
-          <div class="row">
-            <div class="col-sm-12 col-md-6">
-              <img
-                class="img-responsive py-2 px-5 mx-4 image5"
-                style="height:22%;"
-                src="../resources/images/list/stock.png"
-              />
-              <h5 style="margin-left:72px;">
-                <kbd id="Household" class="bg-secondary pointer-hand"></kbd>
-              </h5>
+        <div class="col-sm-3">
+          <div class="row applicance">
+
+            <!------ Applicance ---->
+            <div class="col-md-6 box">
+              <img class="img-responsive" style="height:22%;" src="../resources/images/list/appliances.png"/>
+              <h5><kbd id="Appliances" class="bg-secondary pointer-hand"></kbd></h5>
             </div>
 
-            <div class="col-sm-12 col-md-6">
-              <img
-                class="img-responsive py-2 px-5 mx-4 image6 "
-                style="height:22%;"
-                src="../resources/images/list/locked.png"
-              />
-              <h5 style="margin-left:95px;">
-                <kbd id="Tools" class="bg-secondary pointer-hand"></kbd>
-              </h5>
+            <!------ Art ---->
+            <div class="col-md-6 box">
+              <img class="img-responsive" style="height:22%;" src="../resources/images/list/design.png"/>
+              <h5 style="margin-left:38px; margin-top:2px;"><kbd id="Art" class="bg-secondary pointer-hand"></kbd></h5>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-3 col-md-3">
-          <div class="row">
-            <div class="col-sm-12 col-md-6">
-              <img
-                class="img-responsive py-2 px-5 mx-4 image5 "
-                style="height:22%;"
-                src="../resources/images/list/car.png"
-              />
-              <h5 style="margin-left:77px;">
-                <kbd id="Vehicles" class="bg-secondary pointer-hand"></kbd>
-              </h5>
+        <!------ Auto ---->
+        <div class="col-sm-3">
+          <div class="row no-gutters auto">
+            <div class="col-md-6 box">
+              <img class="img-responsive"style="height:22%;"src="../resources/images/list/clock.png"/>
+              <h5 style="margin-left:25px; margin-top:2px;"><kbd id="Auto" class="bg-secondary pointer-hand"></kbd></h5>
+            </div>
+
+            <!------ Books ---->
+            <div class="col-md-6 box">
+              <img class="img-responsive"style="height:22%;"src="../resources/images/list/books.png"/>
+              <h5 style="margin-left:30px;"><kbd id="Books" class="bg-secondary pointer-hand"></kbd></h5>
             </div>
           </div>
         </div>
-        <div class="col-md-12 col-md-6">
-          <div class="row">
-            <div class="col-md-12 col-md-6">
-              <!-- <ul id="resultList"></ul> -->
+        <!------ Household ---->
+        <div class="col-sm-3">
+          <div class="row household">
+            <div class="col-md-6 box">
+              <img class="img-responsive" style="height:22%;" src="../resources/images/list/stock.png"/>
+              <h5 style="margin-top:2px;"><kbd id="Household" class="bg-secondary pointer-hand"></kbd></h5>
             </div>
+
+          <!------ Tool ---->
+            <div class="col-md-6 box">
+              <img class="img-responsive"style="height:22%;" src="../resources/images/list/locked.png"/>
+              <h5 style="margin-top:2px; margin-left:30px;"><kbd id="Tools" class="bg-secondary pointer-hand"></kbd></h5>
+            </div>
+          </div>
+        </div>
+
+        <!------ Vehicles ---->
+        <div class="col-sm-3">
+          <div class="row vehicles">
+            <div class="col-md-6 box">
+              <img class="img-responsive"style="height:22%;"src="../resources/images/list/car.png"/>
+              <h5 style="margin-left:10px;"><kbd id="Vehicles" class="bg-secondary pointer-hand"></kbd></h5>
+            </div>
+
+              <!------ Electricty ---->
+              <div class="col-md-6 box">
+                  <img class="img-responsive"style="height:22%;" src="../resources/images/list/headphones.png"/>
+                  <h5 style="margin-top:2px;"><kbd id="Electronics" class="bg-secondary pointer-hand"></kbd></h5>
+                </div>
+              </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script
-    src="../../scripts/domCreation.js"
-    type="text/javascript"
-    charset="utf-8"
-    async
-    defer
-  ></script>
+</div>
+
+  <script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
   <script src="../../scripts/indexSearch.js" type="text/javascript" charset="utf-8" async defer></script>
-  <script
-    src="../../scripts/search.js"
-    type="text/javascript"
-    charset="utf-8"
-    async
-    defer
-  ></script>
+  <script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
 
 </body>
 

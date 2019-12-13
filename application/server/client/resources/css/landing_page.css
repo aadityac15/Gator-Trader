@@ -1,0 +1,52 @@
+.jumbotron_box{
+     margin-top:10%;
+     height:30%;
+     text-align:center;
+}
+
+.categories{
+    margin: 20px auto;
+}
+
+@media screen and (max-width: 576px){
+
+
+    .jumbotron_box{
+        margin-top:30%;
+    }
+
+    .box{
+        border-radius: 30px;
+        margin: 2.2% 9.5% 0 4.5%;
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1024px){
+
+    .row{
+        height:50px;
+    }
+    .jumbotron_box{
+        margin-top:20%;
+    }
+
+    .box{
+        border-radius: 30px;
+        margin: 2.2% 16.5% 0 4.5%;
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 429px){
+    .jumbotron_box{
+        margin-top:10%;
+    }
+
+    .box{
+        border-radius: 30px;
+        margin: 2.2% 16.5% 0 4.5%;
+        width: 30%;
+    }
+
+}
