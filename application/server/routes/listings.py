@@ -24,21 +24,32 @@ def get_listings():
     :return: JSON Objects of serialized listings
     """
     query = request.args.get('query')
-    if (len(query) > 40):
-        return jsonify({"error": "Query too long"})
-    if (not (query.isalnum())) and query:
-        return jsonify({"error" : "Query contains symbols"})
     category = request.args.get('category')
+    sort_by = request.args.get('sort_by')
+
+    if query and len(query) > 40:
+        return jsonify({"error": "Query too long"})
+    if query and (not query.replace(' ', '').isalnum()):
+        return jsonify({"error": "Query contains symbols"})
     search = "%{}%".format(query)
 
     if query and category:
-        result = Listing.query.filter(Listing.title.like(search), Listing.type == category).all()
+        result = Listing.query.filter(Listing.title.like(search),
+                                      Listing.type == category,
+                                      Listing.approved == True)
     elif query:
-        result = Listing.query.filter(Listing.title.like(search)).all()
+        result = Listing.query.filter(Listing.title.like(search), Listing.approved == True)
     elif category:
-        result = Listing.query.filter(Listing.type == category).all()
+        result = Listing.query.filter(Listing.type == category, Listing.approved == True)
     else:
-        result = Listing.query.all()
+        result = Listing.query.filter_by(approved=True)
+
+    if sort_by and (sort_by == "price_ascending"):
+        result = result.order_by(Listing.price.asc())
+    elif sort_by and (sort_by == "price_descending"):
+        result = result.order_by(Listing.price.desc())
+    else:
+        result = result.all()
 
     return jsonify({
         'listings': [r.serialize for r in result]
@@ -133,14 +144,3 @@ def create_item_success():
     """Displays success message after user successfully created an item"""
     categories = Listing.objects.all()
     return render_template("createSell_item_success.html")
-
-
-
-@listings_blueprint.route('/categories', methods=['GET'])
-def get_categories():
-    with open("./routes/categories.txt") as file:
-        categories_string = file.read()
-        categories = categories_string.split(',')
-        return jsonify({
-            'categories': categories
-        })
