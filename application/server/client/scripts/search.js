@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-14 01:01:05
+ * @Last Modified time: 2019-12-14 02:57:09
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -16,15 +16,26 @@ document.getElementById("queryTag").addEventListener("keyup", event => {
 const fetchData = async () => {
   let category = localStorage.getItem("category");
   let noResultTag = document.getElementById("noResultTag");
+  // debugger;
+
   if (localStorage.getItem("category") !== null) {
-    document.getElementById("selectDropDown").value = category;
+    if (localStorage.getItem("wrongCategory") !== null) {
+      document.getElementById("selectDropDown").value = localStorage.getItem(
+        "wrongCategory"
+      );
+    } else {
+      document.getElementById("selectDropDown").value = category;
+    }
   } else {
     document.getElementById("selectDropDown").value = "All Categories";
   }
+
+  // Fill the query from the query item.
+  document.getElementById("queryTag").value = localStorage.getItem("query");
+
   localStorage.removeItem("id");
   localStorage.removeItem("title");
   const ulResult = document.getElementById("resultList");
-  document.getElementById("queryTag").value = localStorage.getItem("query");
 
   // query = localStorage.getItem("query");
   let query = document.getElementById("queryTag").value;
@@ -34,7 +45,6 @@ const fetchData = async () => {
   if (category === "All Categories") {
     category = "";
   }
-
   // handle refrersh i.e show everything if after refresh either of the parameters are null.
   if (category === null || query === null) {
     category = "";
@@ -59,8 +69,9 @@ const fetchData = async () => {
           "Something is wrong. Please try another Search query with only alphanumeric characters. Here are some other items."
         );
         noResultTag.appendChild(textNode);
-        localStorage.setItem("category", "All Categories"); // set new Values.
-        localStorage.setItem("query", "");
+        // localStorage.setItem("category", "All Categories"); // set new Values.
+        // localStorage.setItem("query", "");
+
         fetchData();
       }
 
@@ -69,22 +80,26 @@ const fetchData = async () => {
       // Undefined if search query has non alphanumeric character
 
       if (dummyData === undefined) {
-
         alert("Please enter a valid string");
       }
 
+      // If the result is empty.
       if (dummyData.length === 0) {
         let textNode = document.createTextNode(
           "Your search did not match any of the items. Please try another Search query. You can also take a look at some of these items:"
         );
         noResultTag.appendChild(textNode);
         // Show all the items if the search result is none.
-        localStorage.removeItem("category"); // Remove previous values in the localStorage
-        localStorage.removeItem("query");
+        if (category !== "") {
+          localStorage.setItem("wrongCategory", category);
+        } else {
+          localStorage.setItem("wrongCategory", "All Categories");
+        }
         localStorage.setItem("category", "All Categories"); // set new Values.
         localStorage.setItem("query", "");
         fetchData();
       }
+
       if (noResultTag.innerText === "") {
         let dataLength = dummyData.length;
         document.getElementById("displayCount").textContent = dataLength;
@@ -92,8 +107,8 @@ const fetchData = async () => {
       } else {
         document.getElementById("displayCount").textContent = 0;
         document.getElementById("resultCount").textContent = 0;
-        // document.getElementById("filterDropDown").hidden = true;
       }
+
       //As the data would be an object
       dummyData.map(indList => {
         //  Creation of the elements.
@@ -122,7 +137,6 @@ const fetchData = async () => {
         };
 
         buttonSpanTag.classList.add("flex-display-row", "make-responsive");
-
         buttonTag.classList.add("btn", "btn-warning");
         const divTag = createDomElement("div");
         let liTag = createDomElement("li");
@@ -139,6 +153,10 @@ const fetchData = async () => {
         // styleImgTag(imgTag);
         imgDivTag.appendChild(imgTag);
         imgDivTag.style["flex-grow"] = 1;
+        imgDivTag.style["cursor"] = "pointer";
+        imgDivTag.onclick = () => {
+          redirectToIndividualListing(indList["listing_id"], indList["title"]);
+        };
         liTag.appendChild(imgDivTag);
 
         // Title Tag and  styling
@@ -176,9 +194,7 @@ const fetchData = async () => {
         liTag.classList.add("list-group-item");
         ulResult.appendChild(liTag);
       });
-
-      localStorage.removeItem("query");
-      localStorage.removeItem("category");
+      localStorage.removeItem("wrongCategory");
     });
 };
 
@@ -186,10 +202,6 @@ const styleTags = element => {
   element.map(elem => {
     elem.classList.add("remove-margin");
   });
-};
-
-const clearData = () => {
-  document.getElementById("resultList").innerHTML = "";
 };
 
 const styleLi = liTag => {
@@ -211,7 +223,7 @@ const redirectToIndividualListing = (id, title) => {
   localStorage.setItem("id", id);
   localStorage.setItem("title", title);
   // Open in a new window.
-  window.open(`/details`, "_blank");
+  window.open(`/details?item=${title}`, "_blank");
 };
 
 const styleImgTag = () => {
@@ -219,18 +231,17 @@ const styleImgTag = () => {
 };
 
 const styleDescriptionDiv = descriptionDiv => {
-   descriptionDiv.style["overflow"] = "auto";
+  descriptionDiv.style["overflow"] = "auto";
   descriptionDiv.style["width"] = "100%";
   descriptionDiv.style["height"] = "25%";
 };
 
-window.onload = () => {
-  if (localStorage.getItem("category") !== null) {
-    document.getElementById("selectDropDown").value = localStorage.getItem(
-      "category"
-    );
-  } else {
-    document.getElementById("selectDropDown").value = "All Categories";
-  }
-  fetchData();
+// window.onload = () => {
+//   fetchData();
+// };
+fetchData();
+
+window.onunload = () => {
+  localStorage.removeItem("query");
+  localStorage.removeItem("category");
 };
