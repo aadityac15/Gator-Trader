@@ -97,7 +97,6 @@ let createListingTableRow = (listing) => {
     let listingImageData = createDomElement("td");
     let listingTitleData = createDomElement("td");
     let listingDescriptionData = createDomElement("td");
-    let listingCreatorData = createDomElement("td");
     let listingApprovalData = createDomElement("td");
 
     let listingImage = createDomElement("img");
@@ -139,7 +138,6 @@ let createListingTableRow = (listing) => {
     tableRow.appendChild(listingImageData);
     tableRow.appendChild(listingTitleData);
     tableRow.appendChild(listingDescriptionData);
-    tableRow.appendChild(listingCreatorData);
     tableRow.appendChild(listingApprovalData);
 
     return tableRow;
