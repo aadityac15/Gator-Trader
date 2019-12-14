@@ -6,7 +6,15 @@
     }
 </script>
 <div class="margin-top">
-
+    <!-- <div class="col-md-6" style="padding: 0px 0px;">
+        <font size="3">Sort by</font>
+        <select onchange="sortListings();" name = "sort_value" class="width_tmp_select">
+            <option selected>All</option>
+            <option value="price">Lowest Price</option>
+            <option value="price">Highest Price</option>
+        </select>
+        <button  type="submit" class="btn">Sort</button>
+    </div> -->
     Showing <k id="displayCount"> </k> of <k id="resultCount"></k> Results for the
     <b>
         <script>
@@ -57,6 +65,15 @@
 
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+  $('.filterdown').change(function(){
+    $("#width_tmp_option").html($('.filterdown option:selected').text());
+    $(this).width($("#width_tmp_select").width());
+  });
+});
+</script>
 
 <script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
 <script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>

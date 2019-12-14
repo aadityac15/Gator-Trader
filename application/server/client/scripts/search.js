@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-12 17:48:17
+ * @Last Modified time: 2019-12-14 01:01:05
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -66,10 +66,11 @@ const fetchData = async () => {
 
       let dataJson = JSON.parse(data);
       let dummyData = dataJson["listings"];
+      // Undefined if search query has non alphanumeric character
 
       if (dummyData === undefined) {
+
         alert("Please enter a valid string");
-        // break;
       }
 
       if (dummyData.length === 0) {
@@ -209,13 +210,12 @@ const styleDiv = divTag => {
 const redirectToIndividualListing = (id, title) => {
   localStorage.setItem("id", id);
   localStorage.setItem("title", title);
-  // let webPath = window.location.hostname;
+  // Open in a new window.
   window.open(`/details`, "_blank");
 };
 
 const styleImgTag = () => {
   imgTag.classList.add("img-fluid", "img-thumbnail");
-  console.log(imgTag);
 };
 
 const styleDescriptionDiv = descriptionDiv => {

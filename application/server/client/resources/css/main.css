@@ -1,5 +1,5 @@
 /* Code for making the li tags and other code dynamic and responsive. DO not remove*/
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
   li {
     flex-direction: column !important;
   }
@@ -50,311 +50,276 @@
   line-height: 42px;
 
   color: #ffffff;
+} */
+
+.content{
+  border-style: none;
+  margin: 25px 25px 25px 25px;
 }
-.trader {
-  position: absolute;
-  width: 154.47px;
-  height: 76.25px;
-  left: 155px;
-  top: 18.62px;
 
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 48px;
-  line-height: 56px;
+.card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-  color: #9ea8ff;
+.btn {
+    font-size: 15px;
+    font-weight: normal;
+    color: black;
+}
 
-  transform: rotate(-3.57deg);
+.btn-outline-secondary:hover {
+    color: #000000;
+    background-color:  #9c9c9c;
+    border-color: #6c757d;
+}
+
+.btn-outline-secondary {
+    color: #000000;
+    background-color: #9c9c9c;
+    background-image: none;
+    border-color: #6c757d;
+}
+
+.btn-outline-secondary:not(:disabled):not(.disabled).active, .btn-outline-secondary:not(:disabled):not(.disabled):active, .show>.btn-outline-secondary.dropdown-toggle {
+    color:#000000;
+    background-color: #9c9c9c;
+    border-color: #6c757d;
+}
+
+.btn-outline-warning {
+    background-color: #ffc107;
+    background-image: none;
+    border-color: #ffc107;
+}
+
+.bg {
+    background-color: #400449;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: white;
+}
+
+.filterdown {
+  width: 280px;
+  overflow: hidden;
+  background: url(https://secure.echobox.com/img/dropdown_arrow.png) no-repeat right transparent;
+  border: 1px solid black;
+  white-space: nowrap;
+  background-size: 18px 5px;
+}
+
+.filterdown select {
+  width: 100%;
+  background: transparent;
+  font-size: 16px;
+  border: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+  color: #56646E;
+}
+
+#width_tmp_select{
+  display : none;
+  border-radius: 3;
+  font-size: 16px;
 }
 
 /*search bar */
 
 form input {
-  border: none;
-  background: transparent;
-  border-bottom: 1px solid #fff;
-  outline: none;
+        border: none;
+        background: transparent;
+        border-bottom: 1px solid #fff;
+        outline: none;
+      }
+
+
+.search{
+
+        position: absolute;
+        width: 55px;
+        height: 43px;
+        left: 1012px;
+        top: 16px;
+        background: #ECC129;
 }
 
-.exampleInputClass {
-  position: absolute;
-  width: 625px;
-  height: 43px;
-  left: 128px;
+.searchBtn{
 
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  border-right: black;
-  box-sizing: border-box;
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
+        position: absolute;
+        width: 55px!important;
+        height: 43px;
+        left: 750px!important;
+        top:0px!important;
+        background: #ECC129;
 }
 
-.dropdown {
-  position: absolute;
-  left: 460px;
-  top: 16px;
-  border-radius: 0 !important;
+
+a:hover{
+text-decoration:none;
 }
 
-.dropdownMenuButton {
-  background-color: #c4c4c4;
-  width: auto;
-  height: 43px;
-  border-right: #ecc129;
-  border-radius: 0 !important;
-}
+.col-h1{
+        position: absolute;
+        width: 44px;
+        height: 22px;
+        right: 330px;
+        top: 9px;
 
-.search {
-  position: absolute;
-  width: 55px;
-  height: 43px;
-  left: 1012px;
-  top: 16px;
-  background: #ecc129;
-}
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 15px;
 
-.searchBtn {
-  position: absolute;
-  width: 55px !important;
-  height: 43px;
-  left: 650px !important;
-  top: 0px !important;
-  background: #ecc129;
-}
-
-.signin_register {
-  position: absolute;
-  width: 115px;
-  height: 60px;
-  right: 300px;
-  top: 20px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 13px;
-  line-height: 14px;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-.col-h1 {
-  position: absolute;
-  width: 44px;
-  height: 22px;
-  right: 530px;
-  top: 9px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 15px;
-
-  color: #ffffff;
+        color: #FFFFFF;
 }
 
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #f5f5f5;
-  color: white;
-  text-align: center;
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #f5f5f5;
+   color: white;
+   text-align: center;
 }
 
 /*************  button  **********/
 
 .btn:focus {
-  outline: none !important;
-  border: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+        outline: none !important;
+        border: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
 }
 
-/*** MEDIA *** /    /* Laptop */
-@media screen and (min-width: 1024px) and (max-height: 1310px) {
-  .navbar {
-    position: absolute;
-    width: 100%;
-    height: 71px;
-    left: 0px;
-    top: 0px;
-  }
 
-  .gator {
-    position: absolute;
-    width: 80px;
-    height: 112px;
-    left: 5px;
-    top: -3px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 36px;
-    line-height: 42px;
+/*** MEDIA  screen size 1224px ***/
+@media screen and (max-width: 1224px){
 
-    color: #ffffff;
-  }
+     .col-h1 {
+        position: absolute;
+        width: 30px;
+        height: 22px;
+        right: 350px;
+        top: 9px;
 
-  .trader {
-    position: absolute;
-    width: 101px;
-    height: 76.25px;
-    left: 5px;
-    top: 18.62px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 56px;
+        color: #FFFFFF;
 
-    color: #9ea8ff;
+     }
 
-    transform: rotate(-3.57deg);
-  }
+    #nav-login{
+        margin-left: auto;
+    }
 
-  .col-h1 {
-    position: absolute;
-    width: 30px;
-    height: 22px;
-    right: 350px;
-    top: 9px;
+    .search{
+        position: absolute;
+        width: 55px;
+        height: 35px;
+        left: 1500px;
+        top: 16px;
+        background: #ECC129;
+    }
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1px;
+    .searchBtn{
+        position: absolute;
+        width: 55px;
+        height: 35px;
+        left: 445px!important;
+        background: #ECC129;
+    }
 
-    color: #ffffff;
-  }
-  /**search whitebox ***/
-  .exampleInputClass {
-    position: absolute;
-    width: 325px;
-    height: 35px;
-    left: 125px;
+    .footer {
+       position: fixed;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       background-color: #f5f5f5;
+       color: white;
+       text-align: center;
+    }
 
-    background: #ffffff;
-    border: 1px solid #ffffff;
-    border-right: black;
-    box-sizing: border-box;
-    border-top-left-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-  }
-
-  .dropdown {
-    position: absolute;
-    left: 15%;
-    top: 16px;
-    border-radius: 0 !important;
-  }
-
-  .dropdownMenuButton {
-    background-color: #c4c4c4;
-    width: auto;
-    left: 180px;
-    height: 35px;
-    border-right: #ecc129;
-    border-style: solid;
-    border-left-radius: 0!;
-  }
-
-  .search {
-    position: absolute;
-    width: 55px;
-    height: 35px;
-    left: 1500px;
-    top: 16px;
-    background: #ecc129;
-  }
-
-  .searchBtn {
-    position: absolute;
-    width: 55px;
-    height: 35px;
-    left: 445px !important;
-    background: #ecc129;
-  }
-
-  .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #f5f5f5;
-    color: white;
-    text-align: center;
-  }
 }
 
-@media screen and (min-width: 1350px) and (max-height: 1310px) {
-  .gator {
-    position: absolute;
-    width: 80px;
-    left: 80px;
-  }
 
-  .trader {
-    width: 101px;
-    left: 80px;
-  }
+/*** MEDIA  screen size 875px ***/
+@media screen and (max-width: 875px){
 
-  .col-h1 {
-    font-size: 18px;
-    right: 400px;
-  }
+     .col-h1 {
+        position: absolute;
+        height: 22px;
+        top: 9px;
 
-  .dropdown {
-    left: 25%;
-  }
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1px;
 
-  .exampleInputClass {
-    width: 375px;
-  }
+        color: #FFFFFF;
 
-  .searchBtn {
-    position: absolute;
-    width: 55px;
-    height: 35px;
-    left: 495px !important;
-    background: #ecc129;
-  }
-}
+     }
 
-@media screen and (min-width: 1800px) and (max-height: 1310px) {
-  .dropdown {
-    left: 35%;
-  }
+    #nav-login{
+        margin-left: auto;
+    }
 
-  /**search whitebox ***/
-  .exampleInputClass {
-    width: 525px;
-  }
+    .search{
+        position: absolute;
+        width: 45px;
+        height: 35px;
+        left: 1500px;
+        top: 16px;
+        background: #ECC129;
+    }
 
-  .searchBtn {
-    position: absolute;
-    width: 55px;
-    height: 35px;
-    left: 645px !important;
-    background: #ecc129;
-  }
-}
+    .searchBtn{
+        position: absolute;
+        width: 55px;
+        height: 35px;
+        left: 245px!important;
+        background: #ECC129;
+    }
 
-.row {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
+
+
+/*** MEDIA  screen size 576px ***/
+@media screen and (max-width: 576px){
+     .col-h1 {
+        position: absolute;
+
+        height: 22px;
+
+        top: 9px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1px;
+
+        color: #FFFFFF;
+
+     }
+
+    #nav-login{
+        margin-left: auto;
+    }
+
+    .dropdown{
+       display: none;
+    }
