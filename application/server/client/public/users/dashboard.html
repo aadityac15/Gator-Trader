@@ -5,44 +5,36 @@
         document.write(variable);
     }
 </script>
-<script src="../../scripts/domCreation.js"></script>
+ <script src="../../scripts/domCreation.js"></script>
 <script src="../../scripts/dashboard.js" type="text/javascript" charset="utf-8"></script>
-
-<div class="container">
-    <br>
-    <div id="rcorners1">
-        <br>
-        <h3> Hello
-        <script>
-           if(localStorage.getItem("firstName") !== null) {
-               docWrite(localStorage.getItem("firstName"));
-           }
-        </script>
-        </h3> <!-- nned to add the user name here-->
-        <ul class="nav nav-tabs nav-fill">
-
-            <!-- Link to approved/listed items go here -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ '/users/approved_list' }}">Approved Items</a>
-            </li>
-
-            <!-- Link to items awaiting approval go here -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ '/users/pending_list' }}">Pending Items</a>
-            </li>
-
-            <!-- Link to Messages go here -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ '/message/messages' }}">Messages</a>
-            </li>
-
-        </ul>
-
-        <div class="dashboard-items">
-            <br> {% block content %} {% endblock %}
-        </div>
-    </div>
-</div>
+ <div class="project-tab">
+     <div class="container">
+          <br>
+         <h3> Hello
+             <script>
+               if(localStorage.getItem("firstName") !== null) {
+                   docWrite(localStorage.getItem("firstName"));
+               }
+            </script>
+         </h3>
+         <div class="row">
+             <div class="col-md-12">
+                 <nav>
+                     <div class="nav nav-tabs nav-fill">
+                         <a class="nav-item nav-link" href="{{ '/users/approved_list' }}">Approved Items</a>
+                         <a class="nav-item nav-link" href="{{ '/users/pending_list' }}">Pending Items</a>
+                         <a class="nav-item nav-link" href="{{ '/message/messages' }}">Messages</a>
+                     </div>
+                 </nav>
+                 <div class="dashboard-items">
+                     <br>{% block content %}
+                     {% endblock %}
+                 </div>
+                 <br>
+             </div>
+         </div>
+     </div>
+ </div>
 
 
 {% endblock %}

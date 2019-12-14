@@ -107,7 +107,6 @@ let createListingTableRow = (listing) => {
     tableRow.appendChild(listingImageData);
     tableRow.appendChild(listingTitleData);
     tableRow.appendChild(listingDateData);
-
     return tableRow;
 };
 

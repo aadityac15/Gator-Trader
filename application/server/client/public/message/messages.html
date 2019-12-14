@@ -1,45 +1,35 @@
 {% extends 'users/dashboard.html' %}
 
 {% block content %}
-<!----order sell notification cart-->
-<div class="tab">
-    <button class="tablinks">Inbox</button>
-<!--    <button class="tablinks" onclick="receivedMsg();">Inbox</button>-->
-</div>
-<div id="Inbox" class="tabcontent table-responsive">
-    <p><h3>Messages Received</h3></p>
-    <!-- if received_msg  -->
-    <table class="table table-hover" id="message-table">
-        <thead>
+<h4>Messages Received</h4>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active">
+        <table class="table" id="message-table" cellspacing="0">
+            <thead>
             <tr>
-                <th scope="col">Item</th>
-                <th scope="col">Message</th>
-                <th scope="col">Sender</th>
-                <th scope="col">Date</th>
+                <th>Item</th>
+                <th>Message</th>
+                <th>Sender</th>
+                <th>Date</th>
             </tr>
-        </thead>
-        <tbody>
-        <!-- for message in received_msg -->
-        <tr>
-            <td>
-                <div>
-                    <a id = "listing_id"> </a>
-                </div>
-            </td>
+            </thead>
+            <tbody>
+                <!--List items name and data goes here -->
+                <tr>
+                    <td><a id ="listing_id"> </a></td>
 
-            <td>
-                <div class="col-content" data-toggle="tooltip" data-placement="top" > <!-- need js for this -->
-                    <a id="message_body"></a>
-                </div>
-            </td>
+                    <td><a id ="message_body"></a></td>
 
-            <td><a id ="sent_by"></a></td>
-            <td><a id ="timestamp"></a></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<script>
+                    <td><a id ="sent_by"></a></td>
+
+                    <td><a id ="timestamp"></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
     getMessages();
-</script>
+    </script>
+</div>
+
 {% endblock %}

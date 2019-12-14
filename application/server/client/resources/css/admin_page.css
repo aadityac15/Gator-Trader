@@ -14,6 +14,8 @@
     border: none;
     border-radius: 5px;
     width:auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 
  table th {
@@ -22,4 +24,15 @@
 
  table tbody {
   text-align: center; 
+}
+
+.admindashboard-items {
+    margin-left: -45px;
+    overflow-x: scroll;
+}
+
+@media screen and (max-width: 576px)
+.admindashboard-items {
+    margin-left:-45px;
+    overflow-x: scroll;
 }
