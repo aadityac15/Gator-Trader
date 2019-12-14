@@ -8,23 +8,23 @@
   <div class="login-form" style="width: 340px;margin:150px auto">
     <div>
         <h2 class="text-center">Log in</h2>       
-        <div class="">
+        <div class="form-group">
             <input id= "login-username" type="text" class="form-control" placeholder="Username" required="required" value=""/>
         </div>
-        <div class="">
+        <div class="form-group">
             <input id="login-password" type="password" class="form-control" placeholder="Password" required="required" value=""/>
         </div>
         <div class="form-group">
-            <button class="btn btn-block btn-warning" id="login" onclick="loginUser()">Log in</button>
+            <button class="btn btn-block btn-warning form-control" id="login" onclick="loginUser()">Log in</button>
         </div>
         <div class="clearfix">
             <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-            <p class="message"><a href="#" class="pull-right text-warning " id="reset-password">Forgot Password?</a></p>
+            <p class="message"><a href="#" class="pull-right text-warning" id="reset-password">Forgot Password?</a></p>
         </div>  
         <p class="text-center "><a href="{{ 'signup' }}"class="text-primary" >Create an Account</a></p>      
     </div>
   </div>
-  
+
 
 <!------------------reset password form ----------------->
 <div class="reset-form" style="width: 340px;margin:150px auto; background: #f7f7f7; padding: 30px; display:none ">
