@@ -96,22 +96,18 @@ form input {
   outline: none;
 }
 
-.search {
-  position: absolute;
-  width: 55px;
-  height: 43px;
-  left: 1012px;
-  top: 16px;
-  background: #ecc129;
+
+.searchBtn{
+        position: absolute;
+        width: 55px!important;
+        height: 43px;
+        left: 750px!important;
+        top:0px!important;
+        background: #ECC129;
 }
 
-.searchBtn {
-  position: absolute;
-  width: 55px !important;
-  height: 43px;
-  left: 750px !important;
-  top: 0px !important;
-  background: #ecc129;
+#recommendedBtn {
+    margin-left: 20px;
 }
 
 a:hover {
