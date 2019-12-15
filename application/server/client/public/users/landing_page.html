@@ -1,98 +1,103 @@
-  
+
 {% extends 'index.html' %}
 {% block body %}
 
 
-<body style="margin: 0; height: 100%;">
-  <div class="container">
+<body>
+<div class="container">
     <!------welcome banner-->
     <div  class="jumbotron jumbotron_box">
-      <h1>Welcome to Gator Trader</h1>
-      <p>
-        A platform for SF State students to buy and sell items
-      </p>
-      <br /><br />
-      <p>
-        SFSU Software Engineering Project CSC 648-848 Team 02, Fall 2019. For
-        Demonstration Only
-      </p>
+        <h1>Welcome to Gator Trader</h1>
+        <p>
+            A platform for SF State students to buy and sell items
+        </p>
+        <br /><br />
+        <p>
+            SFSU Software Engineering Project CSC 648-848 Team 02, Fall 2019. For
+            Demonstration Only
+        </p>
     </div>
 
     <!---------- display categories-->
     <div class="categories">
-      <div class="row">
-        <div class="col-sm-3 col-xs-6">
-          <div class="row no-gutters auto">
+        <div class="row">
+            <div class="col-sm-3 col-xs-6">
+                <div class="row no-gutters auto">
 
-            <!------ Applicance ---->
-            <div class="col-md-6 box">
-              <img class="img-responsive" style="height:22%;" src="../resources/images/list/appliances.png"/>
-              <h5><kbd id="Appliances" class="bg-secondary pointer-hand"></kbd></h5>
-            </div>
+                    <!------ Applicance ---->
+                    <div class="col-md-6 box">
+                        <img class="img-responsive" style="height:22%;" src="../resources/images/list/appliances.png"/>
+                        <h5><kbd id="Appliances" class="bg-secondary pointer-hand"></kbd></h5>
+                    </div>
 
-            <!------ Art ---->
-            <div class="col-md-6 box art">
-              <img class="img-responsive" style="height:22%;" src="../resources/images/list/design.png"/>
-              <h5 style="margin-left:38px; margin-top:2px;"><kbd id="Art" class="bg-secondary pointer-hand"></kbd></h5>
-            </div>
-          </div>
-        </div>
-
-        <!------ Auto ---->
-        <div class="col-sm-3 col-xs-6">
-          <div class="row no-gutters auto">
-            <div class="col-md-6 box">
-              <img class="img-responsive"style="height:22%;"src="../resources/images/list/clock.png"/>
-              <h5 style="margin-left:25px; margin-top:2px;"><kbd id="Auto" class="bg-secondary pointer-hand"></kbd></h5>
-            </div>
-
-            <!------ Books ---->
-            <div class="col-md-6 box">
-              <img class="img-responsive"style="height:22%;"src="../resources/images/list/books.png"/>
-              <h5 style="margin-left:30px;"><kbd id="Books" class="bg-secondary pointer-hand"></kbd></h5>
-            </div>
-          </div>
-        </div>
-        <!------ Household ---->
-        <div class="col-sm-3 col-xs-6">
-          <div class="row household no-gutters auto">
-            <div class="col-md-6 box">
-              <img class="img-responsive" style="height:22%;" src="../resources/images/list/stock.png"/>
-              <h5 style="margin-top:2px;"><kbd id="Household" class="bg-secondary pointer-hand"></kbd></h5>
-            </div>
-
-          <!------ Tool ---->
-            <div class="col-md-6 box">
-              <img class="img-responsive"style="height:22%;" src="../resources/images/list/locked.png"/>
-              <h5 style="margin-top:2px; margin-left:30px;"><kbd id="Tools" class="bg-secondary pointer-hand"></kbd></h5>
-            </div>
-          </div>
-        </div>
-
-        <!------ Vehicles ---->
-        <div class="col-sm-3 col-xs-6">
-          <div class="row vehicles no-gutters auto">
-            <div class="col-md-6 box">
-              <img class="img-responsive"style="height:22%;"src="../resources/images/list/car.png"/>
-              <h5 style="margin-left:10px;"><kbd id="Vehicles" class="bg-secondary pointer-hand"></kbd></h5>
-            </div>
-
-              <!------ Electricty ---->
-              <div class="col-md-6 box">
-                  <img class="img-responsive"style="height:22%;" src="../resources/images/list/headphones.png"/>
-                  <h5 style="margin-top:2px;"><kbd id="Electronics" class="bg-secondary pointer-hand"></kbd></h5>
+                    <!------ Art ---->
+                    <div class="col-md-6 box art">
+                        <img class="img-responsive" style="height:22%;" src="../resources/images/list/design.png"/>
+                        <h5 style="margin-left:38px; margin-top:2px;"><kbd id="Art" class="bg-secondary pointer-hand"></kbd></h5>
+                    </div>
                 </div>
-              </div>
-          </div>
+            </div>
+
+            <!------ Auto ---->
+            <div class="col-sm-3 col-xs-6">
+                <div class="row no-gutters auto">
+                    <div class="col-md-6 box">
+                        <img class="img-responsive"style="height:22%;"src="../resources/images/list/clock.png"/>
+                        <h5 style="margin-left:25px; margin-top:2px;"><kbd id="Auto" class="bg-secondary pointer-hand"></kbd></h5>
+                    </div>
+
+                    <!------ Books ---->
+                    <div class="col-md-6 box">
+                        <img class="img-responsive"style="height:22%;"src="../resources/images/list/books.png"/>
+                        <h5 style="margin-left:30px;"><kbd id="Books" class="bg-secondary pointer-hand"></kbd></h5>
+                    </div>
+                </div>
+            </div>
+            <!------ Household ---->
+            <div class="col-sm-3 col-xs-6">
+                <div class="row household no-gutters auto">
+                    <div class="col-md-6 box">
+                        <img class="img-responsive" style="height:22%;" src="../resources/images/list/stock.png"/>
+                        <h5 style="margin-top:2px;"><kbd id="Household" class="bg-secondary pointer-hand"></kbd></h5>
+                    </div>
+
+                    <!------ Tool ---->
+                    <div class="col-md-6 box">
+                        <img class="img-responsive"style="height:22%;" src="../resources/images/list/locked.png"/>
+                        <h5 style="margin-top:2px; margin-left:30px;"><kbd id="Tools" class="bg-secondary pointer-hand"></kbd></h5>
+                    </div>
+                </div>
+            </div>
+
+            <!------ Vehicles ---->
+            <div class="col-sm-3 col-xs-6">
+                <div class="row vehicles no-gutters auto">
+                    <div class="col-md-6 box">
+                        <img class="img-responsive"style="height:22%;"src="../resources/images/list/car.png"/>
+                        <h5 style="margin-left:10px;"><kbd id="Vehicles" class="bg-secondary pointer-hand"></kbd></h5>
+                    </div>
+
+                    <!------ Electricty ---->
+                    <div class="col-md-6 box">
+                        <img class="img-responsive"style="height:22%;" src="../resources/images/list/headphones.png"/>
+                        <h5 style="margin-top:2px;"><kbd id="Electronics" class="bg-secondary pointer-hand"></kbd></h5>
+                    </div>
+                </div>
+            </div>
+            <!---- recommendation -->
+            <div class="recommendation">
+                <h2 class="d-inline-block" style="color:"><strong>Featured Recommendations</strong></p></h2>
+                <h3 class="btn btn-outline-warning" type="button" id="recommendedBtn" onclick="redirectToRecommended();">See More</h3>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
-  <script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
-  <script src="../../scripts/indexSearch.js" type="text/javascript" charset="utf-8" async defer></script>
-  <script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
+
+
+<script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="../../scripts/indexSearch.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
 
 </body>
 

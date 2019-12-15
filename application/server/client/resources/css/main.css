@@ -1,10 +1,8 @@
-@media screen and (max-width : 600) {
+@media screen and (max-width: 600) {
   #detail-row {
     flex-direction: column;
   }
-
 }
-
 
 .content {
   border-style: none;
@@ -74,8 +72,6 @@
   font-size: 16px;
   border: 0;
   border-radius: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   font-family: "proxima-nova", Helvetica, Arial, sans-serif;
   white-space: nowrap;
   color: #56646e;
@@ -96,18 +92,17 @@ form input {
   outline: none;
 }
 
-
-.searchBtn{
-        position: absolute;
-        width: 55px!important;
-        height: 43px;
-        left: 750px!important;
-        top:0px!important;
-        background: #ECC129;
+.searchBtn {
+  position: absolute;
+  width: 55px !important;
+  height: 43px;
+  left: 750px !important;
+  top: 0px !important;
+  background: #ecc129;
 }
 
 #recommendedBtn {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 a:hover {
@@ -200,97 +195,96 @@ a:hover {
 }
 
 /*** MEDIA  screen size 875px ***/
-@media screen and (max-width: 875px){
-     .col-h1 {
-        position: absolute;
-        height: 22px;
-        top: 9px;
+@media screen and (max-width: 875px) {
+  .col-h1 {
+    position: absolute;
+    height: 22px;
+    top: 9px;
 
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 1px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1px;
 
-        color: #FFFFFF;
+    color: #ffffff;
+  }
+  #nav-login {
+    margin-left: auto;
+  }
+  .search {
+    position: absolute;
+    width: 45px;
+    height: 35px;
+    left: 1500px;
+    top: 16px;
+    background: #ecc129;
+  }
 
-     }
-    #nav-login{
-        margin-left: auto;
-    }
-    .search{
-        position: absolute;
-        width: 45px;
-        height: 35px;
-        left: 1500px;
-        top: 16px;
-        background: #ECC129;
-    }
-
-    .searchBtn{
-        position: absolute;
-        width: 55px;
-        height: 35px;
-        left: 245px!important;
-        background: #ECC129;
-    }
+  .searchBtn {
+    position: absolute;
+    width: 55px;
+    height: 35px;
+    left: 245px !important;
+    background: #ecc129;
+  }
 }
 
-@media screen and(max-width: 390px) and (min-width: 300px){
-    .form-inline .input-group-append .form-control {
-        display: inline-block;
-        width: 280px;
-        vertical-align: middle;
-    }
+@media screen and(max-width: 390px) and (min-width: 300px) {
+  .form-inline .input-group-append .form-control {
+    display: inline-block;
+    width: 280px;
+    vertical-align: middle;
+  }
 
-    .input-group {
-        width: 100%;
-        /* height: 49px; */
-        margin-top: 13px;
-        margin-bottom: -21px;
-    }
+  .input-group {
+    width: 100%;
+    /* height: 49px; */
+    margin-top: 13px;
+    margin-bottom: -21px;
+  }
 }
 
 /*** MEDIA  screen size 576px ***/
-@media screen and (max-width: 650px) and (min-width: 400px){
-     .col-h1 {
-        position: absolute;
-        height: 22px;
-        top: 9px;
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 1px;
-        color: #FFFFFF;
-     }
+@media screen and (max-width: 650px) and (min-width: 400px) {
+  .col-h1 {
+    position: absolute;
+    height: 22px;
+    top: 9px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1px;
+    color: #ffffff;
+  }
 
   #nav-login {
     margin-left: auto;
   }
 
-    .dropdown{
-       display: none;
-    }
+  .dropdown {
+    display: none;
+  }
 
-    .form-inline .input-group-append .form-control {
-        display: inline-block;
-        padding-top: 10px;
-        width: 250px;
-        vertical-align: middle;
-    }
-    .input-group {
-        width: 100%;
-        /* height: 49px; */
-        margin-top: 13px;
-        margin-bottom: -21px;
-    }
+  .form-inline .input-group-append .form-control {
+    display: inline-block;
+    padding-top: 10px;
+    width: 250px;
+    vertical-align: middle;
+  }
+  .input-group {
+    width: 100%;
+    /* height: 49px; */
+    margin-top: 13px;
+    margin-bottom: 4px;
+  }
 }
 
-@media screen and (max-width: 1071px) and (min-width: 655px){
-    .form-inline .input-group-append .form-control {
-        display: inline-block;
-        width: 320px;
-        vertical-align: middle;
-    }
+@media screen and (max-width: 1071px) and (min-width: 655px) {
+  .form-inline .input-group-append .form-control {
+    display: inline-block;
+    width: 320px;
+    vertical-align: middle;
+  }
 }

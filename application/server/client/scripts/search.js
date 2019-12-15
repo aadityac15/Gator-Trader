@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 01:30:35
+ * @Last Modified time: 2019-12-15 02:21:35
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -26,7 +26,8 @@ const sortListings = () => {
 };
 
 const fetchData = async () => {
-  // Transfer code from index to result.
+  // Transfer values from index to result.
+  debugger;
   let category = localStorage.getItem("category");
   let noResultTag = document.getElementById("noResultTag");
   let ulResult = document.getElementById("resultList");
@@ -282,13 +283,11 @@ const styleImgTag = () => {
 };
 
 const styleDescriptionDiv = descriptionDiv => {
-
   descriptionDiv.style["overflow"] = "auto";
 
   descriptionDiv.style["width"] = "100%";
   descriptionDiv.style["height"] = "25%";
 };
-
 
 const clearRows = ulResult => {
   // console.log(ulResult);
@@ -300,128 +299,128 @@ const clearRows = ulResult => {
   return ulResult;
 };
 
-fetchData();
-
 const fetchRecommendedListings = async () => {
   let noResultTag = document.getElementById("noResultTag");
   const ulResult = document.getElementById("resultList");
   ulResult.classList.add("list-group");
-  let user_id = sessionStorage.getItem('user_id');
+  let user_id = sessionStorage.getItem("userName");
 
   await fetch(`/recommended_listings?user_id=${user_id}`, {
     method: "GET",
     withCredentials: true
   })
-  .then(response => {
-    console.log("RECOMMENDED THEN");
-    if (response === undefined) {
-    } else {
-      return response.text();
-    }
-  })
-  .then(data => {
-    let recommendedListingsObject = JSON.parse(data);
-    let recommendedListings = recommendedListingsObject['listings'];
-    if (recommendedListings.length == 0) {
-      let textNode = document.createTextNode(
-          "Your search did not match any of the items. Please try another Search query. You can also take a look at some of these items:"
-      );
-      noResultTag.appendChild(textNode);
-      return;
-    }
-
-    recommendedListings.map(indList => {
-      //  Creation of the elements.
-      const titleDiv = createDomElement("div");
-      const titleBTag = createDomElement("b"); // Bold Tag
-      const h2Tag = createDomElement("h2"); // h2 Tag for text
-      const h4Tag = createDomElement("h4"); // h4 tag for text
-      const imgDivTag = createDomElement("div"); // Div tag to hold the elements.
-      const buttonSpanTag = createDomElement("span"); // span tag for the buttons
-      const imgTag = createDomElement("img"); // Image tag in the DOM
-      const brTag = createDomElement("br");
-      imgTag.classList.add("img-fluid", "img-thumbnail");
-      const typeTag = createDomElement("p");
-      const descriptionDiv = createDomElement("div");
-      const descriptionTag = createDomElement("p");
-      const listingTag = createDomElement("p");
-      const priceTag = createDomElement("p");
-      const titleTag = createDomElement("p");
-      const buttonTag = createDomElement("button"); // Button tag in the DOM.
-      buttonTag.innerText = "See More";
-      buttonTag.style["margin-right"] = "10px";
-      buttonSpanTag.style["width"] = "80%";
-
-      // Redirect to the details page.
-
-      buttonTag.onclick = () => {
-        redirectToIndividualListing(indList["listing_id"], indList["title"]);
-      };
-
-      buttonSpanTag.classList.add("flex-display-row", "make-responsive");
-
-      buttonTag.classList.add("btn", "btn-warning");
-      const divTag = createDomElement("div");
-      let liTag = createDomElement("li");
-      styleLi(liTag);
-
-      // Add Image / Thumbnails src if present, else show placeholder image.
-      if (indList["thumbnail"] !== null) {
-        imgTag.src = indList["thumbnail"];
-        imgTag.width = 150;
-        imgTag.height = 150;
+    .then(response => {
+      console.log("RECOMMENDED THEN");
+      if (response === undefined) {
       } else {
-        imgTag.src = "https://via.placeholder.com/150";
+        return response.text();
       }
-      // styleImgTag(imgTag);
-      imgDivTag.appendChild(imgTag);
-      imgDivTag.style["flex-grow"] = 1;
-      liTag.appendChild(imgDivTag);
+    })
+    .then(data => {
+      console.log(data);
+      let recommendedListingsObject = JSON.parse(data);
+      let recommendedListings = recommendedListingsObject["listings"];
+      if (recommendedListings.length == 0) {
+        let textNode = document.createTextNode(
+          "Your search did not match any of the items. Please try another Search query. You can also take a look at some of these items:"
+        );
+        noResultTag.appendChild(textNode);
+        return;
+      }
 
-      // Title Tag and  styling
-      titleTag.innerText = indList["title"];
-      h2Tag.appendChild(titleTag);
-      titleBTag.appendChild(h2Tag);
+      recommendedListings.map(indList => {
+        //  Creation of the elements.
+        const titleDiv = createDomElement("div");
+        const titleBTag = createDomElement("b"); // Bold Tag
+        const h2Tag = createDomElement("h2"); // h2 Tag for text
+        const h4Tag = createDomElement("h4"); // h4 tag for text
+        const imgDivTag = createDomElement("div"); // Div tag to hold the elements.
+        const buttonSpanTag = createDomElement("span"); // span tag for the buttons
+        const imgTag = createDomElement("img"); // Image tag in the DOM
+        const brTag = createDomElement("br");
+        imgTag.classList.add("img-fluid", "img-thumbnail");
+        const typeTag = createDomElement("p");
+        const descriptionDiv = createDomElement("div");
+        const descriptionTag = createDomElement("p");
+        const listingTag = createDomElement("p");
+        const priceTag = createDomElement("p");
+        const titleTag = createDomElement("p");
+        const buttonTag = createDomElement("button"); // Button tag in the DOM.
+        buttonTag.innerText = "See More";
+        buttonTag.style["margin-right"] = "10px";
+        buttonSpanTag.style["width"] = "80%";
 
-      // Description and other tags.
-      descriptionTag.innerText = indList["description"];
-      descriptionDiv.appendChild(descriptionTag);
-      // Styling description tag.
-      styleDescriptionDiv(descriptionDiv);
+        // Redirect to the details page.
 
-      listingTag.innerText = indList["listing_id"];
-      listingTag.hidden = true;
-      priceTag.innerText = "$" + indList["price"];
-      typeTag.innerText = indList["type"];
-      h4Tag.appendChild(typeTag);
+        buttonTag.onclick = () => {
+          redirectToIndividualListing(indList["listing_id"], indList["title"]);
+        };
 
-      // Style tags to remvove padding
-      styleTags([listingTag, descriptionTag, titleTag, priceTag]);
-      titleDiv.appendChild(titleBTag);
+        buttonSpanTag.classList.add("flex-display-row", "make-responsive");
 
-      // Injecting elements to the DOM.
-      divTag.appendChild(titleDiv);
+        buttonTag.classList.add("btn", "btn-warning");
+        const divTag = createDomElement("div");
+        let liTag = createDomElement("li");
+        styleLi(liTag);
 
-      divTag.appendChild(listingTag);
-      divTag.appendChild(descriptionDiv);
-      divTag.appendChild(priceTag);
-      buttonSpanTag.appendChild(buttonTag);
-      divTag.appendChild(buttonSpanTag);
-      styleDiv(divTag);
-      divTag.style["flex-grow"] = 1;
-      liTag.appendChild(divTag);
-      liTag.classList.add("list-group-item");
-      ulResult.appendChild(liTag);
+        // Add Image / Thumbnails src if present, else show placeholder image.
+        if (indList["thumbnail"] !== null) {
+          imgTag.src = indList["thumbnail"];
+          imgTag.width = 150;
+          imgTag.height = 150;
+        } else {
+          imgTag.src = "https://via.placeholder.com/150";
+        }
+        // styleImgTag(imgTag);
+        imgDivTag.appendChild(imgTag);
+        imgDivTag.style["flex-grow"] = 1;
+        liTag.appendChild(imgDivTag);
+
+        // Title Tag and  styling
+        titleTag.innerText = indList["title"];
+        h2Tag.appendChild(titleTag);
+        titleBTag.appendChild(h2Tag);
+
+        // Description and other tags.
+        descriptionTag.innerText = indList["description"];
+        descriptionDiv.appendChild(descriptionTag);
+        // Styling description tag.
+        styleDescriptionDiv(descriptionDiv);
+
+        listingTag.innerText = indList["listing_id"];
+        listingTag.hidden = true;
+        priceTag.innerText = "$" + indList["price"];
+        typeTag.innerText = indList["type"];
+        h4Tag.appendChild(typeTag);
+
+        // Style tags to remvove padding
+        styleTags([listingTag, descriptionTag, titleTag, priceTag]);
+        titleDiv.appendChild(titleBTag);
+
+        // Injecting elements to the DOM.
+        divTag.appendChild(titleDiv);
+
+        divTag.appendChild(listingTag);
+        divTag.appendChild(descriptionDiv);
+        divTag.appendChild(priceTag);
+        buttonSpanTag.appendChild(buttonTag);
+        divTag.appendChild(buttonSpanTag);
+        styleDiv(divTag);
+        divTag.style["flex-grow"] = 1;
+        liTag.appendChild(divTag);
+        liTag.classList.add("list-group-item");
+        ulResult.appendChild(liTag);
+      });
     });
-  })
-
+};
 
 window.onload = () => {
-    if (localStorage.getItem("category") !== null) {
-      document.getElementById("selectDropDown").value = localStorage.getItem(
-        "category"
-      );
-    } else {
-      document.getElementById("selectDropDown").value = "All Categories";
-    }
+  if (localStorage.getItem("category") !== null) {
+    document.getElementById("selectDropDown").value = localStorage.getItem(
+      "category"
+    );
+  } else {
+    document.getElementById("selectDropDown").value = "All Categories";
+  }
+  fetchData();
 };
