@@ -204,7 +204,6 @@ text-decoration:none;
 
 /*** MEDIA  screen size 875px ***/
 @media screen and (max-width: 875px){
-
      .col-h1 {
         position: absolute;
         height: 22px;
@@ -219,11 +218,9 @@ text-decoration:none;
         color: #FFFFFF;
 
      }
-
     #nav-login{
         margin-left: auto;
     }
-
     .search{
         position: absolute;
         width: 45px;
@@ -240,26 +237,35 @@ text-decoration:none;
         left: 245px!important;
         background: #ECC129;
     }
+}
 
+@media screen and(max-width: 390px) and (min-width: 300px){
+    .form-inline .input-group-append .form-control {
+        display: inline-block;
+        width: 280px;
+        vertical-align: middle;
+    }
 
+    .input-group {
+        width: 100%;
+        /* height: 49px; */
+        margin-top: 13px;
+        margin-bottom: -21px;
+    }
+}
 
 /*** MEDIA  screen size 576px ***/
-@media screen and (max-width: 576px){
+@media screen and (max-width: 650px) and (min-width: 400px){
      .col-h1 {
         position: absolute;
-
         height: 22px;
-
         top: 9px;
-
         font-family: Roboto;
         font-style: normal;
         font-weight: 500;
         font-size: 16px;
         line-height: 1px;
-
         color: #FFFFFF;
-
      }
 
     #nav-login{
@@ -269,3 +275,25 @@ text-decoration:none;
     .dropdown{
        display: none;
     }
+
+    .form-inline .input-group-append .form-control {
+        display: inline-block;
+        padding-top: 10px;
+        width: 250px;
+        vertical-align: middle;
+    }
+    .input-group {
+        width: 100%;
+        /* height: 49px; */
+        margin-top: 13px;
+        margin-bottom: -21px;
+    }
+}
+
+@media screen and (max-width: 1071px) and (min-width: 655px){
+    .form-inline .input-group-append .form-control {
+        display: inline-block;
+        width: 320px;
+        vertical-align: middle;
+    }
+}
