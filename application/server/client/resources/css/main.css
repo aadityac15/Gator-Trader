@@ -204,66 +204,97 @@ a:hover {
 }
 
 /*** MEDIA  screen size 875px ***/
-@media screen and (max-width: 875px) {
-  .col-h1 {
-    position: absolute;
-    height: 22px;
-    top: 9px;
+@media screen and (max-width: 875px){
+     .col-h1 {
+        position: absolute;
+        height: 22px;
+        top: 9px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1px;
 
-    color: #ffffff;
-  }
+        color: #FFFFFF;
 
-  #nav-login {
-    margin-left: auto;
-  }
+     }
+    #nav-login{
+        margin-left: auto;
+    }
+    .search{
+        position: absolute;
+        width: 45px;
+        height: 35px;
+        left: 1500px;
+        top: 16px;
+        background: #ECC129;
+    }
 
-  .search {
-    position: absolute;
-    width: 45px;
-    height: 35px;
-    left: 1500px;
-    top: 16px;
-    background: #ecc129;
-  }
+    .searchBtn{
+        position: absolute;
+        width: 55px;
+        height: 35px;
+        left: 245px!important;
+        background: #ECC129;
+    }
+}
 
-  .searchBtn {
-    position: absolute;
-    width: 55px;
-    height: 35px;
-    left: 245px !important;
-    background: #ecc129;
-  }
+@media screen and(max-width: 390px) and (min-width: 300px){
+    .form-inline .input-group-append .form-control {
+        display: inline-block;
+        width: 280px;
+        vertical-align: middle;
+    }
+
+    .input-group {
+        width: 100%;
+        /* height: 49px; */
+        margin-top: 13px;
+        margin-bottom: -21px;
+    }
 }
 
 /*** MEDIA  screen size 576px ***/
-@media screen and (max-width: 576px) {
-  .col-h1 {
-    position: absolute;
-
-    height: 22px;
-
-    top: 9px;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1px;
-
-    color: #ffffff;
-  }
+@media screen and (max-width: 650px) and (min-width: 400px){
+     .col-h1 {
+        position: absolute;
+        height: 22px;
+        top: 9px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1px;
+        color: #FFFFFF;
+     }
 
   #nav-login {
     margin-left: auto;
   }
 
-  .dropdown {
-    display: none;
-  }
+    .dropdown{
+       display: none;
+    }
+
+    .form-inline .input-group-append .form-control {
+        display: inline-block;
+        padding-top: 10px;
+        width: 250px;
+        vertical-align: middle;
+    }
+    .input-group {
+        width: 100%;
+        /* height: 49px; */
+        margin-top: 13px;
+        margin-bottom: -21px;
+    }
+}
+
+@media screen and (max-width: 1071px) and (min-width: 655px){
+    .form-inline .input-group-append .form-control {
+        display: inline-block;
+        width: 320px;
+        vertical-align: middle;
+    }
 }

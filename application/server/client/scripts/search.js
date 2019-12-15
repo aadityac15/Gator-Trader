@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-14 17:33:39
+ * @Last Modified time: 2019-12-14 17:45:37
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -23,7 +23,7 @@ const fetchData = async () => {
   const ulResult = document.getElementById("resultList");
   ulResult.classList.add("list-group");
   console.log(localStorage);
-  debugger;
+  // debugger;
   if (localStorage.getItem("category") !== null) {
     if (localStorage.getItem("wrongCategory") !== null) {
       document.getElementById("selectDropDown").value = localStorage.getItem(
@@ -35,7 +35,7 @@ const fetchData = async () => {
       );
     }
   } else {
-        document.getElementById("selectDropDown").value = "All Categories";
+    document.getElementById("selectDropDown").value = "All Categories";
   }
   // Fill the query from the query item.
   document.getElementById("queryTag").value = localStorage.getItem("query");
@@ -96,7 +96,7 @@ const fetchData = async () => {
           noResultTag.appendChild(textNode);
         } else {
           let textNode = document.createTextNode(
-            "Your search did not match any of the items. Please try another Search query. You can also take a look at some of these items:"
+            "Your search did not match any of the items. Please try another Search query. Please wait for the items to be approved if you have created a listing. You can also take a look at some of these items:"
           );
           noResultTag.appendChild(textNode);
           if (category !== "") {
