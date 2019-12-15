@@ -21,6 +21,16 @@ def render_results():
     return render_template("search_result.html")
 
 
+@static_blueprint.route("/recommended", methods=["GET"])
+def render_recommended_results():
+    """
+    Renders search results
+
+    :return:
+    """
+    return render_template("recommended_results.html")
+
+
 @static_blueprint.route("/terms", methods=["GET", "POST"])
 def render_terms():
     """

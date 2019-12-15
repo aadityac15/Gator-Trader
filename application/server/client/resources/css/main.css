@@ -97,13 +97,16 @@ form input {
 }
 
 .searchBtn{
-
         position: absolute;
         width: 55px!important;
         height: 43px;
         left: 750px!important;
         top:0px!important;
         background: #ECC129;
+}
+
+#recommendedBtn {
+    margin-left: 20px;
 }
 
 
