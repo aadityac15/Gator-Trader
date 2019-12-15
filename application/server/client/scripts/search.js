@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 02:45:14
+ * @Last Modified time: 2019-12-15 03:21:25
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -30,7 +30,8 @@ const fetchData = async () => {
   let category = localStorage.getItem("category");
   let noResultTag = document.getElementById("noResultTag");
   let ulResult = document.getElementById("resultList");
-
+  console.log(category);
+  // debugger;
   if (filterFlag) {
     ulResult = await clearRows(ulResult);
     filterFlag = false;
@@ -243,7 +244,6 @@ const fetchData = async () => {
           // Injecting each li tag to the parent ul tag.
           ulResult.appendChild(liTag);
         });
-        localStorage.removeItem("wrongCategory");
       }
     });
 };
@@ -422,4 +422,10 @@ window.onload = () => {
     document.getElementById("selectDropDown").value = "All Categories";
   }
   fetchData();
+};
+
+window.onunload = () => {
+  localStorage.removeItem("wrongCategory");
+  // localStorage.removeItem("query");
+  // localStorage.removeItem("category");
 };
