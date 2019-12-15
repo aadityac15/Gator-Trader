@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 02:21:35
+ * @Last Modified time: 2019-12-15 02:45:14
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -27,7 +27,6 @@ const sortListings = () => {
 
 const fetchData = async () => {
   // Transfer values from index to result.
-  debugger;
   let category = localStorage.getItem("category");
   let noResultTag = document.getElementById("noResultTag");
   let ulResult = document.getElementById("resultList");
