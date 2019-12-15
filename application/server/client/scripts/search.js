@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 03:21:25
+ * @Last Modified time: 2019-12-15 12:10:03
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -30,8 +30,6 @@ const fetchData = async () => {
   let category = localStorage.getItem("category");
   let noResultTag = document.getElementById("noResultTag");
   let ulResult = document.getElementById("resultList");
-  console.log(category);
-  // debugger;
   if (filterFlag) {
     ulResult = await clearRows(ulResult);
     filterFlag = false;
@@ -243,6 +241,7 @@ const fetchData = async () => {
 
           // Injecting each li tag to the parent ul tag.
           ulResult.appendChild(liTag);
+          return;
         });
       }
     });
@@ -289,8 +288,6 @@ const styleDescriptionDiv = descriptionDiv => {
 };
 
 const clearRows = ulResult => {
-  // console.log(ulResult);
-  if (ulResult.innerHTML !== null) {
     while (ulResult.firstChild) {
       ulResult.removeChild(ulResult.firstChild);
     }
@@ -309,15 +306,11 @@ const fetchRecommendedListings = async () => {
     withCredentials: true
   })
     .then(response => {
-      console.log("RECOMMENDED THEN");
-      if (response === undefined) {
       } else {
         return response.text();
       }
     })
     .then(data => {
-      console.log(data);
-      let recommendedListingsObject = JSON.parse(data);
       let recommendedListings = recommendedListingsObject["listings"];
       if (recommendedListings.length == 0) {
         let textNode = document.createTextNode(
@@ -421,8 +414,8 @@ window.onload = () => {
   } else {
     document.getElementById("selectDropDown").value = "All Categories";
   }
-  fetchData();
 };
+fetchData();
 
 window.onunload = () => {
   localStorage.removeItem("wrongCategory");
