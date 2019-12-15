@@ -1,20 +1,25 @@
 {% extends 'index.html' %} {% block body %}
-
-<div id="detail-row" class="container margin-top flex-display-row ">
-	<div>
-		<span id="img-div">
-			<img id="listingImage" height="300px" width="300px" />
-		</span>
-	</div>
-	<div class="col-sm-7">
-		<div class="flex-display-column flex-start" style="width:80%;">
+<br><br>
+<div id="detail-row" class="container">
+	<div class="row">
+		<!-- left side -->
+		<div class="col-sm-5">
+			<div class="card bg-light mb-3">
+				<div class="card-header">Image:</div>
+				<div class="card-body" id="img-div">
+					<img id="listingImage" class="img-fluid mx-auto d-block" alt="Responsive image">
+				</div>
+			</div>
+		</div>
+		<!-- right side -->
+		<div class="col-sm-7">
 			<b>
-				<h1 id="titleTag"></h1>
+				<h1 style="overflow-wrap: break-word;" id="titleTag"></h1>
 			</b>
 			<div class="container row mb-3">
-				<div class="border bg-light rounded-left py-2 px-3 w-25">Description: </div>
+				<div class="border bg-light rounded-left py-2 px-3 w-20">Description: </div>
 				<div class="border bg-light rounded-right py-2 px-3">
-					<span>
+					<span style="overflow-wrap: break-word;">
 						<p id="description"></p>
 					</span>
 				</div>
@@ -22,7 +27,7 @@
 			<div class="container row mb-3">
 				<div class="border bg-light rounded-left py-2 px-3 w-25">Category: </div>
 				<div class="border bg-light rounded-right py-2 px-3">
-					<span>
+					<span style="overflow-wrap: break-word;">
 						<p id="category"></p>
 					</span>
 				</div>
@@ -30,22 +35,22 @@
 			<div class="container row mb-3">
 				<div class="border bg-light rounded-left py-2 px-3 w-25">Price:</div>
 				<div class="border bg-light rounded-right py-2 px-3">
-					<span>
+					<span style="overflow-wrap: break-word;">
 						<p id="priceTag"></p>
 					</span>
 				</div>
 			</div>
-			<span>
-				<div class="card bg-light mb-3">
-					<div class="card-header"><label for="message_body">Contact Seller: </label></div>
-					<div class="card-body">
-						<textarea id="message_body" name="message" type="text" placeholder="Leave a message"
-							style="height:200px; width: 100%"></textarea>
-						<button id="submitButton" onclick="sendMessages();" type="submit" class="btn btn-primary"
+
+			<div class="card bg-light mb-3">
+				<div class="card-header"><label for="message_body">Contact Seller: </label></div>
+				<div class="card-body">
+					<textarea id="message_body" name="message" type="text" placeholder="Leave a message"
+							  style="height:200px; width: 100%"></textarea>
+					<button id="submitButton" onclick="sendMessages();" type="submit" class="btn btn-primary"
 							style="background:#ECC129; color:black;">Send</button>
-					</div>
 				</div>
-			</span>
+			</div>
+			<br><br>
 		</div>
 	</div>
 </div>
