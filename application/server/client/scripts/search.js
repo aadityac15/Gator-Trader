@@ -30,8 +30,6 @@ const fetchData = async () => {
   let category = localStorage.getItem("category");
   let noResultTag = document.getElementById("noResultTag");
   let ulResult = document.getElementById("resultList");
-  console.log(category);
-  // debugger;
   if (filterFlag) {
     ulResult = await clearRows(ulResult);
     filterFlag = false;
@@ -289,7 +287,6 @@ const styleDescriptionDiv = descriptionDiv => {
 };
 
 const clearRows = ulResult => {
-  // console.log(ulResult);
   if (ulResult.innerHTML !== null) {
     while (ulResult.firstChild) {
       ulResult.removeChild(ulResult.firstChild);
@@ -309,14 +306,12 @@ const fetchRecommendedListings = async () => {
     withCredentials: true
   })
     .then(response => {
-      console.log("RECOMMENDED THEN");
       if (response === undefined) {
       } else {
         return response.text();
       }
     })
     .then(data => {
-      console.log(data);
       let recommendedListingsObject = JSON.parse(data);
       let recommendedListings = recommendedListingsObject["listings"];
       if (recommendedListings.length == 0) {
@@ -426,6 +421,4 @@ window.onload = () => {
 
 window.onunload = () => {
   localStorage.removeItem("wrongCategory");
-  // localStorage.removeItem("query");
-  // localStorage.removeItem("category");
 };
