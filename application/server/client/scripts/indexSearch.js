@@ -31,6 +31,10 @@ const redirectToResult = () => {
   window.location.pathname = "/results";
 };
 
+const redirectToRecommended = () => {
+  window.location.pathname = "/recommended";
+};
+
 const loadDropDown = async () => {
   // localStorage.removeItem("category");
   const selectDropDownElement = document.getElementById("selectDropDown");
