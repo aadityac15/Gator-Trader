@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date:   2019-11-12 02:03:04
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-14 20:59:22
+ * @Last Modified time: 2019-12-15 01:37:12
  * @Description : Redirect the page to the result page. The categories are put in from the categories.csv.
  */
 

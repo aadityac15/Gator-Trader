@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 01:20:53
+ * @Last Modified time: 2019-12-15 01:30:35
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -18,6 +18,7 @@ let count = 0;
 let filterCount = 0;
 let filterFlag = false;
 let sort_by = "";
+
 const sortListings = () => {
   filterFlag = true;
   filterCount += 1;
@@ -243,8 +244,6 @@ const fetchData = async () => {
           ulResult.appendChild(liTag);
         });
         localStorage.removeItem("wrongCategory");
-        // localStorage.removeItem("category");
-        // localStorage.removeItem("query");
       }
     });
 };
@@ -302,7 +301,6 @@ const clearRows = ulResult => {
 };
 
 fetchData();
-}
 
 const fetchRecommendedListings = async () => {
   let noResultTag = document.getElementById("noResultTag");
