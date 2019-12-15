@@ -301,8 +301,6 @@ const clearRows = ulResult => {
   return ulResult;
 };
 
-fetchData();
-}
 
 const fetchRecommendedListings = async () => {
   let noResultTag = document.getElementById("noResultTag");
@@ -416,7 +414,7 @@ const fetchRecommendedListings = async () => {
       ulResult.appendChild(liTag);
     });
   })
-
+};
 
 window.onload = () => {
     if (localStorage.getItem("category") !== null) {
