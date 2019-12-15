@@ -1,5 +1,5 @@
 .jumbotron_box{
-     margin-top:10%;
+     margin-top:4%;
      height:30%;
      text-align:center;
 }
@@ -12,14 +12,23 @@
 
 
     .jumbotron_box{
-        margin-top:30%;
+        margin-top:14%;
     }
 
     .box{
         border-radius: 30px;
-        margin: 2.2% 9.5% 0 4.5%;
+        margin-left:0px !important;
         width: 30%;
     }
+    .no-gutters{
+        padding-bottom: 200px;
+    }
+
+    .no-gutters>.col, .no-gutters>[class*=col-] {
+        padding-right: 0px;
+        padding-left: 40px;
+    }
+
 }
 
 @media screen and (max-width: 1024px){
@@ -28,25 +37,66 @@
         height:50px;
     }
     .jumbotron_box{
-        margin-top:20%;
+        margin-top:4%;
     }
 
-    .box{
+    .box {
         border-radius: 30px;
-        margin: 2.2% 16.5% 0 4.5%;
+        margin: 2.2% 16.5% -290px 8.5%;
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1033px){
+    .jumbotron_box{
+        margin-top:4%;
+    }
+
+    .box {
+        border-radius: 30px;
+        margin: 2.2% 16.5% -290px 19.5%;
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1131px){
+    .jumbotron_box{
+        margin-top:4%;
+    }
+
+    .box {
+        border-radius: 30px;
+        margin: 2.2% 16.5% -290px 19.5%;
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 743px){
+    .jumbotron_box{
+        margin-top:4%;
+    }
+
+    .box {
+        border-radius: 30px;
+        margin: 2.2% 16.5% -290px 4.5%;
         width: 30%;
     }
 }
 
 @media screen and (max-width: 429px){
     .jumbotron_box{
-        margin-top:10%;
+        margin-top:4%;
     }
 
     .box{
         border-radius: 30px;
         margin: 2.2% 16.5% 0 4.5%;
         width: 30%;
+    }
+
+    .no-gutters>.col, .no-gutters>[class*=col-] {
+        padding-right: 0px;
+        padding-left: 24px;
     }
 
 }
