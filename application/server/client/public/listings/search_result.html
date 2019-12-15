@@ -8,14 +8,13 @@
 <div class="margin-top">
     <div class="col-md-6" style="padding: 0px 0px;">
         <font size="3">Sort by</font>
-        <select onchange="sortListings();" name="sort_value" class="width_tmp_select">
+        <select onchange="sortListings();" id="filterDropDown" name="sort_value" class="width_tmp_select">
             <option selected>All</option>
-            <option value="price">Lowest Price</option>
-            <option value="price">Highest Price</option>
+            <option value="price_ascending">Price: Low to High</option>
+            <option value="price_descending">Price: High to Low</option>
         </select>
-        <button type="submit" class="btn">Sort</button>
     </div>
-    Showing <k id="displayCount"> </k> of <k id="resultCount"></k> Results for the
+    Showing <k id="displayCount"></k> of <k id="resultCount"></k> Results for the
     <b>
         <script>
             if (localStorage.getItem("category") !== null) {
@@ -36,19 +35,19 @@
         }
     </script>
     <br />
+    <p id="noResultTag"></p>
     <ul id="resultList">
-        <p id="noResultTag"></p>
     </ul>
 </div>
 
-<script>
+<!-- <script>
     $(document).ready(function () {
         $('.filterdown').change(function () {
             $("#width_tmp_option").html($('.filterdown option:selected').text());
             $(this).width($("#width_tmp_select").width());
         });
     });
-</script>
+</script> -->
 
 <script src="../../scripts/domCreation.js" type="text/javascript" charset="utf-8" async defer></script>
 <script src="../../scripts/search.js" type="text/javascript" charset="utf-8" async defer></script>
