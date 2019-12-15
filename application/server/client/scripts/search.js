@@ -2,10 +2,11 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-10 16:16:55
+ * @Last Modified time: 2019-12-14 22:56:22
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
+// Press Enter to search.
 document.getElementById("queryTag").addEventListener("keyup", event => {
   if (event.keyCode === 13) {
     event.preventDefault();
@@ -13,23 +14,56 @@ document.getElementById("queryTag").addEventListener("keyup", event => {
   }
 });
 
+let count = 0;
+let filterCount = 0;
+let filterFlag = false;
+let sort_by = "";
+const sortListings = () => {
+  filterFlag = true;
+  filterCount += 1;
+  fetchData();
+};
+
 const fetchData = async () => {
+  // Transfer code from index to result.
   let category = localStorage.getItem("category");
   let noResultTag = document.getElementById("noResultTag");
+  let ulResult = document.getElementById("resultList");
+
+  if (filterFlag) {
+    ulResult = await clearRows(ulResult);
+    filterFlag = false;
+    fetchData();
+  }
+  /* Get the value from the filter dropdown. */
+  const filterDropDownElement = document.getElementById("filterDropDown");
+  let sort_by =
+    filterDropDownElement.options[filterDropDownElement.selectedIndex].value;
+  ulResult.classList.add("list-group");
+
+  // Checking if categories are null. If null replace with empty string.
   if (localStorage.getItem("category") !== null) {
-    document.getElementById("selectDropDown").value = category;
+    if (localStorage.getItem("wrongCategory") !== null) {
+      document.getElementById("selectDropDown").value = localStorage.getItem(
+        "wrongCategory"
+      );
+    } else {
+      document.getElementById("selectDropDown").value = localStorage.getItem(
+        "category"
+      );
+    }
   } else {
     document.getElementById("selectDropDown").value = "All Categories";
   }
-  localStorage.removeItem("id");
-  localStorage.removeItem("title");
-  const ulResult = document.getElementById("resultList");
+
+  // Fill the query from the query item.
   document.getElementById("queryTag").value = localStorage.getItem("query");
 
-  // query = localStorage.getItem("query");
+  // If it has id and title.
+  localStorage.removeItem("id");
+  localStorage.removeItem("title");
+
   let query = document.getElementById("queryTag").value;
-  // Domcreator.js
-  ulResult.classList.add("list-group");
 
   if (category === "All Categories") {
     category = "";
@@ -41,7 +75,7 @@ const fetchData = async () => {
     query = "";
   }
 
-  const LISTINGS_URL = `listings?query=${query}&category=${category}`;
+  const LISTINGS_URL = `listings?query=${query}&category=${category}&sort_by=${sort_by}`;
 
   await fetch(LISTINGS_URL, {
     method: "GET",
@@ -49,129 +83,169 @@ const fetchData = async () => {
   })
     .then(response => {
       if (response === undefined) {
+        alert("something is wrong.");
       } else {
         return response.text();
       }
     })
     .then(data => {
-      if (data === undefined) {
+      /* If the query tag contains non alphanumeric character. */
+      if (JSON.parse(data).error) {
         let textNode = document.createTextNode(
-          "Your search did not match any of the items. Please try another Search query."
+          "Please try another Search query with only alphanumeric characters. Here are some other items."
         );
         noResultTag.appendChild(textNode);
-      }
-      let dataJson = JSON.parse(data);
-      let dummyData = dataJson["listings"];
-      if (dummyData.length === 0) {
-        let textNode = document.createTextNode(
-          "Your search did not match any of the items. Please try another Search query. You can also take a look at some of these items:"
-        );
-        noResultTag.appendChild(textNode);
-        // Show all the items if the search result is none.
-        localStorage.removeItem("category"); // Remove previous values in the localStorage
-        localStorage.removeItem("query");
         localStorage.setItem("category", "All Categories"); // set new Values.
         localStorage.setItem("query", "");
         fetchData();
       }
 
-      let dataLength = dummyData.length;
-      document.getElementById("displayCount").textContent = dataLength;
-      document.getElementById("resultCount").textContent = dataLength;
-      //As the data would be an object
-      dummyData.map(indList => {
-        //  Creation of the elements.
-        const titleDiv = createDomElement("div");
-        const titleBTag = createDomElement("b"); // Bold Tag
-        const h2Tag = createDomElement("h2"); // h2 Tag for text
-        const h4Tag = createDomElement("h4"); // h4 tag for text
-        const imgDivTag = createDomElement("div"); // Div tag to hold the elements.
-        const buttonSpanTag = createDomElement("span"); // span tag for the buttons
-        const imgTag = createDomElement("img"); // Image tag in the DOM
-        const brTag = createDomElement("br");
-        imgTag.classList.add("img-fluid", "img-thumbnail");
-        const typeTag = createDomElement("p");
-        const descriptionDiv = createDomElement("div");
-        const descriptionTag = createDomElement("p");
-        const listingTag = createDomElement("p");
-        const priceTag = createDomElement("p");
-        const titleTag = createDomElement("p");
-        const buttonTag = createDomElement("button"); // Button tag in the DOM.
-        buttonTag.innerText = "See More";
-//        const contactSellerButton = createDomElement("button");
-//        contactSellerButton.innerText = "Contact Seller";
-//        contactSellerButton.classList.add("btn", "btn-warning");
-//
-//        contactSellerButton.setAttribute("id", "myForm");
-        buttonTag.style["margin-right"] = "10px";
-        buttonSpanTag.style["width"] = "80%";
+      let dataJson = JSON.parse(data);
+      let dummyData = dataJson["listings"];
 
-        // Redirect to the details page.
+      // If the result is empty.
+      if (dummyData.length === 0) {
+        count += 1;
 
-        buttonTag.onclick = () => {
-          redirectToIndividualListing(indList["listing_id"], indList["title"]);
-        };
-
-        buttonSpanTag.classList.add("flex-display-row", "make-responsive");
-
-        buttonTag.classList.add("btn", "btn-warning");
-        const divTag = createDomElement("div");
-        let liTag = createDomElement("li");
-        styleLi(liTag);
-
-        // Add Image / Thumbnails src if present, else show placeholder image.
-        if (indList["thumbnail"] !== null) {
-          imgTag.src = indList["thumbnail"];
-          imgTag.width = 150;
-          imgTag.height = 150;
+        /* if the date is empty the second time. To stop it from going in an infinite loop. */
+        if (count >= 2) {
+          noResultTag.innerText = "";
+          let textNode = document.createTextNode(
+            "No items yet. Please wait for the items to be approved if you have created a listing."
+          );
+          noResultTag.appendChild(textNode);
         } else {
-          imgTag.src = "https://via.placeholder.com/150";
+          let textNode = document.createTextNode(
+            "Your search did not match any of the items. Please try another Search query. Please wait for the items to be approved if you have created a listing. You can also take a look at some of these items:"
+          );
+          noResultTag.appendChild(textNode);
+          if (category !== "") {
+            localStorage.setItem("wrongCategory", category);
+          } else {
+            localStorage.setItem("wrongCategory", "All Categories"); // keep the current category persistent.
+          }
+          localStorage.setItem("category", "All Categories"); // set new Values.
+          localStorage.setItem("query", "");
+
+          fetchData();
         }
-        // styleImgTag(imgTag);
-        imgDivTag.appendChild(imgTag);
-        imgDivTag.style["flex-grow"] = 1;
-        liTag.appendChild(imgDivTag);
+      }
 
-        // Title Tag and  styling
-        titleTag.innerText = indList["title"];
-        h2Tag.appendChild(titleTag);
-        titleBTag.appendChild(h2Tag);
+      if (noResultTag.innerText === "") {
+        let dataLength = dummyData.length;
+        document.getElementById("displayCount").textContent = dataLength;
+        document.getElementById("resultCount").textContent = dataLength;
+      } else {
+        // Show correct count if the response is empty.
+        document.getElementById("displayCount").textContent = 0;
+        document.getElementById("resultCount").textContent = 0;
+      }
 
-        // Description and other tags.
-        descriptionTag.innerText = indList["description"];
-        descriptionDiv.appendChild(descriptionTag);
-        // Styling description tag.
-        styleDescriptionDiv(descriptionDiv);
+      //As the data would be an object
+      // TO ensure the saame data isn't shown twice.
+      if (ulResult.innerText === "") {
+        dummyData.map(indList => {
+          //  Creation of the elements.
+          const titleDiv = createDomElement("div");
+          const titleBTag = createDomElement("b"); // Bold Tag
+          const h2Tag = createDomElement("h2"); // h2 Tag for text
+          const h4Tag = createDomElement("h4"); // h4 tag for text
+          const imgDivTag = createDomElement("div"); // Div tag to hold the elements.
+          const buttonSpanTag = createDomElement("span"); // span tag for the buttons
+          const imgTag = createDomElement("img"); // Image tag in the DOM
+          imgTag.classList.add("img-fluid", "img-thumbnail");
+          const typeTag = createDomElement("p");
+          const descriptionTag = createDomElement("p");
+          const listingTag = createDomElement("p");
+          const priceTag = createDomElement("p");
+          const titleTag = createDomElement("p");
+          const descriptionDiv = createDomElement("div");
+          const buttonTag = createDomElement("button"); // Button tag in the DOM.
+          const divTag = createDomElement("div");
+          let liTag = createDomElement("li");
+          styleLi(liTag);
 
-        listingTag.innerText = indList["listing_id"];
-        listingTag.hidden = true;
-        priceTag.innerText = "$" + indList["price"];
-        typeTag.innerText = indList["type"];
-        h4Tag.appendChild(typeTag);
+          buttonTag.innerText = "See More";
+          buttonTag.style["margin-right"] = "10px";
+          buttonSpanTag.style["width"] = "80%";
 
-        // Style tags to remvove padding
-        styleTags([listingTag, descriptionTag, titleTag, priceTag]);
-        titleDiv.appendChild(titleBTag);
-//        titleDiv.style["overflow"] = "auto";
+          // Redirect to the details page.
+          buttonTag.onclick = () => {
+            redirectToIndividualListing(
+              indList["listing_id"],
+              indList["title"]
+            );
+          };
+          /* Styling button */
+          buttonSpanTag.classList.add("flex-display-row", "make-responsive");
+          buttonTag.classList.add("btn", "btn-warning");
 
-        // Injecting elements to the DOM.
-        divTag.appendChild(titleDiv);
+          // Add Image / Thumbnails src if present, else show placeholder image.
+          if (indList["thumbnail"] !== null) {
+            imgTag.src = indList["thumbnail"];
+            imgTag.width = 150;
+            imgTag.height = 150;
+          } else {
+            imgTag.src = "https://via.placeholder.com/150";
+          }
 
-        divTag.appendChild(listingTag);
-        divTag.appendChild(descriptionDiv);
-        divTag.appendChild(priceTag);
-        buttonSpanTag.appendChild(buttonTag);
-//        buttonSpanTag.appendChild(contactSellerButton);
-        divTag.appendChild(buttonSpanTag);
-        styleDiv(divTag);
-        divTag.style["flex-grow"] = 1;
-        liTag.appendChild(divTag);
-        liTag.classList.add("list-group-item");
-        ulResult.appendChild(liTag);
-      });
+          /* Style image div */
+          imgDivTag.appendChild(imgTag);
+          imgDivTag.style["flex-grow"] = 1;
+          imgDivTag.style["cursor"] = "pointer";
 
-      localStorage.removeItem("query");
-      localStorage.removeItem("category");
+          // Redirect to details page on image click.
+          imgDivTag.onclick = () => {
+            redirectToIndividualListing(
+              indList["listing_id"],
+              indList["title"]
+            );
+          };
+
+          // Title Tag and  styling
+          titleTag.innerText = indList["title"];
+          h2Tag.appendChild(titleTag);
+          titleBTag.appendChild(h2Tag);
+
+          // Description and other tags.
+          descriptionTag.innerText = indList["description"];
+          descriptionDiv.appendChild(descriptionTag);
+
+          // Styling description tag.
+          styleDescriptionDiv(descriptionDiv);
+
+          // Description for the item.
+          listingTag.innerText = indList["listing_id"];
+          listingTag.hidden = true;
+          priceTag.innerText = "$" + indList["price"];
+          typeTag.innerText = indList["type"];
+          h4Tag.appendChild(typeTag);
+
+          // Style tags to remvove padding
+          styleTags([listingTag, descriptionTag, titleTag, priceTag]);
+          titleDiv.appendChild(titleBTag);
+
+          // Appending elements to the div tag.
+          divTag.appendChild(titleDiv);
+          divTag.appendChild(listingTag);
+          divTag.appendChild(descriptionDiv);
+          divTag.appendChild(priceTag);
+          buttonSpanTag.appendChild(buttonTag);
+          divTag.appendChild(buttonSpanTag);
+          styleDiv(divTag);
+
+          // Injecting div tag and image div to the DOM.
+          liTag.appendChild(imgDivTag);
+          liTag.appendChild(divTag);
+          liTag.classList.add("list-group-item");
+
+          // Injecting each li tag to the parent ul tag.
+          ulResult.appendChild(liTag);
+        });
+        localStorage.removeItem("wrongCategory");
+        // localStorage.removeItem("category");
+        // localStorage.removeItem("query");
+      }
     });
 };
 
@@ -179,10 +253,6 @@ const styleTags = element => {
   element.map(elem => {
     elem.classList.add("remove-margin");
   });
-};
-
-const clearData = () => {
-  document.getElementById("resultList").innerHTML = "";
 };
 
 const styleLi = liTag => {
@@ -196,27 +266,43 @@ const styleDiv = divTag => {
   divTag.style["flex-direction"] = "column";
   divTag.style["justify-content"] = "flex-start";
   divTag.style["width"] = "80%";
+  divTag.style["flex-grow"] = 1;
 };
 
-// Redirecrts to the detail.html page showing details about the individual listing.
+// Redirects to the detail.html page showing details about the individual listing.
 
 const redirectToIndividualListing = (id, title) => {
   localStorage.setItem("id", id);
   localStorage.setItem("title", title);
-  // let webPath = window.location.hostname;
-  window.open(`/details`, "_blank");
+  // Open in a new window.
+  window.open(`/details?item=${title}`, "_blank");
 };
-
 
 const styleImgTag = () => {
   imgTag.classList.add("img-fluid", "img-thumbnail");
-  console.log(imgTag);
 };
 
 const styleDescriptionDiv = descriptionDiv => {
+
+  descriptionDiv.style["overflow"] = "auto";
+
   descriptionDiv.style["width"] = "100%";
   descriptionDiv.style["height"] = "25%";
 };
+
+
+const clearRows = ulResult => {
+  // console.log(ulResult);
+  if (ulResult.innerHTML !== null) {
+    while (ulResult.firstChild) {
+      ulResult.removeChild(ulResult.firstChild);
+    }
+  }
+  return ulResult;
+};
+
+fetchData();
+}
 
 const fetchRecommendedListings = async () => {
   let noResultTag = document.getElementById("noResultTag");
@@ -330,7 +416,6 @@ const fetchRecommendedListings = async () => {
       ulResult.appendChild(liTag);
     });
   })
-};
 
 
 window.onload = () => {

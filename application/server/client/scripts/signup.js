@@ -1,7 +1,7 @@
 /***
  * store user info at local storage
  * set up the key and value pair for later user
- * 
+ *
  */
 
 const CREATE_USER_URL = "/create";
@@ -42,8 +42,6 @@ const registerUser = async () => {
         localStorage.setItem('userName', userName);
         localStorage.setItem('major',major);
         localStorage.setItem('email',email);
-        localStorage.setItem('password', password);
-        localStorage.setItem('confirmPassword',confirmPassword);
 
         if (localStorage.getItem('redirectUrl')) {
             location.replace(localStorage.getItem('redirectUrl'));

@@ -5,3 +5,4 @@ __pycache__/
 databaseconfig.py
 client/public/images/*.png
 *.swp
+.vscode/

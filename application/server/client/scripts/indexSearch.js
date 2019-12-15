@@ -2,12 +2,13 @@
  * @Author: aadityac15
  * @Date:   2019-11-12 02:03:04
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-10 03:51:11
+ * @Last Modified time: 2019-12-14 20:59:22
  * @Description : Redirect the page to the result page. The categories are put in from the categories.csv.
  */
 
 // used in landingPage.js
 
+// Enter press does search.
 document.getElementById("queryTag").addEventListener("keyup", event => {
   if (event.keyCode === 13) {
     event.preventDefault();
@@ -36,7 +37,6 @@ const redirectToRecommended = () => {
 };
 
 const loadDropDown = async () => {
-  // localStorage.removeItem("category");
   const selectDropDownElement = document.getElementById("selectDropDown");
   const sellListingDropDown = document.getElementById(
     "sellListingSelectDropdown"
@@ -57,6 +57,7 @@ const loadDropDown = async () => {
           option.value = category;
           option.text = category;
           selectDropDownElement.add(option);
+
           if (document.getElementById(category)) {
             document.getElementById(category).textContent = category;
             document.getElementById(category).addEventListener("click", () => {
@@ -77,4 +78,4 @@ const loadDropDown = async () => {
   }
 };
 
-window.onload = loadDropDown();
+loadDropDown();
