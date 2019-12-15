@@ -34,11 +34,11 @@ def get_listings():
     search = "%{}%".format(query)
 
     if query and category:
-        result = Listing.query.filter(Listing.title.like(search),
+        result = Listing.query.filter(Listing.title.ilike(search),
                                       Listing.type == category,
                                       Listing.approved == True)
     elif query:
-        result = Listing.query.filter(Listing.title.like(search), Listing.approved == True)
+        result = Listing.query.filter(Listing.title.ilike(search), Listing.approved == True)
     elif category:
         result = Listing.query.filter(Listing.type == category, Listing.approved == True)
     else:
@@ -114,6 +114,11 @@ def get_denied_listings():
 
 @listings_blueprint.route('/listings', methods=['POST'])
 def post_listing():
+    """
+    Creates listing and stores image in the filesystem
+
+    :return: Success
+    """
     if request.method == 'POST':
         listing_id = request.form.get('listing_id')
         title = request.form.get('title')
@@ -140,7 +145,51 @@ def post_listing():
     return jsonify(success=True)
 
 
-def create_item_success():
-    """Displays success message after user successfully created an item"""
-    categories = Listing.objects.all()
-    return render_template("createSell_item_success.html")
+@listings_blueprint.route('/recommended_listings', methods=['GET'])
+def get_recommended_listings():
+    """
+    Gets students recommended listings based off their major
+
+    :return: Recommended listings
+    """
+    user_id = request.args.get('user_id')
+    major_search = '%{}%'.format(_get_user_major(user_id))
+
+    print('major_search: ', major_search)
+
+    recommended_listings = []
+    recommended_listings = Listing.query.filter(
+        (Listing.title.ilike(major_search) | Listing.description.ilike(major_search)),
+        Listing.approved == True)
+
+    print(recommended_listings)
+
+    return jsonify({
+        'listings': [listing.serialize for listing in recommended_listings]
+    })
+
+
+@listings_blueprint.route('/categories', methods=['GET'])
+def get_categories():
+    """
+    Gets listing category types to send to front
+
+    :return: categories, list of string
+    """
+    with open("./routes/categories.txt") as file:
+        categories_string = file.read()
+        categories = categories_string.split(',')
+        return jsonify({
+            'categories': categories
+        })
+
+
+def _get_user_major(user_id):
+    """
+    Gets the students major
+
+    :param user_id:
+    :return: major of student
+    """
+    from model.user import User
+    return User.query.get(user_id).major
