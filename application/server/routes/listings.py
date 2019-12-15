@@ -18,7 +18,6 @@ listings_blueprint = Blueprint('listings',
 def get_listings():
     """
     Gets listings based off query and category
-
     @:param query: Search query
     @:param category: Search category
     :return: JSON Objects of serialized listings
@@ -60,7 +59,6 @@ def get_listings():
 def get_pending_listings():
     """
     Gets pending listings for a user
-
     :param user_id
     :return:
     """
@@ -81,7 +79,6 @@ def get_pending_listings():
 def get_approved_listings():
     """
     Gets pending listings for a user
-
     :param user_id
     :return:
     """
@@ -101,7 +98,6 @@ def get_approved_listings():
 def get_denied_listings():
     """
     Gets pending listings for a user
-
     :param user_id
     :return:
     """
