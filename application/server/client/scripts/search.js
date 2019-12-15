@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-14 22:56:22
+ * @Last Modified time: 2019-12-15 01:20:53
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -116,7 +116,7 @@ const fetchData = async () => {
           noResultTag.appendChild(textNode);
         } else {
           let textNode = document.createTextNode(
-            "Your search did not match any of the items. Please try another Search query. Please wait for the items to be approved if you have created a listing. You can also take a look at some of these items:"
+            "Your search did not match any of the items. Please try another Search query. Here are some items, or you can check out the recommended items:"
           );
           noResultTag.appendChild(textNode);
           if (category !== "") {
