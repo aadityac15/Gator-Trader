@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-14 17:45:37
+ * @Last Modified time: 2019-12-14 18:00:21
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -23,7 +23,6 @@ const fetchData = async () => {
   const ulResult = document.getElementById("resultList");
   ulResult.classList.add("list-group");
   console.log(localStorage);
-  // debugger;
   if (localStorage.getItem("category") !== null) {
     if (localStorage.getItem("wrongCategory") !== null) {
       document.getElementById("selectDropDown").value = localStorage.getItem(
@@ -108,7 +107,6 @@ const fetchData = async () => {
           localStorage.setItem("query", "");
           console.log(localStorage);
 
-          // return;
           fetchData();
         }
       }
