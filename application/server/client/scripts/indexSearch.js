@@ -2,12 +2,13 @@
  * @Author: aadityac15
  * @Date:   2019-11-12 02:03:04
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 01:37:12
+ * @Last Modified time: 2019-12-15 17:37:34
  * @Description : Redirect the page to the result page. The categories are put in from the categories.csv.
  */
 
 // used in landingPage.js
 
+/// used in landingPage.js
 // Enter press does search.
 document.getElementById("queryTag").addEventListener("keyup", event => {
   if (event.keyCode === 13) {
@@ -29,6 +30,7 @@ const redirectToResult = () => {
   // Store the query and the category in the localStorage and redirect to the /results page to display the results.
   localStorage.setItem("query", query);
   localStorage.setItem("category", category);
+  console.log(category);
   window.location.pathname = "/results";
 };
 
@@ -41,7 +43,6 @@ const loadDropDown = async () => {
   const sellListingDropDown = document.getElementById(
     "sellListingSelectDropdown"
   );
-
   if (selectDropDownElement.length === 0) {
     await fetch("/categories", {
       method: "GET"
@@ -51,13 +52,14 @@ const loadDropDown = async () => {
       })
       .then(data => {
         const jsonData = JSON.parse(data);
+        console.log(jsonData);
         categoryArray = jsonData["categories"];
         categoryArray.map(category => {
           let option = document.createElement("option");
           option.value = category;
           option.text = category;
           selectDropDownElement.add(option);
-
+          // For the categories on the landing page.
           if (document.getElementById(category)) {
             document.getElementById(category).textContent = category;
             document.getElementById(category).addEventListener("click", () => {
@@ -72,6 +74,7 @@ const loadDropDown = async () => {
             sellListingDropDown.add(option);
           }
         });
+        selectDropDownElement.value = "All Categories";
       });
   } else {
     console.log("Already done");

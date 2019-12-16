@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 12:10:03
+ * @Last Modified time: 2019-12-15 18:14:26
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -17,7 +17,9 @@ document.getElementById("queryTag").addEventListener("keyup", event => {
 let count = 0;
 let filterCount = 0;
 let filterFlag = false;
+let errorFlag = false;
 let sort_by = "";
+let ERROR_URL = "listings?query=&category=&sort_by=";
 
 const sortListings = () => {
   filterFlag = true;
@@ -28,32 +30,30 @@ const sortListings = () => {
 const fetchData = async () => {
   // Transfer values from index to result.
   let category = localStorage.getItem("category");
+  if (category === "" || category === "null") {
+    document.getElementById("selectDropDown").value = "All Categories";
+  } else {
+    document.getElementById("selectDropDown").value = category;
+  }
+
   let noResultTag = document.getElementById("noResultTag");
   let ulResult = document.getElementById("resultList");
-  if (filterFlag) {
-    ulResult = await clearRows(ulResult);
-    filterFlag = false;
-    fetchData();
-  }
-  /* Get the value from the filter dropdown. */
   const filterDropDownElement = document.getElementById("filterDropDown");
   let sort_by =
     filterDropDownElement.options[filterDropDownElement.selectedIndex].value;
-  ulResult.classList.add("list-group");
 
-  // Checking if categories are null. If null replace with empty string.
-  if (localStorage.getItem("category") !== null) {
-    if (localStorage.getItem("wrongCategory") !== null) {
-      document.getElementById("selectDropDown").value = localStorage.getItem(
-        "wrongCategory"
-      );
-    } else {
-      document.getElementById("selectDropDown").value = localStorage.getItem(
-        "category"
-      );
+  if (filterFlag) {
+    ulResult = await clearRows(ulResult);
+    filterFlag = false;
+    sort_by =
+      filterDropDownElement.options[filterDropDownElement.selectedIndex].value;
+    ulResult.classList.add("list-group");
+    if (errorFlag) {
+
+      // Generate empty url with just the sort.
+      generateErrorURL("", "", sort_by);
     }
-  } else {
-    document.getElementById("selectDropDown").value = "All Categories";
+    fetchData();
   }
 
   // Fill the query from the query item.
@@ -75,7 +75,12 @@ const fetchData = async () => {
     query = "";
   }
 
-  const LISTINGS_URL = `listings?query=${query}&category=${category}&sort_by=${sort_by}`;
+  let LISTINGS_URL = "";
+  if (!errorFlag) {
+    LISTINGS_URL = `listings?query=${query}&category=${category}&sort_by=${sort_by}`;
+  } else {
+    LISTINGS_URL = ERROR_URL;
+  }
 
   await fetch(LISTINGS_URL, {
     method: "GET",
@@ -84,19 +89,20 @@ const fetchData = async () => {
     .then(response => {
       if (response === undefined) {
         alert("something is wrong.");
+        window.location.pathname = "/";
       } else {
         return response.text();
       }
     })
     .then(data => {
+      console.log("Query being hit", LISTINGS_URL);
       /* If the query tag contains non alphanumeric character. */
       if (JSON.parse(data).error) {
         let textNode = document.createTextNode(
           "Please try another Search query with only alphanumeric characters. Here are some other items."
         );
         noResultTag.appendChild(textNode);
-        localStorage.setItem("category", "All Categories"); // set new Values.
-        localStorage.setItem("query", "");
+        errorFlag = true;
         fetchData();
       }
 
@@ -124,9 +130,7 @@ const fetchData = async () => {
           } else {
             localStorage.setItem("wrongCategory", "All Categories"); // keep the current category persistent.
           }
-          localStorage.setItem("category", "All Categories"); // set new Values.
-          localStorage.setItem("query", "");
-
+          errorFlag = true;
           fetchData();
         }
       }
@@ -144,6 +148,7 @@ const fetchData = async () => {
       //As the data would be an object
       // TO ensure the saame data isn't shown twice.
       if (ulResult.innerText === "") {
+        localStorage.setItem("wrongCategory", category);
         dummyData.map(indList => {
           //  Creation of the elements.
           const titleDiv = createDomElement("div");
@@ -241,8 +246,8 @@ const fetchData = async () => {
 
           // Injecting each li tag to the parent ul tag.
           ulResult.appendChild(liTag);
-          return;
         });
+        localStorage.setItem("query", "");
       }
     });
 };
@@ -288,6 +293,7 @@ const styleDescriptionDiv = descriptionDiv => {
 };
 
 const clearRows = ulResult => {
+  if (ulResult.innerHTML !== null) {
     while (ulResult.firstChild) {
       ulResult.removeChild(ulResult.firstChild);
     }
@@ -306,11 +312,13 @@ const fetchRecommendedListings = async () => {
     withCredentials: true
   })
     .then(response => {
+      if (response === undefined) {
       } else {
         return response.text();
       }
     })
     .then(data => {
+      let recommendedListingsObject = JSON.parse(data);
       let recommendedListings = recommendedListingsObject["listings"];
       if (recommendedListings.length == 0) {
         let textNode = document.createTextNode(
@@ -406,19 +414,10 @@ const fetchRecommendedListings = async () => {
     });
 };
 
-window.onload = () => {
-  if (localStorage.getItem("category") !== null) {
-    document.getElementById("selectDropDown").value = localStorage.getItem(
-      "category"
-    );
-  } else {
-    document.getElementById("selectDropDown").value = "All Categories";
-  }
+const generateErrorURL = (query, category, sort_by) => {
+  ERROR_URL = `listings?query=${query}&category=${category}&sort_by=${sort_by}`;
 };
+
 fetchData();
 
-window.onunload = () => {
-  localStorage.removeItem("wrongCategory");
-  // localStorage.removeItem("query");
-  // localStorage.removeItem("category");
-};
+
