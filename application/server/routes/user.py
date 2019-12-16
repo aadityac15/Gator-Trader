@@ -72,6 +72,12 @@ def create():
     last_name = request.json.get('last_name')
     major = request.json.get('major') if 'major' in request.json else None
 
+    validation = [first_name, last_name, major]
+
+    for item in validation:
+        if item and (not item.replace(' ', '').isalpha()):
+            return jsonify({"error": "Query contains symbols or numbers"})
+
     new_user = User(
         email=email,
         username=username,
