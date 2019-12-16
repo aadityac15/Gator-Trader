@@ -2,25 +2,24 @@
  * @Author: aadityac15
  * @Date:   2019-11-12 02:03:04
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 01:37:12
+ * @Last Modified time: 2019-12-16 00:26:39
  * @Description : Redirect the page to the result page. The categories are put in from the categories.csv.
  */
 
 // used in landingPage.js
 
-// Enter press does search.
-document.getElementById("queryTag").addEventListener("keyup", event => {
+/// used in landingPage.js
+
+const enterToSearch = event => {
   if (event.keyCode === 13) {
     event.preventDefault();
-    document.getElementById("searchBtn").click();
+    // document.getElementById("searchBtn").click();
+    fetchData();
   }
-});
-
-let categoriesArray = [];
+};
 
 const redirectToResult = () => {
-  localStorage.removeItem("query");
-  localStorage.removeItem("category");
+  localStorage.removeItem('query');
   const selectDropDownElement = document.getElementById("selectDropDown");
   const category =
     selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
@@ -41,7 +40,6 @@ const loadDropDown = async () => {
   const sellListingDropDown = document.getElementById(
     "sellListingSelectDropdown"
   );
-
   if (selectDropDownElement.length === 0) {
     await fetch("/categories", {
       method: "GET"
@@ -58,13 +56,16 @@ const loadDropDown = async () => {
           option.text = category;
           selectDropDownElement.add(option);
 
+          // For the categories on the landing page.
           if (document.getElementById(category)) {
             document.getElementById(category).textContent = category;
             document.getElementById(category).addEventListener("click", () => {
               localStorage.setItem("category", category);
+              localStorage.setItem("wrongCategory", category);
               window.location.pathname = "/results";
             });
           }
+          // For categories in the selling page dropdown.
           if (sellListingDropDown !== null) {
             let option = document.createElement("option");
             option.value = category;
@@ -73,8 +74,6 @@ const loadDropDown = async () => {
           }
         });
       });
-  } else {
-    console.log("Already done");
   }
 };
 

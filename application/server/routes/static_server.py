@@ -42,16 +42,6 @@ def render_terms():
     return render_template("terms&conditions.html")
 
 
-@static_blueprint.route("/search", endpoint="search", methods=['POST', 'GET'])
-def search():
-    """
-    Renders search page
-
-    :return:
-    """
-    return render_template("search_page.html")
-
-
 @static_blueprint.route('/message/<path:name>', methods=["GET", "POST"])
 def render_messages(name):
     """

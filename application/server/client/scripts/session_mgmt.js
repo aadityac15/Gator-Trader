@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 let clearUserInfoFromSessionStorage = () => {
     sessionStorage.removeItem("user_id");
+    sessionStorage.removeItem("userName");
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("is_admin");
 };

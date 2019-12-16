@@ -2,22 +2,20 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 03:21:25
+ * @Last Modified time: 2019-12-16 00:26:44
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
 // Press Enter to search.
-document.getElementById("queryTag").addEventListener("keyup", event => {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("searchBtn").click();
-  }
-});
 
 let count = 0;
 let filterCount = 0;
 let filterFlag = false;
+let errorFlag = false;
 let sort_by = "";
+let query = "";
+let category = "";
+let ERROR_URL = "listings?query=&category=&sort_by=";
 
 const sortListings = () => {
   filterFlag = true;
@@ -27,40 +25,57 @@ const sortListings = () => {
 
 const fetchData = async () => {
   // Transfer values from index to result.
-  let category = localStorage.getItem("category");
+
+  category = localStorage.getItem("category");
+  console.log("32", category);
   let noResultTag = document.getElementById("noResultTag");
   let ulResult = document.getElementById("resultList");
-  if (filterFlag) {
-    ulResult = await clearRows(ulResult);
-    filterFlag = false;
-    fetchData();
-  }
-  /* Get the value from the filter dropdown. */
   const filterDropDownElement = document.getElementById("filterDropDown");
   let sort_by =
     filterDropDownElement.options[filterDropDownElement.selectedIndex].value;
-  ulResult.classList.add("list-group");
+
+  if (filterFlag) {
+    ulResult = await clearRows(ulResult);
+    filterFlag = false;
+    sort_by =
+      filterDropDownElement.options[filterDropDownElement.selectedIndex].value;
+    ulResult.classList.add("list-group");
+    // console.log(localStorage);
+    if (errorFlag) {
+      // Generate empty url with just the sort.
+      generateErrorURL("", "", sort_by);
+    }
+    fetchData();
+  }
 
   // Fill the query from the query item.
-  document.getElementById("queryTag").value = localStorage.getItem("query");
+  // await setQueryValue(localStorage.getItem("query"));
 
   // If it has id and title.
   localStorage.removeItem("id");
   localStorage.removeItem("title");
-
-  let query = document.getElementById("queryTag").value;
+  let query = localStorage.getItem("query");
 
   if (category === "All Categories") {
     category = "";
   }
 
   // handle refrersh i.e show everything if after refresh either of the parameters are null.
-  if (category === null || query === null) {
+  if (category === null) {
     category = "";
+  }
+
+  if (query === null) {
     query = "";
   }
 
-  const LISTINGS_URL = `listings?query=${query}&category=${category}&sort_by=${sort_by}`;
+  let LISTINGS_URL = "";
+  if (!errorFlag) {
+
+    LISTINGS_URL = `listings?query=${query}&category=${category}&sort_by=${sort_by}`;
+  } else {
+    LISTINGS_URL = ERROR_URL;
+  }
 
   await fetch(LISTINGS_URL, {
     method: "GET",
@@ -69,6 +84,7 @@ const fetchData = async () => {
     .then(response => {
       if (response === undefined) {
         alert("something is wrong.");
+        window.location.pathname = "/";
       } else {
         return response.text();
       }
@@ -80,14 +96,12 @@ const fetchData = async () => {
           "Please try another Search query with only alphanumeric characters. Here are some other items."
         );
         noResultTag.appendChild(textNode);
-        localStorage.setItem("category", "All Categories"); // set new Values.
-        localStorage.setItem("query", "");
+        errorFlag = true;
         fetchData();
       }
 
       let dataJson = JSON.parse(data);
       let dummyData = dataJson["listings"];
-
       // If the result is empty.
       if (dummyData.length === 0) {
         count += 1;
@@ -96,22 +110,22 @@ const fetchData = async () => {
         if (count >= 2) {
           noResultTag.innerText = "";
           let textNode = document.createTextNode(
-            "No items yet. Please wait for the items to be approved if you have created a listing."
+            "Please wait for the items to be approved if you have created a listing."
           );
+          // Show result error message.
           noResultTag.appendChild(textNode);
         } else {
           let textNode = document.createTextNode(
-            "Your search did not match any of the items. Please try another Search query. Here are some items, or you can check out the recommended items:"
+            "Your search did not match any of the items. Please try another Search query. Here are some other items, or you can check out the recommended items:"
           );
           noResultTag.appendChild(textNode);
-          if (category !== "") {
-            localStorage.setItem("wrongCategory", category);
-          } else {
-            localStorage.setItem("wrongCategory", "All Categories"); // keep the current category persistent.
-          }
-          localStorage.setItem("category", "All Categories"); // set new Values.
-          localStorage.setItem("query", "");
 
+          if (category !== "" || category !== null) {
+            localStorage.setItem("wrongCategory", category); // keep the current category persistent.
+          } else {
+            localStorage.setItem("wrongCategory", "All Categories");
+          }
+          errorFlag = true;
           fetchData();
         }
       }
@@ -121,7 +135,7 @@ const fetchData = async () => {
         document.getElementById("displayCount").textContent = dataLength;
         document.getElementById("resultCount").textContent = dataLength;
       } else {
-        // Show correct count if the response is empty.
+        // Show 0 count if the response is empty.
         document.getElementById("displayCount").textContent = 0;
         document.getElementById("resultCount").textContent = 0;
       }
@@ -129,6 +143,8 @@ const fetchData = async () => {
       //As the data would be an object
       // TO ensure the saame data isn't shown twice.
       if (ulResult.innerText === "") {
+        localStorage.setItem("wrongCategory", localStorage.getItem("category"));
+        category = localStorage.getItem("wrongCategory");
         dummyData.map(indList => {
           //  Creation of the elements.
           const titleDiv = createDomElement("div");
@@ -176,6 +192,8 @@ const fetchData = async () => {
 
           /* Style image div */
           imgDivTag.appendChild(imgTag);
+          imgDivTag.style["width"] = "150px";
+          imgDivTag.style["height"] = "150px";
           imgDivTag.style["flex-grow"] = 1;
           imgDivTag.style["cursor"] = "pointer";
 
@@ -227,23 +245,29 @@ const fetchData = async () => {
           // Injecting each li tag to the parent ul tag.
           ulResult.appendChild(liTag);
         });
-      };
-
+      }
+      console.log("248", category);
       // Checking if categories are null. If null replace with empty string.
-      if (localStorage.getItem("category") !== null) {
-        if (localStorage.getItem("wrongCategory") !== null) {
-          document.getElementById("selectDropDown").value = localStorage.getItem(
-              "wrongCategory"
-          );
+      if (
+        localStorage.getItem("category") !== null ||
+        localStorage.getItem("category") !== ""
+      ) {
+        if (
+          localStorage.getItem("wrongCategory") !== null ||
+          localStorage.getItem("wrongCategory") !== ""
+        ) {
+          document.getElementById(
+            "selectDropDown"
+          ).value = localStorage.getItem("wrongCategory");
         } else {
-          document.getElementById("selectDropDown").value = localStorage.getItem(
-              "category"
-          );
+          document.getElementById(
+            "selectDropDown"
+          ).value = localStorage.getItem("category");
         }
       } else {
         document.getElementById("selectDropDown").value = "All Categories";
       }
-
+      document.getElementById("queryTag").value = localStorage.getItem("query");
     });
 };
 
@@ -281,7 +305,7 @@ const styleImgTag = () => {
 };
 
 const styleDescriptionDiv = descriptionDiv => {
-  descriptionDiv.style["overflow"] = "auto";
+  descriptionDiv.style["overflow-wrap"] = "break-word";
 
   descriptionDiv.style["width"] = "100%";
   descriptionDiv.style["height"] = "25%";
@@ -409,17 +433,8 @@ const fetchRecommendedListings = async () => {
     });
 };
 
-window.onload = () => {
-  if (localStorage.getItem("category") !== null) {
-    document.getElementById("selectDropDown").value = localStorage.getItem(
-      "category"
-    );
-  } else {
-    document.getElementById("selectDropDown").value = "All Categories";
-  }
-  fetchData();
+const generateErrorURL = (query, category, sort_by) => {
+  ERROR_URL = `listings?query=${query}&category=${category}&sort_by=${sort_by}`;
 };
 
-window.onunload = () => {
-  localStorage.removeItem("wrongCategory");
-};
+fetchData();
