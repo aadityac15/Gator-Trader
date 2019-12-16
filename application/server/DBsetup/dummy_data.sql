@@ -25,9 +25,9 @@ INSERT IGNORE INTO listing
 
 INSERT INTO message
 	VALUES
-		(1, 2, 5, 'Dummy data is hard.', '2019-02-01 06:02:46', 2),
-    (2, 5, 3, 'I dont know what to say.', '2018-02-01 06:02:46', 4),
-    (3, 4, 1, 'Guize, halp.', '2017-02-01 06:02:46', 5);
+		(1, 2, 5, 'Dummy data is hard.', '2019-02-01 06:02:46', 0, 2),
+    (2, 5, 3, 'I dont know what to say.', '2018-02-01 06:02:46', 0, 4),
+    (3, 4, 1, 'Guize, halp.', '2017-02-01 06:02:46', 0, 5);
         
 INSERT INTO location
 	VALUES
