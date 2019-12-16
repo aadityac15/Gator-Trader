@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date:   2019-11-12 02:03:04
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-16 00:26:39
+ * @Last Modified time: 2019-12-16 11:32:24
  * @Description : Redirect the page to the result page. The categories are put in from the categories.csv.
  */
 
@@ -62,6 +62,7 @@ const loadDropDown = async () => {
             document.getElementById(category).addEventListener("click", () => {
               localStorage.setItem("category", category);
               localStorage.setItem("wrongCategory", category);
+              localStorage.setItem("query", "");
               window.location.pathname = "/results";
             });
           }

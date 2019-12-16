@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-16 00:26:44
+ * @Last Modified time: 2019-12-16 11:29:35
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -48,8 +48,6 @@ const fetchData = async () => {
     fetchData();
   }
 
-  // Fill the query from the query item.
-  // await setQueryValue(localStorage.getItem("query"));
 
   // If it has id and title.
   localStorage.removeItem("id");
