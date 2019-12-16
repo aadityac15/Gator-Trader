@@ -41,21 +41,6 @@ const fetchData = async () => {
     filterDropDownElement.options[filterDropDownElement.selectedIndex].value;
   ulResult.classList.add("list-group");
 
-  // Checking if categories are null. If null replace with empty string.
-  if (localStorage.getItem("category") !== null) {
-    if (localStorage.getItem("wrongCategory") !== null) {
-      document.getElementById("selectDropDown").value = localStorage.getItem(
-        "wrongCategory"
-      );
-    } else {
-      document.getElementById("selectDropDown").value = localStorage.getItem(
-        "category"
-      );
-    }
-  } else {
-    document.getElementById("selectDropDown").value = "All Categories";
-  }
-
   // Fill the query from the query item.
   document.getElementById("queryTag").value = localStorage.getItem("query");
 
@@ -242,7 +227,23 @@ const fetchData = async () => {
           // Injecting each li tag to the parent ul tag.
           ulResult.appendChild(liTag);
         });
+      };
+
+      // Checking if categories are null. If null replace with empty string.
+      if (localStorage.getItem("category") !== null) {
+        if (localStorage.getItem("wrongCategory") !== null) {
+          document.getElementById("selectDropDown").value = localStorage.getItem(
+              "wrongCategory"
+          );
+        } else {
+          document.getElementById("selectDropDown").value = localStorage.getItem(
+              "category"
+          );
+        }
+      } else {
+        document.getElementById("selectDropDown").value = "All Categories";
       }
+
     });
 };
 
