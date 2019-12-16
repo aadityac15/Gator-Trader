@@ -192,8 +192,6 @@ const fetchData = async () => {
 
           /* Style image div */
           imgDivTag.appendChild(imgTag);
-          imgDivTag.style["width"] = "150px";
-          imgDivTag.style["height"] = "150px";
           imgDivTag.style["flex-grow"] = 1;
           imgDivTag.style["cursor"] = "pointer";
 
@@ -389,7 +387,7 @@ const fetchRecommendedListings = async () => {
         } else {
           imgTag.src = "https://via.placeholder.com/150";
         }
-        // styleImgTag(imgTag);
+        
         imgDivTag.appendChild(imgTag);
         imgDivTag.style["flex-grow"] = 1;
         liTag.appendChild(imgDivTag);
