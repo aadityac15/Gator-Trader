@@ -65,6 +65,7 @@ submit_reset_password.addEventListener("click", function () {
          sessionStorage.setItem("user_id", userInfo.user_id);
          sessionStorage.setItem("token", userInfo.token);
          sessionStorage.setItem("is_admin", userInfo.is_admin);
+         localStorage.setItem("firstName", userInfo.first_name);
 
          if (localStorage.getItem('redirectUrl')) {
              location.replace(localStorage.getItem('redirectUrl'));
