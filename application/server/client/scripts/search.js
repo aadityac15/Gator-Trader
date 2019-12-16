@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 20:37:38
+ * @Last Modified time: 2019-12-16 00:05:49
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -13,6 +13,8 @@ let filterCount = 0;
 let filterFlag = false;
 let errorFlag = false;
 let sort_by = "";
+let query = "";
+let category = "";
 let ERROR_URL = "listings?query=&category=&sort_by=";
 
 const sortListings = () => {
@@ -21,25 +23,11 @@ const sortListings = () => {
   fetchData();
 };
 
-const setQueryValue = query => {
-  document.getElementById("queryTag").value = localStorage.getItem("query");
-};
-
-const setDropDownValue = category => {
-  if (category === "" || category === "null") {
-    document.getElementById("selectDropDown").value = "All Categories";
-  } else {
-    document.getElementById("selectDropDown").value = category;
-  }
-};
-
 const fetchData = async () => {
   // Transfer values from index to result.
-  let category = localStorage.getItem("category");
 
-  await setDropDownValue(category);
-  console.log(document.getElementById("selectDropDown"));
-  // debugger;
+  category = localStorage.getItem("category");
+  console.log("32", category);
   let noResultTag = document.getElementById("noResultTag");
   let ulResult = document.getElementById("resultList");
   const filterDropDownElement = document.getElementById("filterDropDown");
@@ -60,26 +48,31 @@ const fetchData = async () => {
   }
 
   // Fill the query from the query item.
-  await setQueryValue(localStorage.getItem("query"));
+  // await setQueryValue(localStorage.getItem("query"));
 
   // If it has id and title.
   localStorage.removeItem("id");
   localStorage.removeItem("title");
-
-  let query = document.getElementById("queryTag").value;
+  let query = localStorage.getItem("query");
 
   if (category === "All Categories") {
     category = "";
   }
 
   // handle refrersh i.e show everything if after refresh either of the parameters are null.
-  if (category === null || query === null) {
+  if (category === null) {
     category = "";
+  }
+
+  if (query === null) {
     query = "";
   }
 
   let LISTINGS_URL = "";
   if (!errorFlag) {
+    console.log(category);
+    // debugger;
+
     LISTINGS_URL = `listings?query=${query}&category=${category}&sort_by=${sort_by}`;
   } else {
     LISTINGS_URL = ERROR_URL;
@@ -98,7 +91,6 @@ const fetchData = async () => {
       }
     })
     .then(data => {
-      console.log("Query being hit", LISTINGS_URL);
       /* If the query tag contains non alphanumeric character. */
       if (JSON.parse(data).error) {
         let textNode = document.createTextNode(
@@ -152,6 +144,8 @@ const fetchData = async () => {
       //As the data would be an object
       // TO ensure the saame data isn't shown twice.
       if (ulResult.innerText === "") {
+        localStorage.setItem("wrongCategory", localStorage.getItem("category"));
+        category = localStorage.getItem("wrongCategory");
         dummyData.map(indList => {
           //  Creation of the elements.
           const titleDiv = createDomElement("div");
@@ -252,8 +246,30 @@ const fetchData = async () => {
           // Injecting each li tag to the parent ul tag.
           ulResult.appendChild(liTag);
         });
-        localStorage.setItem("query", "");
       }
+      console.log("248", category);
+      // Checking if categories are null. If null replace with empty string.
+      if (
+        localStorage.getItem("category") !== null ||
+        localStorage.getItem("category") !== ""
+      ) {
+        if (
+          localStorage.getItem("wrongCategory") !== null ||
+          localStorage.getItem("wrongCategory") !== ""
+        ) {
+          document.getElementById(
+            "selectDropDown"
+          ).value = localStorage.getItem("wrongCategory");
+        } else {
+          document.getElementById(
+            "selectDropDown"
+          ).value = localStorage.getItem("category");
+        }
+      } else {
+        document.getElementById("selectDropDown").value = "All Categories";
+      }
+      document.getElementById("queryTag").value = localStorage.getItem("query");
+      localStorage.removeItem("query");
     });
 };
 

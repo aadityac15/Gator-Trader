@@ -1,8 +1,8 @@
 /*
  * @Author: aadityac15
  * @Date:   2019-11-17 22:31:21
- * @Last Modified by:   aadityac15
- * @Last Modified time: 2019-11-27 15:38:19
+ * @Last Modified by: aadityac15
+ * @Last Modified time: 2019-12-15 22:34:47
  * @Description: Individual Listing for each item. Can also contact the seller.
  */
 
@@ -15,7 +15,7 @@ const priceTag = document.getElementById("priceTag");
 const fetchIndividualListing = async () => {
 	let query = localStorage.getItem("id");
 	const FETCH_URL = `/listing?listing_id=${query}`;
-	
+
 	await fetch(FETCH_URL, {
 		method: "GET"
 	})
@@ -43,7 +43,7 @@ const fetchIndividualListing = async () => {
 		});
 	};
 
-window.onload = fetchIndividualListing();
+fetchIndividualListing();
 
 
 
