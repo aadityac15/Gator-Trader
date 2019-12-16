@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-16 00:05:49
+ * @Last Modified time: 2019-12-16 00:26:44
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -40,6 +40,7 @@ const fetchData = async () => {
     sort_by =
       filterDropDownElement.options[filterDropDownElement.selectedIndex].value;
     ulResult.classList.add("list-group");
+    // console.log(localStorage);
     if (errorFlag) {
       // Generate empty url with just the sort.
       generateErrorURL("", "", sort_by);
@@ -70,8 +71,6 @@ const fetchData = async () => {
 
   let LISTINGS_URL = "";
   if (!errorFlag) {
-    console.log(category);
-    // debugger;
 
     LISTINGS_URL = `listings?query=${query}&category=${category}&sort_by=${sort_by}`;
   } else {
@@ -269,7 +268,6 @@ const fetchData = async () => {
         document.getElementById("selectDropDown").value = "All Categories";
       }
       document.getElementById("queryTag").value = localStorage.getItem("query");
-      localStorage.removeItem("query");
     });
 };
 
