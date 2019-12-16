@@ -10,7 +10,9 @@
 
 let count = 0;
 let filterCount = 0;
+// To see if the filter has to be done.
 let filterFlag = false;
+// To check if the response is empty.
 let errorFlag = false;
 let sort_by = "";
 let query = "";
@@ -25,9 +27,8 @@ const sortListings = () => {
 
 const fetchData = async () => {
   // Transfer values from index to result.
-
+  // Get the category from the localStorage.
   category = localStorage.getItem("category");
-  console.log("32", category);
   let noResultTag = document.getElementById("noResultTag");
   let ulResult = document.getElementById("resultList");
   const filterDropDownElement = document.getElementById("filterDropDown");
@@ -37,10 +38,11 @@ const fetchData = async () => {
   if (filterFlag) {
     ulResult = await clearRows(ulResult);
     filterFlag = false;
+    
     sort_by =
       filterDropDownElement.options[filterDropDownElement.selectedIndex].value;
     ulResult.classList.add("list-group");
-    // console.log(localStorage);
+   
     if (errorFlag) {
       // Generate empty url with just the sort.
       generateErrorURL("", "", sort_by);
@@ -139,7 +141,7 @@ const fetchData = async () => {
       }
 
       //As the data would be an object
-      // TO ensure the saame data isn't shown twice.
+      // TO ensure the same data isn't shown twice.
       if (ulResult.innerText === "") {
         localStorage.setItem("wrongCategory", localStorage.getItem("category"));
         category = localStorage.getItem("wrongCategory");
@@ -244,7 +246,6 @@ const fetchData = async () => {
           ulResult.appendChild(liTag);
         });
       }
-      console.log("248", category);
       // Checking if categories are null. If null replace with empty string.
       if (
         localStorage.getItem("category") !== null ||
