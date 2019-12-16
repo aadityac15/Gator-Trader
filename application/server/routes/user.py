@@ -45,6 +45,7 @@ def login():
     if check_password_hash(user.password, password):
         return jsonify({
             'user_id': user.user_id,
+            'first_name': user.first_name,
             'token': user.token,
             'is_admin': user.is_admin
         })
@@ -94,6 +95,7 @@ def create():
 
     return jsonify({
         'user_id': new_user.user_id,
+        'first_name': new_user.first_name,
         'token': new_user.token,
         'is_admin': new_user.is_admin
     })
