@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date:   2019-11-12 02:03:04
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 23:01:17
+ * @Last Modified time: 2019-12-16 00:26:39
  * @Description : Redirect the page to the result page. The categories are put in from the categories.csv.
  */
 
@@ -19,6 +19,7 @@ const enterToSearch = event => {
 };
 
 const redirectToResult = () => {
+  localStorage.removeItem('query');
   const selectDropDownElement = document.getElementById("selectDropDown");
   const category =
     selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
