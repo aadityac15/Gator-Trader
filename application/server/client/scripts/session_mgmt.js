@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('#admin_dashboard').style.display = 'none';
         document.querySelector('#register-button').style.display = 'none';
         // document.querySelector('#sell').style.display = 'block';
+        document.querySelector("#recommendedSection").style.display = 'block';
 
         document.querySelector('#nav-login').onclick = function(e){
             clearUserInfoFromSessionStorage();
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
             location.replace('../users/landing_page')
         };
     }
+
     if (sessionStorage.getItem('is_admin') == 'true'){
         document.querySelector('#dashboard').style.display = 'none';
         document.querySelector('#admin_dashboard').style.display = 'block';
