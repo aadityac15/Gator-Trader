@@ -2,26 +2,26 @@
  * @Author: aadityac15
  * @Date:   2019-11-12 02:03:04
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 17:37:34
+ * @Last Modified time: 2019-12-15 19:50:24
  * @Description : Redirect the page to the result page. The categories are put in from the categories.csv.
  */
 
 // used in landingPage.js
 
 /// used in landingPage.js
-// Enter press does search.
-document.getElementById("queryTag").addEventListener("keyup", event => {
+
+let categoriesArray = [];
+
+const enterToSearch = event => {
   if (event.keyCode === 13) {
     event.preventDefault();
     document.getElementById("searchBtn").click();
   }
-});
-
-let categoriesArray = [];
+};
 
 const redirectToResult = () => {
-  localStorage.removeItem("query");
-  localStorage.removeItem("category");
+  // localStorage.removeItem("query");
+  // localStorage.removeItem("category");
   const selectDropDownElement = document.getElementById("selectDropDown");
   const category =
     selectDropDownElement.options[selectDropDownElement.selectedIndex].value;
@@ -30,7 +30,6 @@ const redirectToResult = () => {
   // Store the query and the category in the localStorage and redirect to the /results page to display the results.
   localStorage.setItem("query", query);
   localStorage.setItem("category", category);
-  console.log(category);
   window.location.pathname = "/results";
 };
 
@@ -52,13 +51,13 @@ const loadDropDown = async () => {
       })
       .then(data => {
         const jsonData = JSON.parse(data);
-        console.log(jsonData);
         categoryArray = jsonData["categories"];
         categoryArray.map(category => {
           let option = document.createElement("option");
           option.value = category;
           option.text = category;
           selectDropDownElement.add(option);
+
           // For the categories on the landing page.
           if (document.getElementById(category)) {
             document.getElementById(category).textContent = category;
@@ -67,6 +66,7 @@ const loadDropDown = async () => {
               window.location.pathname = "/results";
             });
           }
+          // For categories in the selling page dropdown.
           if (sellListingDropDown !== null) {
             let option = document.createElement("option");
             option.value = category;
@@ -74,10 +74,7 @@ const loadDropDown = async () => {
             sellListingDropDown.add(option);
           }
         });
-        selectDropDownElement.value = "All Categories";
       });
-  } else {
-    console.log("Already done");
   }
 };
 

@@ -2,17 +2,11 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 18:14:26
+ * @Last Modified time: 2019-12-15 20:24:37
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
 // Press Enter to search.
-document.getElementById("queryTag").addEventListener("keyup", event => {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("searchBtn").click();
-  }
-});
 
 let count = 0;
 let filterCount = 0;
@@ -27,15 +21,25 @@ const sortListings = () => {
   fetchData();
 };
 
-const fetchData = async () => {
-  // Transfer values from index to result.
-  let category = localStorage.getItem("category");
+const setQueryValue = query => {
+  document.getElementById("queryTag").value = localStorage.getItem("query");
+};
+
+const setDropDownValue = category => {
   if (category === "" || category === "null") {
     document.getElementById("selectDropDown").value = "All Categories";
   } else {
     document.getElementById("selectDropDown").value = category;
   }
+};
 
+const fetchData = async () => {
+  // Transfer values from index to result.
+  let category = localStorage.getItem("category");
+
+  await setDropDownValue(category);
+  console.log(document.getElementById("selectDropDown"));
+  // debugger;
   let noResultTag = document.getElementById("noResultTag");
   let ulResult = document.getElementById("resultList");
   const filterDropDownElement = document.getElementById("filterDropDown");
@@ -49,7 +53,6 @@ const fetchData = async () => {
       filterDropDownElement.options[filterDropDownElement.selectedIndex].value;
     ulResult.classList.add("list-group");
     if (errorFlag) {
-
       // Generate empty url with just the sort.
       generateErrorURL("", "", sort_by);
     }
@@ -57,7 +60,7 @@ const fetchData = async () => {
   }
 
   // Fill the query from the query item.
-  document.getElementById("queryTag").value = localStorage.getItem("query");
+  await setQueryValue(localStorage.getItem("query"));
 
   // If it has id and title.
   localStorage.removeItem("id");
@@ -108,7 +111,6 @@ const fetchData = async () => {
 
       let dataJson = JSON.parse(data);
       let dummyData = dataJson["listings"];
-
       // If the result is empty.
       if (dummyData.length === 0) {
         count += 1;
@@ -117,18 +119,20 @@ const fetchData = async () => {
         if (count >= 2) {
           noResultTag.innerText = "";
           let textNode = document.createTextNode(
-            "No items yet. Please wait for the items to be approved if you have created a listing."
+            "Please wait for the items to be approved if you have created a listing."
           );
+          // Show result error message.
           noResultTag.appendChild(textNode);
         } else {
           let textNode = document.createTextNode(
-            "Your search did not match any of the items. Please try another Search query. Here are some items, or you can check out the recommended items:"
+            "Your search did not match any of the items. Please try another Search query. Here are some other items, or you can check out the recommended items:"
           );
           noResultTag.appendChild(textNode);
-          if (category !== "") {
-            localStorage.setItem("wrongCategory", category);
+
+          if (category !== "" || category !== null) {
+            localStorage.setItem("wrongCategory", category); // keep the current category persistent.
           } else {
-            localStorage.setItem("wrongCategory", "All Categories"); // keep the current category persistent.
+            localStorage.setItem("wrongCategory", "All Categories");
           }
           errorFlag = true;
           fetchData();
@@ -140,7 +144,7 @@ const fetchData = async () => {
         document.getElementById("displayCount").textContent = dataLength;
         document.getElementById("resultCount").textContent = dataLength;
       } else {
-        // Show correct count if the response is empty.
+        // Show 0 count if the response is empty.
         document.getElementById("displayCount").textContent = 0;
         document.getElementById("resultCount").textContent = 0;
       }
@@ -148,7 +152,6 @@ const fetchData = async () => {
       //As the data would be an object
       // TO ensure the saame data isn't shown twice.
       if (ulResult.innerText === "") {
-        localStorage.setItem("wrongCategory", category);
         dummyData.map(indList => {
           //  Creation of the elements.
           const titleDiv = createDomElement("div");
@@ -196,6 +199,8 @@ const fetchData = async () => {
 
           /* Style image div */
           imgDivTag.appendChild(imgTag);
+          imgDivTag.style["width"] = "150px";
+          imgDivTag.style["height"] = "150px";
           imgDivTag.style["flex-grow"] = 1;
           imgDivTag.style["cursor"] = "pointer";
 
@@ -419,5 +424,3 @@ const generateErrorURL = (query, category, sort_by) => {
 };
 
 fetchData();
-
-
