@@ -18,7 +18,7 @@ CREATE TABLE listing (
   description varchar(255) DEFAULT NULL,
   type varchar(45) DEFAULT NULL,
   price decimal(6,2) NOT NULL DEFAULT '0.00',
-  thumbnail varchar(255) DEFAULT NULL,
+  thumbnail varchar(512) DEFAULT NULL,
   created_on datetime NOT NULL,
   last_edited_on datetime NOT NULL,
   created_by int NOT NULL,
