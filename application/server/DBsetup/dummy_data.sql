@@ -1,13 +1,14 @@
-INSERT INTO user 
+INSERT IGNORE INTO user
     VALUES 
         (1, 'T800', 'Sarah', 'Connor', 'sconner@fakemail.com', 'pbkdf2:sha256:150000$YmIiIyKn$d1081a76254caa6b52e01f99418990b5d98f25a46b4db2f084bd9051a42199b9', false, 'History', 0),
         (2, 'Bulldozer', 'Carlos', 'Mendoza', 'cmendoza@fakemail.com', 'pbkdf2:sha256:150000$bAeUTD3C$99c475d825ee5f9f4a8631d006c84da44bf116a480dc3bc2432df218522d83e4', false, 'Mathematics', 0),
         (3, 'TheElderGod', 'Raiden', NULL, 'raiden@@fakemail.com', 'pbkdf2:sha256:150000$xmdiYP70$7333d701471f7e2b5204f18e4dff7fed60724995621d1766a1105c343b58a4d3', true, 'Physics', 0),
         (4, 'Queenie', 'Kara',  'Strong', 'kstrong@fakemail.com', 'pbkdf2:sha256:150000$J5O3SWHa$d59fd69e6d94f655581abd39d82972fa5102757c39e4cf65d8df3c925ebb159d', false, 'Kinesiology', 0),
         (5, 'JDog', 'James',  'Daniels', 'jdaniels@fakemail.com', 'pbkdf2:sha256:150000$8E1BoEKw$6fec252a5bcfdd1c8e19ad1a9773ffbdcb7f8addb2b16d20e22a9e39007c4844', false, 'Civil Engineering', 0),
-        (6, 'admin', 'Admin',  'Account', 'admin@mail.sfsu.edu', 'pbkdf2:sha256:150000$hDHlY653$858d003d63baddfa9e180b3469231be8370db35f04947715e330d73164a4ca32', true, 'Administrative Studies', 6);
+        (6, 'admin', 'Admin',  'Account', 'admin@mail.sfsu.edu', 'pbkdf2:sha256:150000$hDHlY653$858d003d63baddfa9e180b3469231be8370db35f04947715e330d73164a4ca32', true, 'Administrative Studies', 6),
+        (7, 'csboy', 'Sean',  'Darryanto', 'csboy@mail.sfsu.edu', 'pbkdf2:sha256:150000$dCH4HvSx$c6e624ee229dbe765bf03f3a8c20e6c2b4c564e07decafaf0b06a2db4e2117f6', false, 'Computer Science', 7);
 
-INSERT INTO listing
+INSERT IGNORE INTO listing
    VALUES
         (1, 'Mini Fridge', 'Keep your food and drinks chilled!',  'Appliances', 79.99, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ58iWJ0hXM9RAqR7pGIog0QT9YhKZaZO3lU7byXV71dL2rJmmx&s', '2018-05-23 07:02:08', '2019-06-30 22:37:55', 5, true, NULL),
         (2, 'Math Textbook', 'Barely used math textbook for MATH 324', 'Books', 20, 'https://clarkchronicle.com/wp-content/uploads/2017/05/int-math-1500x994.jpg', '2016-05-01 02:16:00', '2018-04-13 14:12:42', 2, true, NULL),
