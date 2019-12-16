@@ -305,7 +305,7 @@ const styleImgTag = () => {
 };
 
 const styleDescriptionDiv = descriptionDiv => {
-  descriptionDiv.style["overflow"] = "auto";
+  descriptionDiv.style["overflow-wrap"] = "break-word";
 
   descriptionDiv.style["width"] = "100%";
   descriptionDiv.style["height"] = "25%";
