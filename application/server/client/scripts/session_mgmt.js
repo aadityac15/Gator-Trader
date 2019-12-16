@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             location.replace('../users/landing_page')
         };
+    } else {
+        document.querySelector('#nav-login').innerHTML = 'Login';
     }
 
     if (sessionStorage.getItem('is_admin') == 'true'){
