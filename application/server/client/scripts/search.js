@@ -310,7 +310,7 @@ const fetchRecommendedListings = async () => {
   let noResultTag = document.getElementById("noResultTag");
   const ulResult = document.getElementById("resultList");
   ulResult.classList.add("list-group");
-  let user_id = sessionStorage.getItem("userName");
+  let user_id = sessionStorage.getItem("user_id");
 
   await fetch(`/recommended_listings?user_id=${user_id}`, {
     method: "GET",
