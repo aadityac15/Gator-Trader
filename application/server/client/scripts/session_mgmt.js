@@ -5,27 +5,30 @@ document.addEventListener("DOMContentLoaded", function() {
       if local storage == session storage
      */
     if(sessionStorage.getItem('user_id')){
+        document.querySelector('#nav-login').onclick = function(e){
+            clearUserInfoFromSessionStorage();
+
+            location.replace('../users/landing_page')
+        };
+
         document.querySelector('#nav-login').innerHTML = 'Logout';
         document.querySelector('#dashboard').style.display = 'block';
         document.querySelector('#admin_dashboard').style.display = 'none';
         document.querySelector('#register-button').style.display = 'none';
-        // document.querySelector('#sell').style.display = 'block';
+        document.querySelector("#recommendedSection").style.display = 'block';
+    } else {
+        document.querySelector('#nav-login').innerHTML = 'Login';
+    }
 
+    if (sessionStorage.getItem('is_admin') == 'true'){
         document.querySelector('#nav-login').onclick = function(e){
             clearUserInfoFromSessionStorage();
 
             location.replace('../users/landing_page')
         };
-    }
-    if (sessionStorage.getItem('is_admin') == 'true'){
+
         document.querySelector('#dashboard').style.display = 'none';
         document.querySelector('#admin_dashboard').style.display = 'block';
-
-        document.querySelector('#nav-login').onclick = function(e){
-            clearUserInfoFromSessionStorage();
-
-            location.replace('../users/landing_page')
-        };
     }
 });
 
