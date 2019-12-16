@@ -95,7 +95,12 @@ let createListingTableRow = (listing) => {
     let listingDateData = createDomElement("td");
 
     let listingImage = createDomElement("img");
-    listingImage.src = (listing.thumbnail == null) ? "https://via.placeholder.com/100" : ("../" + listing.thumbnail);
+
+    listingImage.src = "https://via.placeholder.com/100";
+    if (listing.thumbnail != null) {
+        listingImage.src = (listing.thumbnail.includes('http')) ? listing.thumbnail : "../" + listing.thumbnail;
+    }
+
     listingImage.alt = listing.title;
     listingImage.height = 100;
     listingImage.width = 100;
