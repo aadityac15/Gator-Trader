@@ -36,6 +36,7 @@ const fetchData = async () => {
     filterDropDownElement.options[filterDropDownElement.selectedIndex].value;
 
   if (filterFlag) {
+    // Clear rows to show new data.
     ulResult = await clearRows(ulResult);
     filterFlag = false;
     
@@ -116,7 +117,7 @@ const fetchData = async () => {
           noResultTag.appendChild(textNode);
         } else {
           let textNode = document.createTextNode(
-            "Your search did not match any of the items. Please try another Search query. Here are some other items, or you can check out the recommended items:"
+            "Your search did not match any of the items. Please try another Search query. Here are some featured items:"
           );
           noResultTag.appendChild(textNode);
 
