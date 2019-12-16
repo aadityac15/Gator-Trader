@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-15 20:24:37
+ * @Last Modified time: 2019-12-15 20:37:38
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
