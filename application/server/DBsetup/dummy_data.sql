@@ -23,7 +23,7 @@ INSERT IGNORE INTO listing
         (10, 'Python Programming text book', 'Computer science text book for Python',  'Books', 15, 'https://images-na.ssl-images-amazon.com/images/I/41z1V0zP2WL.jpg', '2017-09-04 14:22:16', '2018-11-04 04:44:15', 3, true, NULL),
         (11, 'PS4', 'New playstation 4',  'Electronics', 200, 'https://media.wired.com/photos/5a99f809b4bf6c3e4d405abc/master/pass/PS4-Pro-SOURCE-Sony.jpg', '2017-09-04 14:22:16', '2018-11-04 04:44:15', 3, true, NULL);
 
-INSERT INTO message
+INSERT IGNORE INTO message
 	VALUES
 		(1, 2, 5, 'Dummy data is hard.', '2019-02-01 06:02:46', 0, 2),
     (2, 5, 3, 'I dont know what to say.', '2018-02-01 06:02:46', 0, 4),

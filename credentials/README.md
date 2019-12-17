@@ -7,16 +7,16 @@
 
 # Blow is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
-1. Server URL or IP
-2. SSH username
-3. SSH password or key.
-    <br> If a ssh key is used please upload the key to the credentials folder.
-4. Database URL or IP and port used.
+1. Server URL or IP: `ec2-user@13.52.236.160`
+2. SSH username: `ec2-user`
+3. SSH password or key: See the pem file for the ssh key.
+4. Database URL or IP and port used: `3306`
     <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
-5. Database username
-6. Database password
-7. Database name (basically the name that contains all your tables)
+5. Database username: `root`
+6. Database password: `csc648-password`
+7. Database name (basically the name that contains all your tables): `648_database`
 8. Instructions on how to use the above information.
+    To access the EC2 instance, run `ssh -i \"csc648-ssh-key.pem\" ec2-user@13.52.236.160`
 
 ADMIN LOGIN CREDENTIALS:<br>
 username: admin
