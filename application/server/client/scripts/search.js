@@ -2,7 +2,7 @@
  * @Author: aadityac15
  * @Date: 2019-12-07 23:45:46
  * @Last Modified by: aadityac15
- * @Last Modified time: 2019-12-16 11:29:35
+ * @Last Modified time: 2019-12-16 20:20:49
  * @Description: Fetch the listings from the backend and populate individual listing.
  */
 
@@ -39,11 +39,11 @@ const fetchData = async () => {
     // Clear rows to show new data.
     ulResult = await clearRows(ulResult);
     filterFlag = false;
-    
+
     sort_by =
       filterDropDownElement.options[filterDropDownElement.selectedIndex].value;
     ulResult.classList.add("list-group");
-   
+
     if (errorFlag) {
       // Generate empty url with just the sort.
       generateErrorURL("", "", sort_by);
@@ -94,7 +94,7 @@ const fetchData = async () => {
       /* If the query tag contains non alphanumeric character. */
       if (JSON.parse(data).error) {
         let textNode = document.createTextNode(
-          "Please try another Search query with only alphanumeric characters. Here are some other items."
+          "Please try another Search query with only alphanumeric characters. Here are some featured items."
         );
         noResultTag.appendChild(textNode);
         errorFlag = true;
@@ -388,7 +388,7 @@ const fetchRecommendedListings = async () => {
         } else {
           imgTag.src = "https://via.placeholder.com/150";
         }
-        
+
         imgDivTag.appendChild(imgTag);
         imgDivTag.style["flex-grow"] = 1;
         liTag.appendChild(imgDivTag);
