@@ -5,6 +5,7 @@ const ALL_LISTINGS_URL = '/listings';
 const EDIT_LISTING_APPROVAL_URL = '/edit_listing_approval';
 
 if (sessionStorage.getItem("is_admin") !== 'true') {
+    alert("You do not have permission to view this.")
     location.replace("/");
 }
 

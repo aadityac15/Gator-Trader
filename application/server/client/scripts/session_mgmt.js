@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if local storage == session storage
      */
     if(sessionStorage.getItem('user_id')){
+
         document.querySelector('#nav-login').onclick = function(e){
             clearUserInfoFromSessionStorage();
 
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         document.querySelector('#nav-login').innerHTML = 'Logout';
         document.querySelector('#dashboard').style.display = 'block';
-        document.querySelector('#admin_dashboard').style.display = 'none';
+        document.querySelector('#admin_dashboard').style.display = 'block';
         document.querySelector('#register-button').style.display = 'none';
         document.querySelector("#recommendedSection").style.display = 'block';
     } else {
@@ -21,14 +22,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (sessionStorage.getItem('is_admin') == 'true'){
+        document.querySelector('#admin_dashboard').style.display = 'block';
+        document.querySelector('#dashboard').style.display = 'none';
         document.querySelector('#nav-login').onclick = function(e){
             clearUserInfoFromSessionStorage();
 
             location.replace('../users/landing_page')
         };
 
-        document.querySelector('#dashboard').style.display = 'none';
-        document.querySelector('#admin_dashboard').style.display = 'block';
     }
 });
 
