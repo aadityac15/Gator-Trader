@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (sessionStorage.getItem('is_admin') == 'true'){
         document.querySelector('#admin_dashboard').style.display = 'block';
-        document.querySelector('#dashboard').style.display = 'none';
+        document.querySelector('#dashboard').style.display = 'block';
         document.querySelector('#nav-login').onclick = function(e){
             clearUserInfoFromSessionStorage();
 
