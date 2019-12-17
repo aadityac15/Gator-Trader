@@ -1,0 +1,97 @@
+{% extends 'index.html' %}
+{% block body %}
+<div class="container ">
+  <div style="text-align: center; margin:2% auto" class="jumbotron fixed-div">
+    <u><h1>About the Team</h1></u>
+  </div>
+  <div class="center-align">
+    <u style="color: #400449"><h3>Team Lead</h3></u>
+  </div>
+  <ul class="ul-changes">
+    <li>
+          <span class="flex-inline">
+            <img src="../../resources/images/sdarryanto.jpg" class="about-img" />
+            <u><a href="{{ 'sean_darryanto' }}" >Sean Darryanto</a> </u>
+          </span>
+    </li>
+  </ul>
+  <br />
+  <div>
+    <div class="center-align">
+      <u style="color: #400449"><h3>Front End Team</h3></u>
+    </div>
+  </div>
+  <div>
+    <ul class="ul-changes">
+      <li>
+            <span class="flex-inline">
+              <img src="{{ '/resources/images/momo.JPG'}}" class="about-img" />
+              </a>
+              <div>
+                <u>
+                  <a href="{{ 'momo_sun' }}">Momo Sun</a>
+                </u>
+              </div>
+            </span>
+      </li>
+      <li>
+            <span class="flex-inline">
+              <img
+                      class="about-img"
+                      src="{{ '/resources/images/David Chung.jpg'}}"
+                      alt="David Chung"
+              />
+              </a>
+              <u><a href="{{ 'about_david' }}">David Chung</a></u>
+            </span>
+      </li>
+      <li>
+            <span class="flex-inline">
+
+              <img src="{{ '/resources/images/aaditya_chokshi.jpg'}}" class="about-img" />
+              </a>
+              <u><a href="{{ 'aaditya_chokshi' }}">Aaditya Chokshi</a></u>
+            </span>
+      </li>
+    </ul>
+    <br>
+    <div>
+      <div class="center-align">
+        <u style="color: #400449"><h3>Back End Team</h3></u>
+      </div>
+    </div>
+    <ul class="ul-changes">
+      <li>
+            <span class="flex-inline">
+            
+              <img src="https://i.imgur.com/o6dZkUP.jpg" class="about-img" />
+              </a>
+              <u><a href="{{ 'about_adam' }}">Adam Bea</a> </u>
+            </span>
+      </li>
+      <li>
+            <span class="flex-inline">
+              
+              <img src="{{ '/resources/images/chris_thumbnail.jpg' }}" class="about-img" />
+              </a>
+              <u><a href="{{ 'about_chris' }}">Christopher Smith</a></u>
+            </span>
+      </li>
+      <li>
+            <span class="flex-inline">
+             
+              <img
+                      src="{{ '/resources/images/Patrick_Khai_2.png' }}"
+                      class="about-img"
+                      alt="Kam Khai"
+              />
+              </a>
+              <u><a href="{{ 'about_kam' }}">Kam Khai</a></u>
+            </span>
+      </li>
+    </ul>
+    <br><br><br>
+  </div>
+</div>
+
+{% endblock %}
