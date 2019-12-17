@@ -38,6 +38,7 @@ const getMessages = async() => {
             messages = messagesObject['messages'];
             if (messages.length == 0) {
                 // TODO: Create table row that says "No messages at the moment."
+                document.getElementById("message-table").innerHTML = "There is no message at the moment."
             }
             messages = messages.map((listing) => createMessagesTableRow(listing));
 
